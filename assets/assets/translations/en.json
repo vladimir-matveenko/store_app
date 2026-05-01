@@ -1,0 +1,94 @@
+{
+  "updatedAt": "Updated at:",
+  "you": "You",
+  "bottomNavBar": {
+    "homeTab": "Home",
+    "usersTab": "Users",
+    "locationsTab": "Locations",
+    "profileTab": "Profile"
+  },
+  "loginScreen": {
+    "screenName": "Login",
+    "fieldNameEmail": "Email",
+    "fieldNamePassword": "Password",
+    "btnLogin": "Login"
+  },
+  "productsScreen": {
+    "screenName": "Products",
+    "categories": "Categories",
+    "delete": "Delete",
+    "deleteProduct": "Delete product",
+    "deleteCategory": "Delete category",
+    "areYouSureProduct": "Are you sure you want to delete product?",
+    "areYouSureCategory": "Are you sure you want to delete category?",
+    "okText": "OK",
+    "cancelText": "Cancel"
+  },
+  "productScreen": {
+    "screenName": "Product",
+    "relatedProducts": "Related products"
+  },
+  "addProductScreen": {
+    "screenName": "Add product",
+    "selectCategory": "Select category",
+    "addImages": "Add images (< 3)",
+    "fieldTitle": "Title",
+    "fieldPrice": "Price",
+    "fieldDescription": "Description",
+    "createBtn": "Create",
+    "createdSuccess": "Created successful"
+  },
+  "addCategoryScreen": {
+    "screenName": "Add category",
+    "addImage": "Add image",
+    "fieldName": "Name",
+    "createBtn": "Create",
+    "createdSuccess": "Created successful"
+  },
+  "usersScreen": {
+    "screenName": "Users"
+  },
+  "userScreen": {
+    "screenName": "User"
+  },
+  "profileScreen": {
+    "screenName": "Profile",
+    "btnLogout": "Logout",
+    "changeLang": "Change language",
+    "langEn": "English",
+    "langRu": "Russian",
+    "themeDark": "Dark theme",
+    "themeLight": "Light theme",
+    "role": "Role"
+  },
+  "locationsScreen": {
+    "screenName": "Locations",
+    "latitude": "latitude:",
+    "longitude": "longitude:",
+    "list": "List",
+    "map": "Map",
+    "modalTitle": "Geolocation is not available",
+    "modalText": "Open the Settings to allow it?"
+  },
+  "filtersModal": {
+    "modalName": "Filters",
+    "amount": "Amount",
+    "from": "From",
+    "to": "To",
+    "btnConfirm": "Confirm",
+    "btnReset": "Reset filters"
+  },
+  "fieldValidation": {
+    "enterEmail": "Enter email",
+    "enterPassword": "Enter password",
+    "notEmpty": "Must be not empty",
+    "maxAmount": "Max amount should be greater then min"
+  },
+  "errors": {
+    "authError": "Auth error",
+    "wrongEmailOrPassword": "Wrong email or password",
+    "serverError": "Server error",
+    "accessTokenInvalid": "Access token is invalid",
+    "logoutError": "Logout error"
+  }
+}
