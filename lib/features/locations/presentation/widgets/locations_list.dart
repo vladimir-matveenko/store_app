@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:store_app/core/presentation/widgets/no_items_widget.dart';
 import 'package:store_app/core/presentation/widgets/scroll_up_wrapper.dart';
 import 'package:store_app/features/locations/domain/entity/location_entity.dart';
 import 'package:store_app/features/locations/presentation/bloc/locations_bloc.dart';
@@ -32,34 +33,39 @@ class _LocationsListState extends State<LocationsList> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<LocationsBloc>().state;
-    return ScrollUpWrapper(
-      controller: _scrollController,
-      child: ListView.separated(
-        controller: _scrollController,
-        itemCount: state.locations.length,
-        physics: const ClampingScrollPhysics(),
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
-        itemBuilder: (context, index) {
-          final location = state.locations[index];
-          final isSelected = location.id == state.selectedLocationId;
-          return ListItem(
-            key: ValueKey(location.id),
-            isSelected: isSelected,
-            onTap: () {
-              if (isSelected) {
-                bloc.add(const LocationSelected(locationId: ''));
-              } else {
-                bloc.add(
-                  LocationSelected(locationId: location.id, location: location),
+    return state.locations.isNotEmpty
+        ? ScrollUpWrapper(
+            controller: _scrollController,
+            child: ListView.separated(
+              controller: _scrollController,
+              itemCount: state.locations.length,
+              physics: const ClampingScrollPhysics(),
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              itemBuilder: (context, index) {
+                final location = state.locations[index];
+                final isSelected = location.id == state.selectedLocationId;
+                return ListItem(
+                  key: ValueKey(location.id),
+                  isSelected: isSelected,
+                  onTap: () {
+                    if (isSelected) {
+                      bloc.add(const LocationSelected(locationId: ''));
+                    } else {
+                      bloc.add(
+                        LocationSelected(
+                          locationId: location.id,
+                          location: location,
+                        ),
+                      );
+                    }
+                  },
+                  location: location,
                 );
-              }
-            },
-            location: location,
-          );
-        },
-        separatorBuilder: (context, index) => const SizedBox(height: 8.0),
-      ),
-    );
+              },
+              separatorBuilder: (context, index) => const SizedBox(height: 8.0),
+            ),
+          )
+        : const NoItemsWidget();
   }
 }
 

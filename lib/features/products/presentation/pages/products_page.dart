@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:store_app/core/presentation/widgets/no_items_widget.dart';
 import 'package:store_app/core/presentation/widgets/scroll_up_wrapper.dart';
 import 'package:store_app/features/products/presentation/bloc/products_bloc.dart';
 import 'package:store_app/features/products/presentation/bloc/products_state.dart';
@@ -183,9 +184,7 @@ class _ProductsPageState extends State<ProductsPage> {
                       ),
                       // Show empty state when there are no products and not loading
                       if (state.products.isEmpty && !state.isLoading)
-                        const SliverToBoxAdapter(
-                          child: Center(child: Text('No products available')),
-                        ),
+                        const SliverToBoxAdapter(child: NoItemsWidget()),
                       if (state.isShowProductLoader)
                         const SliverPadding(
                           padding: EdgeInsets.symmetric(vertical: 24.0),
