@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:store_app/core/presentation/widgets/no_items_widget.dart';
 import 'package:store_app/features/products/domain/entity/category_entity.dart';
 import 'package:store_app/features/products/domain/entity/product_entity.dart';
 import 'package:store_app/features/products/presentation/bloc/products_bloc.dart';
@@ -156,7 +157,7 @@ void main() {
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 100));
 
-      expect(find.text('No products available'), findsOneWidget);
+      expect(find.byType(NoItemsWidget), findsNWidgets(2));
     },
   );
 
