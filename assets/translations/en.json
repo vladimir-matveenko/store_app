@@ -89,6 +89,7 @@
     "wrongEmailOrPassword": "Wrong email or password",
     "serverError": "Server error",
     "accessTokenInvalid": "Access token is invalid",
-    "logoutError": "Logout error"
+    "logoutError": "Logout error",
+    "noItemsAvailable": "No items available"
   }
 }

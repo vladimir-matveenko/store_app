@@ -89,6 +89,7 @@
     "wrongEmailOrPassword": "Неверный email или пароль",
     "serverError": "Ошибка сервера",
     "accessTokenInvalid": "Access token невалидный",
-    "logoutError": "Ошибка при выходе"
+    "logoutError": "Ошибка при выходе",
+    "noItemsAvailable": "Нет элементов для отображения"
   }
 }
