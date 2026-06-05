@@ -40,7 +40,7 @@ class AppRouter {
       final isSplash = state.matchedLocation == Pages.splash;
 
       if (status == AuthStatus.unknown) {
-        return null;
+        return isSplash ? null : Pages.splash;
       }
 
       if (status == AuthStatus.unauthenticated) {
