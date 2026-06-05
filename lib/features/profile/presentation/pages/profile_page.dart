@@ -41,68 +41,63 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
-        if (state.status == AuthStatus.authenticated) {
-          final avatar = state.user?.avatar ?? '';
-          final name = state.user?.name ?? '';
-          final firstName = AppUtils.getFirstName(name);
-          final lastName = AppUtils.getLastName(name);
-          return Center(
-            child: Column(
-              spacing: 16.0,
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                UserAvatar(
-                  avatar: avatar,
-                  size: 90.0,
-                  firstName: firstName,
-                  lastName: lastName,
-                ),
-                Text(name, style: textTheme.headlineSmall),
-                Text(
-                  '${'loginScreen.fieldNameEmail'.tr()}: ${state.user?.email}',
-                  style: textTheme.bodyLarge,
-                ),
-                Text(
-                  '${'profileScreen.role'.tr()}: ${state.user?.role}',
-                  style: textTheme.bodyLarge,
-                ),
-                if (_showSelector) ...[
-                  const ThemeSelector(),
-                  const LanguageSelector(),
-                ] else
-                  const SizedBox(),
-                Row(
-                  spacing: 8.0,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      'profileScreen.btnLogout'.tr(),
-                      style: textTheme.bodyLarge,
+        final avatar = state.user?.avatar ?? '';
+        final name = state.user?.name ?? '';
+        final firstName = AppUtils.getFirstName(name);
+        final lastName = AppUtils.getLastName(name);
+        return Center(
+          child: Column(
+            spacing: 16.0,
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              UserAvatar(
+                avatar: avatar,
+                size: 90.0,
+                firstName: firstName,
+                lastName: lastName,
+              ),
+              Text(name, style: textTheme.headlineSmall),
+              Text(
+                '${'loginScreen.fieldNameEmail'.tr()}: ${state.user?.email}',
+                style: textTheme.bodyLarge,
+              ),
+              Text(
+                '${'profileScreen.role'.tr()}: ${state.user?.role}',
+                style: textTheme.bodyLarge,
+              ),
+              if (_showSelector) ...[
+                const ThemeSelector(),
+                const LanguageSelector(),
+              ] else
+                const SizedBox(),
+              Row(
+                spacing: 8.0,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'profileScreen.btnLogout'.tr(),
+                    style: textTheme.bodyLarge,
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      context.read<AuthBloc>().add(const AuthLogoutRequested());
+                    },
+                    style: IconButton.styleFrom(
+                      backgroundColor: theme.colorScheme.surfaceTint,
                     ),
-                    IconButton(
-                      onPressed: () {
-                        context.read<AuthBloc>().add(
-                          const AuthLogoutRequested(),
-                        );
-                      },
-                      style: IconButton.styleFrom(
-                        backgroundColor: theme.colorScheme.surfaceTint,
-                      ),
-                      icon: Icon(
-                        Icons.logout,
-                        size: 28.0,
-                        color: theme.colorScheme.primary,
-                      ),
+                    icon: Icon(
+                      Icons.logout,
+                      size: 28.0,
+                      color: theme.colorScheme.primary,
                     ),
-                  ],
-                ),
-              ],
-            ),
-          );
-        }
-        return const Center(child: CircularProgressIndicator());
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
       },
     );
   }
