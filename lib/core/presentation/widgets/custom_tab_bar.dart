@@ -208,7 +208,6 @@ class CustomTab extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     color: labelColor,
                     height: 1.2,
-                    letterSpacing: 0,
                   ),
                 ),
               ],
@@ -229,7 +228,6 @@ class CustomTab extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 color: labelColor,
                 height: 1.2,
-                letterSpacing: 0,
               ),
             ),
           ],
@@ -268,7 +266,6 @@ class CustomTab extends StatelessWidget {
         fontWeight: fontWeight ?? FontWeight.w600,
         color: labelColor,
         height: 1.2,
-        letterSpacing: 0,
         overflow: TextOverflow.fade,
       ),
     );
