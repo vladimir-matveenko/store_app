@@ -8,7 +8,6 @@ import 'package:store_app/features/products/presentation/pages/add_category_page
 import 'package:store_app/features/products/presentation/pages/add_product_page.dart';
 
 import '../features/auth/presentation/bloc/auth_bloc.dart';
-import '../features/auth/presentation/bloc/auth_event.dart';
 import '../features/auth/presentation/bloc/auth_state.dart';
 import '../features/auth/presentation/pages/login_page.dart';
 import '../features/auth/presentation/pages/splash_page.dart';
@@ -41,7 +40,6 @@ class AppRouter {
       final isSplash = state.matchedLocation == Pages.splash;
 
       if (status == AuthStatus.unknown) {
-        authBloc.add(const AuthCheckRequested());
         return null;
       }
 
