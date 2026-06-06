@@ -1,10 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_app/core/constants/app_strings.dart';
+import 'package:store_app/core/presentation/widgets/app_message.dart';
 
 import '../../../../core/presentation/widgets/infinite_scroll_background.dart';
+import '../bloc/auth_bloc.dart';
+import '../bloc/auth_event.dart';
 
-class SplashPage extends StatelessWidget {
+class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
+
+  @override
+  State<SplashPage> createState() => _SplashPageState();
+}
+
+class _SplashPageState extends State<SplashPage> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<AuthBloc>().add(const AuthCheckRequested());
+      AppMessage.success(context, message: 'Splash init state');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
