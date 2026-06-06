@@ -111,6 +111,7 @@ class _LocationsPageState extends State<LocationsPage>
                   selectedButtonColor: theme.colorScheme.primary,
                   selectedLabelColor: Colors.white,
                   separator: const SizedBox(),
+                  fontSize: 14.0,
                 );
               },
             ),
