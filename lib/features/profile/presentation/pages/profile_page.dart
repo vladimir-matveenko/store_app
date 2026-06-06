@@ -55,7 +55,6 @@ class _ProfilePageState extends State<ProfilePage> {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(state.toString(), style: textTheme.headlineSmall),
               UserAvatar(
                 avatar: avatar,
                 size: 90.0,
