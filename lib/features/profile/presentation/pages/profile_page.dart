@@ -41,6 +41,9 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
+        if (state.status == AuthStatus.unknown) {
+          return const Center(child: CircularProgressIndicator());
+        }
         final avatar = state.user?.avatar ?? '';
         final name = state.user?.name ?? '';
         final firstName = AppUtils.getFirstName(name);
