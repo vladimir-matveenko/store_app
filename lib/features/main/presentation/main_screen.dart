@@ -34,8 +34,7 @@ class _MainScreenState extends State<MainScreen> {
   void initState() {
     productsBloc = context.read<ProductsBloc>();
     locationsBloc = context.read<LocationsBloc>();
-    productsBloc.add(const ProductsFetched(loadSilent: false));
-    productsBloc.add(const CategoriesFetched());
+    productsBloc.add(const DataInitialized());
     locationsBloc.add(const LocationsFetched(loadSilent: false));
     super.initState();
   }

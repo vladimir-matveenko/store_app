@@ -6,6 +6,7 @@ part 'users_state.freezed.dart';
 @freezed
 abstract class UsersState with _$UsersState {
   const factory UsersState({
+    @Default(false) bool isInitialized,
     @Default(false) bool isLoading,
     @Default(false) bool isUserLoading,
 

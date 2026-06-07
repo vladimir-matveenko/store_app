@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_app/features/users/presentation/bloc/users_event.dart';
 
+import '../../../../core/presentation/widgets/app_loader.dart';
 import '../bloc/users_bloc.dart';
 import '../bloc/users_state.dart';
 import '../widgets/users_list.dart';
@@ -33,8 +34,10 @@ class _UsersPageState extends State<UsersPage> {
     return BlocBuilder<UsersBloc, UsersState>(
       builder: (context, state) {
         return state.isLoading
-            ? const Center(child: CircularProgressIndicator())
-            : UsersList(scrollController: _scrollController);
+            ? const AppLoader()
+            : state.isInitialized
+            ? UsersList(scrollController: _scrollController)
+            : const SizedBox();
       },
     );
   }

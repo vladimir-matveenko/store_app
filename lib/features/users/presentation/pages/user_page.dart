@@ -7,6 +7,8 @@ import 'package:store_app/features/users/presentation/bloc/users_event.dart';
 import 'package:store_app/features/users/presentation/bloc/users_state.dart';
 import 'package:store_app/utils.dart';
 
+import '../../../../core/presentation/widgets/app_loader.dart';
+
 class UserPage extends StatefulWidget {
   const UserPage({super.key, required this.id});
 
@@ -38,7 +40,7 @@ class _UserPageState extends State<UserPage> {
           final firstName = AppUtils.getFirstName(name);
           final lastName = AppUtils.getLastName(name);
           return state.isUserLoading
-              ? const Center(child: CircularProgressIndicator())
+              ? const AppLoader()
               : Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: SingleChildScrollView(

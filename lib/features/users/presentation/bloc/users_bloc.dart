@@ -45,7 +45,9 @@ class UsersBloc extends Bloc<UsersEvent, UsersState> {
         if (l is InvalidCredentialsFailure) {
           message = 'errors.wrongEmailOrPassword'.tr();
         }
-        emit(state.copyWith(error: message, isLoading: false));
+        emit(
+          state.copyWith(error: message, isLoading: false, isInitialized: true),
+        );
       },
       (r) {
         _allUsers
@@ -53,7 +55,13 @@ class UsersBloc extends Bloc<UsersEvent, UsersState> {
           ..addAll(r);
 
         final initialUsers = _allUsers.take(_pageSize).toList();
-        emit(state.copyWith(users: initialUsers, isLoading: false));
+        emit(
+          state.copyWith(
+            users: initialUsers,
+            isLoading: false,
+            isInitialized: true,
+          ),
+        );
       },
     );
   }

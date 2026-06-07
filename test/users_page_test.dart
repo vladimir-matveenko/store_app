@@ -107,7 +107,9 @@ void main() {
         ),
       ];
 
-      when(() => usersBloc.state).thenReturn(UsersState(users: users));
+      when(
+        () => usersBloc.state,
+      ).thenReturn(UsersState(users: users, isInitialized: true));
       when(() => usersBloc.stream).thenAnswer((_) => usersController.stream);
       when(() => authBloc.state).thenReturn(const AuthState());
       when(() => authBloc.stream).thenAnswer((_) => authController.stream);

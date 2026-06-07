@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:store_app/core/presentation/widgets/app_loader.dart';
 import 'package:store_app/core/presentation/widgets/no_items_widget.dart';
 import 'package:store_app/core/presentation/widgets/scroll_up_wrapper.dart';
 import 'package:store_app/features/products/presentation/bloc/products_bloc.dart';
@@ -51,8 +52,9 @@ class _ProductsPageState extends State<ProductsPage> {
     final theme = Theme.of(context);
     return BlocBuilder<ProductsBloc, ProductsState>(
       builder: (context, state) {
-        return state.isLoading
-            ? const Center(child: CircularProgressIndicator())
+        final isLoading = state.isCategoriesLoading || state.isProductLoading;
+        return isLoading
+            ? const AppLoader()
             : ScrollUpWrapper(
                 controller: _scrollController,
                 child: Padding(
@@ -183,7 +185,7 @@ class _ProductsPageState extends State<ProductsPage> {
                         sliver: ProductsList(products: state.products),
                       ),
                       // Show empty state when there are no products and not loading
-                      if (state.products.isEmpty && !state.isLoading)
+                      if (state.products.isEmpty && !isLoading)
                         const SliverToBoxAdapter(child: NoItemsWidget()),
                       if (state.isShowProductLoader)
                         const SliverPadding(
@@ -193,7 +195,9 @@ class _ProductsPageState extends State<ProductsPage> {
                               child: SizedBox(
                                 width: 40.0,
                                 height: 40.0,
-                                child: CircularProgressIndicator(),
+                                child: CircularProgressIndicator.adaptive(
+                                  strokeWidth: 2.0,
+                                ),
                               ),
                             ),
                           ),

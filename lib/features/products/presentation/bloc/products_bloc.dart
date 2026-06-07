@@ -38,6 +38,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   }) : super(const ProductsState()) {
     on<ProductsEvent>((event, emit) async {
       await event.map(
+        dataInitialized: (e) => _onDataInitialized(e, emit),
         productsFetched: (e) => _onProductsFetched(e, emit),
         nextProductsFetched: (e) => _onNextProductsFetched(e, emit),
         productsSearchStarted: (e) => _onProductsSearchStarted(e, emit),
@@ -73,13 +74,22 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   final CreateCategoryUseCase createCategoryUseCase;
   final DeleteCategoryUseCase deleteCategoryUseCase;
 
+  /// Initialize data
+  Future<void> _onDataInitialized(
+    DataInitialized event,
+    Emitter<ProductsState> emit,
+  ) async {
+    add(const ProductsFetched(loadSilent: false));
+    add(const CategoriesFetched(loadSilent: false));
+  }
+
   /// Products list
   Future<void> _onProductsFetched(
     ProductsFetched event,
     Emitter<ProductsState> emit,
   ) async {
     if (!event.loadSilent) {
-      emit(state.copyWith(isLoading: true));
+      emit(state.copyWith(isProductLoading: true));
     }
 
     final (min, max) = ProductsUtils.getPriceFilters(state.filters);
@@ -103,10 +113,10 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
         if (l is InvalidCredentialsFailure) {
           message = 'errors.wrongEmailOrPassword'.tr();
         }
-        emit(state.copyWith(error: message, isLoading: false));
+        emit(state.copyWith(error: message, isProductLoading: false));
       },
       (r) {
-        emit(state.copyWith(products: r, isLoading: false));
+        emit(state.copyWith(products: r, isProductLoading: false));
       },
     );
   }
@@ -209,7 +219,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     Emitter<ProductsState> emit,
   ) async {
     if (!event.loadSilent) {
-      emit(state.copyWith(isLoading: true));
+      emit(state.copyWith(isCategoriesLoading: true));
     }
     final result = await fetchCategoriesUseCase(NoParams());
 
@@ -219,10 +229,10 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
         if (l is InvalidCredentialsFailure) {
           message = 'errors.wrongEmailOrPassword'.tr();
         }
-        emit(state.copyWith(error: message, isLoading: false));
+        emit(state.copyWith(error: message, isCategoriesLoading: false));
       },
       (r) {
-        emit(state.copyWith(categories: r, isLoading: false));
+        emit(state.copyWith(categories: r, isCategoriesLoading: false));
       },
     );
   }

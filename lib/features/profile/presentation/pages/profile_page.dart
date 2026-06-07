@@ -5,6 +5,7 @@ import 'package:store_app/features/auth/presentation/bloc/auth_event.dart';
 import 'package:store_app/features/auth/presentation/widgets/user_avatar.dart';
 import 'package:store_app/utils.dart';
 
+import '../../../../core/presentation/widgets/app_loader.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
 import '../../../auth/presentation/bloc/auth_state.dart';
 import '../widgets/language_selector.dart';
@@ -42,7 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
         if (state.status == AuthStatus.unknown) {
-          return const Center(child: CircularProgressIndicator());
+          return const AppLoader();
         }
         final avatar = state.user?.avatar ?? '';
         final name = state.user?.name ?? '';
