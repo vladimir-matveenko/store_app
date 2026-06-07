@@ -62,13 +62,13 @@ void main() {
 
     // Set up the state to return the loaded product
     // Provide product via products list
-    when(
-      () => mockProductsBloc.state,
-    ).thenReturn(ProductsState(products: [testProduct], isLoading: false));
+    when(() => mockProductsBloc.state).thenReturn(
+      ProductsState(products: [testProduct], isProductLoading: false),
+    );
     // Make the bloc emit the state when listened to
     when(() => mockProductsBloc.stream).thenAnswer(
       (_) => Stream.value(
-        ProductsState(products: [testProduct], isLoading: false),
+        ProductsState(products: [testProduct], isProductLoading: false),
       ),
     );
 
@@ -101,10 +101,10 @@ void main() {
     // Use isLoading to trigger full page loader
     when(
       () => mockProductsBloc.state,
-    ).thenReturn(const ProductsState(isLoading: true));
-    when(
-      () => mockProductsBloc.stream,
-    ).thenAnswer((_) => Stream.value(const ProductsState(isLoading: true)));
+    ).thenReturn(const ProductsState(isProductLoading: true));
+    when(() => mockProductsBloc.stream).thenAnswer(
+      (_) => Stream.value(const ProductsState(isProductLoading: true)),
+    );
 
     await tester.pumpWidget(
       EasyLocalization(
@@ -258,13 +258,14 @@ void main() {
       ),
     );
 
-    when(
-      () => mockProductsBloc.state,
-    ).thenReturn(ProductsState(products: manyProducts, isLoading: false));
+    when(() => mockProductsBloc.state).thenReturn(
+      ProductsState(products: manyProducts, isCategoriesLoading: false),
+    );
 
     when(() => mockProductsBloc.stream).thenAnswer(
-      (_) =>
-          Stream.value(ProductsState(products: manyProducts, isLoading: false)),
+      (_) => Stream.value(
+        ProductsState(products: manyProducts, isCategoriesLoading: false),
+      ),
     );
 
     when(() => mockProductsBloc.add(any())).thenAnswer((_) async {});

@@ -8,6 +8,7 @@ import 'package:store_app/features/locations/presentation/widgets/locations_list
 import 'package:store_app/features/locations/presentation/widgets/map.dart';
 
 import '../../../../core/presentation/widgets/app_dialog.dart';
+import '../../../../core/presentation/widgets/app_loader.dart';
 import '../../../../core/presentation/widgets/custom_tab_bar.dart';
 import '../bloc/locations_event.dart';
 
@@ -117,7 +118,7 @@ class _LocationsPageState extends State<LocationsPage>
             ),
             Expanded(
               child: state.isLoading
-                  ? const Center(child: CircularProgressIndicator())
+                  ? const AppLoader()
                   : IndexedStack(
                       index: _tabController.index,
                       children: List.generate(tabCount, _buildTab),

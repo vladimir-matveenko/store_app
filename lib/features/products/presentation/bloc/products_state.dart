@@ -9,7 +9,7 @@ part 'products_state.freezed.dart';
 @freezed
 abstract class ProductsState with _$ProductsState {
   const factory ProductsState({
-    @Default(false) bool isLoading,
+    @Default(false) bool isCategoriesLoading,
     @Default(false) bool isProductLoading,
 
     /// pagination

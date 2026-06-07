@@ -126,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                           ? const SizedBox(
                               width: 20.0,
                               height: 20.0,
-                              child: CircularProgressIndicator(
+                              child: CircularProgressIndicator.adaptive(
                                 strokeWidth: 2.0,
                               ),
                             )

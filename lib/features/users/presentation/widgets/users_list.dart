@@ -11,6 +11,7 @@ import 'package:store_app/features/users/presentation/bloc/users_bloc.dart';
 import 'package:store_app/features/users/presentation/bloc/users_event.dart';
 import 'package:store_app/utils.dart';
 
+import '../../../../core/presentation/widgets/app_loader.dart';
 import '../../../../navigation/pages.dart';
 
 class UsersList extends StatelessWidget {
@@ -48,7 +49,7 @@ class UsersList extends StatelessWidget {
                   );
                 }
 
-                return const Center(child: CircularProgressIndicator());
+                return const AppLoader();
               },
               separatorBuilder: (context, index) => Divider(
                 height: 16.0,

@@ -8,6 +8,7 @@ import 'package:store_app/features/products/presentation/bloc/products_bloc.dart
 import 'package:store_app/features/products/presentation/bloc/products_event.dart';
 import 'package:store_app/features/products/presentation/widgets/carousel_slider_item.dart';
 
+import '../../../../core/presentation/widgets/app_loader.dart';
 import '../bloc/products_state.dart';
 import '../widgets/related_by_id_list.dart';
 
@@ -36,7 +37,7 @@ class _ProductPageState extends State<ProductPage> {
     return BlocBuilder<ProductsBloc, ProductsState>(
       builder: (context, state) {
         return state.isProductLoading
-            ? const Center(child: CircularProgressIndicator())
+            ? const AppLoader()
             : Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: SingleChildScrollView(

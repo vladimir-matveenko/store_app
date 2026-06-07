@@ -7,6 +7,8 @@ part 'products_event.freezed.dart';
 
 @freezed
 class ProductsEvent with _$ProductsEvent {
+  const factory ProductsEvent.dataInitialized() = DataInitialized;
+
   const factory ProductsEvent.productsFetched({
     @Default(true) bool loadSilent,
   }) = ProductsFetched;
