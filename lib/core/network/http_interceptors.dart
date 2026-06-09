@@ -16,20 +16,20 @@ class AuthInterceptor extends Interceptor {
     @Named('refresh_dio') this.refreshDio,
   );
 
+  static const _loginPath = 'auth/login';
+  static const _refreshPath = 'auth/refresh-token';
+
   final AuthLocalDataSource localDataSource;
   final AuthSessionManager sessionManager;
   final Dio refreshDio;
 
-  bool _isRefreshing = false;
+  Future<void>? _refreshFuture;
 
   final List<({RequestOptions request, Completer<Response> completer})> _queue =
       [];
 
-  // ========================
-  // REQUEST
-  // ========================
   @override
-  void onRequest(
+  Future<void> onRequest(
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
@@ -46,87 +46,41 @@ class AuthInterceptor extends Interceptor {
     handler.next(options);
   }
 
-  // ========================
-  // ERROR (401 HANDLING)
-  // ========================
   @override
-  void onError(DioException err, ErrorInterceptorHandler handler) async {
-    final isUnauthorized = err.response?.statusCode == 401;
-    final skipLoginError = err.requestOptions.path.contains('auth/login');
-    final isRefreshCall = err.requestOptions.path.contains(
-      'auth/refresh-token',
-    );
+  Future<void> onError(
+    DioException err,
+    ErrorInterceptorHandler handler,
+  ) async {
+    final statusCode = err.response?.statusCode;
 
-    /// logout if impossible to refresh token
+    final isUnauthorized = statusCode == 401;
+
+    final isLoginCall = err.requestOptions.path.endsWith(_loginPath);
+
+    final isRefreshCall = err.requestOptions.path.endsWith(_refreshPath);
+
+    final alreadyRetried = err.requestOptions.extra['retried'] == true;
+
+    /// Refresh token expired or invalid
     if (isUnauthorized && isRefreshCall) {
       sessionManager.notifySessionExpired();
-      return handler.reject(DioException(requestOptions: err.requestOptions));
+
+      return handler.reject(err);
     }
 
-    if (isUnauthorized && !isRefreshCall && !skipLoginError) {
+    /// Regular 401 handling
+    if (isUnauthorized && !isLoginCall && !isRefreshCall && !alreadyRetried) {
       final completer = Completer<Response>();
 
       _queue.add((request: err.requestOptions, completer: completer));
 
-      if (!_isRefreshing) {
-        _isRefreshing = true;
-
-        try {
-          final token = await localDataSource.getCachedToken();
-
-          /// logout
-          if (token?.refreshToken == null) {
-            sessionManager.notifySessionExpired();
-            throw InvalidCredentialsException();
-          }
-
-          final response = await refreshDio.post(
-            'auth/refresh-token',
-            data: {'refreshToken': token!.refreshToken},
-            options: Options(extra: {'skipAuth': true}),
-          );
-
-          final newAccessToken = response.data['access_token'];
-          final newRefreshToken = response.data['refresh_token'];
-
-          await localDataSource.cacheToken(
-            AuthTokenModel(
-              accessToken: newAccessToken,
-              refreshToken: newRefreshToken,
-            ),
-          );
-
-          /// Retry all the requests
-          for (final item in _queue) {
-            try {
-              final newRequest = item.request.copyWith(
-                headers: {
-                  ...item.request.headers,
-                  'Authorization': 'Bearer $newAccessToken',
-                },
-              );
-
-              final response = await refreshDio.fetch(newRequest);
-              item.completer.complete(response);
-            } catch (e) {
-              item.completer.completeError(e);
-            }
-          }
-        } catch (e) {
-          // logout
-          sessionManager.notifySessionExpired();
-
-          for (final item in _queue) {
-            item.completer.completeError(e);
-          }
-        } finally {
-          _queue.clear();
-          _isRefreshing = false;
-        }
-      }
-
       try {
+        _refreshFuture ??= _performRefresh();
+
+        await _refreshFuture;
+
         final response = await completer.future;
+
         return handler.resolve(response);
       } catch (e) {
         return handler.reject(
@@ -138,6 +92,76 @@ class AuthInterceptor extends Interceptor {
     }
 
     handler.next(err);
+  }
+
+  Future<void> _performRefresh() async {
+    try {
+      final newAccessToken = await _refreshToken();
+
+      final queuedRequests = List.of(_queue);
+      _queue.clear();
+
+      for (final item in queuedRequests) {
+        try {
+          final request = item.request.copyWith(
+            headers: {
+              ...item.request.headers,
+              'Authorization': 'Bearer $newAccessToken',
+            },
+            extra: {...item.request.extra, 'retried': true},
+          );
+
+          final response = await refreshDio.fetch(request);
+
+          item.completer.complete(response);
+        } catch (e) {
+          item.completer.completeError(
+            DioException(requestOptions: item.request, error: e),
+          );
+        }
+      }
+    } catch (e) {
+      final isUnauthorized = e is DioException && e.response?.statusCode == 401;
+
+      if (isUnauthorized || e is InvalidCredentialsException) {
+        sessionManager.notifySessionExpired();
+      }
+
+      final queuedRequests = List.of(_queue);
+      _queue.clear();
+
+      for (final item in queuedRequests) {
+        item.completer.completeError(
+          DioException(requestOptions: item.request, error: e),
+        );
+      }
+      return;
+    } finally {
+      _refreshFuture = null;
+    }
+  }
+
+  Future<String> _refreshToken() async {
+    final token = await localDataSource.getCachedToken();
+
+    if (token?.refreshToken == null) {
+      throw InvalidCredentialsException();
+    }
+
+    final response = await refreshDio.post(
+      _refreshPath,
+      data: {'refreshToken': token!.refreshToken},
+      options: Options(extra: {'skipAuth': true}),
+    );
+
+    final accessToken = response.data['access_token'] as String;
+    final refreshToken = response.data['refresh_token'] as String;
+
+    await localDataSource.cacheToken(
+      AuthTokenModel(accessToken: accessToken, refreshToken: refreshToken),
+    );
+
+    return accessToken;
   }
 }
 
@@ -151,8 +175,9 @@ class ErrorInterceptor extends Interceptor {
   void onError(DioException err, ErrorInterceptorHandler handler) {
     final message = switch (err.type) {
       DioExceptionType.connectionTimeout => 'Connection timeout',
-      DioExceptionType.sendTimeout => 'Receive timeout',
+      DioExceptionType.sendTimeout => 'Send timeout',
       DioExceptionType.receiveTimeout => 'Receive timeout',
+      DioExceptionType.cancel => 'Request cancelled',
       _ =>
         err.response != null
             ? switch (err.response!.statusCode) {
@@ -166,14 +191,6 @@ class ErrorInterceptor extends Interceptor {
             : 'Unexpected error',
     };
 
-    final newError = DioException(
-      requestOptions: err.requestOptions,
-      response: err.response,
-      type: err.type,
-      error: err.error ?? message,
-      message: message,
-    );
-
-    handler.next(newError);
+    handler.next(err.copyWith(message: message));
   }
 }
