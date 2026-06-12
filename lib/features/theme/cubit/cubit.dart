@@ -12,13 +12,13 @@ import '../domain/usecases/set_theme_usecase.dart';
 
 @lazySingleton
 class ThemeCubit extends Cubit<ThemeState> {
-  ThemeCubit({required this.getThemeUseCase, required this.setThemeUseCase})
+  ThemeCubit(this._getThemeUseCase, this._setThemeUseCase)
     : super(const ThemeState());
-  final GetThemeUseCase getThemeUseCase;
-  final SetThemeUseCase setThemeUseCase;
+  final GetThemeUseCase _getThemeUseCase;
+  final SetThemeUseCase _setThemeUseCase;
 
   Future<void> loadTheme() async {
-    final mode = await getThemeUseCase(NoParams());
+    final mode = await _getThemeUseCase(NoParams());
     mode.fold(
       (l) {
         emit(
@@ -44,7 +44,7 @@ class ThemeCubit extends Cubit<ThemeState> {
   }
 
   Future<void> changeTheme(AppThemeMode mode) async {
-    await setThemeUseCase(SetThemeParams(mode: mode));
+    await _setThemeUseCase(SetThemeParams(mode: mode));
     emit(state.copyWith(theme: _mapToFlutter(mode), mode: mode));
   }
 

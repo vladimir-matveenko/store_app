@@ -14,12 +14,12 @@ import 'package:store_app/features/auth/presentation/bloc/auth_state.dart';
 
 @lazySingleton
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc({
-    required this.loginUseCase,
-    required this.logoutUseCase,
-    required this.checkAuthUseCase,
-    required this.getUserProfileUseCase,
-  }) : super(const AuthState()) {
+  AuthBloc(
+    this._loginUseCase,
+    this._logoutUseCase,
+    this._checkAuthUseCase,
+    this._getUserProfileUseCase,
+  ) : super(const AuthState()) {
     on<AuthEvent>((event, emit) async {
       await event.map(
         checkRequested: (e) => _onAuthCheckRequested(e, emit),
@@ -30,16 +30,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
   }
 
-  final LoginUseCase loginUseCase;
-  final LogoutUseCase logoutUseCase;
-  final CheckAuthUseCase checkAuthUseCase;
-  final GetUserProfileUseCase getUserProfileUseCase;
+  final LoginUseCase _loginUseCase;
+  final LogoutUseCase _logoutUseCase;
+  final CheckAuthUseCase _checkAuthUseCase;
+  final GetUserProfileUseCase _getUserProfileUseCase;
 
   Future<void> _onAuthCheckRequested(
     AuthCheckRequested event,
     Emitter<AuthState> emit,
   ) async {
-    final result = await checkAuthUseCase(NoParams());
+    final result = await _checkAuthUseCase(NoParams());
 
     final isAuth = result.getOrElse(() => false);
 
@@ -48,7 +48,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       return;
     }
 
-    final userResult = await getUserProfileUseCase(NoParams());
+    final userResult = await _getUserProfileUseCase(NoParams());
 
     userResult.fold(
       (l) {
@@ -65,7 +65,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     emit(state.copyWith(isLoading: true));
-    final result = await loginUseCase(
+    final result = await _loginUseCase(
       LoginParams(email: event.email, password: event.password),
     );
     result.fold(
@@ -92,7 +92,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     emit(state.copyWith(isLoading: true));
-    final result = await getUserProfileUseCase(NoParams());
+    final result = await _getUserProfileUseCase(NoParams());
     result.fold(
       (l) {
         String message = 'errors.serverError'.tr();
@@ -112,7 +112,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     emit(state.copyWith(isLoading: true));
-    final result = await logoutUseCase(NoParams());
+    final result = await _logoutUseCase(NoParams());
     result.fold(
       (l) {
         String message = 'errors.logoutError'.tr();
