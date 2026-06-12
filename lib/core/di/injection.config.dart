@@ -165,6 +165,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i12.SetThemeUseCase>(
       () => _i12.SetThemeUseCase(gh<_i892.ThemeRepository>()),
     );
+    gh.lazySingleton<_i969.ThemeCubit>(
+      () => _i969.ThemeCubit(
+        gh<_i689.GetThemeUseCase>(),
+        gh<_i12.SetThemeUseCase>(),
+      ),
+    );
     gh.lazySingleton<_i253.LocationsRemoteDataSource>(
       () => _i253.LocationsRemoteDataSourceImpl(gh<_i361.Dio>()),
     );
@@ -223,21 +229,28 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i577.UploadImageUseCase>(
       () => _i577.UploadImageUseCase(gh<_i891.ProductsRepository>()),
     );
+    gh.lazySingleton<_i999.LocationsBloc>(
+      () => _i999.LocationsBloc(
+        gh<_i965.FetchLocationsUseCase>(),
+        gh<_i712.IGeolocationService>(),
+      ),
+    );
+    gh.lazySingleton<_i287.ProductsBloc>(
+      () => _i287.ProductsBloc(
+        gh<_i895.FetchProductsUseCase>(),
+        gh<_i657.FetchCategoriesUseCase>(),
+        gh<_i696.FetchProductUseCase>(),
+        gh<_i997.FetchRelatedByIdUseCase>(),
+        gh<_i577.UploadImageUseCase>(),
+        gh<_i100.CreateProductUseCase>(),
+        gh<_i422.DeleteProductUseCase>(),
+        gh<_i959.CreateCategoryUseCase>(),
+        gh<_i778.DeleteCategoryUseCase>(),
+      ),
+    );
     gh.lazySingleton<_i666.UsersRepository>(
       () => _i294.UsersRepositoryImpl(
         productsRemoteDataSource: gh<_i933.UsersRemoteDataSource>(),
-      ),
-    );
-    gh.lazySingleton<_i969.ThemeCubit>(
-      () => _i969.ThemeCubit(
-        getThemeUseCase: gh<_i689.GetThemeUseCase>(),
-        setThemeUseCase: gh<_i12.SetThemeUseCase>(),
-      ),
-    );
-    gh.lazySingleton<_i999.LocationsBloc>(
-      () => _i999.LocationsBloc(
-        fetchLocationsUseCase: gh<_i965.FetchLocationsUseCase>(),
-        geolocationService: gh<_i712.IGeolocationService>(),
       ),
     );
     gh.lazySingleton<_i617.FetchUserUseCase>(
@@ -246,25 +259,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i623.FetchUsersUseCase>(
       () => _i623.FetchUsersUseCase(gh<_i666.UsersRepository>()),
     );
-    gh.lazySingleton<_i287.ProductsBloc>(
-      () => _i287.ProductsBloc(
-        fetchProductsUseCase: gh<_i895.FetchProductsUseCase>(),
-        fetchCategoriesUseCase: gh<_i657.FetchCategoriesUseCase>(),
-        fetchProductUseCase: gh<_i696.FetchProductUseCase>(),
-        fetchRelatedByIdUseCase: gh<_i997.FetchRelatedByIdUseCase>(),
-        uploadImageUseCase: gh<_i577.UploadImageUseCase>(),
-        createProductUseCase: gh<_i100.CreateProductUseCase>(),
-        deleteProductUseCase: gh<_i422.DeleteProductUseCase>(),
-        createCategoryUseCase: gh<_i959.CreateCategoryUseCase>(),
-        deleteCategoryUseCase: gh<_i778.DeleteCategoryUseCase>(),
-      ),
-    );
     gh.lazySingleton<_i706.AuthBloc>(
       () => _i706.AuthBloc(
-        loginUseCase: gh<_i264.LoginUseCase>(),
-        logoutUseCase: gh<_i342.LogoutUseCase>(),
-        checkAuthUseCase: gh<_i660.CheckAuthUseCase>(),
-        getUserProfileUseCase: gh<_i631.GetUserProfileUseCase>(),
+        gh<_i264.LoginUseCase>(),
+        gh<_i342.LogoutUseCase>(),
+        gh<_i660.CheckAuthUseCase>(),
+        gh<_i631.GetUserProfileUseCase>(),
       ),
     );
     gh.lazySingleton<_i1011.UsersBloc>(

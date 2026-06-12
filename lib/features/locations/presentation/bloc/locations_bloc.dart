@@ -18,10 +18,8 @@ import 'locations_state.dart';
 @lazySingleton
 class LocationsBloc extends Bloc<LocationsEvent, LocationsState>
     with WidgetsBindingObserver {
-  LocationsBloc({
-    required this.fetchLocationsUseCase,
-    required this.geolocationService,
-  }) : super(const LocationsState()) {
+  LocationsBloc(this._fetchLocationsUseCase, this._geolocationService)
+    : super(const LocationsState()) {
     on<LocationsEvent>((event, emit) async {
       await event.map(
         locationsFetched: (e) => _onLocationsFetched(e, emit),
@@ -32,14 +30,14 @@ class LocationsBloc extends Bloc<LocationsEvent, LocationsState>
       );
     });
     WidgetsBinding.instance.addObserver(this);
-    geolocationService.init();
-    _locationSub = geolocationService.onLocationChanged.listen((position) {
+    _geolocationService.init();
+    _locationSub = _geolocationService.onLocationChanged.listen((position) {
       add(LocationUpdated(position: position));
     });
   }
 
-  final FetchLocationsUseCase fetchLocationsUseCase;
-  final IGeolocationService geolocationService;
+  final FetchLocationsUseCase _fetchLocationsUseCase;
+  final IGeolocationService _geolocationService;
 
   StreamSubscription? _locationSub;
 
@@ -61,10 +59,10 @@ class LocationsBloc extends Bloc<LocationsEvent, LocationsState>
       emit(state.copyWith(isLoading: true));
     }
     if (!kIsWeb && position == null && !locationAsked) {
-      position = await geolocationService.getCurrentPosition();
+      position = await _geolocationService.getCurrentPosition();
       locationAsked = true;
     }
-    final result = await fetchLocationsUseCase(
+    final result = await _fetchLocationsUseCase(
       FetchLocationsParams(origin: event.origin, radius: event.radius),
     );
 
@@ -163,7 +161,7 @@ class LocationsBloc extends Bloc<LocationsEvent, LocationsState>
   @override
   Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
     if (state == AppLifecycleState.resumed && !kIsWeb) {
-      final pos = await geolocationService.getCurrentPosition();
+      final pos = await _geolocationService.getCurrentPosition();
       if (pos != null) {
         add(LocationUpdated(position: pos));
       }

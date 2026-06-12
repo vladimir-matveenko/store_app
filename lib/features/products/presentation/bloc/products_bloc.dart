@@ -25,17 +25,17 @@ import '../../domain/usecases/fetch_product_usecase.dart';
 
 @lazySingleton
 class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
-  ProductsBloc({
-    required this.fetchProductsUseCase,
-    required this.fetchCategoriesUseCase,
-    required this.fetchProductUseCase,
-    required this.fetchRelatedByIdUseCase,
-    required this.uploadImageUseCase,
-    required this.createProductUseCase,
-    required this.deleteProductUseCase,
-    required this.createCategoryUseCase,
-    required this.deleteCategoryUseCase,
-  }) : super(const ProductsState()) {
+  ProductsBloc(
+    this._fetchProductsUseCase,
+    this._fetchCategoriesUseCase,
+    this._fetchProductUseCase,
+    this._fetchRelatedByIdUseCase,
+    this._uploadImageUseCase,
+    this._createProductUseCase,
+    this._deleteProductUseCase,
+    this._createCategoryUseCase,
+    this._deleteCategoryUseCase,
+  ) : super(const ProductsState()) {
     on<ProductsEvent>((event, emit) async {
       await event.map(
         dataInitialized: (e) => _onDataInitialized(e, emit),
@@ -64,15 +64,15 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     });
   }
 
-  final FetchProductsUseCase fetchProductsUseCase;
-  final FetchProductUseCase fetchProductUseCase;
-  final FetchCategoriesUseCase fetchCategoriesUseCase;
-  final FetchRelatedByIdUseCase fetchRelatedByIdUseCase;
-  final UploadImageUseCase uploadImageUseCase;
-  final CreateProductUseCase createProductUseCase;
-  final DeleteProductUseCase deleteProductUseCase;
-  final CreateCategoryUseCase createCategoryUseCase;
-  final DeleteCategoryUseCase deleteCategoryUseCase;
+  final FetchProductsUseCase _fetchProductsUseCase;
+  final FetchProductUseCase _fetchProductUseCase;
+  final FetchCategoriesUseCase _fetchCategoriesUseCase;
+  final FetchRelatedByIdUseCase _fetchRelatedByIdUseCase;
+  final UploadImageUseCase _uploadImageUseCase;
+  final CreateProductUseCase _createProductUseCase;
+  final DeleteProductUseCase _deleteProductUseCase;
+  final CreateCategoryUseCase _createCategoryUseCase;
+  final DeleteCategoryUseCase _deleteCategoryUseCase;
 
   /// Initialize data
   Future<void> _onDataInitialized(
@@ -94,7 +94,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
 
     final (min, max) = ProductsUtils.getPriceFilters(state.filters);
 
-    final result = await fetchProductsUseCase(
+    final result = await _fetchProductsUseCase(
       FetchProductsParams(
         categoryId: state.selectedCategoryId.isNotEmpty
             ? state.selectedCategoryId
@@ -131,7 +131,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
 
     final (min, max) = ProductsUtils.getPriceFilters(state.filters);
 
-    final result = await fetchProductsUseCase(
+    final result = await _fetchProductsUseCase(
       FetchProductsParams(
         categoryId: state.selectedCategoryId.isNotEmpty
             ? state.selectedCategoryId
@@ -197,7 +197,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   ) async {
     emit(state.copyWith(isProductLoading: true));
 
-    final result = await fetchProductUseCase(FetchProductParams(id: event.id));
+    final result = await _fetchProductUseCase(FetchProductParams(id: event.id));
 
     result.fold(
       (l) {
@@ -221,7 +221,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     if (!event.loadSilent) {
       emit(state.copyWith(isCategoriesLoading: true));
     }
-    final result = await fetchCategoriesUseCase(NoParams());
+    final result = await _fetchCategoriesUseCase(NoParams());
 
     result.fold(
       (l) {
@@ -263,7 +263,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     RelatedByIdFetched event,
     Emitter<ProductsState> emit,
   ) async {
-    final result = await fetchRelatedByIdUseCase(
+    final result = await _fetchRelatedByIdUseCase(
       FetchRelatedByIdParams(id: event.id),
     );
 
@@ -327,7 +327,9 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
 
     if (state.pickedImages?.isNotEmpty == true) {
       for (final file in state.pickedImages!) {
-        final result = await uploadImageUseCase(UploadImageParams(image: file));
+        final result = await _uploadImageUseCase(
+          UploadImageParams(image: file),
+        );
 
         result.fold(
           (l) {
@@ -346,7 +348,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
       }
     }
 
-    final result = await createProductUseCase(
+    final result = await _createProductUseCase(
       CreateProductParams(
         product: ProductModel(
           title: event.title,
@@ -384,7 +386,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     ProductDeleted event,
     Emitter<ProductsState> emit,
   ) async {
-    final result = await deleteProductUseCase(
+    final result = await _deleteProductUseCase(
       DeleteProductParams(id: event.id),
     );
     result.fold(
@@ -409,7 +411,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     List<String> uploadedImages = [];
 
     if (state.pickedImages?.isNotEmpty == true) {
-      final result = await uploadImageUseCase(
+      final result = await _uploadImageUseCase(
         UploadImageParams(image: state.pickedImages!.first),
       );
 
@@ -426,7 +428,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
       );
     }
 
-    final result = await createCategoryUseCase(
+    final result = await _createCategoryUseCase(
       CreateCategoryParams(
         category: CategoryModel(image: uploadedImages.first, name: event.name),
       ),
@@ -451,7 +453,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     CategoryDeleted event,
     Emitter<ProductsState> emit,
   ) async {
-    final result = await deleteCategoryUseCase(
+    final result = await _deleteCategoryUseCase(
       DeleteCategoryParams(id: event.id),
     );
     result.fold(
