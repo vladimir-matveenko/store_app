@@ -191,6 +191,13 @@ class AppTheme {
         );
       }),
     ),
+    dialogTheme: DialogThemeData(
+      backgroundColor: appColors.scaffoldBackground,
+      insetPadding: const .all(16.0),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadiusGeometry.circular(12.0),
+      ),
+    ),
   );
 
   static ThemeData light(
@@ -378,6 +385,13 @@ class AppTheme {
           borderRadius: BorderRadius.circular(10.0),
         );
       }),
+    ),
+    dialogTheme: DialogThemeData(
+      backgroundColor: appColors.scaffoldBackground,
+      insetPadding: const .all(16.0),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadiusGeometry.circular(12.0),
+      ),
     ),
   );
 }

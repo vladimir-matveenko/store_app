@@ -71,17 +71,21 @@ class AppRouter {
                 routes: [
                   GoRoute(
                     path: Pages.addProduct,
-                    builder: (context, state) => const AddProductPage(),
+                    pageBuilder: (context, state) =>
+                        const NoTransitionPage(child: AddProductPage()),
                   ),
                   GoRoute(
                     path: Pages.addCategory,
-                    builder: (context, state) => const AddCategoryPage(),
+                    pageBuilder: (context, state) =>
+                        const NoTransitionPage(child: AddCategoryPage()),
                   ),
                   GoRoute(
                     path: ':id',
-                    builder: (context, state) {
+                    pageBuilder: (context, state) {
                       final id = state.pathParameters['id']!;
-                      return ProductPage(key: ValueKey(id), id: id);
+                      return NoTransitionPage(
+                        child: ProductPage(key: ValueKey(id), id: id),
+                      );
                     },
                   ),
                 ],
@@ -97,9 +101,11 @@ class AppRouter {
                 routes: [
                   GoRoute(
                     path: ':id',
-                    builder: (context, state) {
+                    pageBuilder: (context, state) {
                       final id = state.pathParameters['id']!;
-                      return UserPage(key: ValueKey(id), id: id);
+                      return NoTransitionPage(
+                        child: UserPage(key: ValueKey(id), id: id),
+                      );
                     },
                   ),
                 ],
@@ -128,11 +134,13 @@ class AppRouter {
       ),
       GoRoute(
         path: Pages.splash,
-        builder: (context, state) => const SplashPage(),
+        pageBuilder: (context, state) =>
+            const NoTransitionPage(child: SplashPage()),
       ),
       GoRoute(
         path: Pages.login,
-        builder: (context, state) => const LoginPage(),
+        pageBuilder: (context, state) =>
+            const NoTransitionPage(child: LoginPage()),
       ),
     ],
   );
