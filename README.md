@@ -1,11 +1,36 @@
-## Store App
+# 🛍️ Store App
 
-This demo project created with a Clean Architecture and uses "Platzi Fake Store API": https://fakeapi.platzi.com/
+A demo Flutter application built using **Clean Architecture** principles and powered by the **Platzi Fake Store API**.
 
-### Web version is available here:
+## Features
+
+* Clean Architecture
+* API integration
+* State management
+* Responsive UI
+* Widget and integration tests
+
+## API
+
+This project uses the Platzi Fake Store API:
+
+https://fakeapi.platzi.com/
+
+## Live Demo
+
+The web version of the application is available here:
 
 https://vladimir-matveenko.github.io/store_app/
 
-To run integrational test use:
+## Running the Project
 
-```flutter test integration_test/products_flow_test.dart```
+```bash
+flutter pub get
+flutter run
+```
+
+## Running Integration Tests
+
+```bash
+flutter test integration_test/products_flow_test.dart
+```
