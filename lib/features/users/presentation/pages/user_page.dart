@@ -1,13 +1,13 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_app/features/auth/presentation/widgets/user_avatar.dart';
 import 'package:store_app/features/users/presentation/bloc/users_bloc.dart';
 import 'package:store_app/features/users/presentation/bloc/users_event.dart';
 import 'package:store_app/features/users/presentation/bloc/users_state.dart';
-import 'package:store_app/utils.dart';
 
+import '../../../../core/data/utils/utils.dart';
 import '../../../../core/presentation/widgets/app_loader.dart';
+import '../../../../core/presentation/widgets/user_avatar.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({super.key, required this.id});
@@ -67,7 +67,7 @@ class _UserPageState extends State<UserPage> {
                               style: textTheme.bodyLarge,
                             ),
                             Text(
-                              state.user?.role ?? '',
+                              state.user?.role.name ?? '',
                               style: textTheme.bodySmall,
                             ),
                           ],

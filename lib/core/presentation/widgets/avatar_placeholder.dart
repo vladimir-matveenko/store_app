@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:store_app/utils.dart';
+
+import '../../data/utils/utils.dart';
 
 class AvatarPlaceholder extends StatelessWidget {
   const AvatarPlaceholder({

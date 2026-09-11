@@ -1,12 +1,14 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:store_app/features/auth/data/models/auth_token_model.dart';
 
 import '../../features/auth/data/data_sources/auth_local_data_source.dart';
+import '../../features/auth/data/models/auth_token_model.dart';
+import '../data/services/auth_session_manager.dart';
 import '../error/exception.dart';
-import '../services/auth_session_manager.dart';
 
 @lazySingleton
 class AuthInterceptor extends Interceptor {
@@ -52,6 +54,13 @@ class AuthInterceptor extends Interceptor {
     ErrorInterceptorHandler handler,
   ) async {
     final statusCode = err.response?.statusCode;
+
+    if (kDebugMode) {
+      log(statusCode.toString());
+      log(err.requestOptions.baseUrl + err.requestOptions.path);
+      log(err.message.toString());
+      log(err.requestOptions.data.toString());
+    }
 
     final isUnauthorized = statusCode == 401;
 
@@ -103,6 +112,10 @@ class AuthInterceptor extends Interceptor {
   Future<void> _performRefresh() async {
     try {
       final newAccessToken = await _refreshToken();
+
+      if (kDebugMode) {
+        log('token refreshed');
+      }
 
       while (_queue.isNotEmpty) {
         final item = _queue.removeAt(0);
@@ -170,35 +183,5 @@ class AuthInterceptor extends Interceptor {
     );
 
     return accessToken;
-  }
-}
-
-// ========================
-// ERROR INTERCEPTOR
-// ========================
-
-@lazySingleton
-class ErrorInterceptor extends Interceptor {
-  @override
-  void onError(DioException err, ErrorInterceptorHandler handler) {
-    final message = switch (err.type) {
-      DioExceptionType.connectionTimeout => 'Connection timeout',
-      DioExceptionType.sendTimeout => 'Send timeout',
-      DioExceptionType.receiveTimeout => 'Receive timeout',
-      DioExceptionType.cancel => 'Request cancelled',
-      _ =>
-        err.response != null
-            ? switch (err.response!.statusCode) {
-                400 => 'Bad request',
-                401 => 'Unauthorized',
-                403 => 'Forbidden',
-                404 => 'Not found',
-                500 => 'Server error',
-                _ => 'Unexpected error',
-              }
-            : 'Unexpected error',
-    };
-
-    handler.next(err.copyWith(message: message));
   }
 }

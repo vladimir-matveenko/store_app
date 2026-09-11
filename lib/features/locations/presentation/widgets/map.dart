@@ -7,8 +7,8 @@ import 'package:store_app/features/locations/domain/entity/location_entity.dart'
 import 'package:store_app/features/locations/presentation/bloc/locations_bloc.dart';
 import 'package:store_app/features/locations/utils.dart';
 
-import '../../../../core/di/injection.dart';
-import '../../../../core/services/tile_cache/tile_cache_service.dart';
+import '../../../../app/di/injection.dart';
+import '../../../../core/data/services/tile_cache/tile_cache_service.dart';
 
 class LocationsMap extends StatefulWidget {
   const LocationsMap({super.key});

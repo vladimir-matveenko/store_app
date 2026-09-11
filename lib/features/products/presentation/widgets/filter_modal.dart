@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:store_app/core/constants/app_strings.dart';
+import 'package:store_app/app/constants/app_strings.dart';
 import 'package:store_app/core/domain/entity/availability_filter_entity.dart';
 import 'package:store_app/features/products/presentation/bloc/products_bloc.dart';
 import 'package:store_app/features/products/presentation/bloc/products_event.dart';

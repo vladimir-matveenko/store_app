@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:store_app/core/presentation/widgets/app_text_form_field.dart';
+import 'package:store_app/core/presentation/widgets/text_fields/app_text_form_field.dart';
 import 'package:store_app/features/products/presentation/widgets/product_item.dart';
 import 'package:store_app/main.dart' as app;
 

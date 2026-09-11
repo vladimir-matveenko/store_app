@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:store_app/core/presentation/widgets/image_box.dart';
 
-import '../../../../navigation/pages.dart';
+import '../../../../app/routes/pages.dart';
 import '../../domain/entity/product_entity.dart';
 
 class ProductItem extends StatelessWidget {

@@ -5,10 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:store_app/features/auth/domain/entity/user_entity.dart';
+import 'package:store_app/app/constants/app_enums.dart';
 import 'package:store_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:store_app/features/auth/presentation/bloc/auth_event.dart';
 import 'package:store_app/features/auth/presentation/bloc/auth_state.dart';
+import 'package:store_app/features/profile/domain/entity/user_entity.dart';
+import 'package:store_app/features/profile/presentation/bloc/profile_bloc.dart';
+import 'package:store_app/features/profile/presentation/bloc/profile_event.dart';
+import 'package:store_app/features/profile/presentation/bloc/profile_state.dart';
 import 'package:store_app/features/users/presentation/bloc/users_bloc.dart';
 import 'package:store_app/features/users/presentation/bloc/users_event.dart';
 import 'package:store_app/features/users/presentation/bloc/users_state.dart';
@@ -19,13 +23,19 @@ class MockUsersBloc extends Mock implements UsersBloc {}
 
 class MockAuthBloc extends Mock implements AuthBloc {}
 
+class MockProfileBloc extends Mock implements ProfileBloc {}
+
 class FakeUsersState extends Fake implements UsersState {}
 
 class FakeAuthState extends Fake implements AuthState {}
 
+class FakeProfileState extends Fake implements ProfileState {}
+
 class FakeUsersEvent extends Fake implements UsersEvent {}
 
 class FakeAuthEvent extends Fake implements AuthEvent {}
+
+class FakeProfileEvent extends Fake implements ProfileEvent {}
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -35,23 +45,30 @@ void main() {
     registerFallbackValue(FakeUsersEvent());
     registerFallbackValue(FakeAuthState());
     registerFallbackValue(FakeAuthEvent());
+    registerFallbackValue(FakeProfileState());
+    registerFallbackValue(FakeProfileEvent());
   });
 
   late MockUsersBloc usersBloc;
   late MockAuthBloc authBloc;
+  late MockProfileBloc profileBloc;
   late StreamController<UsersState> usersController;
   late StreamController<AuthState> authController;
+  late StreamController<ProfileState> profileController;
 
   setUp(() {
     usersBloc = MockUsersBloc();
     authBloc = MockAuthBloc();
+    profileBloc = MockProfileBloc();
     usersController = StreamController<UsersState>.broadcast();
     authController = StreamController<AuthState>.broadcast();
+    profileController = StreamController<ProfileState>.broadcast();
   });
 
   tearDown(() {
     usersController.close();
     authController.close();
+    profileController.close();
   });
 
   Widget createWidget() {
@@ -65,6 +82,7 @@ void main() {
           providers: [
             BlocProvider<UsersBloc>.value(value: usersBloc),
             BlocProvider<AuthBloc>.value(value: authBloc),
+            BlocProvider<ProfileBloc>.value(value: profileBloc),
           ],
           child: const UsersPage(),
         ),
@@ -95,14 +113,14 @@ void main() {
           id: '1',
           email: 'user1@example.com',
           name: 'User One',
-          role: 'admin',
+          role: UserRole.admin,
           avatar: 'avatar1.jpg',
         ),
         const UserEntity(
           id: '2',
           email: 'user2@example.com',
           name: 'User Two',
-          role: 'user',
+          role: UserRole.customer,
           avatar: 'avatar2.jpg',
         ),
       ];
@@ -113,6 +131,10 @@ void main() {
       when(() => usersBloc.stream).thenAnswer((_) => usersController.stream);
       when(() => authBloc.state).thenReturn(const AuthState());
       when(() => authBloc.stream).thenAnswer((_) => authController.stream);
+      when(() => profileBloc.state).thenReturn(const ProfileState());
+      when(
+        () => profileBloc.stream,
+      ).thenAnswer((_) => profileController.stream);
 
       await tester.pumpWidget(createWidget());
       await tester.pumpAndSettle();

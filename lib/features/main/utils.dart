@@ -3,8 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../app/routes/pages.dart';
 import '../../core/presentation/widgets/fab_menu.dart';
-import '../../navigation/pages.dart';
 
 @immutable
 class MainScreenUtils {

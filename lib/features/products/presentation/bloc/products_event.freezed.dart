@@ -11,51 +11,455 @@ part of 'products_event.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
 mixin _$ProductsEvent {
 
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is ProductsEvent);
+  }
 
 
+  @override
+  int get hashCode => runtimeType.hashCode;
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsEvent);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'ProductsEvent()';
-}
+  @override
+  String toString() {
+    return 'ProductsEvent()';
+  }
 
 
 }
 
 /// @nodoc
-class $ProductsEventCopyWith<$Res>  {
-$ProductsEventCopyWith(ProductsEvent _, $Res Function(ProductsEvent) __);
+class $ProductsEventCopyWith<$Res> {
+  $ProductsEventCopyWith(ProductsEvent _, $Res Function(ProductsEvent) __);
 }
 
 
 /// Adds pattern-matching-related methods to [ProductsEvent].
 extension ProductsEventPatterns on ProductsEvent {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( DataInitialized value)?  dataInitialized,TResult Function( ProductsFetched value)?  productsFetched,TResult Function( NextProductsFetched value)?  nextProductsFetched,TResult Function( ProductsSearchStarted value)?  productsSearchStarted,TResult Function( ProductsCategorySelected value)?  productsCategorySelected,TResult Function( CategoriesFetched value)?  categoriesFetched,TResult Function( ProductFetched value)?  productFetched,TResult Function( RelatedByIdFetched value)?  relatedByIdFetched,TResult Function( CreatedProductCategorySelected value)?  createdProductCategorySelected,TResult Function( ProductCreated value)?  productCreated,TResult Function( ProductDeleted value)?  productDeleted,TResult Function( CategoryCreated value)?  categoryCreated,TResult Function( CategoryDeleted value)?  categoryDeleted,TResult Function( CategorySearchStarted value)?  categorySearchStarted,TResult Function( InnerSearchDisabled value)?  innerSearchDisabled,TResult Function( ImagePicked value)?  imagePicked,TResult Function( ImageRemoved value)?  imageRemoved,TResult Function( DataRemoved value)?  dataRemoved,TResult Function( FilterAdded value)?  filterAdded,TResult Function( FilterRemoved value)?  filterRemoved,TResult Function( FiltersSaved value)?  filtersSaved,required TResult orElse(),}){
+  @optionalTypeArgs TResult maybeMap
+
+  <
+
+  TResult
+
+  extends
+
+  Object?
+
+  >
+
+  (
+
+  {
+
+  TResult
+
+  Function
+
+  (
+
+  DataInitialized
+
+  value
+
+  )
+
+  ?
+
+  dataInitialized
+
+  ,
+
+  TResult
+
+  Function
+
+  (
+
+  ProductsFetched
+
+  value
+
+  )
+
+  ?
+
+  productsFetched
+
+  ,
+
+  TResult
+
+  Function
+
+  (
+
+  NextProductsFetched
+
+  value
+
+  )
+
+  ?
+
+  nextProductsFetched
+
+  ,
+
+  TResult
+
+  Function
+
+  (
+
+  ProductsSearchStarted
+
+  value
+
+  )
+
+  ?
+
+  productsSearchStarted
+
+  ,
+
+  TResult
+
+  Function
+
+  (
+
+  ProductsCategorySelected
+
+  value
+
+  )
+
+  ?
+
+  productsCategorySelected
+
+  ,
+
+  TResult
+
+  Function
+
+  (
+
+  CategoriesFetched
+
+  value
+
+  )
+
+  ?
+
+  categoriesFetched
+
+  ,
+
+  TResult
+
+  Function
+
+  (
+
+  ProductFetched
+
+  value
+
+  )
+
+  ?
+
+  productFetched
+
+  ,
+
+  TResult
+
+  Function
+
+  (
+
+  RelatedByIdFetched
+
+  value
+
+  )
+
+  ?
+
+  relatedByIdFetched
+
+  ,
+
+  TResult
+
+  Function
+
+  (
+
+  CreatedProductCategorySelected
+
+  value
+
+  )
+
+  ?
+
+  createdProductCategorySelected
+
+  ,
+
+  TResult
+
+  Function
+
+  (
+
+  ProductCreated
+
+  value
+
+  )
+
+  ?
+
+  productCreated
+
+  ,
+
+  TResult
+
+  Function
+
+  (
+
+  ProductDeleted
+
+  value
+
+  )
+
+  ?
+
+  productDeleted
+
+  ,
+
+  TResult
+
+  Function
+
+  (
+
+  CategoryCreated
+
+  value
+
+  )
+
+  ?
+
+  categoryCreated
+
+  ,
+
+  TResult
+
+  Function
+
+  (
+
+  CategoryDeleted
+
+  value
+
+  )
+
+  ?
+
+  categoryDeleted
+
+  ,
+
+  TResult
+
+  Function
+
+  (
+
+  CategorySearchStarted
+
+  value
+
+  )
+
+  ?
+
+  categorySearchStarted
+
+  ,
+
+  TResult
+
+  Function
+
+  (
+
+  InnerSearchDisabled
+
+  value
+
+  )
+
+  ?
+
+  innerSearchDisabled
+
+  ,
+
+  TResult
+
+  Function
+
+  (
+
+  ImagePicked
+
+  value
+
+  )
+
+  ?
+
+  imagePicked
+
+  ,
+
+  TResult
+
+  Function
+
+  (
+
+  ImageRemoved
+
+  value
+
+  )
+
+  ?
+
+  imageRemoved
+
+  ,
+
+  TResult
+
+  Function
+
+  (
+
+  DataRemoved
+
+  value
+
+  )
+
+  ?
+
+  dataRemoved
+
+  ,
+
+  TResult
+
+  Function
+
+  (
+
+  FilterAdded
+
+  value
+
+  )
+
+  ?
+
+  filterAdded
+
+  ,
+
+  TResult
+
+  Function
+
+  (
+
+  FilterRemoved
+
+  value
+
+  )
+
+  ?
+
+  filterRemoved
+
+  ,
+
+  TResult
+
+  Function
+
+  (
+
+  FiltersSaved
+
+  value
+
+  )
+
+  ?
+
+  filtersSaved
+
+  ,
+
+  required
+
+  TResult
+
+  orElse
+
+  (
+
+  )
+
+  ,
+}){
 final _that = this;
 switch (_that) {
 case DataInitialized() when dataInitialized != null:
@@ -80,7 +484,7 @@ return dataRemoved(_that);case FilterAdded() when filterAdded != null:
 return filterAdded(_that);case FilterRemoved() when filterRemoved != null:
 return filterRemoved(_that);case FiltersSaved() when filtersSaved != null:
 return filtersSaved(_that);case _:
-  return orElse();
+return orElse();
 
 }
 }
@@ -97,35 +501,58 @@ return filtersSaved(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( DataInitialized value)  dataInitialized,required TResult Function( ProductsFetched value)  productsFetched,required TResult Function( NextProductsFetched value)  nextProductsFetched,required TResult Function( ProductsSearchStarted value)  productsSearchStarted,required TResult Function( ProductsCategorySelected value)  productsCategorySelected,required TResult Function( CategoriesFetched value)  categoriesFetched,required TResult Function( ProductFetched value)  productFetched,required TResult Function( RelatedByIdFetched value)  relatedByIdFetched,required TResult Function( CreatedProductCategorySelected value)  createdProductCategorySelected,required TResult Function( ProductCreated value)  productCreated,required TResult Function( ProductDeleted value)  productDeleted,required TResult Function( CategoryCreated value)  categoryCreated,required TResult Function( CategoryDeleted value)  categoryDeleted,required TResult Function( CategorySearchStarted value)  categorySearchStarted,required TResult Function( InnerSearchDisabled value)  innerSearchDisabled,required TResult Function( ImagePicked value)  imagePicked,required TResult Function( ImageRemoved value)  imageRemoved,required TResult Function( DataRemoved value)  dataRemoved,required TResult Function( FilterAdded value)  filterAdded,required TResult Function( FilterRemoved value)  filterRemoved,required TResult Function( FiltersSaved value)  filtersSaved,}){
-final _that = this;
-switch (_that) {
-case DataInitialized():
-return dataInitialized(_that);case ProductsFetched():
-return productsFetched(_that);case NextProductsFetched():
-return nextProductsFetched(_that);case ProductsSearchStarted():
-return productsSearchStarted(_that);case ProductsCategorySelected():
-return productsCategorySelected(_that);case CategoriesFetched():
-return categoriesFetched(_that);case ProductFetched():
-return productFetched(_that);case RelatedByIdFetched():
-return relatedByIdFetched(_that);case CreatedProductCategorySelected():
-return createdProductCategorySelected(_that);case ProductCreated():
-return productCreated(_that);case ProductDeleted():
-return productDeleted(_that);case CategoryCreated():
-return categoryCreated(_that);case CategoryDeleted():
-return categoryDeleted(_that);case CategorySearchStarted():
-return categorySearchStarted(_that);case InnerSearchDisabled():
-return innerSearchDisabled(_that);case ImagePicked():
-return imagePicked(_that);case ImageRemoved():
-return imageRemoved(_that);case DataRemoved():
-return dataRemoved(_that);case FilterAdded():
-return filterAdded(_that);case FilterRemoved():
-return filterRemoved(_that);case FiltersSaved():
-return filtersSaved(_that);case _:
-  throw StateError('Unexpected subclass');
+@optionalTypeArgs
+TResult map<TResult extends Object?>(
+    {required TResult Function( DataInitialized value) dataInitialized, required TResult Function( ProductsFetched value) productsFetched, required TResult Function( NextProductsFetched value) nextProductsFetched, required TResult Function( ProductsSearchStarted value) productsSearchStarted, required TResult Function( ProductsCategorySelected value) productsCategorySelected, required TResult Function( CategoriesFetched value) categoriesFetched, required TResult Function( ProductFetched value) productFetched, required TResult Function( RelatedByIdFetched value) relatedByIdFetched, required TResult Function( CreatedProductCategorySelected value) createdProductCategorySelected, required TResult Function( ProductCreated value) productCreated, required TResult Function( ProductDeleted value) productDeleted, required TResult Function( CategoryCreated value) categoryCreated, required TResult Function( CategoryDeleted value) categoryDeleted, required TResult Function( CategorySearchStarted value) categorySearchStarted, required TResult Function( InnerSearchDisabled value) innerSearchDisabled, required TResult Function( ImagePicked value) imagePicked, required TResult Function( ImageRemoved value) imageRemoved, required TResult Function( DataRemoved value) dataRemoved, required TResult Function( FilterAdded value) filterAdded, required TResult Function( FilterRemoved value) filterRemoved, required TResult Function( FiltersSaved value) filtersSaved,}) {
+  final _that = this;
+  switch (_that) {
+    case DataInitialized():
+      return dataInitialized(_that);
+    case ProductsFetched():
+      return productsFetched(_that);
+    case NextProductsFetched():
+      return nextProductsFetched(_that);
+    case ProductsSearchStarted():
+      return productsSearchStarted(_that);
+    case ProductsCategorySelected():
+      return productsCategorySelected(_that);
+    case CategoriesFetched():
+      return categoriesFetched(_that);
+    case ProductFetched():
+      return productFetched(_that);
+    case RelatedByIdFetched():
+      return relatedByIdFetched(_that);
+    case CreatedProductCategorySelected():
+      return createdProductCategorySelected(_that);
+    case ProductCreated():
+      return productCreated(_that);
+    case ProductDeleted():
+      return productDeleted(_that);
+    case CategoryCreated():
+      return categoryCreated(_that);
+    case CategoryDeleted():
+      return categoryDeleted(_that);
+    case CategorySearchStarted():
+      return categorySearchStarted(_that);
+    case InnerSearchDisabled():
+      return innerSearchDisabled(_that);
+    case ImagePicked():
+      return imagePicked(_that);
+    case ImageRemoved():
+      return imageRemoved(_that);
+    case DataRemoved():
+      return dataRemoved(_that);
+    case FilterAdded():
+      return filterAdded(_that);
+    case FilterRemoved():
+      return filterRemoved(_that);
+    case FiltersSaved():
+      return filtersSaved(_that);
+    case _:
+      throw StateError('Unexpected subclass');
+  }
+}
 
-}
-}
 /// A variant of `map` that fallback to returning `null`.
 ///
 /// It is equivalent to doing:
@@ -138,35 +565,59 @@ return filtersSaved(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( DataInitialized value)?  dataInitialized,TResult? Function( ProductsFetched value)?  productsFetched,TResult? Function( NextProductsFetched value)?  nextProductsFetched,TResult? Function( ProductsSearchStarted value)?  productsSearchStarted,TResult? Function( ProductsCategorySelected value)?  productsCategorySelected,TResult? Function( CategoriesFetched value)?  categoriesFetched,TResult? Function( ProductFetched value)?  productFetched,TResult? Function( RelatedByIdFetched value)?  relatedByIdFetched,TResult? Function( CreatedProductCategorySelected value)?  createdProductCategorySelected,TResult? Function( ProductCreated value)?  productCreated,TResult? Function( ProductDeleted value)?  productDeleted,TResult? Function( CategoryCreated value)?  categoryCreated,TResult? Function( CategoryDeleted value)?  categoryDeleted,TResult? Function( CategorySearchStarted value)?  categorySearchStarted,TResult? Function( InnerSearchDisabled value)?  innerSearchDisabled,TResult? Function( ImagePicked value)?  imagePicked,TResult? Function( ImageRemoved value)?  imageRemoved,TResult? Function( DataRemoved value)?  dataRemoved,TResult? Function( FilterAdded value)?  filterAdded,TResult? Function( FilterRemoved value)?  filterRemoved,TResult? Function( FiltersSaved value)?  filtersSaved,}){
-final _that = this;
-switch (_that) {
-case DataInitialized() when dataInitialized != null:
-return dataInitialized(_that);case ProductsFetched() when productsFetched != null:
-return productsFetched(_that);case NextProductsFetched() when nextProductsFetched != null:
-return nextProductsFetched(_that);case ProductsSearchStarted() when productsSearchStarted != null:
-return productsSearchStarted(_that);case ProductsCategorySelected() when productsCategorySelected != null:
-return productsCategorySelected(_that);case CategoriesFetched() when categoriesFetched != null:
-return categoriesFetched(_that);case ProductFetched() when productFetched != null:
-return productFetched(_that);case RelatedByIdFetched() when relatedByIdFetched != null:
-return relatedByIdFetched(_that);case CreatedProductCategorySelected() when createdProductCategorySelected != null:
-return createdProductCategorySelected(_that);case ProductCreated() when productCreated != null:
-return productCreated(_that);case ProductDeleted() when productDeleted != null:
-return productDeleted(_that);case CategoryCreated() when categoryCreated != null:
-return categoryCreated(_that);case CategoryDeleted() when categoryDeleted != null:
-return categoryDeleted(_that);case CategorySearchStarted() when categorySearchStarted != null:
-return categorySearchStarted(_that);case InnerSearchDisabled() when innerSearchDisabled != null:
-return innerSearchDisabled(_that);case ImagePicked() when imagePicked != null:
-return imagePicked(_that);case ImageRemoved() when imageRemoved != null:
-return imageRemoved(_that);case DataRemoved() when dataRemoved != null:
-return dataRemoved(_that);case FilterAdded() when filterAdded != null:
-return filterAdded(_that);case FilterRemoved() when filterRemoved != null:
-return filterRemoved(_that);case FiltersSaved() when filtersSaved != null:
-return filtersSaved(_that);case _:
-  return null;
+@optionalTypeArgs
+TResult? mapOrNull<TResult extends Object?>(
+    {TResult? Function( DataInitialized value)? dataInitialized, TResult? Function( ProductsFetched value)? productsFetched, TResult? Function( NextProductsFetched value)? nextProductsFetched, TResult? Function( ProductsSearchStarted value)? productsSearchStarted, TResult? Function( ProductsCategorySelected value)? productsCategorySelected, TResult? Function( CategoriesFetched value)? categoriesFetched, TResult? Function( ProductFetched value)? productFetched, TResult? Function( RelatedByIdFetched value)? relatedByIdFetched, TResult? Function( CreatedProductCategorySelected value)? createdProductCategorySelected, TResult? Function( ProductCreated value)? productCreated, TResult? Function( ProductDeleted value)? productDeleted, TResult? Function( CategoryCreated value)? categoryCreated, TResult? Function( CategoryDeleted value)? categoryDeleted, TResult? Function( CategorySearchStarted value)? categorySearchStarted, TResult? Function( InnerSearchDisabled value)? innerSearchDisabled, TResult? Function( ImagePicked value)? imagePicked, TResult? Function( ImageRemoved value)? imageRemoved, TResult? Function( DataRemoved value)? dataRemoved, TResult? Function( FilterAdded value)? filterAdded, TResult? Function( FilterRemoved value)? filterRemoved, TResult? Function( FiltersSaved value)? filtersSaved,}) {
+  final _that = this;
+  switch (_that) {
+    case DataInitialized() when dataInitialized != null:
+      return dataInitialized(_that);
+    case ProductsFetched() when productsFetched != null:
+      return productsFetched(_that);
+    case NextProductsFetched() when nextProductsFetched != null:
+      return nextProductsFetched(_that);
+    case ProductsSearchStarted() when productsSearchStarted != null:
+      return productsSearchStarted(_that);
+    case ProductsCategorySelected() when productsCategorySelected != null:
+      return productsCategorySelected(_that);
+    case CategoriesFetched() when categoriesFetched != null:
+      return categoriesFetched(_that);
+    case ProductFetched() when productFetched != null:
+      return productFetched(_that);
+    case RelatedByIdFetched() when relatedByIdFetched != null:
+      return relatedByIdFetched(_that);
+    case CreatedProductCategorySelected() when createdProductCategorySelected !=
+        null:
+      return createdProductCategorySelected(_that);
+    case ProductCreated() when productCreated != null:
+      return productCreated(_that);
+    case ProductDeleted() when productDeleted != null:
+      return productDeleted(_that);
+    case CategoryCreated() when categoryCreated != null:
+      return categoryCreated(_that);
+    case CategoryDeleted() when categoryDeleted != null:
+      return categoryDeleted(_that);
+    case CategorySearchStarted() when categorySearchStarted != null:
+      return categorySearchStarted(_that);
+    case InnerSearchDisabled() when innerSearchDisabled != null:
+      return innerSearchDisabled(_that);
+    case ImagePicked() when imagePicked != null:
+      return imagePicked(_that);
+    case ImageRemoved() when imageRemoved != null:
+      return imageRemoved(_that);
+    case DataRemoved() when dataRemoved != null:
+      return dataRemoved(_that);
+    case FilterAdded() when filterAdded != null:
+      return filterAdded(_that);
+    case FilterRemoved() when filterRemoved != null:
+      return filterRemoved(_that);
+    case FiltersSaved() when filtersSaved != null:
+      return filtersSaved(_that);
+    case _:
+      return null;
+  }
+}
 
-}
-}
 /// A variant of `when` that fallback to an `orElse` callback.
 ///
 /// It is equivalent to doing:
@@ -179,7 +630,208 @@ return filtersSaved(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  dataInitialized,TResult Function( bool loadSilent)?  productsFetched,TResult Function()?  nextProductsFetched,TResult Function( String? search)?  productsSearchStarted,TResult Function( String? categoryId)?  productsCategorySelected,TResult Function( bool loadSilent)?  categoriesFetched,TResult Function( String id)?  productFetched,TResult Function( String id)?  relatedByIdFetched,TResult Function( String categoryId)?  createdProductCategorySelected,TResult Function( String title,  String description,  int price)?  productCreated,TResult Function( int id)?  productDeleted,TResult Function( String name)?  categoryCreated,TResult Function( int id)?  categoryDeleted,TResult Function( String? search,  bool? useForInnerSearch)?  categorySearchStarted,TResult Function()?  innerSearchDisabled,TResult Function()?  imagePicked,TResult Function( AppImageEntity image)?  imageRemoved,TResult Function()?  dataRemoved,TResult Function( AvailabilityFilterEntity filter)?  filterAdded,TResult Function( AvailabilityFilterEntity filter)?  filterRemoved,TResult Function( List<AvailabilityFilterEntity> filters)?  filtersSaved,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen
+<
+TResult extends Object?>(
+{
+TResult
+Function
+(
+)
+?
+dataInitialized
+,
+TResult
+Function
+(
+bool
+loadSilent
+)
+?
+productsFetched
+,
+TResult
+Function
+(
+)
+?
+nextProductsFetched
+,
+TResult
+Function
+(
+String
+?
+search
+)
+?
+productsSearchStarted
+,
+TResult
+Function
+(
+String
+?
+categoryId
+)
+?
+productsCategorySelected
+,
+TResult
+Function
+(
+bool
+loadSilent
+)
+?
+categoriesFetched
+,
+TResult
+Function
+(
+String
+id
+)
+?
+productFetched
+,
+TResult
+Function
+(
+String
+id
+)
+?
+relatedByIdFetched
+,
+TResult
+Function
+(
+String
+categoryId
+)
+?
+createdProductCategorySelected
+,
+TResult
+Function
+(
+String
+title
+,
+String
+description
+,
+int
+price
+)
+?
+productCreated
+,
+TResult
+Function
+(
+int
+id
+)
+?
+productDeleted
+,
+TResult
+Function
+(
+String
+name
+)
+?
+categoryCreated
+,
+TResult
+Function
+(
+int
+id
+)
+?
+categoryDeleted
+,
+TResult
+Function
+(
+String
+?
+search
+,
+bool
+?
+useForInnerSearch
+)
+?
+categorySearchStarted
+,
+TResult
+Function
+(
+)
+?
+innerSearchDisabled
+,
+TResult
+Function
+(
+)
+?
+imagePicked
+,
+TResult
+Function
+(
+AppImageEntity
+image
+)
+?
+imageRemoved
+,
+TResult
+Function
+(
+)
+?
+dataRemoved
+,
+TResult
+Function
+(
+AvailabilityFilterEntity
+filter
+)
+?
+filterAdded
+,
+TResult
+Function
+(
+AvailabilityFilterEntity
+filter
+)
+?
+filterRemoved
+,
+TResult
+Function
+(
+List
+<
+AvailabilityFilterEntity
+>
+filters
+)
+?
+filtersSaved
+,
+required
+TResult
+orElse(),}) {final _that = this;
 switch (_that) {
 case DataInitialized() when dataInitialized != null:
 return dataInitialized();case ProductsFetched() when productsFetched != null:
@@ -203,7 +855,7 @@ return dataRemoved();case FilterAdded() when filterAdded != null:
 return filterAdded(_that.filter);case FilterRemoved() when filterRemoved != null:
 return filterRemoved(_that.filter);case FiltersSaved() when filtersSaved != null:
 return filtersSaved(_that.filters);case _:
-  return orElse();
+return orElse();
 
 }
 }
@@ -220,7 +872,7 @@ return filtersSaved(_that.filters);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  dataInitialized,required TResult Function( bool loadSilent)  productsFetched,required TResult Function()  nextProductsFetched,required TResult Function( String? search)  productsSearchStarted,required TResult Function( String? categoryId)  productsCategorySelected,required TResult Function( bool loadSilent)  categoriesFetched,required TResult Function( String id)  productFetched,required TResult Function( String id)  relatedByIdFetched,required TResult Function( String categoryId)  createdProductCategorySelected,required TResult Function( String title,  String description,  int price)  productCreated,required TResult Function( int id)  productDeleted,required TResult Function( String name)  categoryCreated,required TResult Function( int id)  categoryDeleted,required TResult Function( String? search,  bool? useForInnerSearch)  categorySearchStarted,required TResult Function()  innerSearchDisabled,required TResult Function()  imagePicked,required TResult Function( AppImageEntity image)  imageRemoved,required TResult Function()  dataRemoved,required TResult Function( AvailabilityFilterEntity filter)  filterAdded,required TResult Function( AvailabilityFilterEntity filter)  filterRemoved,required TResult Function( List<AvailabilityFilterEntity> filters)  filtersSaved,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function() dataInitialized,required TResult Function( bool loadSilent) productsFetched,required TResult Function() nextProductsFetched,required TResult Function( String? search) productsSearchStarted,required TResult Function( String? categoryId) productsCategorySelected,required TResult Function( bool loadSilent) categoriesFetched,required TResult Function( String id) productFetched,required TResult Function( String id) relatedByIdFetched,required TResult Function( String categoryId) createdProductCategorySelected,required TResult Function( String title, String description, int price) productCreated,required TResult Function( int id) productDeleted,required TResult Function( String name) categoryCreated,required TResult Function( int id) categoryDeleted,required TResult Function( String? search, bool? useForInnerSearch) categorySearchStarted,required TResult Function() innerSearchDisabled,required TResult Function() imagePicked,required TResult Function( AppImageEntity image) imageRemoved,required TResult Function() dataRemoved,required TResult Function( AvailabilityFilterEntity filter) filterAdded,required TResult Function( AvailabilityFilterEntity filter) filterRemoved,required TResult Function( List<AvailabilityFilterEntity> filters) filtersSaved,}) {final _that = this;
 switch (_that) {
 case DataInitialized():
 return dataInitialized();case ProductsFetched():
@@ -244,7 +896,7 @@ return dataRemoved();case FilterAdded():
 return filterAdded(_that.filter);case FilterRemoved():
 return filterRemoved(_that.filter);case FiltersSaved():
 return filtersSaved(_that.filters);case _:
-  throw StateError('Unexpected subclass');
+throw StateError('Unexpected subclass');
 
 }
 }
@@ -260,7 +912,7 @@ return filtersSaved(_that.filters);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  dataInitialized,TResult? Function( bool loadSilent)?  productsFetched,TResult? Function()?  nextProductsFetched,TResult? Function( String? search)?  productsSearchStarted,TResult? Function( String? categoryId)?  productsCategorySelected,TResult? Function( bool loadSilent)?  categoriesFetched,TResult? Function( String id)?  productFetched,TResult? Function( String id)?  relatedByIdFetched,TResult? Function( String categoryId)?  createdProductCategorySelected,TResult? Function( String title,  String description,  int price)?  productCreated,TResult? Function( int id)?  productDeleted,TResult? Function( String name)?  categoryCreated,TResult? Function( int id)?  categoryDeleted,TResult? Function( String? search,  bool? useForInnerSearch)?  categorySearchStarted,TResult? Function()?  innerSearchDisabled,TResult? Function()?  imagePicked,TResult? Function( AppImageEntity image)?  imageRemoved,TResult? Function()?  dataRemoved,TResult? Function( AvailabilityFilterEntity filter)?  filterAdded,TResult? Function( AvailabilityFilterEntity filter)?  filterRemoved,TResult? Function( List<AvailabilityFilterEntity> filters)?  filtersSaved,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()? dataInitialized,TResult? Function( bool loadSilent)? productsFetched,TResult? Function()? nextProductsFetched,TResult? Function( String? search)? productsSearchStarted,TResult? Function( String? categoryId)? productsCategorySelected,TResult? Function( bool loadSilent)? categoriesFetched,TResult? Function( String id)? productFetched,TResult? Function( String id)? relatedByIdFetched,TResult? Function( String categoryId)? createdProductCategorySelected,TResult? Function( String title, String description, int price)? productCreated,TResult? Function( int id)? productDeleted,TResult? Function( String name)? categoryCreated,TResult? Function( int id)? categoryDeleted,TResult? Function( String? search, bool? useForInnerSearch)? categorySearchStarted,TResult? Function()? innerSearchDisabled,TResult? Function()? imagePicked,TResult? Function( AppImageEntity image)? imageRemoved,TResult? Function()? dataRemoved,TResult? Function( AvailabilityFilterEntity filter)? filterAdded,TResult? Function( AvailabilityFilterEntity filter)? filterRemoved,TResult? Function( List<AvailabilityFilterEntity> filters)? filtersSaved,}) {final _that = this;
 switch (_that) {
 case DataInitialized() when dataInitialized != null:
 return dataInitialized();case ProductsFetched() when productsFetched != null:
@@ -284,7 +936,7 @@ return dataRemoved();case FilterAdded() when filterAdded != null:
 return filterAdded(_that.filter);case FilterRemoved() when filterRemoved != null:
 return filterRemoved(_that.filter);case FiltersSaved() when filtersSaved != null:
 return filtersSaved(_that.filters);case _:
-  return null;
+return null;
 
 }
 }
@@ -295,17 +947,12 @@ return filtersSaved(_that.filters);case _:
 
 
 class DataInitialized implements ProductsEvent {
-  const DataInitialized();
-  
-
-
-
-
+const DataInitialized();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DataInitialized);
+return identical(this, other) || (other.runtimeType == runtimeType&&other is DataInitialized);
 }
 
 
@@ -314,7 +961,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductsEvent.dataInitialized()';
+return 'ProductsEvent.dataInitialized()';
 }
 
 
@@ -326,13 +973,11 @@ $DataInitializedCopyWith(DataInitialized _, $Res Function(DataInitialized) __);
 }
 /// @nodoc
 class _$DataInitializedCopyWithImpl<$Res>
-    implements $DataInitializedCopyWith<$Res> {
-  _$DataInitializedCopyWithImpl(this._self, this._then);
+implements $DataInitializedCopyWith<$Res> {
+_$DataInitializedCopyWithImpl(this._self, this._then);
 
-  final DataInitialized _self;
-  final $Res Function(DataInitialized) _then;
-
-
+final DataInitialized _self;
+final $Res Function(DataInitialized) _then;
 
 
 }
@@ -341,10 +986,10 @@ class _$DataInitializedCopyWithImpl<$Res>
 
 
 class ProductsFetched implements ProductsEvent {
-  const ProductsFetched({this.loadSilent = true});
-  
+const ProductsFetched({this.loadSilent = true});
 
-@JsonKey() final  bool loadSilent;
+
+@JsonKey() final bool loadSilent;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -353,10 +998,9 @@ class ProductsFetched implements ProductsEvent {
 $ProductsFetchedCopyWith<ProductsFetched> get copyWith => _$ProductsFetchedCopyWithImpl<ProductsFetched>(this, _$identity);
 
 
-
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsFetched&&(identical(other.loadSilent, loadSilent) || other.loadSilent == loadSilent));
+return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsFetched&&(identical(other.loadSilent, loadSilent) || other.loadSilent == loadSilent));
 }
 
 
@@ -365,7 +1009,7 @@ int get hashCode => Object.hash(runtimeType,loadSilent);
 
 @override
 String toString() {
-  return 'ProductsEvent.productsFetched(loadSilent: $loadSilent)';
+return 'ProductsEvent.productsFetched(loadSilent: $loadSilent)';
 }
 
 
@@ -373,31 +1017,29 @@ String toString() {
 
 /// @nodoc
 abstract mixin class $ProductsFetchedCopyWith<$Res> implements $ProductsEventCopyWith<$Res> {
-  factory $ProductsFetchedCopyWith(ProductsFetched value, $Res Function(ProductsFetched) _then) = _$ProductsFetchedCopyWithImpl;
+factory $ProductsFetchedCopyWith(ProductsFetched value, $Res Function(ProductsFetched) _then) = _$ProductsFetchedCopyWithImpl;
 @useResult
 $Res call({
- bool loadSilent
+bool loadSilent
 });
-
-
 
 
 }
 /// @nodoc
 class _$ProductsFetchedCopyWithImpl<$Res>
-    implements $ProductsFetchedCopyWith<$Res> {
-  _$ProductsFetchedCopyWithImpl(this._self, this._then);
+implements $ProductsFetchedCopyWith<$Res> {
+_$ProductsFetchedCopyWithImpl(this._self, this._then);
 
-  final ProductsFetched _self;
-  final $Res Function(ProductsFetched) _then;
+final ProductsFetched _self;
+final $Res Function(ProductsFetched) _then;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? loadSilent = null,}) {
-  return _then(ProductsFetched(
+return _then(ProductsFetched(
 loadSilent: null == loadSilent ? _self.loadSilent : loadSilent // ignore: cast_nullable_to_non_nullable
 as bool,
-  ));
+));
 }
 
 
@@ -407,17 +1049,12 @@ as bool,
 
 
 class NextProductsFetched implements ProductsEvent {
-  const NextProductsFetched();
-  
-
-
-
-
+const NextProductsFetched();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NextProductsFetched);
+return identical(this, other) || (other.runtimeType == runtimeType&&other is NextProductsFetched);
 }
 
 
@@ -426,7 +1063,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductsEvent.nextProductsFetched()';
+return 'ProductsEvent.nextProductsFetched()';
 }
 
 
@@ -438,13 +1075,11 @@ $NextProductsFetchedCopyWith(NextProductsFetched _, $Res Function(NextProductsFe
 }
 /// @nodoc
 class _$NextProductsFetchedCopyWithImpl<$Res>
-    implements $NextProductsFetchedCopyWith<$Res> {
-  _$NextProductsFetchedCopyWithImpl(this._self, this._then);
+implements $NextProductsFetchedCopyWith<$Res> {
+_$NextProductsFetchedCopyWithImpl(this._self, this._then);
 
-  final NextProductsFetched _self;
-  final $Res Function(NextProductsFetched) _then;
-
-
+final NextProductsFetched _self;
+final $Res Function(NextProductsFetched) _then;
 
 
 }
@@ -453,10 +1088,10 @@ class _$NextProductsFetchedCopyWithImpl<$Res>
 
 
 class ProductsSearchStarted implements ProductsEvent {
-  const ProductsSearchStarted({this.search});
-  
+const ProductsSearchStarted({this.search});
 
- final  String? search;
+
+final String? search;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -465,10 +1100,9 @@ class ProductsSearchStarted implements ProductsEvent {
 $ProductsSearchStartedCopyWith<ProductsSearchStarted> get copyWith => _$ProductsSearchStartedCopyWithImpl<ProductsSearchStarted>(this, _$identity);
 
 
-
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsSearchStarted&&(identical(other.search, search) || other.search == search));
+return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsSearchStarted&&(identical(other.search, search) || other.search == search));
 }
 
 
@@ -477,7 +1111,7 @@ int get hashCode => Object.hash(runtimeType,search);
 
 @override
 String toString() {
-  return 'ProductsEvent.productsSearchStarted(search: $search)';
+return 'ProductsEvent.productsSearchStarted(search: $search)';
 }
 
 
@@ -485,31 +1119,29 @@ String toString() {
 
 /// @nodoc
 abstract mixin class $ProductsSearchStartedCopyWith<$Res> implements $ProductsEventCopyWith<$Res> {
-  factory $ProductsSearchStartedCopyWith(ProductsSearchStarted value, $Res Function(ProductsSearchStarted) _then) = _$ProductsSearchStartedCopyWithImpl;
+factory $ProductsSearchStartedCopyWith(ProductsSearchStarted value, $Res Function(ProductsSearchStarted) _then) = _$ProductsSearchStartedCopyWithImpl;
 @useResult
 $Res call({
- String? search
+String? search
 });
-
-
 
 
 }
 /// @nodoc
 class _$ProductsSearchStartedCopyWithImpl<$Res>
-    implements $ProductsSearchStartedCopyWith<$Res> {
-  _$ProductsSearchStartedCopyWithImpl(this._self, this._then);
+implements $ProductsSearchStartedCopyWith<$Res> {
+_$ProductsSearchStartedCopyWithImpl(this._self, this._then);
 
-  final ProductsSearchStarted _self;
-  final $Res Function(ProductsSearchStarted) _then;
+final ProductsSearchStarted _self;
+final $Res Function(ProductsSearchStarted) _then;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? search = freezed,}) {
-  return _then(ProductsSearchStarted(
+return _then(ProductsSearchStarted(
 search: freezed == search ? _self.search : search // ignore: cast_nullable_to_non_nullable
 as String?,
-  ));
+));
 }
 
 
@@ -519,10 +1151,10 @@ as String?,
 
 
 class ProductsCategorySelected implements ProductsEvent {
-  const ProductsCategorySelected({this.categoryId});
-  
+const ProductsCategorySelected({this.categoryId});
 
- final  String? categoryId;
+
+final String? categoryId;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -531,10 +1163,9 @@ class ProductsCategorySelected implements ProductsEvent {
 $ProductsCategorySelectedCopyWith<ProductsCategorySelected> get copyWith => _$ProductsCategorySelectedCopyWithImpl<ProductsCategorySelected>(this, _$identity);
 
 
-
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsCategorySelected&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId));
+return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsCategorySelected&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId));
 }
 
 
@@ -543,7 +1174,7 @@ int get hashCode => Object.hash(runtimeType,categoryId);
 
 @override
 String toString() {
-  return 'ProductsEvent.productsCategorySelected(categoryId: $categoryId)';
+return 'ProductsEvent.productsCategorySelected(categoryId: $categoryId)';
 }
 
 
@@ -551,31 +1182,29 @@ String toString() {
 
 /// @nodoc
 abstract mixin class $ProductsCategorySelectedCopyWith<$Res> implements $ProductsEventCopyWith<$Res> {
-  factory $ProductsCategorySelectedCopyWith(ProductsCategorySelected value, $Res Function(ProductsCategorySelected) _then) = _$ProductsCategorySelectedCopyWithImpl;
+factory $ProductsCategorySelectedCopyWith(ProductsCategorySelected value, $Res Function(ProductsCategorySelected) _then) = _$ProductsCategorySelectedCopyWithImpl;
 @useResult
 $Res call({
- String? categoryId
+String? categoryId
 });
-
-
 
 
 }
 /// @nodoc
 class _$ProductsCategorySelectedCopyWithImpl<$Res>
-    implements $ProductsCategorySelectedCopyWith<$Res> {
-  _$ProductsCategorySelectedCopyWithImpl(this._self, this._then);
+implements $ProductsCategorySelectedCopyWith<$Res> {
+_$ProductsCategorySelectedCopyWithImpl(this._self, this._then);
 
-  final ProductsCategorySelected _self;
-  final $Res Function(ProductsCategorySelected) _then;
+final ProductsCategorySelected _self;
+final $Res Function(ProductsCategorySelected) _then;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? categoryId = freezed,}) {
-  return _then(ProductsCategorySelected(
+return _then(ProductsCategorySelected(
 categoryId: freezed == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
 as String?,
-  ));
+));
 }
 
 
@@ -585,10 +1214,10 @@ as String?,
 
 
 class CategoriesFetched implements ProductsEvent {
-  const CategoriesFetched({this.loadSilent = true});
-  
+const CategoriesFetched({this.loadSilent = true});
 
-@JsonKey() final  bool loadSilent;
+
+@JsonKey() final bool loadSilent;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -597,10 +1226,9 @@ class CategoriesFetched implements ProductsEvent {
 $CategoriesFetchedCopyWith<CategoriesFetched> get copyWith => _$CategoriesFetchedCopyWithImpl<CategoriesFetched>(this, _$identity);
 
 
-
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoriesFetched&&(identical(other.loadSilent, loadSilent) || other.loadSilent == loadSilent));
+return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoriesFetched&&(identical(other.loadSilent, loadSilent) || other.loadSilent == loadSilent));
 }
 
 
@@ -609,7 +1237,7 @@ int get hashCode => Object.hash(runtimeType,loadSilent);
 
 @override
 String toString() {
-  return 'ProductsEvent.categoriesFetched(loadSilent: $loadSilent)';
+return 'ProductsEvent.categoriesFetched(loadSilent: $loadSilent)';
 }
 
 
@@ -617,31 +1245,29 @@ String toString() {
 
 /// @nodoc
 abstract mixin class $CategoriesFetchedCopyWith<$Res> implements $ProductsEventCopyWith<$Res> {
-  factory $CategoriesFetchedCopyWith(CategoriesFetched value, $Res Function(CategoriesFetched) _then) = _$CategoriesFetchedCopyWithImpl;
+factory $CategoriesFetchedCopyWith(CategoriesFetched value, $Res Function(CategoriesFetched) _then) = _$CategoriesFetchedCopyWithImpl;
 @useResult
 $Res call({
- bool loadSilent
+bool loadSilent
 });
-
-
 
 
 }
 /// @nodoc
 class _$CategoriesFetchedCopyWithImpl<$Res>
-    implements $CategoriesFetchedCopyWith<$Res> {
-  _$CategoriesFetchedCopyWithImpl(this._self, this._then);
+implements $CategoriesFetchedCopyWith<$Res> {
+_$CategoriesFetchedCopyWithImpl(this._self, this._then);
 
-  final CategoriesFetched _self;
-  final $Res Function(CategoriesFetched) _then;
+final CategoriesFetched _self;
+final $Res Function(CategoriesFetched) _then;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? loadSilent = null,}) {
-  return _then(CategoriesFetched(
+return _then(CategoriesFetched(
 loadSilent: null == loadSilent ? _self.loadSilent : loadSilent // ignore: cast_nullable_to_non_nullable
 as bool,
-  ));
+));
 }
 
 
@@ -651,10 +1277,10 @@ as bool,
 
 
 class ProductFetched implements ProductsEvent {
-  const ProductFetched(this.id);
-  
+const ProductFetched(this.id);
 
- final  String id;
+
+final String id;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -663,10 +1289,9 @@ class ProductFetched implements ProductsEvent {
 $ProductFetchedCopyWith<ProductFetched> get copyWith => _$ProductFetchedCopyWithImpl<ProductFetched>(this, _$identity);
 
 
-
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductFetched&&(identical(other.id, id) || other.id == id));
+return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductFetched&&(identical(other.id, id) || other.id == id));
 }
 
 
@@ -675,7 +1300,7 @@ int get hashCode => Object.hash(runtimeType,id);
 
 @override
 String toString() {
-  return 'ProductsEvent.productFetched(id: $id)';
+return 'ProductsEvent.productFetched(id: $id)';
 }
 
 
@@ -683,31 +1308,29 @@ String toString() {
 
 /// @nodoc
 abstract mixin class $ProductFetchedCopyWith<$Res> implements $ProductsEventCopyWith<$Res> {
-  factory $ProductFetchedCopyWith(ProductFetched value, $Res Function(ProductFetched) _then) = _$ProductFetchedCopyWithImpl;
+factory $ProductFetchedCopyWith(ProductFetched value, $Res Function(ProductFetched) _then) = _$ProductFetchedCopyWithImpl;
 @useResult
 $Res call({
- String id
+String id
 });
-
-
 
 
 }
 /// @nodoc
 class _$ProductFetchedCopyWithImpl<$Res>
-    implements $ProductFetchedCopyWith<$Res> {
-  _$ProductFetchedCopyWithImpl(this._self, this._then);
+implements $ProductFetchedCopyWith<$Res> {
+_$ProductFetchedCopyWithImpl(this._self, this._then);
 
-  final ProductFetched _self;
-  final $Res Function(ProductFetched) _then;
+final ProductFetched _self;
+final $Res Function(ProductFetched) _then;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? id = null,}) {
-  return _then(ProductFetched(
+return _then(ProductFetched(
 null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,
-  ));
+));
 }
 
 
@@ -717,10 +1340,10 @@ as String,
 
 
 class RelatedByIdFetched implements ProductsEvent {
-  const RelatedByIdFetched(this.id);
-  
+const RelatedByIdFetched(this.id);
 
- final  String id;
+
+final String id;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -729,10 +1352,9 @@ class RelatedByIdFetched implements ProductsEvent {
 $RelatedByIdFetchedCopyWith<RelatedByIdFetched> get copyWith => _$RelatedByIdFetchedCopyWithImpl<RelatedByIdFetched>(this, _$identity);
 
 
-
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RelatedByIdFetched&&(identical(other.id, id) || other.id == id));
+return identical(this, other) || (other.runtimeType == runtimeType&&other is RelatedByIdFetched&&(identical(other.id, id) || other.id == id));
 }
 
 
@@ -741,7 +1363,7 @@ int get hashCode => Object.hash(runtimeType,id);
 
 @override
 String toString() {
-  return 'ProductsEvent.relatedByIdFetched(id: $id)';
+return 'ProductsEvent.relatedByIdFetched(id: $id)';
 }
 
 
@@ -749,31 +1371,29 @@ String toString() {
 
 /// @nodoc
 abstract mixin class $RelatedByIdFetchedCopyWith<$Res> implements $ProductsEventCopyWith<$Res> {
-  factory $RelatedByIdFetchedCopyWith(RelatedByIdFetched value, $Res Function(RelatedByIdFetched) _then) = _$RelatedByIdFetchedCopyWithImpl;
+factory $RelatedByIdFetchedCopyWith(RelatedByIdFetched value, $Res Function(RelatedByIdFetched) _then) = _$RelatedByIdFetchedCopyWithImpl;
 @useResult
 $Res call({
- String id
+String id
 });
-
-
 
 
 }
 /// @nodoc
 class _$RelatedByIdFetchedCopyWithImpl<$Res>
-    implements $RelatedByIdFetchedCopyWith<$Res> {
-  _$RelatedByIdFetchedCopyWithImpl(this._self, this._then);
+implements $RelatedByIdFetchedCopyWith<$Res> {
+_$RelatedByIdFetchedCopyWithImpl(this._self, this._then);
 
-  final RelatedByIdFetched _self;
-  final $Res Function(RelatedByIdFetched) _then;
+final RelatedByIdFetched _self;
+final $Res Function(RelatedByIdFetched) _then;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? id = null,}) {
-  return _then(RelatedByIdFetched(
+return _then(RelatedByIdFetched(
 null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,
-  ));
+));
 }
 
 
@@ -783,10 +1403,10 @@ as String,
 
 
 class CreatedProductCategorySelected implements ProductsEvent {
-  const CreatedProductCategorySelected({required this.categoryId});
-  
+const CreatedProductCategorySelected({required this.categoryId});
 
- final  String categoryId;
+
+final String categoryId;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -795,10 +1415,9 @@ class CreatedProductCategorySelected implements ProductsEvent {
 $CreatedProductCategorySelectedCopyWith<CreatedProductCategorySelected> get copyWith => _$CreatedProductCategorySelectedCopyWithImpl<CreatedProductCategorySelected>(this, _$identity);
 
 
-
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreatedProductCategorySelected&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId));
+return identical(this, other) || (other.runtimeType == runtimeType&&other is CreatedProductCategorySelected&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId));
 }
 
 
@@ -807,7 +1426,7 @@ int get hashCode => Object.hash(runtimeType,categoryId);
 
 @override
 String toString() {
-  return 'ProductsEvent.createdProductCategorySelected(categoryId: $categoryId)';
+return 'ProductsEvent.createdProductCategorySelected(categoryId: $categoryId)';
 }
 
 
@@ -815,31 +1434,29 @@ String toString() {
 
 /// @nodoc
 abstract mixin class $CreatedProductCategorySelectedCopyWith<$Res> implements $ProductsEventCopyWith<$Res> {
-  factory $CreatedProductCategorySelectedCopyWith(CreatedProductCategorySelected value, $Res Function(CreatedProductCategorySelected) _then) = _$CreatedProductCategorySelectedCopyWithImpl;
+factory $CreatedProductCategorySelectedCopyWith(CreatedProductCategorySelected value, $Res Function(CreatedProductCategorySelected) _then) = _$CreatedProductCategorySelectedCopyWithImpl;
 @useResult
 $Res call({
- String categoryId
+String categoryId
 });
-
-
 
 
 }
 /// @nodoc
 class _$CreatedProductCategorySelectedCopyWithImpl<$Res>
-    implements $CreatedProductCategorySelectedCopyWith<$Res> {
-  _$CreatedProductCategorySelectedCopyWithImpl(this._self, this._then);
+implements $CreatedProductCategorySelectedCopyWith<$Res> {
+_$CreatedProductCategorySelectedCopyWithImpl(this._self, this._then);
 
-  final CreatedProductCategorySelected _self;
-  final $Res Function(CreatedProductCategorySelected) _then;
+final CreatedProductCategorySelected _self;
+final $Res Function(CreatedProductCategorySelected) _then;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? categoryId = null,}) {
-  return _then(CreatedProductCategorySelected(
+return _then(CreatedProductCategorySelected(
 categoryId: null == categoryId ? _self.categoryId : categoryId // ignore: cast_nullable_to_non_nullable
 as String,
-  ));
+));
 }
 
 
@@ -849,12 +1466,12 @@ as String,
 
 
 class ProductCreated implements ProductsEvent {
-  const ProductCreated({required this.title, required this.description, required this.price});
-  
+const ProductCreated({required this.title, required this.description, required this.price});
 
- final  String title;
- final  String description;
- final  int price;
+
+final String title;
+final String description;
+final int price;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -863,10 +1480,9 @@ class ProductCreated implements ProductsEvent {
 $ProductCreatedCopyWith<ProductCreated> get copyWith => _$ProductCreatedCopyWithImpl<ProductCreated>(this, _$identity);
 
 
-
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductCreated&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price));
+return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductCreated&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price));
 }
 
 
@@ -875,7 +1491,7 @@ int get hashCode => Object.hash(runtimeType,title,description,price);
 
 @override
 String toString() {
-  return 'ProductsEvent.productCreated(title: $title, description: $description, price: $price)';
+return 'ProductsEvent.productCreated(title: $title, description: $description, price: $price)';
 }
 
 
@@ -883,33 +1499,31 @@ String toString() {
 
 /// @nodoc
 abstract mixin class $ProductCreatedCopyWith<$Res> implements $ProductsEventCopyWith<$Res> {
-  factory $ProductCreatedCopyWith(ProductCreated value, $Res Function(ProductCreated) _then) = _$ProductCreatedCopyWithImpl;
+factory $ProductCreatedCopyWith(ProductCreated value, $Res Function(ProductCreated) _then) = _$ProductCreatedCopyWithImpl;
 @useResult
 $Res call({
- String title, String description, int price
+String title, String description, int price
 });
-
-
 
 
 }
 /// @nodoc
 class _$ProductCreatedCopyWithImpl<$Res>
-    implements $ProductCreatedCopyWith<$Res> {
-  _$ProductCreatedCopyWithImpl(this._self, this._then);
+implements $ProductCreatedCopyWith<$Res> {
+_$ProductCreatedCopyWithImpl(this._self, this._then);
 
-  final ProductCreated _self;
-  final $Res Function(ProductCreated) _then;
+final ProductCreated _self;
+final $Res Function(ProductCreated) _then;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? description = null,Object? price = null,}) {
-  return _then(ProductCreated(
+return _then(ProductCreated(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as int,
-  ));
+));
 }
 
 
@@ -919,10 +1533,10 @@ as int,
 
 
 class ProductDeleted implements ProductsEvent {
-  const ProductDeleted({required this.id});
-  
+const ProductDeleted({required this.id});
 
- final  int id;
+
+final int id;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -931,10 +1545,9 @@ class ProductDeleted implements ProductsEvent {
 $ProductDeletedCopyWith<ProductDeleted> get copyWith => _$ProductDeletedCopyWithImpl<ProductDeleted>(this, _$identity);
 
 
-
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductDeleted&&(identical(other.id, id) || other.id == id));
+return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductDeleted&&(identical(other.id, id) || other.id == id));
 }
 
 
@@ -943,7 +1556,7 @@ int get hashCode => Object.hash(runtimeType,id);
 
 @override
 String toString() {
-  return 'ProductsEvent.productDeleted(id: $id)';
+return 'ProductsEvent.productDeleted(id: $id)';
 }
 
 
@@ -951,31 +1564,29 @@ String toString() {
 
 /// @nodoc
 abstract mixin class $ProductDeletedCopyWith<$Res> implements $ProductsEventCopyWith<$Res> {
-  factory $ProductDeletedCopyWith(ProductDeleted value, $Res Function(ProductDeleted) _then) = _$ProductDeletedCopyWithImpl;
+factory $ProductDeletedCopyWith(ProductDeleted value, $Res Function(ProductDeleted) _then) = _$ProductDeletedCopyWithImpl;
 @useResult
 $Res call({
- int id
+int id
 });
-
-
 
 
 }
 /// @nodoc
 class _$ProductDeletedCopyWithImpl<$Res>
-    implements $ProductDeletedCopyWith<$Res> {
-  _$ProductDeletedCopyWithImpl(this._self, this._then);
+implements $ProductDeletedCopyWith<$Res> {
+_$ProductDeletedCopyWithImpl(this._self, this._then);
 
-  final ProductDeleted _self;
-  final $Res Function(ProductDeleted) _then;
+final ProductDeleted _self;
+final $Res Function(ProductDeleted) _then;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? id = null,}) {
-  return _then(ProductDeleted(
+return _then(ProductDeleted(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,
-  ));
+));
 }
 
 
@@ -985,10 +1596,10 @@ as int,
 
 
 class CategoryCreated implements ProductsEvent {
-  const CategoryCreated({required this.name});
-  
+const CategoryCreated({required this.name});
 
- final  String name;
+
+final String name;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -997,10 +1608,9 @@ class CategoryCreated implements ProductsEvent {
 $CategoryCreatedCopyWith<CategoryCreated> get copyWith => _$CategoryCreatedCopyWithImpl<CategoryCreated>(this, _$identity);
 
 
-
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoryCreated&&(identical(other.name, name) || other.name == name));
+return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoryCreated&&(identical(other.name, name) || other.name == name));
 }
 
 
@@ -1009,7 +1619,7 @@ int get hashCode => Object.hash(runtimeType,name);
 
 @override
 String toString() {
-  return 'ProductsEvent.categoryCreated(name: $name)';
+return 'ProductsEvent.categoryCreated(name: $name)';
 }
 
 
@@ -1017,31 +1627,29 @@ String toString() {
 
 /// @nodoc
 abstract mixin class $CategoryCreatedCopyWith<$Res> implements $ProductsEventCopyWith<$Res> {
-  factory $CategoryCreatedCopyWith(CategoryCreated value, $Res Function(CategoryCreated) _then) = _$CategoryCreatedCopyWithImpl;
+factory $CategoryCreatedCopyWith(CategoryCreated value, $Res Function(CategoryCreated) _then) = _$CategoryCreatedCopyWithImpl;
 @useResult
 $Res call({
- String name
+String name
 });
-
-
 
 
 }
 /// @nodoc
 class _$CategoryCreatedCopyWithImpl<$Res>
-    implements $CategoryCreatedCopyWith<$Res> {
-  _$CategoryCreatedCopyWithImpl(this._self, this._then);
+implements $CategoryCreatedCopyWith<$Res> {
+_$CategoryCreatedCopyWithImpl(this._self, this._then);
 
-  final CategoryCreated _self;
-  final $Res Function(CategoryCreated) _then;
+final CategoryCreated _self;
+final $Res Function(CategoryCreated) _then;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? name = null,}) {
-  return _then(CategoryCreated(
+return _then(CategoryCreated(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,
-  ));
+));
 }
 
 
@@ -1051,10 +1659,10 @@ as String,
 
 
 class CategoryDeleted implements ProductsEvent {
-  const CategoryDeleted({required this.id});
-  
+const CategoryDeleted({required this.id});
 
- final  int id;
+
+final int id;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -1063,10 +1671,9 @@ class CategoryDeleted implements ProductsEvent {
 $CategoryDeletedCopyWith<CategoryDeleted> get copyWith => _$CategoryDeletedCopyWithImpl<CategoryDeleted>(this, _$identity);
 
 
-
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoryDeleted&&(identical(other.id, id) || other.id == id));
+return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoryDeleted&&(identical(other.id, id) || other.id == id));
 }
 
 
@@ -1075,7 +1682,7 @@ int get hashCode => Object.hash(runtimeType,id);
 
 @override
 String toString() {
-  return 'ProductsEvent.categoryDeleted(id: $id)';
+return 'ProductsEvent.categoryDeleted(id: $id)';
 }
 
 
@@ -1083,31 +1690,29 @@ String toString() {
 
 /// @nodoc
 abstract mixin class $CategoryDeletedCopyWith<$Res> implements $ProductsEventCopyWith<$Res> {
-  factory $CategoryDeletedCopyWith(CategoryDeleted value, $Res Function(CategoryDeleted) _then) = _$CategoryDeletedCopyWithImpl;
+factory $CategoryDeletedCopyWith(CategoryDeleted value, $Res Function(CategoryDeleted) _then) = _$CategoryDeletedCopyWithImpl;
 @useResult
 $Res call({
- int id
+int id
 });
-
-
 
 
 }
 /// @nodoc
 class _$CategoryDeletedCopyWithImpl<$Res>
-    implements $CategoryDeletedCopyWith<$Res> {
-  _$CategoryDeletedCopyWithImpl(this._self, this._then);
+implements $CategoryDeletedCopyWith<$Res> {
+_$CategoryDeletedCopyWithImpl(this._self, this._then);
 
-  final CategoryDeleted _self;
-  final $Res Function(CategoryDeleted) _then;
+final CategoryDeleted _self;
+final $Res Function(CategoryDeleted) _then;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? id = null,}) {
-  return _then(CategoryDeleted(
+return _then(CategoryDeleted(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,
-  ));
+));
 }
 
 
@@ -1117,11 +1722,11 @@ as int,
 
 
 class CategorySearchStarted implements ProductsEvent {
-  const CategorySearchStarted({this.search, this.useForInnerSearch});
-  
+const CategorySearchStarted({this.search, this.useForInnerSearch});
 
- final  String? search;
- final  bool? useForInnerSearch;
+
+final String? search;
+final bool? useForInnerSearch;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -1130,10 +1735,9 @@ class CategorySearchStarted implements ProductsEvent {
 $CategorySearchStartedCopyWith<CategorySearchStarted> get copyWith => _$CategorySearchStartedCopyWithImpl<CategorySearchStarted>(this, _$identity);
 
 
-
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CategorySearchStarted&&(identical(other.search, search) || other.search == search)&&(identical(other.useForInnerSearch, useForInnerSearch) || other.useForInnerSearch == useForInnerSearch));
+return identical(this, other) || (other.runtimeType == runtimeType&&other is CategorySearchStarted&&(identical(other.search, search) || other.search == search)&&(identical(other.useForInnerSearch, useForInnerSearch) || other.useForInnerSearch == useForInnerSearch));
 }
 
 
@@ -1142,7 +1746,7 @@ int get hashCode => Object.hash(runtimeType,search,useForInnerSearch);
 
 @override
 String toString() {
-  return 'ProductsEvent.categorySearchStarted(search: $search, useForInnerSearch: $useForInnerSearch)';
+return 'ProductsEvent.categorySearchStarted(search: $search, useForInnerSearch: $useForInnerSearch)';
 }
 
 
@@ -1150,32 +1754,30 @@ String toString() {
 
 /// @nodoc
 abstract mixin class $CategorySearchStartedCopyWith<$Res> implements $ProductsEventCopyWith<$Res> {
-  factory $CategorySearchStartedCopyWith(CategorySearchStarted value, $Res Function(CategorySearchStarted) _then) = _$CategorySearchStartedCopyWithImpl;
+factory $CategorySearchStartedCopyWith(CategorySearchStarted value, $Res Function(CategorySearchStarted) _then) = _$CategorySearchStartedCopyWithImpl;
 @useResult
 $Res call({
- String? search, bool? useForInnerSearch
+String? search, bool? useForInnerSearch
 });
-
-
 
 
 }
 /// @nodoc
 class _$CategorySearchStartedCopyWithImpl<$Res>
-    implements $CategorySearchStartedCopyWith<$Res> {
-  _$CategorySearchStartedCopyWithImpl(this._self, this._then);
+implements $CategorySearchStartedCopyWith<$Res> {
+_$CategorySearchStartedCopyWithImpl(this._self, this._then);
 
-  final CategorySearchStarted _self;
-  final $Res Function(CategorySearchStarted) _then;
+final CategorySearchStarted _self;
+final $Res Function(CategorySearchStarted) _then;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? search = freezed,Object? useForInnerSearch = freezed,}) {
-  return _then(CategorySearchStarted(
+return _then(CategorySearchStarted(
 search: freezed == search ? _self.search : search // ignore: cast_nullable_to_non_nullable
 as String?,useForInnerSearch: freezed == useForInnerSearch ? _self.useForInnerSearch : useForInnerSearch // ignore: cast_nullable_to_non_nullable
 as bool?,
-  ));
+));
 }
 
 
@@ -1185,17 +1787,12 @@ as bool?,
 
 
 class InnerSearchDisabled implements ProductsEvent {
-  const InnerSearchDisabled();
-  
-
-
-
-
+const InnerSearchDisabled();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is InnerSearchDisabled);
+return identical(this, other) || (other.runtimeType == runtimeType&&other is InnerSearchDisabled);
 }
 
 
@@ -1204,7 +1801,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductsEvent.innerSearchDisabled()';
+return 'ProductsEvent.innerSearchDisabled()';
 }
 
 
@@ -1216,13 +1813,11 @@ $InnerSearchDisabledCopyWith(InnerSearchDisabled _, $Res Function(InnerSearchDis
 }
 /// @nodoc
 class _$InnerSearchDisabledCopyWithImpl<$Res>
-    implements $InnerSearchDisabledCopyWith<$Res> {
-  _$InnerSearchDisabledCopyWithImpl(this._self, this._then);
+implements $InnerSearchDisabledCopyWith<$Res> {
+_$InnerSearchDisabledCopyWithImpl(this._self, this._then);
 
-  final InnerSearchDisabled _self;
-  final $Res Function(InnerSearchDisabled) _then;
-
-
+final InnerSearchDisabled _self;
+final $Res Function(InnerSearchDisabled) _then;
 
 
 }
@@ -1231,17 +1826,12 @@ class _$InnerSearchDisabledCopyWithImpl<$Res>
 
 
 class ImagePicked implements ProductsEvent {
-  const ImagePicked();
-  
-
-
-
-
+const ImagePicked();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImagePicked);
+return identical(this, other) || (other.runtimeType == runtimeType&&other is ImagePicked);
 }
 
 
@@ -1250,7 +1840,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductsEvent.imagePicked()';
+return 'ProductsEvent.imagePicked()';
 }
 
 
@@ -1262,13 +1852,11 @@ $ImagePickedCopyWith(ImagePicked _, $Res Function(ImagePicked) __);
 }
 /// @nodoc
 class _$ImagePickedCopyWithImpl<$Res>
-    implements $ImagePickedCopyWith<$Res> {
-  _$ImagePickedCopyWithImpl(this._self, this._then);
+implements $ImagePickedCopyWith<$Res> {
+_$ImagePickedCopyWithImpl(this._self, this._then);
 
-  final ImagePicked _self;
-  final $Res Function(ImagePicked) _then;
-
-
+final ImagePicked _self;
+final $Res Function(ImagePicked) _then;
 
 
 }
@@ -1277,10 +1865,10 @@ class _$ImagePickedCopyWithImpl<$Res>
 
 
 class ImageRemoved implements ProductsEvent {
-  const ImageRemoved({required this.image});
-  
+const ImageRemoved({required this.image});
 
- final  AppImageEntity image;
+
+final AppImageEntity image;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -1289,10 +1877,9 @@ class ImageRemoved implements ProductsEvent {
 $ImageRemovedCopyWith<ImageRemoved> get copyWith => _$ImageRemovedCopyWithImpl<ImageRemoved>(this, _$identity);
 
 
-
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageRemoved&&(identical(other.image, image) || other.image == image));
+return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageRemoved&&(identical(other.image, image) || other.image == image));
 }
 
 
@@ -1301,7 +1888,7 @@ int get hashCode => Object.hash(runtimeType,image);
 
 @override
 String toString() {
-  return 'ProductsEvent.imageRemoved(image: $image)';
+return 'ProductsEvent.imageRemoved(image: $image)';
 }
 
 
@@ -1309,31 +1896,29 @@ String toString() {
 
 /// @nodoc
 abstract mixin class $ImageRemovedCopyWith<$Res> implements $ProductsEventCopyWith<$Res> {
-  factory $ImageRemovedCopyWith(ImageRemoved value, $Res Function(ImageRemoved) _then) = _$ImageRemovedCopyWithImpl;
+factory $ImageRemovedCopyWith(ImageRemoved value, $Res Function(ImageRemoved) _then) = _$ImageRemovedCopyWithImpl;
 @useResult
 $Res call({
- AppImageEntity image
+AppImageEntity image
 });
-
-
 
 
 }
 /// @nodoc
 class _$ImageRemovedCopyWithImpl<$Res>
-    implements $ImageRemovedCopyWith<$Res> {
-  _$ImageRemovedCopyWithImpl(this._self, this._then);
+implements $ImageRemovedCopyWith<$Res> {
+_$ImageRemovedCopyWithImpl(this._self, this._then);
 
-  final ImageRemoved _self;
-  final $Res Function(ImageRemoved) _then;
+final ImageRemoved _self;
+final $Res Function(ImageRemoved) _then;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? image = null,}) {
-  return _then(ImageRemoved(
+return _then(ImageRemoved(
 image: null == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
 as AppImageEntity,
-  ));
+));
 }
 
 
@@ -1343,17 +1928,12 @@ as AppImageEntity,
 
 
 class DataRemoved implements ProductsEvent {
-  const DataRemoved();
-  
-
-
-
-
+const DataRemoved();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DataRemoved);
+return identical(this, other) || (other.runtimeType == runtimeType&&other is DataRemoved);
 }
 
 
@@ -1362,7 +1942,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductsEvent.dataRemoved()';
+return 'ProductsEvent.dataRemoved()';
 }
 
 
@@ -1374,13 +1954,11 @@ $DataRemovedCopyWith(DataRemoved _, $Res Function(DataRemoved) __);
 }
 /// @nodoc
 class _$DataRemovedCopyWithImpl<$Res>
-    implements $DataRemovedCopyWith<$Res> {
-  _$DataRemovedCopyWithImpl(this._self, this._then);
+implements $DataRemovedCopyWith<$Res> {
+_$DataRemovedCopyWithImpl(this._self, this._then);
 
-  final DataRemoved _self;
-  final $Res Function(DataRemoved) _then;
-
-
+final DataRemoved _self;
+final $Res Function(DataRemoved) _then;
 
 
 }
@@ -1389,10 +1967,10 @@ class _$DataRemovedCopyWithImpl<$Res>
 
 
 class FilterAdded implements ProductsEvent {
-  const FilterAdded({required this.filter});
-  
+const FilterAdded({required this.filter});
 
- final  AvailabilityFilterEntity filter;
+
+final AvailabilityFilterEntity filter;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -1401,10 +1979,9 @@ class FilterAdded implements ProductsEvent {
 $FilterAddedCopyWith<FilterAdded> get copyWith => _$FilterAddedCopyWithImpl<FilterAdded>(this, _$identity);
 
 
-
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FilterAdded&&(identical(other.filter, filter) || other.filter == filter));
+return identical(this, other) || (other.runtimeType == runtimeType&&other is FilterAdded&&(identical(other.filter, filter) || other.filter == filter));
 }
 
 
@@ -1413,7 +1990,7 @@ int get hashCode => Object.hash(runtimeType,filter);
 
 @override
 String toString() {
-  return 'ProductsEvent.filterAdded(filter: $filter)';
+return 'ProductsEvent.filterAdded(filter: $filter)';
 }
 
 
@@ -1421,31 +1998,29 @@ String toString() {
 
 /// @nodoc
 abstract mixin class $FilterAddedCopyWith<$Res> implements $ProductsEventCopyWith<$Res> {
-  factory $FilterAddedCopyWith(FilterAdded value, $Res Function(FilterAdded) _then) = _$FilterAddedCopyWithImpl;
+factory $FilterAddedCopyWith(FilterAdded value, $Res Function(FilterAdded) _then) = _$FilterAddedCopyWithImpl;
 @useResult
 $Res call({
- AvailabilityFilterEntity filter
+AvailabilityFilterEntity filter
 });
-
-
 
 
 }
 /// @nodoc
 class _$FilterAddedCopyWithImpl<$Res>
-    implements $FilterAddedCopyWith<$Res> {
-  _$FilterAddedCopyWithImpl(this._self, this._then);
+implements $FilterAddedCopyWith<$Res> {
+_$FilterAddedCopyWithImpl(this._self, this._then);
 
-  final FilterAdded _self;
-  final $Res Function(FilterAdded) _then;
+final FilterAdded _self;
+final $Res Function(FilterAdded) _then;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? filter = null,}) {
-  return _then(FilterAdded(
+return _then(FilterAdded(
 filter: null == filter ? _self.filter : filter // ignore: cast_nullable_to_non_nullable
 as AvailabilityFilterEntity,
-  ));
+));
 }
 
 
@@ -1455,10 +2030,10 @@ as AvailabilityFilterEntity,
 
 
 class FilterRemoved implements ProductsEvent {
-  const FilterRemoved({required this.filter});
-  
+const FilterRemoved({required this.filter});
 
- final  AvailabilityFilterEntity filter;
+
+final AvailabilityFilterEntity filter;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -1467,10 +2042,9 @@ class FilterRemoved implements ProductsEvent {
 $FilterRemovedCopyWith<FilterRemoved> get copyWith => _$FilterRemovedCopyWithImpl<FilterRemoved>(this, _$identity);
 
 
-
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FilterRemoved&&(identical(other.filter, filter) || other.filter == filter));
+return identical(this, other) || (other.runtimeType == runtimeType&&other is FilterRemoved&&(identical(other.filter, filter) || other.filter == filter));
 }
 
 
@@ -1479,7 +2053,7 @@ int get hashCode => Object.hash(runtimeType,filter);
 
 @override
 String toString() {
-  return 'ProductsEvent.filterRemoved(filter: $filter)';
+return 'ProductsEvent.filterRemoved(filter: $filter)';
 }
 
 
@@ -1487,31 +2061,29 @@ String toString() {
 
 /// @nodoc
 abstract mixin class $FilterRemovedCopyWith<$Res> implements $ProductsEventCopyWith<$Res> {
-  factory $FilterRemovedCopyWith(FilterRemoved value, $Res Function(FilterRemoved) _then) = _$FilterRemovedCopyWithImpl;
+factory $FilterRemovedCopyWith(FilterRemoved value, $Res Function(FilterRemoved) _then) = _$FilterRemovedCopyWithImpl;
 @useResult
 $Res call({
- AvailabilityFilterEntity filter
+AvailabilityFilterEntity filter
 });
-
-
 
 
 }
 /// @nodoc
 class _$FilterRemovedCopyWithImpl<$Res>
-    implements $FilterRemovedCopyWith<$Res> {
-  _$FilterRemovedCopyWithImpl(this._self, this._then);
+implements $FilterRemovedCopyWith<$Res> {
+_$FilterRemovedCopyWithImpl(this._self, this._then);
 
-  final FilterRemoved _self;
-  final $Res Function(FilterRemoved) _then;
+final FilterRemoved _self;
+final $Res Function(FilterRemoved) _then;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? filter = null,}) {
-  return _then(FilterRemoved(
+return _then(FilterRemoved(
 filter: null == filter ? _self.filter : filter // ignore: cast_nullable_to_non_nullable
 as AvailabilityFilterEntity,
-  ));
+));
 }
 
 
@@ -1521,14 +2093,14 @@ as AvailabilityFilterEntity,
 
 
 class FiltersSaved implements ProductsEvent {
-  const FiltersSaved({required final  List<AvailabilityFilterEntity> filters}): _filters = filters;
-  
+const FiltersSaved({required final List<AvailabilityFilterEntity> filters}): _filters = filters;
 
- final  List<AvailabilityFilterEntity> _filters;
- List<AvailabilityFilterEntity> get filters {
-  if (_filters is EqualUnmodifiableListView) return _filters;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_filters);
+
+final List<AvailabilityFilterEntity> _filters;
+List<AvailabilityFilterEntity> get filters {
+if (_filters is EqualUnmodifiableListView) return _filters;
+// ignore: implicit_dynamic_type
+return EqualUnmodifiableListView(_filters);
 }
 
 
@@ -1539,10 +2111,9 @@ class FiltersSaved implements ProductsEvent {
 $FiltersSavedCopyWith<FiltersSaved> get copyWith => _$FiltersSavedCopyWithImpl<FiltersSaved>(this, _$identity);
 
 
-
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FiltersSaved&&const DeepCollectionEquality().equals(other._filters, _filters));
+return identical(this, other) || (other.runtimeType == runtimeType&&other is FiltersSaved&&const DeepCollectionEquality().equals(other._filters, _filters));
 }
 
 
@@ -1551,7 +2122,7 @@ int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(
 
 @override
 String toString() {
-  return 'ProductsEvent.filtersSaved(filters: $filters)';
+return 'ProductsEvent.filtersSaved(filters: $filters)';
 }
 
 
@@ -1559,31 +2130,29 @@ String toString() {
 
 /// @nodoc
 abstract mixin class $FiltersSavedCopyWith<$Res> implements $ProductsEventCopyWith<$Res> {
-  factory $FiltersSavedCopyWith(FiltersSaved value, $Res Function(FiltersSaved) _then) = _$FiltersSavedCopyWithImpl;
+factory $FiltersSavedCopyWith(FiltersSaved value, $Res Function(FiltersSaved) _then) = _$FiltersSavedCopyWithImpl;
 @useResult
 $Res call({
- List<AvailabilityFilterEntity> filters
+List<AvailabilityFilterEntity> filters
 });
-
-
 
 
 }
 /// @nodoc
 class _$FiltersSavedCopyWithImpl<$Res>
-    implements $FiltersSavedCopyWith<$Res> {
-  _$FiltersSavedCopyWithImpl(this._self, this._then);
+implements $FiltersSavedCopyWith<$Res> {
+_$FiltersSavedCopyWithImpl(this._self, this._then);
 
-  final FiltersSaved _self;
-  final $Res Function(FiltersSaved) _then;
+final FiltersSaved _self;
+final $Res Function(FiltersSaved) _then;
 
 /// Create a copy of ProductsEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? filters = null,}) {
-  return _then(FiltersSaved(
+return _then(FiltersSaved(
 filters: null == filters ? _self._filters : filters // ignore: cast_nullable_to_non_nullable
 as List<AvailabilityFilterEntity>,
-  ));
+));
 }
 
 

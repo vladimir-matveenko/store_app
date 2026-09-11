@@ -7,7 +7,7 @@ import 'package:store_app/features/products/presentation/bloc/products_bloc.dart
 import 'package:store_app/features/products/presentation/bloc/products_event.dart';
 import 'package:store_app/features/products/presentation/bloc/products_state.dart';
 
-import '../../../../core/presentation/widgets/app_text_form_field.dart';
+import '../../../../core/presentation/widgets/text_fields/app_text_form_field.dart';
 import '../widgets/images_list.dart';
 
 class AddCategoryPage extends StatefulWidget {
@@ -127,7 +127,7 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
                         AppTextFormField(
                           controller: _nameController,
                           enabled: !isLoading,
-                          keyboardType: TextInputType.emailAddress,
+                          keyboardType: TextInputType.text,
                           decoration: InputDecoration(
                             labelText: 'addCategoryScreen.fieldName'.tr(),
                           ),

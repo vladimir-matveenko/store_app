@@ -1,13 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_app/features/auth/presentation/bloc/auth_event.dart';
-import 'package:store_app/features/auth/presentation/widgets/user_avatar.dart';
-import 'package:store_app/utils.dart';
+import 'package:store_app/features/auth/presentation/bloc/auth_bloc.dart';
 
+import '../../../../core/data/utils/utils.dart';
 import '../../../../core/presentation/widgets/app_loader.dart';
-import '../../../auth/presentation/bloc/auth_bloc.dart';
-import '../../../auth/presentation/bloc/auth_state.dart';
+import '../../../../core/presentation/widgets/user_avatar.dart';
+import '../../../auth/presentation/bloc/auth_event.dart';
+import '../bloc/profile_bloc.dart';
+import '../bloc/profile_state.dart';
 import '../widgets/language_selector.dart';
 import '../widgets/theme_selector.dart';
 
@@ -40,9 +41,9 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthBloc, AuthState>(
+    return BlocBuilder<ProfileBloc, ProfileState>(
       builder: (context, state) {
-        if (state.status == AuthStatus.unknown) {
+        if (state.isLoading) {
           return const AppLoader();
         }
         final avatar = state.user?.avatar ?? '';
@@ -68,7 +69,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 style: textTheme.bodyLarge,
               ),
               Text(
-                '${'profileScreen.role'.tr()}: ${state.user?.role}',
+                '${'profileScreen.role'.tr()}: ${state.user?.role.name}',
                 style: textTheme.bodyLarge,
               ),
               if (_showSelector) ...[
@@ -86,7 +87,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   IconButton(
                     onPressed: () {
-                      context.read<AuthBloc>().add(const AuthLogoutRequested());
+                      context.read<AuthBloc>().add(const LogoutRequested());
                     },
                     style: IconButton.styleFrom(
                       backgroundColor: theme.colorScheme.surfaceTint,

@@ -4,27 +4,40 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:store_app/core/presentation/widgets/app_text_form_field.dart';
+import 'package:store_app/core/presentation/widgets/text_fields/email_text_field.dart';
+import 'package:store_app/core/presentation/widgets/text_fields/password_field.dart';
 import 'package:store_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:store_app/features/auth/presentation/bloc/auth_event.dart';
 import 'package:store_app/features/auth/presentation/bloc/auth_state.dart';
-import 'package:store_app/features/auth/presentation/pages/login_page.dart';
+import 'package:store_app/features/login/presentation/bloc/login_bloc.dart';
+import 'package:store_app/features/login/presentation/bloc/login_event.dart';
+import 'package:store_app/features/login/presentation/bloc/login_state.dart';
+import 'package:store_app/features/login/presentation/pages/login_page.dart';
+
+class MockLoginBloc extends Mock implements LoginBloc {}
+
+class FakeLoginState extends Fake implements LoginState {}
+
+class FakeLoginEvent extends Fake implements LoginEvent {}
 
 class MockAuthBloc extends Mock implements AuthBloc {}
 
-class FakeAuthState extends Fake implements AuthState {}
-
 class FakeAuthEvent extends Fake implements AuthEvent {}
+
+class FakeAuthState extends Fake implements AuthState {}
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUpAll(() {
-    registerFallbackValue(FakeAuthState());
+    registerFallbackValue(FakeLoginEvent());
+    registerFallbackValue(FakeLoginState());
     registerFallbackValue(FakeAuthEvent());
+    registerFallbackValue(FakeAuthState());
   });
 
-  late MockAuthBloc mockBloc;
+  late MockLoginBloc mockBloc;
+  late MockAuthBloc authBloc;
 
   Widget createWidget() {
     return EasyLocalization(
@@ -33,8 +46,11 @@ void main() {
       path: 'assets/translations/en.json',
       fallbackLocale: const Locale('en'),
       child: MaterialApp(
-        home: BlocProvider<AuthBloc>.value(
-          value: mockBloc,
+        home: MultiBlocProvider(
+          providers: [
+            BlocProvider<AuthBloc>.value(value: authBloc),
+            BlocProvider<LoginBloc>.value(value: mockBloc),
+          ],
           child: const LoginPage(),
         ),
       ),
@@ -42,87 +58,103 @@ void main() {
   }
 
   setUp(() {
-    mockBloc = MockAuthBloc();
+    mockBloc = MockLoginBloc();
+    authBloc = MockAuthBloc();
 
-    when(() => mockBloc.state).thenReturn(
-      const AuthState(status: AuthStatus.unauthenticated, isLoading: false),
-    );
+    // AuthBloc
+    when(() => authBloc.state).thenReturn(const AuthState());
+
+    when(
+      () => authBloc.stream,
+    ).thenAnswer((_) => const Stream<AuthState>.empty());
+
+    // LoginBloc
+    when(
+      () => mockBloc.state,
+    ).thenReturn(const LoginState(status: LoginStatus.success));
 
     whenListen(
       mockBloc,
-      Stream<AuthState>.fromIterable([
-        const AuthState(status: AuthStatus.unauthenticated, isLoading: false),
+      Stream<LoginState>.fromIterable([
+        const LoginState(status: LoginStatus.success),
       ]),
     );
   });
 
-  testWidgets('LoginPage renders correctly', (tester) async {
-    await tester.pumpWidget(createWidget());
-    await tester.pumpAndSettle();
+  group('LoginPage Tests', () {
+    testWidgets('LoginPage renders correctly', (tester) async {
+      await tester.pumpWidget(createWidget());
+      await tester.pumpAndSettle();
 
-    expect(find.byType(LoginPage), findsOneWidget);
-  });
+      expect(find.byType(LoginPage), findsOneWidget);
+    });
 
-  testWidgets('LoginPage has email and password fields', (tester) async {
-    await tester.pumpWidget(createWidget());
-    await tester.pumpAndSettle();
+    testWidgets('LoginPage has email and password fields', (tester) async {
+      await tester.pumpWidget(createWidget());
+      await tester.pumpAndSettle();
 
-    expect(find.byType(AppTextFormField), findsNWidgets(2));
-  });
+      expect(find.byType(EmailTextField), findsNWidgets(1));
+      expect(find.byType(PasswordTextField), findsNWidgets(1));
+    });
 
-  testWidgets('LoginPage has login button', (tester) async {
-    await tester.pumpWidget(createWidget());
-    await tester.pumpAndSettle();
+    testWidgets('LoginPage has login button', (tester) async {
+      await tester.pumpWidget(createWidget());
+      await tester.pumpAndSettle();
 
-    expect(find.byType(ElevatedButton), findsOneWidget);
-  });
+      expect(find.byType(ElevatedButton), findsOneWidget);
+    });
 
-  testWidgets('Shows loader inside button when loading', (tester) async {
-    when(() => mockBloc.state).thenReturn(
-      const AuthState(status: AuthStatus.unauthenticated, isLoading: true),
-    );
+    testWidgets('Shows loader inside button when loading', (tester) async {
+      when(
+        () => mockBloc.state,
+      ).thenReturn(const LoginState(status: LoginStatus.inProgress, error: ''));
 
-    whenListen(
-      mockBloc,
-      Stream.value(
-        const AuthState(status: AuthStatus.unauthenticated, isLoading: true),
-      ),
-    );
-
-    await tester.pumpWidget(createWidget());
-    await tester.pump();
-
-    expect(find.byType(CircularProgressIndicator), findsOneWidget);
-  });
-
-  testWidgets('Login with valid data triggers AuthLoginRequested', (
-    tester,
-  ) async {
-    await tester.pumpWidget(createWidget());
-    await tester.pumpAndSettle();
-
-    // Enter email
-    await tester.enterText(
-      find.byType(AppTextFormField).at(0),
-      'john@mail.com',
-    );
-
-    // Enter пароль
-    await tester.enterText(find.byType(AppTextFormField).at(1), 'changeme');
-
-    // Oush the button
-    await tester.tap(find.byType(ElevatedButton));
-    await tester.pump();
-
-    // Check that event is sent
-    verify(
-      () => mockBloc.add(
-        any(
-          that: isA<AuthLoginRequested>()
-              .having((e) => e.email, 'email', 'john@mail.com')
-              .having((e) => e.password, 'password', 'changeme'),
+      whenListen(
+        mockBloc,
+        Stream<LoginState>.value(
+          const LoginState(status: LoginStatus.inProgress, error: ''),
         ),
-      ),
-    ).called(1);
+        initialState: const LoginState(
+          status: LoginStatus.inProgress,
+          error: '',
+        ),
+      );
+
+      await tester.pumpWidget(createWidget());
+      await tester.pump();
+
+      expect(find.byType(CircularProgressIndicator), findsOneWidget);
+    });
+
+    testWidgets('Login with valid data triggers LoginLoginRequested', (
+      tester,
+    ) async {
+      await tester.pumpWidget(createWidget());
+      await tester.pumpAndSettle();
+
+      // Enter email
+      await tester.enterText(
+        find.byType(EmailTextField).at(0),
+        'john@mail.com',
+      );
+
+      // Enter пароль
+      await tester.enterText(find.byType(PasswordTextField).at(0), 'changeme');
+
+      // Push the button
+      await tester.tap(find.byType(ElevatedButton));
+      await tester.pump();
+
+      // Check that event is sent
+      verify(
+        () => mockBloc.add(
+          any(
+            that: isA<LoginRequested>()
+                .having((e) => e.email, 'email', 'john@mail.com')
+                .having((e) => e.password, 'password', 'changeme'),
+          ),
+        ),
+      ).called(1);
+    });
   });
 }

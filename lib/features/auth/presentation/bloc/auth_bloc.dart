@@ -3,37 +3,30 @@ import 'dart:async';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:store_app/core/error/failure.dart';
-import 'package:store_app/core/usecases/usecase.dart';
+import 'package:store_app/core/domain/usecases/usecase.dart';
 import 'package:store_app/features/auth/domain/usecases/check_auth_usecase.dart';
-import 'package:store_app/features/auth/domain/usecases/get_user_profile_usecase.dart';
-import 'package:store_app/features/auth/domain/usecases/login_usecase.dart';
-import 'package:store_app/features/auth/domain/usecases/logout_usecase.dart';
 import 'package:store_app/features/auth/presentation/bloc/auth_event.dart';
 import 'package:store_app/features/auth/presentation/bloc/auth_state.dart';
 
+import '../../../profile/domain/usecases/clear_cache_usecase.dart';
+import '../../domain/usecases/logout_usecase.dart';
+
 @lazySingleton
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc(
-    this._loginUseCase,
-    this._logoutUseCase,
-    this._checkAuthUseCase,
-    this._getUserProfileUseCase,
-  ) : super(const AuthState()) {
+  AuthBloc(this._checkAuthUseCase, this._logoutUseCase, this._clearCacheUseCase)
+    : super(const AuthState()) {
     on<AuthEvent>((event, emit) async {
       await event.map(
         checkRequested: (e) => _onAuthCheckRequested(e, emit),
-        loginRequested: (e) => _onAuthLoginRequested(e, emit),
-        userProfileRequested: (e) => _onAuthUserProfileRequested(e, emit),
-        logoutRequested: (e) => _onAuthLogoutRequested(e, emit),
+        logoutRequested: (e) => _onLogoutRequested(e, emit),
+        clearCacheRequested: (e) => _onClearCacheRequested(e, emit),
       );
     });
   }
 
-  final LoginUseCase _loginUseCase;
-  final LogoutUseCase _logoutUseCase;
   final CheckAuthUseCase _checkAuthUseCase;
-  final GetUserProfileUseCase _getUserProfileUseCase;
+  final LogoutUseCase _logoutUseCase;
+  final ClearCacheUseCase _clearCacheUseCase;
 
   Future<void> _onAuthCheckRequested(
     AuthCheckRequested event,
@@ -41,87 +34,52 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async {
     final result = await _checkAuthUseCase(NoParams());
 
-    final isAuth = result.getOrElse(() => false);
-
-    if (!isAuth) {
-      emit(state.copyWith(status: AuthStatus.unauthenticated));
-      return;
-    }
-
-    final userResult = await _getUserProfileUseCase(NoParams());
-
-    userResult.fold(
+    result.fold(
       (l) {
         emit(state.copyWith(status: AuthStatus.unauthenticated));
       },
       (r) {
-        emit(state.copyWith(status: AuthStatus.authenticated, user: r));
-      },
-    );
-  }
-
-  Future<void> _onAuthLoginRequested(
-    AuthLoginRequested event,
-    Emitter<AuthState> emit,
-  ) async {
-    emit(state.copyWith(isLoading: true));
-    final result = await _loginUseCase(
-      LoginParams(email: event.email, password: event.password),
-    );
-    result.fold(
-      (l) {
-        String message = 'errors.authError'.tr();
-        if (l is InvalidCredentialsFailure) {
-          message = 'errors.wrongEmailOrPassword'.tr();
-        } else if (l is ServerFailure) {
-          message = 'errors.serverError'.tr();
+        if (r) {
+          emit(state.copyWith(status: AuthStatus.authenticated));
+        } else {
+          emit(state.copyWith(status: AuthStatus.unauthenticated));
         }
-        emit(state.copyWith(error: message, isLoading: false));
-      },
-      (r) {
-        emit(
-          state.copyWith(status: AuthStatus.authenticated, isLoading: false),
-        );
-        add(const AuthUserProfileRequested());
       },
     );
   }
 
-  Future<void> _onAuthUserProfileRequested(
-    AuthUserProfileRequested event,
+  Future<void> _onLogoutRequested(
+    LogoutRequested event,
     Emitter<AuthState> emit,
   ) async {
-    emit(state.copyWith(isLoading: true));
-    final result = await _getUserProfileUseCase(NoParams());
-    result.fold(
-      (l) {
-        String message = 'errors.serverError'.tr();
-        if (l is InvalidCredentialsFailure) {
-          message = 'errors.accessTokenInvalid'.tr();
-        }
-        emit(state.copyWith(error: message, isLoading: false));
-      },
-      (r) {
-        emit(state.copyWith(user: r, isLoading: false));
-      },
-    );
-  }
-
-  Future<void> _onAuthLogoutRequested(
-    AuthLogoutRequested event,
-    Emitter<AuthState> emit,
-  ) async {
-    emit(state.copyWith(isLoading: true));
     final result = await _logoutUseCase(NoParams());
     result.fold(
       (l) {
         String message = 'errors.logoutError'.tr();
-        emit(state.copyWith(error: message, isLoading: false));
+        emit(
+          state.copyWith(error: message, status: AuthStatus.unauthenticated),
+        );
       },
       (r) {
+        emit(state.copyWith(status: AuthStatus.unauthenticated));
+      },
+    );
+  }
+
+  Future<void> _onClearCacheRequested(
+    ClearCacheRequested event,
+    Emitter<AuthState> emit,
+  ) async {
+    final result = await _clearCacheUseCase.call(NoParams());
+    result.fold(
+      (l) {
+        String message = 'errors.unknownError'.tr();
         emit(
-          state.copyWith(status: AuthStatus.unauthenticated, isLoading: false),
+          state.copyWith(error: message, status: AuthStatus.unauthenticated),
         );
+      },
+      (r) {
+        emit(state.copyWith(status: AuthStatus.unauthenticated));
       },
     );
   }

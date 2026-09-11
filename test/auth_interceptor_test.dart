@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:store_app/core/data/services/auth_session_manager.dart';
 import 'package:store_app/core/network/http_interceptors.dart';
-import 'package:store_app/core/services/auth_session_manager.dart';
 import 'package:store_app/features/auth/data/data_sources/auth_local_data_source.dart';
 import 'package:store_app/features/auth/data/models/auth_token_model.dart';
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:store_app/core/domain/usecases/usecase.dart';
 import 'package:store_app/core/presentation/theme/app_theme.dart';
 import 'package:store_app/core/presentation/theme/app_theme_colors.dart';
-import 'package:store_app/core/usecases/usecase.dart';
 import 'package:store_app/features/theme/cubit/state.dart';
 
 import '../domain/entity/app_theme_mode.dart';

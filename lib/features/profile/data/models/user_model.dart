@@ -1,0 +1,42 @@
+import 'dart:convert';
+
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../../../app/constants/app_enums.dart';
+import '../../../../core/data/utils/utils.dart';
+import '../../domain/entity/user_entity.dart';
+
+part 'user_model.freezed.dart';
+part 'user_model.g.dart';
+
+@freezed
+abstract class UserModel with _$UserModel {
+  const UserModel._();
+
+  const factory UserModel({
+    required int id,
+    required String name,
+    required String email,
+    required String password,
+    required UserRole role,
+    String? avatar,
+  }) = _UserModel;
+
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
+}
+
+extension UserModelExt on UserModel {
+  UserEntity toEntity() => UserEntity(
+    id: id.toString(),
+    name: name,
+    email: email,
+    role: role,
+    avatar: avatar ?? '',
+  );
+}
+
+List<UserModel> userModelFromList(String body) {
+  final decoded = jsonDecode(body) as List<dynamic>;
+  return AppUtils.parseList<UserModel>(decoded, UserModel.fromJson);
+}

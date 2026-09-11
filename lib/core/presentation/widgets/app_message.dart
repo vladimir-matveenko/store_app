@@ -7,22 +7,44 @@ class AppMessage {
     BuildContext context, {
     required String message,
     Color? backgroundColor,
+    VoidCallback? onClose,
   }) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message), backgroundColor: backgroundColor),
-    );
+    ScaffoldMessenger.of(context)
+        .showSnackBar(
+          SnackBar(content: Text(message), backgroundColor: backgroundColor),
+        )
+        .closed
+        .then((_) {
+          if (onClose != null) {
+            onClose.call();
+          }
+        });
   }
 
-  static void error(BuildContext context, {required String message}) {
+  static void error(
+    BuildContext context, {
+    required String message,
+    VoidCallback? onClose,
+  }) {
     AppMessage.show(
       context,
       message: message,
       backgroundColor: Theme.of(context).colorScheme.error,
+      onClose: onClose,
     );
   }
 
-  static void success(BuildContext context, {required String message}) {
+  static void success(
+    BuildContext context, {
+    required String message,
+    VoidCallback? onClose,
+  }) {
     final colors = Theme.of(context).extension<AppSemanticColors>()!;
-    AppMessage.show(context, message: message, backgroundColor: colors.success);
+    AppMessage.show(
+      context,
+      message: message,
+      backgroundColor: colors.success,
+      onClose: onClose,
+    );
   }
 }
