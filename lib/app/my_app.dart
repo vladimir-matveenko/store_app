@@ -4,20 +4,19 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_app/features/login/presentation/bloc/login_bloc.dart';
-import 'package:store_app/features/profile/domain/repository/profile_repository.dart';
 
-import 'core/di/injection.dart';
-import 'core/services/auth_session_manager.dart';
-import 'features/auth/domain/repository/auth_repository.dart';
-import 'features/auth/presentation/bloc/auth_bloc.dart';
-import 'features/auth/presentation/bloc/auth_event.dart';
-import 'features/locations/presentation/bloc/locations_bloc.dart';
-import 'features/products/presentation/bloc/products_bloc.dart';
-import 'features/profile/presentation/bloc/profile_bloc.dart';
-import 'features/theme/cubit/cubit.dart';
-import 'features/theme/cubit/state.dart';
-import 'features/users/presentation/bloc/users_bloc.dart';
-import 'navigation/router.dart';
+import '../app/routes/router.dart';
+import '../core/data/services/auth_session_manager.dart';
+import '../features/auth/domain/repository/auth_repository.dart';
+import '../features/auth/presentation/bloc/auth_bloc.dart';
+import '../features/auth/presentation/bloc/auth_event.dart';
+import '../features/locations/presentation/bloc/locations_bloc.dart';
+import '../features/products/presentation/bloc/products_bloc.dart';
+import '../features/profile/presentation/bloc/profile_bloc.dart';
+import '../features/theme/cubit/cubit.dart';
+import '../features/theme/cubit/state.dart';
+import '../features/users/presentation/bloc/users_bloc.dart';
+import 'di/injection.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -31,7 +30,6 @@ class _MyAppState extends State<MyApp> {
   final appRouter = getIt<AppRouter>();
   final authBloc = getIt<AuthBloc>();
   final profileBloc = getIt<ProfileBloc>();
-  final profileRepo = getIt<ProfileRepository>();
   final loginBloc = getIt<LoginBloc>();
   final sessionManager = getIt<AuthSessionManager>();
   final authRepo = getIt<AuthRepository>();
@@ -43,9 +41,8 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _sessionSub = sessionManager.onSessionExpired.listen((_) async {
-      authBloc.add(const LogoutRequested());
-      await profileRepo.clearCache();
+    _sessionSub = sessionManager.onSessionExpired.listen((_) {
+      authBloc.add(const ClearCacheRequested());
     });
   }
 

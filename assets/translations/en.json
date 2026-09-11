@@ -90,6 +90,8 @@
     "serverError": "Server error",
     "accessTokenInvalid": "Access token is invalid",
     "logoutError": "Logout error",
-    "noItemsAvailable": "No items available"
+    "noItemsAvailable": "No items available",
+    "cacheError": "Cache error",
+    "unknownError": "Unknown error"
   }
 }

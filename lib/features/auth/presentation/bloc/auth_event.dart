@@ -7,4 +7,6 @@ class AuthEvent with _$AuthEvent {
   const factory AuthEvent.checkRequested() = AuthCheckRequested;
 
   const factory AuthEvent.logoutRequested() = LogoutRequested;
+
+  const factory AuthEvent.clearCacheRequested() = ClearCacheRequested;
 }

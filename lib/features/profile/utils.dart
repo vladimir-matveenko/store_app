@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:store_app/core/constants/app_strings.dart';
+import 'package:store_app/app/constants/app_strings.dart';
 
 @immutable
 class ProfileUtils {

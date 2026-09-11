@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../app_env.dart';
-import '../../network/http_interceptors.dart';
+import '../../../app/app_env.dart';
+import '../../../core/network/http_interceptors.dart';
 
 @module
 abstract class NetworkModule {

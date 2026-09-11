@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:store_app/core/usecases/usecase.dart';
+import 'package:store_app/core/domain/usecases/usecase.dart';
 import 'package:store_app/features/users/presentation/bloc/users_event.dart';
 import 'package:store_app/features/users/presentation/bloc/users_state.dart';
 

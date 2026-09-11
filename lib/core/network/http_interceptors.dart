@@ -5,8 +5,8 @@ import 'package:injectable/injectable.dart';
 import 'package:store_app/features/auth/data/models/auth_token_model.dart';
 
 import '../../features/auth/data/data_sources/auth_local_data_source.dart';
+import '../data/services/auth_session_manager.dart';
 import '../error/exception.dart';
-import '../services/auth_session_manager.dart';
 
 @lazySingleton
 class AuthInterceptor extends Interceptor {

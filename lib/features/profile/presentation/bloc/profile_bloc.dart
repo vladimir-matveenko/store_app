@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:store_app/core/domain/usecases/usecase.dart';
 import 'package:store_app/core/error/failure.dart';
-import 'package:store_app/core/usecases/usecase.dart';
 import 'package:store_app/features/profile/presentation/bloc/profile_event.dart';
 import 'package:store_app/features/profile/presentation/bloc/profile_state.dart';
 

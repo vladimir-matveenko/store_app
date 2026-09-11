@@ -11,56 +11,100 @@ part of 'profile_event.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
 mixin _$ProfileEvent {
 
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is ProfileEvent);
+  }
 
 
+  @override
+  int get hashCode => runtimeType.hashCode;
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileEvent);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'ProfileEvent()';
-}
+  @override
+  String toString() {
+    return 'ProfileEvent()';
+  }
 
 
 }
 
 /// @nodoc
-class $ProfileEventCopyWith<$Res>  {
-$ProfileEventCopyWith(ProfileEvent _, $Res Function(ProfileEvent) __);
+class $ProfileEventCopyWith<$Res> {
+  $ProfileEventCopyWith(ProfileEvent _, $Res Function(ProfileEvent) __);
 }
 
 
 /// Adds pattern-matching-related methods to [ProfileEvent].
 extension ProfileEventPatterns on ProfileEvent {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( UserProfileRequested value)?  userProfileRequested,required TResult orElse(),}){
+  @optionalTypeArgs TResult maybeMap
+
+  <
+
+  TResult
+
+  extends
+
+  Object?
+
+  >
+
+  (
+
+  {
+
+  TResult
+
+  Function
+
+  (
+
+  UserProfileRequested
+
+  value
+
+  )
+
+  ?
+
+  userProfileRequested
+
+  ,
+
+  required
+
+  TResult
+
+  orElse
+
+  (
+
+  )
+
+  ,
+}){
 final _that = this;
 switch (_that) {
 case UserProfileRequested() when userProfileRequested != null:
 return userProfileRequested(_that);case _:
-  return orElse();
+return orElse();
 
 }
 }
@@ -77,15 +121,18 @@ return userProfileRequested(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( UserProfileRequested value)  userProfileRequested,}){
-final _that = this;
-switch (_that) {
-case UserProfileRequested():
-return userProfileRequested(_that);case _:
-  throw StateError('Unexpected subclass');
+@optionalTypeArgs
+TResult map<TResult extends Object?>(
+    {required TResult Function( UserProfileRequested value) userProfileRequested,}) {
+  final _that = this;
+  switch (_that) {
+    case UserProfileRequested():
+      return userProfileRequested(_that);
+    case _:
+      throw StateError('Unexpected subclass');
+  }
+}
 
-}
-}
 /// A variant of `map` that fallback to returning `null`.
 ///
 /// It is equivalent to doing:
@@ -98,15 +145,18 @@ return userProfileRequested(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( UserProfileRequested value)?  userProfileRequested,}){
-final _that = this;
-switch (_that) {
-case UserProfileRequested() when userProfileRequested != null:
-return userProfileRequested(_that);case _:
-  return null;
+@optionalTypeArgs
+TResult? mapOrNull<TResult extends Object?>(
+    {TResult? Function( UserProfileRequested value)? userProfileRequested,}) {
+  final _that = this;
+  switch (_that) {
+    case UserProfileRequested() when userProfileRequested != null:
+      return userProfileRequested(_that);
+    case _:
+      return null;
+  }
+}
 
-}
-}
 /// A variant of `when` that fallback to an `orElse` callback.
 ///
 /// It is equivalent to doing:
@@ -119,11 +169,24 @@ return userProfileRequested(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  userProfileRequested,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen
+<
+TResult extends Object?>(
+{
+TResult
+Function
+(
+)
+?
+userProfileRequested
+,
+required
+TResult
+orElse(),}) {final _that = this;
 switch (_that) {
 case UserProfileRequested() when userProfileRequested != null:
 return userProfileRequested();case _:
-  return orElse();
+return orElse();
 
 }
 }
@@ -140,11 +203,11 @@ return userProfileRequested();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  userProfileRequested,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function() userProfileRequested,}) {final _that = this;
 switch (_that) {
 case UserProfileRequested():
 return userProfileRequested();case _:
-  throw StateError('Unexpected subclass');
+throw StateError('Unexpected subclass');
 
 }
 }
@@ -160,11 +223,11 @@ return userProfileRequested();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  userProfileRequested,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()? userProfileRequested,}) {final _that = this;
 switch (_that) {
 case UserProfileRequested() when userProfileRequested != null:
 return userProfileRequested();case _:
-  return null;
+return null;
 
 }
 }
@@ -175,17 +238,12 @@ return userProfileRequested();case _:
 
 
 class UserProfileRequested implements ProfileEvent {
-  const UserProfileRequested();
-  
-
-
-
-
+const UserProfileRequested();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserProfileRequested);
+return identical(this, other) || (other.runtimeType == runtimeType&&other is UserProfileRequested);
 }
 
 
@@ -194,7 +252,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProfileEvent.userProfileRequested()';
+return 'ProfileEvent.userProfileRequested()';
 }
 
 
@@ -206,13 +264,11 @@ $UserProfileRequestedCopyWith(UserProfileRequested _, $Res Function(UserProfileR
 }
 /// @nodoc
 class _$UserProfileRequestedCopyWithImpl<$Res>
-    implements $UserProfileRequestedCopyWith<$Res> {
-  _$UserProfileRequestedCopyWithImpl(this._self, this._then);
+implements $UserProfileRequestedCopyWith<$Res> {
+_$UserProfileRequestedCopyWithImpl(this._self, this._then);
 
-  final UserProfileRequested _self;
-  final $Res Function(UserProfileRequested) _then;
-
-
+final UserProfileRequested _self;
+final $Res Function(UserProfileRequested) _then;
 
 
 }

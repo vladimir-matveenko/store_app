@@ -8,10 +8,10 @@ import 'package:store_app/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:store_app/features/users/presentation/bloc/users_bloc.dart';
 import 'package:store_app/features/users/presentation/bloc/users_event.dart';
 
+import '../../../../app/routes/pages.dart';
 import '../../../../core/data/utils/utils.dart';
 import '../../../../core/presentation/widgets/app_loader.dart';
 import '../../../../core/presentation/widgets/user_avatar.dart';
-import '../../../../navigation/pages.dart';
 import '../../../profile/domain/entity/user_entity.dart';
 
 class UsersList extends StatelessWidget {

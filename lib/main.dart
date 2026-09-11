@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:store_app/core/constants/app_strings.dart';
+import 'package:store_app/app/constants/app_strings.dart';
 
-import 'core/di/injection.dart';
-import 'my_app.dart';
+import 'app/di/injection.dart';
+import 'app/my_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

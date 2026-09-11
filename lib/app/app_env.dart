@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'core/constants/app_strings.dart';
+import 'constants/app_strings.dart';
 
 @immutable
 class AppEnv {

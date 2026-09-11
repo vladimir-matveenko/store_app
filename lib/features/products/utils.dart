@@ -9,7 +9,7 @@ import 'package:store_app/core/domain/entity/availability_filter_entity.dart';
 import 'package:store_app/features/products/domain/entity/app_image_entity.dart';
 import 'package:store_app/features/products/domain/entity/category_entity.dart';
 
-import '../../core/constants/app_strings.dart';
+import '../../app/constants/app_strings.dart';
 
 @immutable
 class ProductsUtils {

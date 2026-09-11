@@ -90,6 +90,8 @@
     "serverError": "Ошибка сервера",
     "accessTokenInvalid": "Access token невалидный",
     "logoutError": "Ошибка при выходе",
-    "noItemsAvailable": "Нет элементов для отображения"
+    "noItemsAvailable": "Нет элементов для отображения",
+    "cacheError": "Cache error",
+    "unknownError": "Unknown error"
   }
 }

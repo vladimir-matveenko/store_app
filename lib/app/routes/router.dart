@@ -7,16 +7,16 @@ import 'package:store_app/features/locations/presentation/pages/locations_page.d
 import 'package:store_app/features/products/presentation/pages/add_category_page.dart';
 import 'package:store_app/features/products/presentation/pages/add_product_page.dart';
 
-import '../core/presentation/pages/splash_page.dart';
-import '../features/auth/presentation/bloc/auth_bloc.dart';
-import '../features/auth/presentation/bloc/auth_state.dart';
-import '../features/login/presentation/pages/login_page.dart';
-import '../features/main/presentation/main_screen.dart';
-import '../features/products/presentation/pages/product_page.dart';
-import '../features/products/presentation/pages/products_page.dart';
-import '../features/profile/presentation/pages/profile_page.dart';
-import '../features/users/presentation/pages/user_page.dart';
-import '../features/users/presentation/pages/users_page.dart';
+import '/../core/presentation/pages/splash_page.dart';
+import '/../features/auth/presentation/bloc/auth_bloc.dart';
+import '/../features/auth/presentation/bloc/auth_state.dart';
+import '/../features/login/presentation/pages/login_page.dart';
+import '/../features/main/presentation/main_screen.dart';
+import '/../features/products/presentation/pages/product_page.dart';
+import '/../features/products/presentation/pages/products_page.dart';
+import '/../features/profile/presentation/pages/profile_page.dart';
+import '/../features/users/presentation/pages/user_page.dart';
+import '/../features/users/presentation/pages/users_page.dart';
 import 'pages.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();

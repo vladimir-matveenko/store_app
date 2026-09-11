@@ -6,7 +6,7 @@ import '../entity/user_entity.dart';
 abstract class ProfileRepository {
   UserEntity? get profile;
 
-  Future<Either<Failure, void>> clearCache();
+  Either<Failure, void> clearCache();
 
   Future<Either<Failure, UserEntity?>> getUserProfile();
 }

@@ -9,8 +9,8 @@ import 'package:store_app/features/products/presentation/bloc/products_bloc.dart
 import 'package:store_app/features/products/presentation/bloc/products_event.dart';
 import 'package:store_app/features/profile/presentation/bloc/profile_event.dart';
 
-import '../../../core/di/injection.dart';
-import '../../../core/services/geolocation_service_interface.dart';
+import '../../../app/di/injection.dart';
+import '../../../core/data/services/geolocation_service_interface.dart';
 import '../../profile/presentation/bloc/profile_bloc.dart';
 
 class MainScreen extends StatefulWidget {

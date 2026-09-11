@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:store_app/core/domain/usecases/usecase.dart';
 import 'package:store_app/core/error/failure.dart';
-import 'package:store_app/core/usecases/usecase.dart';
 
 import '../../../profile/domain/entity/user_entity.dart';
 import '../repository/users_repository.dart';

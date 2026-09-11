@@ -4,7 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:store_app/core/domain/entity/availability_filter_entity.dart';
-import 'package:store_app/core/usecases/usecase.dart';
+import 'package:store_app/core/domain/usecases/usecase.dart';
 import 'package:store_app/features/products/data/models/category_model.dart';
 import 'package:store_app/features/products/domain/entity/product_entity.dart';
 import 'package:store_app/features/products/domain/usecases/create_category_usecase.dart';

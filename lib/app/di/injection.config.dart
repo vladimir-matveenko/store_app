@@ -13,13 +13,15 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
-import 'package:store_app/core/di/modules/network_module.dart' as _i345;
-import 'package:store_app/core/di/modules/shared_pref_module.dart' as _i420;
+import 'package:store_app/app/di/modules/network_module.dart' as _i700;
+import 'package:store_app/app/di/modules/shared_pref_module.dart' as _i336;
+import 'package:store_app/app/routes/router.dart' as _i590;
+import 'package:store_app/core/data/services/auth_session_manager.dart'
+    as _i955;
+import 'package:store_app/core/data/services/geolocation_service.dart' as _i878;
+import 'package:store_app/core/data/services/geolocation_service_interface.dart'
+    as _i322;
 import 'package:store_app/core/network/http_interceptors.dart' as _i986;
-import 'package:store_app/core/services/auth_session_manager.dart' as _i702;
-import 'package:store_app/core/services/geolocation_service.dart' as _i436;
-import 'package:store_app/core/services/geolocation_service_interface.dart'
-    as _i712;
 import 'package:store_app/features/auth/data/data_sources/auth_local_data_source.dart'
     as _i845;
 import 'package:store_app/features/auth/data/data_sources/auth_remote_data_source.dart'
@@ -80,6 +82,8 @@ import 'package:store_app/features/profile/data/repository/profile_repository_im
     as _i40;
 import 'package:store_app/features/profile/domain/repository/profile_repository.dart'
     as _i558;
+import 'package:store_app/features/profile/domain/usecases/clear_cache_usecase.dart'
+    as _i158;
 import 'package:store_app/features/profile/domain/usecases/get_user_profile_usecase.dart'
     as _i619;
 import 'package:store_app/features/profile/presentation/bloc/profile_bloc.dart'
@@ -107,7 +111,6 @@ import 'package:store_app/features/users/domain/usecases/fetch_users_usecase.dar
     as _i623;
 import 'package:store_app/features/users/presentation/bloc/users_bloc.dart'
     as _i1011;
-import 'package:store_app/navigation/router.dart' as _i634;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -122,12 +125,12 @@ extension GetItInjectableX on _i174.GetIt {
       () => sharedPrefModule.prefs,
       preResolve: true,
     );
-    gh.lazySingleton<_i986.ErrorInterceptor>(() => _i986.ErrorInterceptor());
-    gh.lazySingleton<_i702.AuthSessionManager>(
-      () => _i702.AuthSessionManager(),
+    gh.lazySingleton<_i955.AuthSessionManager>(
+      () => _i955.AuthSessionManager(),
     );
-    gh.lazySingleton<_i712.IGeolocationService>(
-      () => _i436.GeolocationService(),
+    gh.lazySingleton<_i986.ErrorInterceptor>(() => _i986.ErrorInterceptor());
+    gh.lazySingleton<_i322.IGeolocationService>(
+      () => _i878.GeolocationService(),
     );
     gh.lazySingleton<_i361.Dio>(
       () => networkModule.refreshDio(),
@@ -142,7 +145,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i986.AuthInterceptor>(
       () => _i986.AuthInterceptor(
         gh<_i845.AuthLocalDataSource>(),
-        gh<_i702.AuthSessionManager>(),
+        gh<_i955.AuthSessionManager>(),
         gh<_i361.Dio>(instanceName: 'refresh_dio'),
       ),
     );
@@ -208,6 +211,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i619.GetUserProfileUseCase>(
       () => _i619.GetUserProfileUseCase(gh<_i558.ProfileRepository>()),
     );
+    gh.lazySingleton<_i158.ClearCacheUseCase>(
+      () => _i158.ClearCacheUseCase(gh<_i558.ProfileRepository>()),
+    );
     gh.lazySingleton<_i965.FetchLocationsUseCase>(
       () => _i965.FetchLocationsUseCase(gh<_i192.LocationsRepository>()),
     );
@@ -250,18 +256,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i577.UploadImageUseCase>(
       () => _i577.UploadImageUseCase(gh<_i891.ProductsRepository>()),
     );
-    gh.lazySingleton<_i999.LocationsBloc>(
-      () => _i999.LocationsBloc(
-        gh<_i965.FetchLocationsUseCase>(),
-        gh<_i712.IGeolocationService>(),
-      ),
-    );
-    gh.lazySingleton<_i706.AuthBloc>(
-      () => _i706.AuthBloc(
-        gh<_i660.CheckAuthUseCase>(),
-        gh<_i342.LogoutUseCase>(),
-      ),
-    );
     gh.lazySingleton<_i287.ProductsBloc>(
       () => _i287.ProductsBloc(
         gh<_i895.FetchProductsUseCase>(),
@@ -280,6 +274,12 @@ extension GetItInjectableX on _i174.GetIt {
         productsRemoteDataSource: gh<_i933.UsersRemoteDataSource>(),
       ),
     );
+    gh.lazySingleton<_i999.LocationsBloc>(
+      () => _i999.LocationsBloc(
+        gh<_i965.FetchLocationsUseCase>(),
+        gh<_i322.IGeolocationService>(),
+      ),
+    );
     gh.lazySingleton<_i370.LoginBloc>(
       () => _i370.LoginBloc(gh<_i654.LoginUseCase>()),
     );
@@ -289,8 +289,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i623.FetchUsersUseCase>(
       () => _i623.FetchUsersUseCase(gh<_i666.UsersRepository>()),
     );
-    gh.lazySingleton<_i634.AppRouter>(
-      () => _i634.AppRouter(gh<_i706.AuthBloc>()),
+    gh.lazySingleton<_i706.AuthBloc>(
+      () => _i706.AuthBloc(
+        gh<_i660.CheckAuthUseCase>(),
+        gh<_i342.LogoutUseCase>(),
+        gh<_i158.ClearCacheUseCase>(),
+      ),
     );
     gh.lazySingleton<_i1011.UsersBloc>(
       () => _i1011.UsersBloc(
@@ -298,10 +302,13 @@ extension GetItInjectableX on _i174.GetIt {
         fetchUserUseCase: gh<_i617.FetchUserUseCase>(),
       ),
     );
+    gh.lazySingleton<_i590.AppRouter>(
+      () => _i590.AppRouter(gh<_i706.AuthBloc>()),
+    );
     return this;
   }
 }
 
-class _$SharedPrefModule extends _i420.SharedPrefModule {}
+class _$SharedPrefModule extends _i336.SharedPrefModule {}
 
-class _$NetworkModule extends _i345.NetworkModule {}
+class _$NetworkModule extends _i700.NetworkModule {}
