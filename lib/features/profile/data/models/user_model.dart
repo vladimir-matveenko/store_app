@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../utils.dart';
+import '../../../../core/data/utils/utils.dart';
 import '../../domain/entity/user_entity.dart';
 
 part 'user_model.freezed.dart';

@@ -3,8 +3,8 @@ import 'package:injectable/injectable.dart';
 import 'package:store_app/core/error/failure.dart';
 import 'package:store_app/core/error/mapper.dart';
 
-import '../../../auth/data/models/user_model.dart';
-import '../../../auth/domain/entity/user_entity.dart';
+import '../../../profile/data/models/user_model.dart';
+import '../../../profile/domain/entity/user_entity.dart';
 import '../../domain/repository/users_repository.dart';
 import '../data_sources/users_remote_data_source.dart';
 

@@ -2,7 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:store_app/core/domain/entity/availability_filter_entity.dart';
-import 'package:store_app/core/presentation/widgets/app_text_form_field.dart';
+
+import '../../../../core/presentation/widgets/text_fields/app_text_form_field.dart';
 
 class AmountFilterBlock extends StatelessWidget {
   const AmountFilterBlock({

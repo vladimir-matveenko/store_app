@@ -7,10 +7,10 @@ import 'package:store_app/features/locations/presentation/pages/locations_page.d
 import 'package:store_app/features/products/presentation/pages/add_category_page.dart';
 import 'package:store_app/features/products/presentation/pages/add_product_page.dart';
 
+import '../core/presentation/pages/splash_page.dart';
 import '../features/auth/presentation/bloc/auth_bloc.dart';
 import '../features/auth/presentation/bloc/auth_state.dart';
-import '../features/auth/presentation/pages/login_page.dart';
-import '../features/auth/presentation/pages/splash_page.dart';
+import '../features/login/presentation/pages/login_page.dart';
 import '../features/main/presentation/main_screen.dart';
 import '../features/products/presentation/pages/product_page.dart';
 import '../features/products/presentation/pages/products_page.dart';
@@ -44,7 +44,10 @@ class AppRouter {
       }
 
       if (status == AuthStatus.unauthenticated) {
-        return isLogin ? null : Pages.login;
+        if (isLogin) {
+          return null;
+        }
+        return Pages.login;
       }
 
       if (status == AuthStatus.authenticated) {
@@ -57,6 +60,16 @@ class AppRouter {
       return null;
     },
     routes: [
+      GoRoute(
+        path: Pages.splash,
+        pageBuilder: (context, state) =>
+            const NoTransitionPage(child: SplashPage()),
+      ),
+      GoRoute(
+        path: Pages.login,
+        pageBuilder: (context, state) =>
+            const NoTransitionPage(child: LoginPage()),
+      ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return MainScreen(navigationShell: navigationShell, state: state);
@@ -131,16 +144,6 @@ class AppRouter {
             ],
           ),
         ],
-      ),
-      GoRoute(
-        path: Pages.splash,
-        pageBuilder: (context, state) =>
-            const NoTransitionPage(child: SplashPage()),
-      ),
-      GoRoute(
-        path: Pages.login,
-        pageBuilder: (context, state) =>
-            const NoTransitionPage(child: LoginPage()),
       ),
     ],
   );

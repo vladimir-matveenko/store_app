@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:store_app/core/network/base_remote_data_source.dart';
 
-import '../../../auth/data/models/user_model.dart';
+import '../../../profile/data/models/user_model.dart';
 
 abstract class UsersRemoteDataSource {
   Future<List<UserModel>?> fetchUsers();

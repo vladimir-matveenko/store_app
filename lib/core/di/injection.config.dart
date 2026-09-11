@@ -30,10 +30,6 @@ import 'package:store_app/features/auth/domain/repository/auth_repository.dart'
     as _i415;
 import 'package:store_app/features/auth/domain/usecases/check_auth_usecase.dart'
     as _i660;
-import 'package:store_app/features/auth/domain/usecases/get_user_profile_usecase.dart'
-    as _i631;
-import 'package:store_app/features/auth/domain/usecases/login_usecase.dart'
-    as _i264;
 import 'package:store_app/features/auth/domain/usecases/logout_usecase.dart'
     as _i342;
 import 'package:store_app/features/auth/presentation/bloc/auth_bloc.dart'
@@ -48,6 +44,10 @@ import 'package:store_app/features/locations/domain/usecases/fetch_locations_use
     as _i965;
 import 'package:store_app/features/locations/presentation/bloc/locations_bloc.dart'
     as _i999;
+import 'package:store_app/features/login/domain/usecases/login_usecase.dart'
+    as _i654;
+import 'package:store_app/features/login/presentation/bloc/login_bloc.dart'
+    as _i370;
 import 'package:store_app/features/products/data/data_sources/products_remote_data_source.dart'
     as _i456;
 import 'package:store_app/features/products/data/repository/products_repository_impl.dart'
@@ -74,6 +74,16 @@ import 'package:store_app/features/products/domain/usecases/upload_image_usecase
     as _i577;
 import 'package:store_app/features/products/presentation/bloc/products_bloc.dart'
     as _i287;
+import 'package:store_app/features/profile/data/data_sources/profile_remote_data_source.dart'
+    as _i465;
+import 'package:store_app/features/profile/data/repository/profile_repository_impl.dart'
+    as _i40;
+import 'package:store_app/features/profile/domain/repository/profile_repository.dart'
+    as _i558;
+import 'package:store_app/features/profile/domain/usecases/get_user_profile_usecase.dart'
+    as _i619;
+import 'package:store_app/features/profile/presentation/bloc/profile_bloc.dart'
+    as _i982;
 import 'package:store_app/features/theme/cubit/cubit.dart' as _i969;
 import 'package:store_app/features/theme/data/data_sources/theme_local_data_source.dart'
     as _i625;
@@ -147,6 +157,9 @@ extension GetItInjectableX on _i174.GetIt {
         themeLocalDataSource: gh<_i625.ThemeLocalDataSource>(),
       ),
     );
+    gh.lazySingleton<_i465.ProfileRemoteDataSource>(
+      () => _i465.ProfileRemoteDataSourceImpl(gh<_i361.Dio>()),
+    );
     gh.lazySingleton<_i934.AuthRemoteDataSource>(
       () => _i934.AuthRemoteDataSourceImpl(gh<_i361.Dio>()),
     );
@@ -154,6 +167,11 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i263.AuthRepositoryImpl(
         authLocalDataSource: gh<_i845.AuthLocalDataSource>(),
         authRemoteDataSource: gh<_i934.AuthRemoteDataSource>(),
+      ),
+    );
+    gh.lazySingleton<_i558.ProfileRepository>(
+      () => _i40.ProfileRepositoryImpl(
+        dataSource: gh<_i465.ProfileRemoteDataSource>(),
       ),
     );
     gh.lazySingleton<_i456.ProductsRemoteDataSource>(
@@ -187,20 +205,23 @@ extension GetItInjectableX on _i174.GetIt {
         productsRemoteDataSource: gh<_i456.ProductsRemoteDataSource>(),
       ),
     );
+    gh.lazySingleton<_i619.GetUserProfileUseCase>(
+      () => _i619.GetUserProfileUseCase(gh<_i558.ProfileRepository>()),
+    );
     gh.lazySingleton<_i965.FetchLocationsUseCase>(
       () => _i965.FetchLocationsUseCase(gh<_i192.LocationsRepository>()),
     );
     gh.lazySingleton<_i660.CheckAuthUseCase>(
       () => _i660.CheckAuthUseCase(gh<_i415.AuthRepository>()),
     );
-    gh.lazySingleton<_i631.GetUserProfileUseCase>(
-      () => _i631.GetUserProfileUseCase(gh<_i415.AuthRepository>()),
-    );
-    gh.lazySingleton<_i264.LoginUseCase>(
-      () => _i264.LoginUseCase(gh<_i415.AuthRepository>()),
-    );
     gh.lazySingleton<_i342.LogoutUseCase>(
       () => _i342.LogoutUseCase(gh<_i415.AuthRepository>()),
+    );
+    gh.lazySingleton<_i654.LoginUseCase>(
+      () => _i654.LoginUseCase(gh<_i415.AuthRepository>()),
+    );
+    gh.lazySingleton<_i982.ProfileBloc>(
+      () => _i982.ProfileBloc(gh<_i619.GetUserProfileUseCase>()),
     );
     gh.lazySingleton<_i959.CreateCategoryUseCase>(
       () => _i959.CreateCategoryUseCase(gh<_i891.ProductsRepository>()),
@@ -235,6 +256,12 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i712.IGeolocationService>(),
       ),
     );
+    gh.lazySingleton<_i706.AuthBloc>(
+      () => _i706.AuthBloc(
+        gh<_i660.CheckAuthUseCase>(),
+        gh<_i342.LogoutUseCase>(),
+      ),
+    );
     gh.lazySingleton<_i287.ProductsBloc>(
       () => _i287.ProductsBloc(
         gh<_i895.FetchProductsUseCase>(),
@@ -253,28 +280,23 @@ extension GetItInjectableX on _i174.GetIt {
         productsRemoteDataSource: gh<_i933.UsersRemoteDataSource>(),
       ),
     );
+    gh.lazySingleton<_i370.LoginBloc>(
+      () => _i370.LoginBloc(gh<_i654.LoginUseCase>()),
+    );
     gh.lazySingleton<_i617.FetchUserUseCase>(
       () => _i617.FetchUserUseCase(gh<_i666.UsersRepository>()),
     );
     gh.lazySingleton<_i623.FetchUsersUseCase>(
       () => _i623.FetchUsersUseCase(gh<_i666.UsersRepository>()),
     );
-    gh.lazySingleton<_i706.AuthBloc>(
-      () => _i706.AuthBloc(
-        gh<_i264.LoginUseCase>(),
-        gh<_i342.LogoutUseCase>(),
-        gh<_i660.CheckAuthUseCase>(),
-        gh<_i631.GetUserProfileUseCase>(),
-      ),
+    gh.lazySingleton<_i634.AppRouter>(
+      () => _i634.AppRouter(gh<_i706.AuthBloc>()),
     );
     gh.lazySingleton<_i1011.UsersBloc>(
       () => _i1011.UsersBloc(
         fetchUsersUseCase: gh<_i623.FetchUsersUseCase>(),
         fetchUserUseCase: gh<_i617.FetchUserUseCase>(),
       ),
-    );
-    gh.lazySingleton<_i634.AppRouter>(
-      () => _i634.AppRouter(gh<_i706.AuthBloc>()),
     );
     return this;
   }

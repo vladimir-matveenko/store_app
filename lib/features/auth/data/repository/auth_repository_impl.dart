@@ -5,9 +5,7 @@ import 'package:store_app/core/error/mapper.dart';
 import 'package:store_app/features/auth/data/data_sources/auth_local_data_source.dart';
 import 'package:store_app/features/auth/data/data_sources/auth_remote_data_source.dart';
 import 'package:store_app/features/auth/data/models/auth_token_model.dart';
-import 'package:store_app/features/auth/data/models/user_model.dart';
 import 'package:store_app/features/auth/domain/entity/auth_token_entity.dart';
-import 'package:store_app/features/auth/domain/entity/user_entity.dart';
 import 'package:store_app/features/auth/domain/repository/auth_repository.dart';
 
 @LazySingleton(as: AuthRepository)
@@ -53,16 +51,6 @@ class AuthRepositoryImpl implements AuthRepository {
       await authRemoteDataSource.logout();
       await authLocalDataSource.clearToken();
       return const Right(null);
-    } catch (e) {
-      return Left(mapExceptionToFailure(e));
-    }
-  }
-
-  @override
-  Future<Either<Failure, UserEntity?>> getUserProfile() async {
-    try {
-      final user = await authRemoteDataSource.getUserProfile();
-      return Right(user?.toEntity());
     } catch (e) {
       return Left(mapExceptionToFailure(e));
     }

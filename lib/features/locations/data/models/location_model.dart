@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:store_app/features/locations/domain/entity/location_entity.dart';
 
-import '../../../../utils.dart';
+import '../../../../core/data/utils/utils.dart';
 
 part 'location_model.freezed.dart';
 part 'location_model.g.dart';

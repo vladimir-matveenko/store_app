@@ -8,7 +8,7 @@ import 'package:store_app/features/products/presentation/bloc/products_event.dar
 import 'package:store_app/features/products/presentation/bloc/products_state.dart';
 import 'package:store_app/features/products/presentation/widgets/category_search.dart';
 
-import '../../../../core/presentation/widgets/app_text_form_field.dart';
+import '../../../../core/presentation/widgets/text_fields/app_text_form_field.dart';
 import '../widgets/categories_list.dart';
 import '../widgets/images_list.dart';
 
@@ -168,7 +168,7 @@ class _AddProductPageState extends State<AddProductPage> {
                         AppTextFormField(
                           controller: _titleController,
                           enabled: !isLoading,
-                          keyboardType: TextInputType.emailAddress,
+                          keyboardType: TextInputType.text,
                           decoration: InputDecoration(
                             labelText: 'addProductScreen.fieldTitle'.tr(),
                           ),

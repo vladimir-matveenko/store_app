@@ -4,15 +4,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:store_app/core/presentation/widgets/no_items_widget.dart';
 import 'package:store_app/core/presentation/widgets/scroll_up_wrapper.dart';
-import 'package:store_app/features/auth/domain/entity/user_entity.dart';
-import 'package:store_app/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:store_app/features/auth/presentation/widgets/user_avatar.dart';
+import 'package:store_app/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:store_app/features/users/presentation/bloc/users_bloc.dart';
 import 'package:store_app/features/users/presentation/bloc/users_event.dart';
-import 'package:store_app/utils.dart';
 
+import '../../../../core/data/utils/utils.dart';
 import '../../../../core/presentation/widgets/app_loader.dart';
+import '../../../../core/presentation/widgets/user_avatar.dart';
 import '../../../../navigation/pages.dart';
+import '../../../profile/domain/entity/user_entity.dart';
 
 class UsersList extends StatelessWidget {
   const UsersList({super.key, required this.scrollController});
@@ -24,7 +24,7 @@ class UsersList extends StatelessWidget {
     final bloc = context.read<UsersBloc>();
     final theme = Theme.of(context);
     final state = context.watch<UsersBloc>().state;
-    final authState = context.read<AuthBloc>().state;
+    final profileState = context.read<ProfileBloc>().state;
     return state.users.isNotEmpty
         ? ScrollUpWrapper(
             controller: scrollController,
@@ -41,7 +41,7 @@ class UsersList extends StatelessWidget {
                 if (index < state.users.length) {
                   return ListItem(
                     key: ValueKey(user.id),
-                    areYou: authState.user?.id == user.id,
+                    areYou: profileState.user?.id == user.id,
                     onTap: () {
                       context.go('${Pages.users}/${user.id}');
                     },

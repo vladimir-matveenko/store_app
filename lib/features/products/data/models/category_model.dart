@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:store_app/features/products/domain/entity/category_entity.dart';
 
-import '../../../../utils.dart';
+import '../../../../core/data/utils/utils.dart';
 
 part 'category_model.freezed.dart';
 part 'category_model.g.dart';

@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_app/core/presentation/widgets/app_message.dart';
 import 'package:store_app/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:store_app/features/auth/presentation/bloc/auth_event.dart';
-import 'package:store_app/features/auth/presentation/bloc/auth_state.dart';
+import 'package:store_app/features/login/presentation/bloc/login_bloc.dart';
 
-import '../../../../core/presentation/widgets/app_text_form_field.dart';
+import '../../../../core/presentation/widgets/text_fields/email_text_field.dart';
+import '../../../../core/presentation/widgets/text_fields/password_field.dart';
+import '../../../auth/presentation/bloc/auth_event.dart';
+import '../bloc/login_event.dart';
+import '../bloc/login_state.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -19,23 +22,17 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  var obscure = true;
+  final obscure = ValueNotifier<bool>(true);
 
   void handleLogin() {
     if (_formKey.currentState!.validate()) {
-      context.read<AuthBloc>().add(
-        AuthLoginRequested(
+      context.read<LoginBloc>().add(
+        LoginRequested(
           email: _emailController.text,
           password: _passwordController.text,
         ),
       );
     }
-  }
-
-  void obscureIcon() {
-    setState(() {
-      obscure = !obscure;
-    });
   }
 
   @override
@@ -61,9 +58,9 @@ class _LoginPageState extends State<LoginPage> {
         centerTitle: true,
       ),
       resizeToAvoidBottomInset: true,
-      body: BlocConsumer<AuthBloc, AuthState>(
+      body: BlocConsumer<LoginBloc, LoginState>(
         builder: (context, state) {
-          final isLoading = state.isLoading;
+          final isLoading = state.status == LoginStatus.inProgress;
           return Center(
             child: SingleChildScrollView(
               padding: EdgeInsetsGeometry.only(
@@ -80,44 +77,23 @@ class _LoginPageState extends State<LoginPage> {
                   spacing: 16.0,
                   children: [
                     Icon(
-                      state.status == AuthStatus.unauthenticated
-                          ? Icons.lock_outline
-                          : Icons.lock_open_outlined,
+                      state.status == LoginStatus.success
+                          ? Icons.lock_open_outlined
+                          : Icons.lock_outlined,
                       size: 80.0,
                       color: theme.colorScheme.primary,
                     ),
                     const SizedBox(height: 40.0),
-                    AppTextFormField(
-                      controller: _emailController,
+                    EmailTextField(
                       enabled: !isLoading,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        labelText: 'loginScreen.fieldNameEmail'.tr(),
-                        prefix: const Icon(Icons.email),
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'fieldValidation.enterPassword'.tr();
-                        }
-                        return null;
-                      },
+                      emailController: _emailController,
                     ),
-                    AppTextFormField(
-                      controller: _passwordController,
+                    PasswordTextField(
                       enabled: !isLoading,
-                      obscureText: obscure,
-                      decoration: InputDecoration(
-                        labelText: 'loginScreen.fieldNamePassword'.tr(),
-                        prefix: GestureDetector(
-                          onTap: obscureIcon,
-                          child: Icon(obscure ? Icons.lock : Icons.lock_open),
-                        ),
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'fieldValidation.enterPassword'.tr();
-                        }
-                        return null;
+                      passwordController: _passwordController,
+                      obscure: obscure,
+                      onObscureChanged: (value) {
+                        obscure.value = value;
                       },
                     ),
                     ElevatedButton(
@@ -139,8 +115,12 @@ class _LoginPageState extends State<LoginPage> {
           );
         },
         listener: (context, state) {
-          if (state.error?.isNotEmpty == true) {
+          if (state.status == LoginStatus.failure &&
+              state.error?.isNotEmpty == true) {
             AppMessage.error(context, message: state.error!);
+          }
+          if (state.status == LoginStatus.success) {
+            context.read<AuthBloc>().add(const AuthCheckRequested());
           }
         },
       ),

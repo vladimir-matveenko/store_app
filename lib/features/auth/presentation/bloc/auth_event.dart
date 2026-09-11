@@ -6,12 +6,5 @@ part 'auth_event.freezed.dart';
 class AuthEvent with _$AuthEvent {
   const factory AuthEvent.checkRequested() = AuthCheckRequested;
 
-  const factory AuthEvent.userProfileRequested() = AuthUserProfileRequested;
-
-  const factory AuthEvent.loginRequested({
-    required String email,
-    required String password,
-  }) = AuthLoginRequested;
-
-  const factory AuthEvent.logoutRequested() = AuthLogoutRequested;
+  const factory AuthEvent.logoutRequested() = LogoutRequested;
 }

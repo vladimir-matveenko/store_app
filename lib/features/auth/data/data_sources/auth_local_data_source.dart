@@ -18,7 +18,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
 
   final SharedPreferences sharedPreferences;
 
-  static const String cachedToken = 'CACHED_TOKEN';
+  static const String cachedToken = 'STORE_APP_CACHED_TOKEN';
 
   AuthTokenModel? _tokenModel;
 
