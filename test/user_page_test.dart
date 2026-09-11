@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:store_app/app/constants/app_enums.dart';
 import 'package:store_app/core/presentation/widgets/user_avatar.dart';
 import 'package:store_app/features/profile/domain/entity/user_entity.dart';
 import 'package:store_app/features/users/presentation/bloc/users_bloc.dart';
@@ -69,7 +70,7 @@ void main() {
         id: '1',
         email: 'john@example.com',
         name: 'John Doe',
-        role: 'admin',
+        role: UserRole.admin,
         avatar: 'https://example.com/avatar.jpg',
       );
 
@@ -92,7 +93,7 @@ void main() {
       // Verify text fields
       expect(find.text(user.email), findsOneWidget);
       expect(find.text(user.name), findsOneWidget);
-      expect(find.text(user.role), findsOneWidget);
+      expect(find.text(user.role.name), findsOneWidget);
     });
   });
 }

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:store_app/app/constants/app_enums.dart';
 import 'package:store_app/core/presentation/widgets/user_avatar.dart';
 import 'package:store_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:store_app/features/auth/presentation/bloc/auth_event.dart';
@@ -74,7 +75,7 @@ void main() {
           name: 'Jhon',
           email: 'john@mail.com',
           avatar: 'https://api.lorem.space/image/face?w=640&h=480&r=867',
-          role: 'customer',
+          role: UserRole.customer,
         ),
       );
 

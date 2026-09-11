@@ -4,17 +4,30 @@ import 'exception.dart';
 
 class ApiErrorHandler {
   static Exception onDioError(DioException e) {
-    final statusCode = e.response?.statusCode;
-    final serverMessage = e.response?.data?['error']?['message']?.toString();
+    final response = e.response;
+    final data = response?.data;
+
+    final statusCode = response?.statusCode ?? 500;
+    String? message;
+
+    if (data is Map<String, dynamic>) {
+      final apiError = data['error'];
+
+      if (apiError is Map<String, dynamic>) {
+        message = apiError['message']?.toString();
+      }
+
+      message ??= data['message']?.toString();
+    }
 
     switch (statusCode) {
       case 400:
-        return UnknownException(message: serverMessage ?? 'Bad Request');
+        return UnknownException(message: message ?? 'Bad Request');
       case 401:
         return InvalidCredentialsException();
       default:
         return UnknownException(
-          message: serverMessage ?? e.message ?? 'Network error',
+          message: message ?? e.message ?? 'Network error',
         );
     }
   }

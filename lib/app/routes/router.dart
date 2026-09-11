@@ -17,6 +17,7 @@ import '/../features/products/presentation/pages/products_page.dart';
 import '/../features/profile/presentation/pages/profile_page.dart';
 import '/../features/users/presentation/pages/user_page.dart';
 import '/../features/users/presentation/pages/users_page.dart';
+import '../../features/profile/presentation/pages/create_profile_page.dart';
 import 'pages.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -38,20 +39,21 @@ class AppRouter {
 
       final isLogin = state.matchedLocation == Pages.login;
       final isSplash = state.matchedLocation == Pages.splash;
+      final isCreateProfile = state.matchedLocation == Pages.createProfile;
 
       if (status == AuthStatus.unknown) {
         return null;
       }
 
       if (status == AuthStatus.unauthenticated) {
-        if (isLogin) {
+        if (isLogin || isCreateProfile) {
           return null;
         }
         return Pages.login;
       }
 
       if (status == AuthStatus.authenticated) {
-        if (isSplash || isLogin) {
+        if (isSplash || isLogin || isCreateProfile) {
           return Pages.products;
         }
         return null;
@@ -69,6 +71,11 @@ class AppRouter {
         path: Pages.login,
         pageBuilder: (context, state) =>
             const NoTransitionPage(child: LoginPage()),
+      ),
+      GoRoute(
+        path: Pages.createProfile,
+        pageBuilder: (context, state) =>
+            const NoTransitionPage(child: CreateProfilePage()),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {

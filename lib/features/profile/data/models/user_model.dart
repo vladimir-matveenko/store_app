@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../app/constants/app_enums.dart';
 import '../../../../core/data/utils/utils.dart';
 import '../../domain/entity/user_entity.dart';
 
@@ -17,7 +18,7 @@ abstract class UserModel with _$UserModel {
     required String name,
     required String email,
     required String password,
-    required String role,
+    required UserRole role,
     String? avatar,
   }) = _UserModel;
 

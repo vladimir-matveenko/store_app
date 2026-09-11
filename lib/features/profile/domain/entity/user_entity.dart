@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+import '../../../../app/constants/app_enums.dart';
+
 class UserEntity extends Equatable {
   const UserEntity({
     required this.id,
@@ -12,7 +14,7 @@ class UserEntity extends Equatable {
   final String id;
   final String email;
   final String name;
-  final String role;
+  final UserRole role;
   final String avatar;
 
   @override

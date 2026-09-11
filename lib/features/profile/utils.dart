@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:store_app/app/constants/app_enums.dart';
 import 'package:store_app/app/constants/app_strings.dart';
 
 @immutable
@@ -27,5 +28,12 @@ class ProfileUtils {
         errorBuilder: (_, e, s) => const SizedBox(),
       ),
     );
+  }
+
+  static Widget getRoleIcon(UserRole role) {
+    return switch (role) {
+      UserRole.customer => const Icon(Icons.person, size: 24.0),
+      UserRole.admin => const Icon(Icons.admin_panel_settings, size: 24.0),
+    };
   }
 }

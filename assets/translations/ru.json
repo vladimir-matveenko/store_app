@@ -1,4 +1,6 @@
 {
+  "okText": "ОК",
+  "cancelText": "Отмена",
   "updatedAt": "Обновлено:",
   "you": "Вы",
   "bottomNavBar": {
@@ -11,7 +13,20 @@
     "screenName": "Вход",
     "fieldNameEmail": "Email",
     "fieldNamePassword": "Пароль",
-    "btnLogin": "Войти"
+    "btnLogin": "Войти",
+    "dontHaveAccount": "Еще нет акаунта?"
+  },
+  "createProfileScreen": {
+    "screenName": "Создать аккаунт",
+    "fieldUserName": "Имя пользователя",
+    "btnCreate": "Создать аккаунт",
+    "created": "Профиль создан успешно",
+    "createSuccessMessage": "Поздравляем! Профиль успешно создан. Пожалуйста, войдите, чтобы начать пользоваться приложением.",
+    "userRoles": {
+      "customer": "Клиент",
+      "admin": "Админ"
+    },
+    "addAvatar": "Добавьте аватар!"
   },
   "productsScreen": {
     "screenName": "Товары",
@@ -79,6 +94,7 @@
     "btnReset": "Сбросить фильтры"
   },
   "fieldValidation": {
+    "fieldIsRequired": "Это поле обязательно!",
     "enterEmail": "Введите email",
     "enterPassword": "Введите пароль",
     "notEmpty": "Введите значение",

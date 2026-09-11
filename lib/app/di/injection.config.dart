@@ -84,6 +84,8 @@ import 'package:store_app/features/profile/domain/repository/profile_repository.
     as _i558;
 import 'package:store_app/features/profile/domain/usecases/clear_cache_usecase.dart'
     as _i158;
+import 'package:store_app/features/profile/domain/usecases/create_profile_usecase.dart'
+    as _i218;
 import 'package:store_app/features/profile/domain/usecases/get_user_profile_usecase.dart'
     as _i619;
 import 'package:store_app/features/profile/presentation/bloc/profile_bloc.dart'
@@ -128,7 +130,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i955.AuthSessionManager>(
       () => _i955.AuthSessionManager(),
     );
-    gh.lazySingleton<_i986.ErrorInterceptor>(() => _i986.ErrorInterceptor());
     gh.lazySingleton<_i322.IGeolocationService>(
       () => _i878.GeolocationService(),
     );
@@ -149,33 +150,13 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i361.Dio>(instanceName: 'refresh_dio'),
       ),
     );
-    gh.lazySingleton<_i361.Dio>(
-      () => networkModule.dio(
-        gh<_i986.AuthInterceptor>(),
-        gh<_i986.ErrorInterceptor>(),
-      ),
-    );
     gh.lazySingleton<_i892.ThemeRepository>(
       () => _i629.ThemeRepositoryImpl(
         themeLocalDataSource: gh<_i625.ThemeLocalDataSource>(),
       ),
     );
-    gh.lazySingleton<_i465.ProfileRemoteDataSource>(
-      () => _i465.ProfileRemoteDataSourceImpl(gh<_i361.Dio>()),
-    );
-    gh.lazySingleton<_i934.AuthRemoteDataSource>(
-      () => _i934.AuthRemoteDataSourceImpl(gh<_i361.Dio>()),
-    );
-    gh.lazySingleton<_i415.AuthRepository>(
-      () => _i263.AuthRepositoryImpl(
-        authLocalDataSource: gh<_i845.AuthLocalDataSource>(),
-        authRemoteDataSource: gh<_i934.AuthRemoteDataSource>(),
-      ),
-    );
-    gh.lazySingleton<_i558.ProfileRepository>(
-      () => _i40.ProfileRepositoryImpl(
-        dataSource: gh<_i465.ProfileRemoteDataSource>(),
-      ),
+    gh.lazySingleton<_i361.Dio>(
+      () => networkModule.dio(gh<_i986.AuthInterceptor>()),
     );
     gh.lazySingleton<_i456.ProductsRemoteDataSource>(
       () => _i456.ProductsRemoteDataSourceImpl(gh<_i361.Dio>()),
@@ -208,26 +189,25 @@ extension GetItInjectableX on _i174.GetIt {
         productsRemoteDataSource: gh<_i456.ProductsRemoteDataSource>(),
       ),
     );
-    gh.lazySingleton<_i619.GetUserProfileUseCase>(
-      () => _i619.GetUserProfileUseCase(gh<_i558.ProfileRepository>()),
+    gh.lazySingleton<_i465.ProfileRemoteDataSource>(
+      () => _i465.ProfileRemoteDataSourceImpl(gh<_i361.Dio>()),
     );
-    gh.lazySingleton<_i158.ClearCacheUseCase>(
-      () => _i158.ClearCacheUseCase(gh<_i558.ProfileRepository>()),
+    gh.lazySingleton<_i934.AuthRemoteDataSource>(
+      () => _i934.AuthRemoteDataSourceImpl(gh<_i361.Dio>()),
     );
     gh.lazySingleton<_i965.FetchLocationsUseCase>(
       () => _i965.FetchLocationsUseCase(gh<_i192.LocationsRepository>()),
     );
-    gh.lazySingleton<_i660.CheckAuthUseCase>(
-      () => _i660.CheckAuthUseCase(gh<_i415.AuthRepository>()),
+    gh.lazySingleton<_i666.UsersRepository>(
+      () => _i294.UsersRepositoryImpl(
+        usersRemoteDataSource: gh<_i933.UsersRemoteDataSource>(),
+      ),
     );
-    gh.lazySingleton<_i342.LogoutUseCase>(
-      () => _i342.LogoutUseCase(gh<_i415.AuthRepository>()),
-    );
-    gh.lazySingleton<_i654.LoginUseCase>(
-      () => _i654.LoginUseCase(gh<_i415.AuthRepository>()),
-    );
-    gh.lazySingleton<_i982.ProfileBloc>(
-      () => _i982.ProfileBloc(gh<_i619.GetUserProfileUseCase>()),
+    gh.lazySingleton<_i415.AuthRepository>(
+      () => _i263.AuthRepositoryImpl(
+        authLocalDataSource: gh<_i845.AuthLocalDataSource>(),
+        authRemoteDataSource: gh<_i934.AuthRemoteDataSource>(),
+      ),
     );
     gh.lazySingleton<_i959.CreateCategoryUseCase>(
       () => _i959.CreateCategoryUseCase(gh<_i891.ProductsRepository>()),
@@ -256,6 +236,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i577.UploadImageUseCase>(
       () => _i577.UploadImageUseCase(gh<_i891.ProductsRepository>()),
     );
+    gh.lazySingleton<_i558.ProfileRepository>(
+      () => _i40.ProfileRepositoryImpl(
+        dataSource: gh<_i465.ProfileRemoteDataSource>(),
+      ),
+    );
     gh.lazySingleton<_i287.ProductsBloc>(
       () => _i287.ProductsBloc(
         gh<_i895.FetchProductsUseCase>(),
@@ -269,10 +254,8 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i778.DeleteCategoryUseCase>(),
       ),
     );
-    gh.lazySingleton<_i666.UsersRepository>(
-      () => _i294.UsersRepositoryImpl(
-        productsRemoteDataSource: gh<_i933.UsersRemoteDataSource>(),
-      ),
+    gh.lazySingleton<_i218.CreateProfileUseCase>(
+      () => _i218.CreateProfileUseCase(gh<_i666.UsersRepository>()),
     );
     gh.lazySingleton<_i999.LocationsBloc>(
       () => _i999.LocationsBloc(
@@ -280,26 +263,48 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i322.IGeolocationService>(),
       ),
     );
-    gh.lazySingleton<_i370.LoginBloc>(
-      () => _i370.LoginBloc(gh<_i654.LoginUseCase>()),
-    );
     gh.lazySingleton<_i617.FetchUserUseCase>(
       () => _i617.FetchUserUseCase(gh<_i666.UsersRepository>()),
     );
     gh.lazySingleton<_i623.FetchUsersUseCase>(
       () => _i623.FetchUsersUseCase(gh<_i666.UsersRepository>()),
     );
-    gh.lazySingleton<_i706.AuthBloc>(
-      () => _i706.AuthBloc(
-        gh<_i660.CheckAuthUseCase>(),
-        gh<_i342.LogoutUseCase>(),
-        gh<_i158.ClearCacheUseCase>(),
+    gh.lazySingleton<_i619.GetUserProfileUseCase>(
+      () => _i619.GetUserProfileUseCase(gh<_i558.ProfileRepository>()),
+    );
+    gh.lazySingleton<_i158.ClearCacheUseCase>(
+      () => _i158.ClearCacheUseCase(gh<_i558.ProfileRepository>()),
+    );
+    gh.lazySingleton<_i660.CheckAuthUseCase>(
+      () => _i660.CheckAuthUseCase(gh<_i415.AuthRepository>()),
+    );
+    gh.lazySingleton<_i342.LogoutUseCase>(
+      () => _i342.LogoutUseCase(gh<_i415.AuthRepository>()),
+    );
+    gh.lazySingleton<_i654.LoginUseCase>(
+      () => _i654.LoginUseCase(gh<_i415.AuthRepository>()),
+    );
+    gh.lazySingleton<_i370.LoginBloc>(
+      () => _i370.LoginBloc(gh<_i654.LoginUseCase>()),
+    );
+    gh.lazySingleton<_i982.ProfileBloc>(
+      () => _i982.ProfileBloc(
+        gh<_i619.GetUserProfileUseCase>(),
+        gh<_i218.CreateProfileUseCase>(),
+        gh<_i577.UploadImageUseCase>(),
       ),
     );
     gh.lazySingleton<_i1011.UsersBloc>(
       () => _i1011.UsersBloc(
         fetchUsersUseCase: gh<_i623.FetchUsersUseCase>(),
         fetchUserUseCase: gh<_i617.FetchUserUseCase>(),
+      ),
+    );
+    gh.lazySingleton<_i706.AuthBloc>(
+      () => _i706.AuthBloc(
+        gh<_i660.CheckAuthUseCase>(),
+        gh<_i342.LogoutUseCase>(),
+        gh<_i158.ClearCacheUseCase>(),
       ),
     );
     gh.lazySingleton<_i590.AppRouter>(

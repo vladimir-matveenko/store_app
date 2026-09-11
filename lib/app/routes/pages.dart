@@ -8,6 +8,7 @@ class Pages {
   static const login = '/login';
   static const addProduct = 'add-product';
   static const addCategory = 'add-category';
+  static const createProfile = '/create-profile';
 
   /// Shell routes
   static const products = '/products';

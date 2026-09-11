@@ -11,60 +11,47 @@ part of 'profile_state.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
-
 /// @nodoc
 mixin _$ProfileState {
 
-  bool get isLoading;
-
-  UserEntity? get user;
-
-  String? get error;
-
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $ProfileStateCopyWith<ProfileState> get copyWith =>
-      _$ProfileStateCopyWithImpl<ProfileState>(
-          this as ProfileState, _$identity);
+ bool get isLoading; bool get isAvatarLoading; bool get createdSuccessful; bool get updatedSuccessful; UserEntity? get user; String? get error; AppImageEntity? get avatar;
+/// Create a copy of ProfileState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ProfileStateCopyWith<ProfileState> get copyWith => _$ProfileStateCopyWithImpl<ProfileState>(this as ProfileState, _$identity);
 
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ProfileState &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
-            (identical(other.user, user) || other.user == user) &&
-            (identical(other.error, error) || other.error == error));
-  }
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isAvatarLoading, isAvatarLoading) || other.isAvatarLoading == isAvatarLoading)&&(identical(other.createdSuccessful, createdSuccessful) || other.createdSuccessful == createdSuccessful)&&(identical(other.updatedSuccessful, updatedSuccessful) || other.updatedSuccessful == updatedSuccessful)&&(identical(other.user, user) || other.user == user)&&(identical(other.error, error) || other.error == error)&&(identical(other.avatar, avatar) || other.avatar == avatar));
+}
 
 
-  @override
-  int get hashCode => Object.hash(runtimeType, isLoading, user, error);
+@override
+int get hashCode => Object.hash(runtimeType,isLoading,isAvatarLoading,createdSuccessful,updatedSuccessful,user,error,avatar);
 
-  @override
-  String toString() {
-    return 'ProfileState(isLoading: $isLoading, user: $user, error: $error)';
-  }
+@override
+String toString() {
+  return 'ProfileState(isLoading: $isLoading, isAvatarLoading: $isAvatarLoading, createdSuccessful: $createdSuccessful, updatedSuccessful: $updatedSuccessful, user: $user, error: $error, avatar: $avatar)';
+}
 
 
 }
 
 /// @nodoc
-abstract mixin class $ProfileStateCopyWith<$Res> {
-  factory $ProfileStateCopyWith(ProfileState value,
-      $Res Function(ProfileState) _then) = _$ProfileStateCopyWithImpl;
+abstract mixin class $ProfileStateCopyWith<$Res>  {
+  factory $ProfileStateCopyWith(ProfileState value, $Res Function(ProfileState) _then) = _$ProfileStateCopyWithImpl;
+@useResult
+$Res call({
+ bool isLoading, bool isAvatarLoading, bool createdSuccessful, bool updatedSuccessful, UserEntity? user, String? error, AppImageEntity? avatar
+});
 
-  @useResult
-  $Res call({
-    bool isLoading, UserEntity? user, String? error
-  });
+
 
 
 }
-
 /// @nodoc
 class _$ProfileStateCopyWithImpl<$Res>
     implements $ProfileStateCopyWith<$Res> {
@@ -73,172 +60,151 @@ class _$ProfileStateCopyWithImpl<$Res>
   final ProfileState _self;
   final $Res Function(ProfileState) _then;
 
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call(
-      {Object? isLoading = null, Object? user = freezed, Object? error = freezed,}) {
-    return _then(_self.copyWith(
-      isLoading: null == isLoading
-          ? _self.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-      as bool,
-      user: freezed == user
-          ? _self.user
-          : user // ignore: cast_nullable_to_non_nullable
-      as UserEntity?,
-      error: freezed == error
-          ? _self.error
-          : error // ignore: cast_nullable_to_non_nullable
-      as String?,
-    ));
-  }
+/// Create a copy of ProfileState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? isLoading = null,Object? isAvatarLoading = null,Object? createdSuccessful = null,Object? updatedSuccessful = null,Object? user = freezed,Object? error = freezed,Object? avatar = freezed,}) {
+  return _then(_self.copyWith(
+isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as bool,isAvatarLoading: null == isAvatarLoading ? _self.isAvatarLoading : isAvatarLoading // ignore: cast_nullable_to_non_nullable
+as bool,createdSuccessful: null == createdSuccessful ? _self.createdSuccessful : createdSuccessful // ignore: cast_nullable_to_non_nullable
+as bool,updatedSuccessful: null == updatedSuccessful ? _self.updatedSuccessful : updatedSuccessful // ignore: cast_nullable_to_non_nullable
+as bool,user: freezed == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
+as UserEntity?,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as String?,avatar: freezed == avatar ? _self.avatar : avatar // ignore: cast_nullable_to_non_nullable
+as AppImageEntity?,
+  ));
+}
 
 }
 
 
 /// Adds pattern-matching-related methods to [ProfileState].
 extension ProfileStatePatterns on ProfileState {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  @optionalTypeArgs TResult maybeMap
-
-  <
-
-  TResult
-
-  extends
-
-  Object?
-
-  >
-
-  (
-
-  TResult Function( _ProfileState value)? $default,{required TResult orElse(),}){
-  final _that = this;
-  switch (_that) {
-  case _ProfileState() when $default != null:
-  return $default(_that);case _:
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ProfileState value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ProfileState() when $default != null:
+return $default(_that);case _:
   return orElse();
 
-  }
-  }
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
 
-  @optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ProfileState value) $default,){
-  final _that = this;
-  switch (_that) {
-  case _ProfileState():
-  return $default(_that);case _:
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ProfileState value)  $default,){
+final _that = this;
+switch (_that) {
+case _ProfileState():
+return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
-  }
-  }
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
 
-  @optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ProfileState value)? $default,){
-  final _that = this;
-  switch (_that) {
-  case _ProfileState() when $default != null:
-  return $default(_that);case _:
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ProfileState value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ProfileState() when $default != null:
+return $default(_that);case _:
   return null;
 
-  }
-  }
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isLoading, UserEntity? user, String? error)? $default,{required TResult orElse(),}) {final _that = this;
-  switch (_that) {
-  case _ProfileState() when $default != null:
-  return $default(_that.isLoading,_that.user,_that.error);case _:
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isLoading,  bool isAvatarLoading,  bool createdSuccessful,  bool updatedSuccessful,  UserEntity? user,  String? error,  AppImageEntity? avatar)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ProfileState() when $default != null:
+return $default(_that.isLoading,_that.isAvatarLoading,_that.createdSuccessful,_that.updatedSuccessful,_that.user,_that.error,_that.avatar);case _:
   return orElse();
 
-  }
-  }
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
 
-  @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isLoading, UserEntity? user, String? error) $default,) {final _that = this;
-  switch (_that) {
-  case _ProfileState():
-  return $default(_that.isLoading,_that.user,_that.error);case _:
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isLoading,  bool isAvatarLoading,  bool createdSuccessful,  bool updatedSuccessful,  UserEntity? user,  String? error,  AppImageEntity? avatar)  $default,) {final _that = this;
+switch (_that) {
+case _ProfileState():
+return $default(_that.isLoading,_that.isAvatarLoading,_that.createdSuccessful,_that.updatedSuccessful,_that.user,_that.error,_that.avatar);case _:
   throw StateError('Unexpected subclass');
 
-  }
-  }
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
 
-  @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isLoading, UserEntity? user, String? error)? $default,) {final _that = this;
-  switch (_that) {
-  case _ProfileState() when $default != null:
-  return $default(_that.isLoading,_that.user,_that.error);case _:
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isLoading,  bool isAvatarLoading,  bool createdSuccessful,  bool updatedSuccessful,  UserEntity? user,  String? error,  AppImageEntity? avatar)?  $default,) {final _that = this;
+switch (_that) {
+case _ProfileState() when $default != null:
+return $default(_that.isLoading,_that.isAvatarLoading,_that.createdSuccessful,_that.updatedSuccessful,_that.user,_that.error,_that.avatar);case _:
   return null;
 
-  }
-  }
+}
+}
 
 }
 
@@ -246,61 +212,54 @@ extension ProfileStatePatterns on ProfileState {
 
 
 class _ProfileState implements ProfileState {
-  const _ProfileState({this.isLoading = false, this.user, this.error});
+  const _ProfileState({this.isLoading = false, this.isAvatarLoading = false, this.createdSuccessful = false, this.updatedSuccessful = false, this.user, this.error, this.avatar});
+  
+
+@override@JsonKey() final  bool isLoading;
+@override@JsonKey() final  bool isAvatarLoading;
+@override@JsonKey() final  bool createdSuccessful;
+@override@JsonKey() final  bool updatedSuccessful;
+@override final  UserEntity? user;
+@override final  String? error;
+@override final  AppImageEntity? avatar;
+
+/// Create a copy of ProfileState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ProfileStateCopyWith<_ProfileState> get copyWith => __$ProfileStateCopyWithImpl<_ProfileState>(this, _$identity);
 
 
-  @override
-  @JsonKey()
-  final bool isLoading;
-  @override final UserEntity? user;
-  @override final String? error;
 
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$ProfileStateCopyWith<_ProfileState> get copyWith =>
-      __$ProfileStateCopyWithImpl<_ProfileState>(this, _$identity);
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isAvatarLoading, isAvatarLoading) || other.isAvatarLoading == isAvatarLoading)&&(identical(other.createdSuccessful, createdSuccessful) || other.createdSuccessful == createdSuccessful)&&(identical(other.updatedSuccessful, updatedSuccessful) || other.updatedSuccessful == updatedSuccessful)&&(identical(other.user, user) || other.user == user)&&(identical(other.error, error) || other.error == error)&&(identical(other.avatar, avatar) || other.avatar == avatar));
+}
 
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _ProfileState &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
-            (identical(other.user, user) || other.user == user) &&
-            (identical(other.error, error) || other.error == error));
-  }
+@override
+int get hashCode => Object.hash(runtimeType,isLoading,isAvatarLoading,createdSuccessful,updatedSuccessful,user,error,avatar);
 
-
-  @override
-  int get hashCode => Object.hash(runtimeType, isLoading, user, error);
-
-  @override
-  String toString() {
-    return 'ProfileState(isLoading: $isLoading, user: $user, error: $error)';
-  }
+@override
+String toString() {
+  return 'ProfileState(isLoading: $isLoading, isAvatarLoading: $isAvatarLoading, createdSuccessful: $createdSuccessful, updatedSuccessful: $updatedSuccessful, user: $user, error: $error, avatar: $avatar)';
+}
 
 
 }
 
 /// @nodoc
-abstract mixin class _$ProfileStateCopyWith<$Res>
-    implements $ProfileStateCopyWith<$Res> {
-  factory _$ProfileStateCopyWith(_ProfileState value,
-      $Res Function(_ProfileState) _then) = __$ProfileStateCopyWithImpl;
+abstract mixin class _$ProfileStateCopyWith<$Res> implements $ProfileStateCopyWith<$Res> {
+  factory _$ProfileStateCopyWith(_ProfileState value, $Res Function(_ProfileState) _then) = __$ProfileStateCopyWithImpl;
+@override @useResult
+$Res call({
+ bool isLoading, bool isAvatarLoading, bool createdSuccessful, bool updatedSuccessful, UserEntity? user, String? error, AppImageEntity? avatar
+});
 
-  @override
-  @useResult
-  $Res call({
-    bool isLoading, UserEntity? user, String? error
-  });
+
 
 
 }
-
 /// @nodoc
 class __$ProfileStateCopyWithImpl<$Res>
     implements _$ProfileStateCopyWith<$Res> {
@@ -309,27 +268,20 @@ class __$ProfileStateCopyWithImpl<$Res>
   final _ProfileState _self;
   final $Res Function(_ProfileState) _then;
 
-  /// Create a copy of ProfileState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $Res call(
-      {Object? isLoading = null, Object? user = freezed, Object? error = freezed,}) {
-    return _then(_ProfileState(
-      isLoading: null == isLoading
-          ? _self.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-      as bool,
-      user: freezed == user
-          ? _self.user
-          : user // ignore: cast_nullable_to_non_nullable
-      as UserEntity?,
-      error: freezed == error
-          ? _self.error
-          : error // ignore: cast_nullable_to_non_nullable
-      as String?,
-    ));
-  }
+/// Create a copy of ProfileState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? isLoading = null,Object? isAvatarLoading = null,Object? createdSuccessful = null,Object? updatedSuccessful = null,Object? user = freezed,Object? error = freezed,Object? avatar = freezed,}) {
+  return _then(_ProfileState(
+isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
+as bool,isAvatarLoading: null == isAvatarLoading ? _self.isAvatarLoading : isAvatarLoading // ignore: cast_nullable_to_non_nullable
+as bool,createdSuccessful: null == createdSuccessful ? _self.createdSuccessful : createdSuccessful // ignore: cast_nullable_to_non_nullable
+as bool,updatedSuccessful: null == updatedSuccessful ? _self.updatedSuccessful : updatedSuccessful // ignore: cast_nullable_to_non_nullable
+as bool,user: freezed == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
+as UserEntity?,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as String?,avatar: freezed == avatar ? _self.avatar : avatar // ignore: cast_nullable_to_non_nullable
+as AppImageEntity?,
+  ));
+}
 
 
 }

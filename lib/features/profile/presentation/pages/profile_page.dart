@@ -69,7 +69,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 style: textTheme.bodyLarge,
               ),
               Text(
-                '${'profileScreen.role'.tr()}: ${state.user?.role}',
+                '${'profileScreen.role'.tr()}: ${state.user?.role.name}',
                 style: textTheme.bodyLarge,
               ),
               if (_showSelector) ...[

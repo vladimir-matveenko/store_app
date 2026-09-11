@@ -49,6 +49,7 @@ class AppTheme {
       showUnselectedLabels: false,
     ),
     inputDecorationTheme: InputDecorationTheme(
+      hintStyle: TextStyle(color: appColors.secondaryText),
       contentPadding: const EdgeInsets.symmetric(
         vertical: 4.0,
         horizontal: 8.0,
@@ -108,6 +109,7 @@ class AppTheme {
       ),
     ),
     dropdownMenuTheme: DropdownMenuThemeData(
+      textStyle: const TextStyle(fontSize: 14.0),
       inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
@@ -158,7 +160,7 @@ class AppTheme {
       style: IconButton.styleFrom(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
         padding: const EdgeInsets.all(8.0),
-        backgroundColor: appColors.iconButtonBackground,
+        backgroundColor: appColors.surfaceTint,
         elevation: 0,
         shadowColor: appColors.surfaceTint,
         surfaceTintColor: appColors.surfaceTint,
@@ -244,6 +246,7 @@ class AppTheme {
       showUnselectedLabels: false,
     ),
     inputDecorationTheme: InputDecorationTheme(
+      hintStyle: TextStyle(color: appColors.secondaryText),
       contentPadding: const EdgeInsets.symmetric(
         vertical: 4.0,
         horizontal: 8.0,
@@ -303,6 +306,7 @@ class AppTheme {
       ),
     ),
     dropdownMenuTheme: DropdownMenuThemeData(
+      textStyle: const TextStyle(fontSize: 14.0),
       inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -353,7 +357,7 @@ class AppTheme {
       style: IconButton.styleFrom(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
         padding: const EdgeInsets.all(8.0),
-        backgroundColor: appColors.iconButtonBackground,
+        backgroundColor: appColors.surfaceTint,
         elevation: 0,
         shadowColor: appColors.surfaceTint,
         surfaceTintColor: appColors.surfaceTint,

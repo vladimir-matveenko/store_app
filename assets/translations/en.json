@@ -1,4 +1,6 @@
 {
+  "okText": "ОК",
+  "cancelText": "Cancel",
   "updatedAt": "Updated at:",
   "you": "You",
   "bottomNavBar": {
@@ -11,7 +13,20 @@
     "screenName": "Login",
     "fieldNameEmail": "Email",
     "fieldNamePassword": "Password",
-    "btnLogin": "Login"
+    "btnLogin": "Login",
+    "dontHaveAccount": "Don't have an account?"
+  },
+  "createProfileScreen": {
+    "screenName": "Create account",
+    "fieldUserName": "User name",
+    "btnCreate": "Create profile",
+    "created": "Profile created successful",
+    "createSuccessMessage": "Your profile has been successfully created. Please log in to start using the app.",
+    "userRoles": {
+      "customer": "Customer",
+      "admin": "Admin"
+    },
+    "addAvatar": "Add avatar!"
   },
   "productsScreen": {
     "screenName": "Products",
@@ -79,6 +94,7 @@
     "btnReset": "Reset filters"
   },
   "fieldValidation": {
+    "fieldIsRequired": "This field is required!",
     "enterEmail": "Enter email",
     "enterPassword": "Enter password",
     "notEmpty": "Must be not empty",

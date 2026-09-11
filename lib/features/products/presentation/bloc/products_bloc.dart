@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:store_app/core/data/services/image_service.dart';
 import 'package:store_app/core/domain/entity/availability_filter_entity.dart';
 import 'package:store_app/core/domain/usecases/usecase.dart';
 import 'package:store_app/features/products/data/models/category_model.dart';
@@ -314,7 +315,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     ImagePicked event,
     Emitter<ProductsState> emit,
   ) async {
-    final image = await ProductsUtils.getImageFromGallery();
+    final image = await ImageService.getImageFromGallery();
     if (image != null) {
       var images = [...?state.pickedImages];
       images.add(image);

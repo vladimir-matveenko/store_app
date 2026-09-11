@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:store_app/app/constants/app_enums.dart';
 import 'package:store_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:store_app/features/auth/presentation/bloc/auth_event.dart';
 import 'package:store_app/features/auth/presentation/bloc/auth_state.dart';
@@ -112,14 +113,14 @@ void main() {
           id: '1',
           email: 'user1@example.com',
           name: 'User One',
-          role: 'admin',
+          role: UserRole.admin,
           avatar: 'avatar1.jpg',
         ),
         const UserEntity(
           id: '2',
           email: 'user2@example.com',
           name: 'User Two',
-          role: 'user',
+          role: UserRole.customer,
           avatar: 'avatar2.jpg',
         ),
       ];

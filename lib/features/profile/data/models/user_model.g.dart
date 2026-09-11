@@ -11,7 +11,7 @@ _UserModel _$UserModelFromJson(Map<String, dynamic> json) => _UserModel(
   name: json['name'] as String,
   email: json['email'] as String,
   password: json['password'] as String,
-  role: json['role'] as String,
+  role: $enumDecode(_$UserRoleEnumMap, json['role']),
   avatar: json['avatar'] as String?,
 );
 
@@ -21,6 +21,11 @@ Map<String, dynamic> _$UserModelToJson(_UserModel instance) =>
       'name': instance.name,
       'email': instance.email,
       'password': instance.password,
-      'role': instance.role,
+      'role': _$UserRoleEnumMap[instance.role]!,
       'avatar': ?instance.avatar,
     };
+
+const _$UserRoleEnumMap = {
+  UserRole.customer: 'customer',
+  UserRole.admin: 'admin',
+};

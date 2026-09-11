@@ -109,7 +109,7 @@ class ListItem extends StatelessWidget {
               ),
             ),
             Text(
-              user.role,
+              user.role.name,
               style: textTheme.bodySmall?.copyWith(color: Colors.blueGrey),
             ),
           ],

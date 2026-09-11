@@ -1,16 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../app/app_env.dart';
 import '../../../core/network/http_interceptors.dart';
+import '../../app_env.dart';
 
 @module
 abstract class NetworkModule {
   @lazySingleton
-  Dio dio(AuthInterceptor authInterceptor, ErrorInterceptor errorInterceptor) {
+  Dio dio(AuthInterceptor authInterceptor) {
     final dio = Dio(_baseOptions);
 
-    dio.interceptors.addAll([authInterceptor, errorInterceptor]);
+    dio.interceptors.addAll([authInterceptor]);
 
     return dio;
   }

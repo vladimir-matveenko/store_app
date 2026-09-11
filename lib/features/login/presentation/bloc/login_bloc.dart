@@ -24,6 +24,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     Emitter<LoginState> emit,
   ) async {
     emit(state.copyWith(status: LoginStatus.inProgress));
+
     final result = await _loginUseCase(
       LoginParams(email: event.email, password: event.password),
     );

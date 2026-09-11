@@ -67,7 +67,7 @@ class _UserPageState extends State<UserPage> {
                               style: textTheme.bodyLarge,
                             ),
                             Text(
-                              state.user?.role ?? '',
+                              state.user?.role.name ?? '',
                               style: textTheme.bodySmall,
                             ),
                           ],
