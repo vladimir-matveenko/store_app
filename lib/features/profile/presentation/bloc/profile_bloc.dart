@@ -9,6 +9,7 @@ import 'package:store_app/core/error/failure.dart';
 import 'package:store_app/features/profile/presentation/bloc/profile_event.dart';
 import 'package:store_app/features/profile/presentation/bloc/profile_state.dart';
 
+import '../../../products/domain/entity/app_image_entity.dart';
 import '../../../products/domain/usecases/upload_image_usecase.dart';
 import '../../domain/usecases/create_profile_usecase.dart';
 import '../../domain/usecases/get_user_profile_usecase.dart';
@@ -112,10 +113,21 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     ImagePicked event,
     Emitter<ProfileState> emit,
   ) async {
+    if (state.isAvatarLoading) return;
+    AppImageEntity? avatar;
+
     emit(state.copyWith(isAvatarLoading: true));
-    final image = await ImageService.getImageFromGallery();
-    if (image != null) {
-      emit(state.copyWith(avatar: image, isAvatarLoading: false));
+    if (event.bytes != null) {
+      avatar = await ImageService.processCameraImage(event.bytes!);
+    } else {
+      avatar = await ImageService.getImageFromGallery();
+    }
+
+    if (avatar != null) {
+      emit(state.copyWith(avatar: avatar, isAvatarLoading: false));
+    } else {
+      emit(state.copyWith(isAvatarLoading: false));
+      return;
     }
   }
 

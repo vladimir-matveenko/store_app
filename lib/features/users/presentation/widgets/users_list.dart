@@ -49,7 +49,7 @@ class UsersList extends StatelessWidget {
                   );
                 }
 
-                return const AppLoader();
+                return AppLoader.small();
               },
               separatorBuilder: (context, index) => Divider(
                 height: 16.0,

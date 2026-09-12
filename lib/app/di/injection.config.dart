@@ -284,7 +284,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i654.LoginUseCase>(
       () => _i654.LoginUseCase(gh<_i415.AuthRepository>()),
     );
-    gh.lazySingleton<_i370.LoginBloc>(
+    gh.factory<_i370.LoginBloc>(
       () => _i370.LoginBloc(gh<_i654.LoginUseCase>()),
     );
     gh.lazySingleton<_i982.ProfileBloc>(

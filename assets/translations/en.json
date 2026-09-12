@@ -26,7 +26,11 @@
       "customer": "Customer",
       "admin": "Admin"
     },
-    "addAvatar": "Add avatar!"
+    "addAvatar": "Add avatar!",
+    "imageSource": {
+      "camera": "Camera",
+      "gallery": "Gallery"
+    }
   },
   "productsScreen": {
     "screenName": "Products",

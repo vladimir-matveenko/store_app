@@ -2,14 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:store_app/core/presentation/widgets/app_message.dart';
-import 'package:store_app/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:store_app/features/login/presentation/bloc/login_bloc.dart';
 
 import '../../../../app/routes/pages.dart';
+import '../../../../core/presentation/widgets/app_message.dart';
 import '../../../../core/presentation/widgets/text_fields/email_text_field.dart';
 import '../../../../core/presentation/widgets/text_fields/password_field.dart';
+import '../../../auth/presentation/bloc/auth_bloc.dart';
 import '../../../auth/presentation/bloc/auth_event.dart';
+import '../bloc/login_bloc.dart';
 import '../bloc/login_event.dart';
 import '../bloc/login_state.dart';
 

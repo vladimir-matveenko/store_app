@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_app/features/login/presentation/bloc/login_bloc.dart';
 
 import '../app/routes/router.dart';
 import '../core/data/services/auth_session_manager.dart';
@@ -30,7 +29,6 @@ class _MyAppState extends State<MyApp> {
   final appRouter = getIt<AppRouter>();
   final authBloc = getIt<AuthBloc>();
   final profileBloc = getIt<ProfileBloc>();
-  final loginBloc = getIt<LoginBloc>();
   final sessionManager = getIt<AuthSessionManager>();
   final authRepo = getIt<AuthRepository>();
   final themeCubit = getIt<ThemeCubit>();
@@ -60,7 +58,6 @@ class _MyAppState extends State<MyApp> {
           create: (_) => authBloc..add(const AuthCheckRequested()),
           lazy: false,
         ),
-        BlocProvider(create: (_) => loginBloc, lazy: false),
         BlocProvider(create: (_) => profileBloc),
         BlocProvider(create: (_) => themeCubit..loadTheme(), lazy: false),
         BlocProvider(create: (_) => productsBloc, lazy: true),

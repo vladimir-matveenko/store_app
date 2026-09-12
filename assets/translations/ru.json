@@ -26,7 +26,11 @@
       "customer": "Клиент",
       "admin": "Админ"
     },
-    "addAvatar": "Добавьте аватар!"
+    "addAvatar": "Добавьте аватар!",
+    "imageSource": {
+      "camera": "Камера",
+      "gallery": "Галлерея"
+    }
   },
   "productsScreen": {
     "screenName": "Товары",

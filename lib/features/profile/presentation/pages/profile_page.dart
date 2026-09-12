@@ -44,7 +44,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return BlocBuilder<ProfileBloc, ProfileState>(
       builder: (context, state) {
         if (state.isLoading) {
-          return const AppLoader();
+          return const Center(child: AppLoader());
         }
         final avatar = state.user?.avatar ?? '';
         final name = state.user?.name ?? '';
@@ -59,7 +59,7 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               UserAvatar(
                 avatar: avatar,
-                size: 90.0,
+                size: 120.0,
                 firstName: firstName,
                 lastName: lastName,
               ),

@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -11,6 +12,7 @@ import '../../../../core/presentation/widgets/app_dialog.dart';
 import '../../../../core/presentation/widgets/scrolled_wrapper.dart';
 import '../bloc/profile_bloc.dart';
 import '../widgets/create_profile_form.dart';
+import '../widgets/get_image_dialog.dart';
 import '../widgets/profile_screen_wrapper.dart';
 
 class CreateProfilePage extends StatefulWidget {
@@ -75,7 +77,7 @@ class _CreateProfilePageState extends State<CreateProfilePage> {
       ),
       resizeToAvoidBottomInset: true,
       body: ProfileScreenWrapper(
-        successMessage: 'createProfileScreen.createSuccessMessage'.tr(),
+        successMessage: '',
         buildBody: (context, state) {
           final isLoading = state.isLoading;
           final isBlocked = jobDone;
@@ -99,7 +101,11 @@ class _CreateProfilePageState extends State<CreateProfilePage> {
               },
               image: state.avatar,
               onAddImageTapped: () {
-                bloc.add(const ImagePicked());
+                if (kIsWeb) {
+                  bloc.add(const ImagePicked());
+                } else {
+                  AppDialog.empty(context, content: const GetImageDialog());
+                }
               },
             ),
           );

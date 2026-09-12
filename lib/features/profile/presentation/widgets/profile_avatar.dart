@@ -10,13 +10,11 @@ class ProfileAvatar extends StatelessWidget {
     required this.userName,
     required this.onTap,
     this.showLoader = false,
-    required this.onDeleteTap,
   });
 
   final String avatarUrl;
   final String userName;
   final VoidCallback onTap;
-  final VoidCallback onDeleteTap;
   final bool showLoader;
 
   @override

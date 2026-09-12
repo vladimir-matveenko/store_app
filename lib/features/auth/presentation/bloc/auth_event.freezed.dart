@@ -11,138 +11,58 @@ part of 'auth_event.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
-
 /// @nodoc
 mixin _$AuthEvent {
 
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is AuthEvent);
-  }
 
 
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  String toString() {
-    return 'AuthEvent()';
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthEvent);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthEvent()';
+}
 
 
 }
 
 /// @nodoc
-class $AuthEventCopyWith<$Res> {
-  $AuthEventCopyWith(AuthEvent _, $Res Function(AuthEvent) __);
+class $AuthEventCopyWith<$Res>  {
+$AuthEventCopyWith(AuthEvent _, $Res Function(AuthEvent) __);
 }
 
 
 /// Adds pattern-matching-related methods to [AuthEvent].
 extension AuthEventPatterns on AuthEvent {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  @optionalTypeArgs TResult maybeMap
-
-  <
-
-  TResult
-
-  extends
-
-  Object?
-
-  >
-
-  (
-
-  {
-
-  TResult
-
-  Function
-
-  (
-
-  AuthCheckRequested
-
-  value
-
-  )
-
-  ?
-
-  checkRequested
-
-  ,
-
-  TResult
-
-  Function
-
-  (
-
-  LogoutRequested
-
-  value
-
-  )
-
-  ?
-
-  logoutRequested
-
-  ,
-
-  TResult
-
-  Function
-
-  (
-
-  ClearCacheRequested
-
-  value
-
-  )
-
-  ?
-
-  clearCacheRequested
-
-  ,
-
-  required
-
-  TResult
-
-  orElse
-
-  (
-
-  )
-
-  ,
-}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( AuthCheckRequested value)?  checkRequested,TResult Function( LogoutRequested value)?  logoutRequested,TResult Function( ClearCacheRequested value)?  clearCacheRequested,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case AuthCheckRequested() when checkRequested != null:
 return checkRequested(_that);case LogoutRequested() when logoutRequested != null:
 return logoutRequested(_that);case ClearCacheRequested() when clearCacheRequested != null:
 return clearCacheRequested(_that);case _:
-return orElse();
+  return orElse();
 
 }
 }
@@ -159,22 +79,17 @@ return orElse();
 /// }
 /// ```
 
-@optionalTypeArgs
-TResult map<TResult extends Object?>(
-    {required TResult Function( AuthCheckRequested value) checkRequested, required TResult Function( LogoutRequested value) logoutRequested, required TResult Function( ClearCacheRequested value) clearCacheRequested,}) {
-  final _that = this;
-  switch (_that) {
-    case AuthCheckRequested():
-      return checkRequested(_that);
-    case LogoutRequested():
-      return logoutRequested(_that);
-    case ClearCacheRequested():
-      return clearCacheRequested(_that);
-    case _:
-      throw StateError('Unexpected subclass');
-  }
-}
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( AuthCheckRequested value)  checkRequested,required TResult Function( LogoutRequested value)  logoutRequested,required TResult Function( ClearCacheRequested value)  clearCacheRequested,}){
+final _that = this;
+switch (_that) {
+case AuthCheckRequested():
+return checkRequested(_that);case LogoutRequested():
+return logoutRequested(_that);case ClearCacheRequested():
+return clearCacheRequested(_that);case _:
+  throw StateError('Unexpected subclass');
 
+}
+}
 /// A variant of `map` that fallback to returning `null`.
 ///
 /// It is equivalent to doing:
@@ -187,22 +102,17 @@ TResult map<TResult extends Object?>(
 /// }
 /// ```
 
-@optionalTypeArgs
-TResult? mapOrNull<TResult extends Object?>(
-    {TResult? Function( AuthCheckRequested value)? checkRequested, TResult? Function( LogoutRequested value)? logoutRequested, TResult? Function( ClearCacheRequested value)? clearCacheRequested,}) {
-  final _that = this;
-  switch (_that) {
-    case AuthCheckRequested() when checkRequested != null:
-      return checkRequested(_that);
-    case LogoutRequested() when logoutRequested != null:
-      return logoutRequested(_that);
-    case ClearCacheRequested() when clearCacheRequested != null:
-      return clearCacheRequested(_that);
-    case _:
-      return null;
-  }
-}
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( AuthCheckRequested value)?  checkRequested,TResult? Function( LogoutRequested value)?  logoutRequested,TResult? Function( ClearCacheRequested value)?  clearCacheRequested,}){
+final _that = this;
+switch (_that) {
+case AuthCheckRequested() when checkRequested != null:
+return checkRequested(_that);case LogoutRequested() when logoutRequested != null:
+return logoutRequested(_that);case ClearCacheRequested() when clearCacheRequested != null:
+return clearCacheRequested(_that);case _:
+  return null;
 
+}
+}
 /// A variant of `when` that fallback to an `orElse` callback.
 ///
 /// It is equivalent to doing:
@@ -215,40 +125,13 @@ TResult? mapOrNull<TResult extends Object?>(
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen
-<
-TResult extends Object?>(
-{
-TResult
-Function
-(
-)
-?
-checkRequested
-,
-TResult
-Function
-(
-)
-?
-logoutRequested
-,
-TResult
-Function
-(
-)
-?
-clearCacheRequested
-,
-required
-TResult
-orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  checkRequested,TResult Function()?  logoutRequested,TResult Function()?  clearCacheRequested,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case AuthCheckRequested() when checkRequested != null:
 return checkRequested();case LogoutRequested() when logoutRequested != null:
 return logoutRequested();case ClearCacheRequested() when clearCacheRequested != null:
 return clearCacheRequested();case _:
-return orElse();
+  return orElse();
 
 }
 }
@@ -265,13 +148,13 @@ return orElse();
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function() checkRequested,required TResult Function() logoutRequested,required TResult Function() clearCacheRequested,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  checkRequested,required TResult Function()  logoutRequested,required TResult Function()  clearCacheRequested,}) {final _that = this;
 switch (_that) {
 case AuthCheckRequested():
 return checkRequested();case LogoutRequested():
 return logoutRequested();case ClearCacheRequested():
 return clearCacheRequested();case _:
-throw StateError('Unexpected subclass');
+  throw StateError('Unexpected subclass');
 
 }
 }
@@ -287,13 +170,13 @@ throw StateError('Unexpected subclass');
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()? checkRequested,TResult? Function()? logoutRequested,TResult? Function()? clearCacheRequested,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  checkRequested,TResult? Function()?  logoutRequested,TResult? Function()?  clearCacheRequested,}) {final _that = this;
 switch (_that) {
 case AuthCheckRequested() when checkRequested != null:
 return checkRequested();case LogoutRequested() when logoutRequested != null:
 return logoutRequested();case ClearCacheRequested() when clearCacheRequested != null:
 return clearCacheRequested();case _:
-return null;
+  return null;
 
 }
 }
@@ -304,12 +187,17 @@ return null;
 
 
 class AuthCheckRequested implements AuthEvent {
-const AuthCheckRequested();
+  const AuthCheckRequested();
+  
+
+
+
+
 
 
 @override
 bool operator ==(Object other) {
-return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthCheckRequested);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthCheckRequested);
 }
 
 
@@ -318,7 +206,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-return 'AuthEvent.checkRequested()';
+  return 'AuthEvent.checkRequested()';
 }
 
 
@@ -330,11 +218,13 @@ $AuthCheckRequestedCopyWith(AuthCheckRequested _, $Res Function(AuthCheckRequest
 }
 /// @nodoc
 class _$AuthCheckRequestedCopyWithImpl<$Res>
-implements $AuthCheckRequestedCopyWith<$Res> {
-_$AuthCheckRequestedCopyWithImpl(this._self, this._then);
+    implements $AuthCheckRequestedCopyWith<$Res> {
+  _$AuthCheckRequestedCopyWithImpl(this._self, this._then);
 
-final AuthCheckRequested _self;
-final $Res Function(AuthCheckRequested) _then;
+  final AuthCheckRequested _self;
+  final $Res Function(AuthCheckRequested) _then;
+
+
 
 
 }
@@ -343,12 +233,17 @@ final $Res Function(AuthCheckRequested) _then;
 
 
 class LogoutRequested implements AuthEvent {
-const LogoutRequested();
+  const LogoutRequested();
+  
+
+
+
+
 
 
 @override
 bool operator ==(Object other) {
-return identical(this, other) || (other.runtimeType == runtimeType&&other is LogoutRequested);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LogoutRequested);
 }
 
 
@@ -357,7 +252,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-return 'AuthEvent.logoutRequested()';
+  return 'AuthEvent.logoutRequested()';
 }
 
 
@@ -369,11 +264,13 @@ $LogoutRequestedCopyWith(LogoutRequested _, $Res Function(LogoutRequested) __);
 }
 /// @nodoc
 class _$LogoutRequestedCopyWithImpl<$Res>
-implements $LogoutRequestedCopyWith<$Res> {
-_$LogoutRequestedCopyWithImpl(this._self, this._then);
+    implements $LogoutRequestedCopyWith<$Res> {
+  _$LogoutRequestedCopyWithImpl(this._self, this._then);
 
-final LogoutRequested _self;
-final $Res Function(LogoutRequested) _then;
+  final LogoutRequested _self;
+  final $Res Function(LogoutRequested) _then;
+
+
 
 
 }
@@ -382,12 +279,17 @@ final $Res Function(LogoutRequested) _then;
 
 
 class ClearCacheRequested implements AuthEvent {
-const ClearCacheRequested();
+  const ClearCacheRequested();
+  
+
+
+
+
 
 
 @override
 bool operator ==(Object other) {
-return identical(this, other) || (other.runtimeType == runtimeType&&other is ClearCacheRequested);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClearCacheRequested);
 }
 
 
@@ -396,7 +298,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-return 'AuthEvent.clearCacheRequested()';
+  return 'AuthEvent.clearCacheRequested()';
 }
 
 
@@ -408,11 +310,13 @@ $ClearCacheRequestedCopyWith(ClearCacheRequested _, $Res Function(ClearCacheRequ
 }
 /// @nodoc
 class _$ClearCacheRequestedCopyWithImpl<$Res>
-implements $ClearCacheRequestedCopyWith<$Res> {
-_$ClearCacheRequestedCopyWithImpl(this._self, this._then);
+    implements $ClearCacheRequestedCopyWith<$Res> {
+  _$ClearCacheRequestedCopyWithImpl(this._self, this._then);
 
-final ClearCacheRequested _self;
-final $Res Function(ClearCacheRequested) _then;
+  final ClearCacheRequested _self;
+  final $Res Function(ClearCacheRequested) _then;
+
+
 
 
 }
