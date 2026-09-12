@@ -35,7 +35,8 @@
   "editProfileScreen": {
     "screenName": "Edit profile",
     "btnSave": "Save changes",
-    "updated": "Profile changed successful"
+    "updated": "Profile changed successful",
+    "notAvailable": "This feature isn't available for the test user. Create the own one to get access to the feature"
   },
   "productsScreen": {
     "screenName": "Products",
