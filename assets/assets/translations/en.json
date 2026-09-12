@@ -26,7 +26,16 @@
       "customer": "Customer",
       "admin": "Admin"
     },
-    "addAvatar": "Add avatar!"
+    "addAvatar": "Add avatar!",
+    "imageSource": {
+      "camera": "Camera",
+      "gallery": "Gallery"
+    }
+  },
+  "editProfileScreen": {
+    "screenName": "Edit profile",
+    "btnSave": "Save changes",
+    "updated": "Profile changed successful"
   },
   "productsScreen": {
     "screenName": "Products",
