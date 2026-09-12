@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:store_app/app/constants/app_strings.dart';
 
 import '../../../../app/routes/pages.dart';
 import '../../../../core/presentation/widgets/app_message.dart';
@@ -39,8 +40,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void initState() {
-    _emailController.text = 'john@mail.com';
-    _passwordController.text = 'changeme';
+    _emailController.text = AppStrings.testUserEmail;
+    _passwordController.text = AppStrings.testUserPassword;
     super.initState();
   }
 
