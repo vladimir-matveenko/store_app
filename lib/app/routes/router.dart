@@ -19,6 +19,7 @@ import '/../features/users/presentation/pages/users_page.dart';
 import '../../features/camera/presentation/screens/camera_screen.dart';
 import '../../features/login/presentation/routes/login_route.dart';
 import '../../features/profile/presentation/pages/create_profile_page.dart';
+import '../../features/profile/presentation/pages/edit_profile_page.dart';
 import 'pages.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -154,6 +155,13 @@ class AppRouter {
                 path: Pages.profile,
                 pageBuilder: (context, state) =>
                     const NoTransitionPage(child: ProfilePage()),
+                routes: [
+                  GoRoute(
+                    path: Pages.editProfile,
+                    pageBuilder: (context, state) =>
+                        const NoTransitionPage(child: EditProfilePage()),
+                  ),
+                ],
               ),
             ],
           ),

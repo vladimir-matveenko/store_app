@@ -49,7 +49,6 @@ class ListItem extends StatelessWidget {
       alignment: AlignmentDirectional.topEnd,
       children: [
         Container(
-          padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.0)),
           width: 120.0,
           height: 120.0,
@@ -57,6 +56,7 @@ class ListItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(8.0),
             child: Image.memory(
               image.bytes,
+              fit: .cover,
               errorBuilder: (context, o, s) => Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
@@ -75,7 +75,7 @@ class ListItem extends StatelessWidget {
           ),
           icon: Icon(
             Icons.delete_forever,
-            size: 24.0,
+            size: 32.0,
             color: theme.colorScheme.error,
           ),
         ),

@@ -50,7 +50,7 @@ $Res call({
 });
 
 
-
+$UserEntityCopyWith<$Res>? get user;
 
 }
 /// @nodoc
@@ -76,7 +76,19 @@ as List<UserEntity>,user: freezed == user ? _self.user : user // ignore: cast_nu
 as UserEntity?,
   ));
 }
+/// Create a copy of UsersState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UserEntityCopyWith<$Res>? get user {
+    if (_self.user == null) {
+    return null;
+  }
 
+  return $UserEntityCopyWith<$Res>(_self.user!, (value) {
+    return _then(_self.copyWith(user: value));
+  });
+}
 }
 
 
@@ -267,7 +279,7 @@ $Res call({
 });
 
 
-
+@override $UserEntityCopyWith<$Res>? get user;
 
 }
 /// @nodoc
@@ -294,7 +306,19 @@ as UserEntity?,
   ));
 }
 
+/// Create a copy of UsersState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UserEntityCopyWith<$Res>? get user {
+    if (_self.user == null) {
+    return null;
+  }
 
+  return $UserEntityCopyWith<$Res>(_self.user!, (value) {
+    return _then(_self.copyWith(user: value));
+  });
+}
 }
 
 // dart format on

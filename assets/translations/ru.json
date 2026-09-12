@@ -32,6 +32,11 @@
       "gallery": "Галлерея"
     }
   },
+  "editProfileScreen": {
+    "screenName": "Редактировать профиль",
+    "btnSave": "Сохранить изменения",
+    "updated": "Профиль изменен успешно"
+  },
   "productsScreen": {
     "screenName": "Товары",
     "categories": "Категории",

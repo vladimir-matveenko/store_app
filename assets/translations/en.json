@@ -32,6 +32,11 @@
       "gallery": "Gallery"
     }
   },
+  "editProfileScreen": {
+    "screenName": "Edit profile",
+    "btnSave": "Save changes",
+    "updated": "Profile changed successful"
+  },
   "productsScreen": {
     "screenName": "Products",
     "categories": "Categories",

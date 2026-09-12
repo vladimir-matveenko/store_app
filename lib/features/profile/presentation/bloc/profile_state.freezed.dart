@@ -49,7 +49,7 @@ $Res call({
 });
 
 
-
+$UserEntityCopyWith<$Res>? get user;
 
 }
 /// @nodoc
@@ -74,7 +74,19 @@ as String?,avatar: freezed == avatar ? _self.avatar : avatar // ignore: cast_nul
 as AppImageEntity?,
   ));
 }
+/// Create a copy of ProfileState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UserEntityCopyWith<$Res>? get user {
+    if (_self.user == null) {
+    return null;
+  }
 
+  return $UserEntityCopyWith<$Res>(_self.user!, (value) {
+    return _then(_self.copyWith(user: value));
+  });
+}
 }
 
 
@@ -257,7 +269,7 @@ $Res call({
 });
 
 
-
+@override $UserEntityCopyWith<$Res>? get user;
 
 }
 /// @nodoc
@@ -283,7 +295,19 @@ as AppImageEntity?,
   ));
 }
 
+/// Create a copy of ProfileState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UserEntityCopyWith<$Res>? get user {
+    if (_self.user == null) {
+    return null;
+  }
 
+  return $UserEntityCopyWith<$Res>(_self.user!, (value) {
+    return _then(_self.copyWith(user: value));
+  });
+}
 }
 
 // dart format on

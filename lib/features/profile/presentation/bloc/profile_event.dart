@@ -18,6 +18,14 @@ class ProfileEvent with _$ProfileEvent {
     required String avatarUrl,
   }) = CreateProfileRequested;
 
+  const factory ProfileEvent.updateProfileRequested({
+    required int userId,
+    String? name,
+    String? email,
+    String? password,
+    String? role,
+  }) = UpdateProfileRequested;
+
   const factory ProfileEvent.imagePicked({Uint8List? bytes}) = ImagePicked;
 
   const factory ProfileEvent.imageRemoved({required AppImageEntity image}) =

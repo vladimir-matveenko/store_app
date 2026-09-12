@@ -75,7 +75,7 @@ class _ProductsPageState extends State<ProductsPage> {
                                   child: SearchBar(
                                     leading: Icon(
                                       Icons.search,
-                                      color: theme.colorScheme.onPrimary,
+                                      color: theme.textTheme.bodyMedium?.color,
                                     ),
                                     onTapOutside: (PointerDownEvent event) {
                                       FocusManager.instance.primaryFocus

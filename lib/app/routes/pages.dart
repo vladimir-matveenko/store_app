@@ -9,6 +9,7 @@ class Pages {
   static const addProduct = 'add-product';
   static const addCategory = 'add-category';
   static const createProfile = '/create-profile';
+  static const editProfile = 'edit-profile';
   static const camera = '/camera';
 
   /// Shell routes

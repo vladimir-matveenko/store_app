@@ -64,6 +64,7 @@ class _CreateProfilePageState extends State<CreateProfilePage> {
     _userNameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+    _roleController.dispose();
     super.dispose();
   }
 

@@ -26,6 +26,8 @@ class CreateProfileForm extends StatelessWidget {
     required this.onRoleChanged,
     this.image,
     required this.onAddImageTapped,
+    this.currentAvatar,
+    this.onDeleteTap,
   });
 
   final bool isFormActive;
@@ -42,6 +44,8 @@ class CreateProfileForm extends StatelessWidget {
   final Function(UserRole) onRoleChanged;
   final AppImageEntity? image;
   final VoidCallback onAddImageTapped;
+  final VoidCallback? onDeleteTap;
+  final Widget? currentAvatar;
 
   @override
   Widget build(BuildContext context) {
@@ -49,32 +53,40 @@ class CreateProfileForm extends StatelessWidget {
       key: formKey,
       child: Column(
         mainAxisAlignment: .center,
-        crossAxisAlignment: .stretch,
         spacing: 16.0,
         children: [
           CreateProfileAvatar(
             showLoader: isAvatarLoading,
             image: image,
             onTap: onAddImageTapped,
+            currentAvatar: currentAvatar,
+            onDeleteTap: onDeleteTap,
           ),
-          UsernameTextField(
-            enabled: isFormActive,
-            userNameController: userNameController,
-          ),
-          EmailTextField(
-            enabled: isFormActive,
-            emailController: emailController,
-          ),
-          PasswordTextField(
-            enabled: isFormActive,
-            passwordController: passwordController,
-            obscure: obscure,
-            onObscureChanged: onObscureChanged,
-          ),
-          RoleSelector(onChanged: onRoleChanged),
-          ElevatedButton(
-            onPressed: !isFormActive ? null : onSaveTapped,
-            child: isLoading ? AppLoader.small() : Text(mainButtonText),
+          Column(
+            mainAxisAlignment: .center,
+            crossAxisAlignment: .stretch,
+            spacing: 16.0,
+            children: [
+              UsernameTextField(
+                enabled: isFormActive,
+                userNameController: userNameController,
+              ),
+              EmailTextField(
+                enabled: isFormActive,
+                emailController: emailController,
+              ),
+              PasswordTextField(
+                enabled: isFormActive,
+                passwordController: passwordController,
+                obscure: obscure,
+                onObscureChanged: onObscureChanged,
+              ),
+              RoleSelector(onChanged: onRoleChanged),
+              ElevatedButton(
+                onPressed: !isFormActive ? null : onSaveTapped,
+                child: isLoading ? AppLoader.small() : Text(mainButtonText),
+              ),
+            ],
           ),
         ],
       ),

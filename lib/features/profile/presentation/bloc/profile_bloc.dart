@@ -6,10 +6,12 @@ import 'package:injectable/injectable.dart';
 import 'package:store_app/core/data/services/image_service.dart';
 import 'package:store_app/core/domain/usecases/usecase.dart';
 import 'package:store_app/core/error/failure.dart';
+import 'package:store_app/features/profile/domain/usecases/update_profile_usecase.dart';
 import 'package:store_app/features/profile/presentation/bloc/profile_event.dart';
 import 'package:store_app/features/profile/presentation/bloc/profile_state.dart';
 
 import '../../../products/domain/entity/app_image_entity.dart';
+import '../../../products/domain/entity/image_entity.dart';
 import '../../../products/domain/usecases/upload_image_usecase.dart';
 import '../../domain/usecases/create_profile_usecase.dart';
 import '../../domain/usecases/get_user_profile_usecase.dart';
@@ -20,10 +22,12 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     this._getUserProfileUseCase,
     this._createProfileUseCase,
     this._uploadImageUseCase,
+    this._updateProfileUseCase,
   ) : super(const ProfileState()) {
     on<ProfileEvent>((event, emit) async {
       await event.map(
         createProfileRequested: (e) => _onCreateProfileRequested(e, emit),
+        updateProfileRequested: (e) => _onUpdateProfileRequested(e, emit),
         userProfileRequested: (e) => _onUserProfileRequested(e, emit),
         disableErrorRequested: (e) => _onErrorDisabled(e, emit),
         disableSuccessRequested: (e) => _onSuccessDisabled(e, emit),
@@ -34,6 +38,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }
 
   final CreateProfileUseCase _createProfileUseCase;
+  final UpdateProfileUseCase _updateProfileUseCase;
   final GetUserProfileUseCase _getUserProfileUseCase;
   final UploadImageUseCase _uploadImageUseCase;
 
@@ -83,8 +88,59 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
         emit(state.copyWith(error: message, isLoading: false));
       },
-      (profile) {
-        emit(state.copyWith(createdSuccessful: profile, isLoading: false));
+      (success) {
+        emit(state.copyWith(createdSuccessful: success, isLoading: false));
+      },
+    );
+  }
+
+  Future<void> _onUpdateProfileRequested(
+    UpdateProfileRequested event,
+    Emitter<ProfileState> emit,
+  ) async {
+    emit(state.copyWith(isLoading: true));
+    ImageEntity? image;
+
+    if (state.avatar != null) {
+      final imageResult = await _uploadImageUseCase(
+        UploadImageParams(image: state.avatar!),
+      );
+
+      image = imageResult.fold((failure) {
+        emit(
+          state.copyWith(error: 'errors.serverError'.tr(), isLoading: false),
+        );
+
+        return null;
+      }, (image) => image);
+    }
+
+    final result = await _updateProfileUseCase(
+      UpdateProfileParams(
+        userId: event.userId,
+        userName: event.name,
+        email: event.email,
+        password: event.password,
+        role: event.role,
+        avatarUrl: image?.location,
+      ),
+    );
+
+    result.fold(
+      (failure) {
+        String message = 'errors.serverError'.tr();
+
+        if (failure is InvalidCredentialsFailure) {
+          message = 'errors.accessTokenInvalid'.tr();
+        } else if (failure is UnknownFailure &&
+            failure.message?.isNotEmpty == true) {
+          message = failure.message!;
+        }
+
+        emit(state.copyWith(error: message, isLoading: false));
+      },
+      (success) {
+        emit(state.copyWith(updatedSuccessful: success, isLoading: false));
       },
     );
   }

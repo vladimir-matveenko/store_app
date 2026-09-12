@@ -67,8 +67,9 @@ void main() {
       tester,
     ) async {
       final user = const UserEntity(
-        id: '1',
+        id: 1,
         email: 'john@example.com',
+        password: 'changeme',
         name: 'John Doe',
         role: UserRole.admin,
         avatar: 'https://example.com/avatar.jpg',
