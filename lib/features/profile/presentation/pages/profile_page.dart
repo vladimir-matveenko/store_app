@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:store_app/app/constants/app_strings.dart';
+import 'package:store_app/core/presentation/widgets/app_dialog.dart';
 import 'package:store_app/features/auth/presentation/bloc/auth_bloc.dart';
 
 import '../../../../app/routes/pages.dart';
@@ -84,7 +86,18 @@ class _ProfilePageState extends State<ProfilePage> {
                   foregroundColor: theme.colorScheme.primary,
                 ),
                 onPressed: () {
-                  context.go('${Pages.profile}/${Pages.editProfile}');
+                  final isTestUser =
+                      state.user!.email == AppStrings.testUserEmail &&
+                      state.user!.password == AppStrings.testUserPassword;
+                  if (isTestUser) {
+                    AppDialog.show(
+                      context,
+                      text: 'editProfileScreen.notAvailable'.tr(),
+                      okText: 'okText'.tr(),
+                    );
+                  } else {
+                    context.go('${Pages.profile}/${Pages.editProfile}');
+                  }
                 },
                 child: Row(
                   spacing: 4.0,

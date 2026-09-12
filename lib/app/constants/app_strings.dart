@@ -12,6 +12,10 @@ class AppStrings {
   static const String amountMax = 'amountMax';
   static const String mapStoreName = 'myMapStore';
 
+  /// test users
+  static const testUserEmail = 'john@mail.com';
+  static const testUserPassword = 'changeme';
+
   /// assets
   static const assetTranslationsPath = 'assets/translations';
   static const String flagUsa = 'assets/svg_icons/flag_us.svg';

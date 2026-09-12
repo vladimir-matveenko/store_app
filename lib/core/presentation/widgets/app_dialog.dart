@@ -4,9 +4,9 @@ import 'package:go_router/go_router.dart';
 class AppDialog {
   static Future<bool> show(
     BuildContext context, {
-    required String title,
+    String? title,
     required String text,
-    required String cancelText,
+    String? cancelText,
     required String okText,
   }) async {
     final theme = Theme.of(context);
@@ -21,25 +21,28 @@ class AppDialog {
             mainAxisSize: .min,
             spacing: 16.0,
             children: [
-              Text(title, style: textTheme.titleMedium),
+              if (title != null) Text(title, style: textTheme.titleMedium),
               Text(text, style: textTheme.bodyMedium),
               Row(
                 mainAxisAlignment: .spaceBetween,
                 mainAxisSize: .min,
                 spacing: 16.0,
                 children: [
-                  Expanded(
-                    child: TextButton(
-                      style: TextButton.styleFrom(backgroundColor: Colors.grey),
-                      onPressed: () => context.pop(false),
-                      child: Text(
-                        cancelText,
-                        style: textTheme.bodyLarge?.copyWith(
-                          color: theme.colorScheme.onPrimary,
+                  if (cancelText != null)
+                    Expanded(
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          backgroundColor: Colors.grey,
+                        ),
+                        onPressed: () => context.pop(false),
+                        child: Text(
+                          cancelText,
+                          style: textTheme.bodyLarge?.copyWith(
+                            color: theme.colorScheme.onPrimary,
+                          ),
                         ),
                       ),
                     ),
-                  ),
                   Expanded(
                     child: TextButton(
                       style: TextButton.styleFrom(
