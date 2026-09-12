@@ -49,7 +49,7 @@ class UsersList extends StatelessWidget {
                   );
                 }
 
-                return const AppLoader();
+                return AppLoader.small();
               },
               separatorBuilder: (context, index) => Divider(
                 height: 16.0,
@@ -89,6 +89,7 @@ class ListItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             UserAvatar(
+              size: 40.0,
               avatar: user.avatar,
               firstName: firstName,
               lastName: lastName,

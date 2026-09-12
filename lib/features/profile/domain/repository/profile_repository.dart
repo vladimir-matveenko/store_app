@@ -9,4 +9,13 @@ abstract class ProfileRepository {
   Either<Failure, void> clearCache();
 
   Future<Either<Failure, UserEntity?>> getUserProfile();
+
+  Future<Either<Failure, bool>> updateProfile({
+    required int userId,
+    String? name,
+    String? email,
+    String? password,
+    String? role,
+    String? avatarUrl,
+  });
 }

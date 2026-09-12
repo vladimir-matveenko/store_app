@@ -14,6 +14,7 @@ class ProductsUtils {
     required VoidCallback onTap,
     bool isActive = false,
   }) {
+    final theme = Theme.of(context);
     return IconButton(
       style: IconButton.styleFrom(
         backgroundColor:
@@ -28,7 +29,7 @@ class ProductsUtils {
       onPressed: onTap,
       icon: Icon(
         isActive ? Icons.filter_alt : Icons.filter_alt_outlined,
-        color: isActive ? Colors.blue : Colors.white,
+        color: isActive ? Colors.blue : theme.textTheme.bodyMedium?.color,
         size: 24.0,
       ),
     );

@@ -55,12 +55,13 @@ extension ProfileEventPatterns on ProfileEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( UserProfileRequested value)?  userProfileRequested,TResult Function( CreateProfileRequested value)?  createProfileRequested,TResult Function( ImagePicked value)?  imagePicked,TResult Function( ImageRemoved value)?  imageRemoved,TResult Function( DisableSuccessRequested value)?  disableSuccessRequested,TResult Function( DisableErrorRequested value)?  disableErrorRequested,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( UserProfileRequested value)?  userProfileRequested,TResult Function( CreateProfileRequested value)?  createProfileRequested,TResult Function( UpdateProfileRequested value)?  updateProfileRequested,TResult Function( ImagePicked value)?  imagePicked,TResult Function( ImageRemoved value)?  imageRemoved,TResult Function( DisableSuccessRequested value)?  disableSuccessRequested,TResult Function( DisableErrorRequested value)?  disableErrorRequested,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case UserProfileRequested() when userProfileRequested != null:
 return userProfileRequested(_that);case CreateProfileRequested() when createProfileRequested != null:
-return createProfileRequested(_that);case ImagePicked() when imagePicked != null:
+return createProfileRequested(_that);case UpdateProfileRequested() when updateProfileRequested != null:
+return updateProfileRequested(_that);case ImagePicked() when imagePicked != null:
 return imagePicked(_that);case ImageRemoved() when imageRemoved != null:
 return imageRemoved(_that);case DisableSuccessRequested() when disableSuccessRequested != null:
 return disableSuccessRequested(_that);case DisableErrorRequested() when disableErrorRequested != null:
@@ -82,12 +83,13 @@ return disableErrorRequested(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( UserProfileRequested value)  userProfileRequested,required TResult Function( CreateProfileRequested value)  createProfileRequested,required TResult Function( ImagePicked value)  imagePicked,required TResult Function( ImageRemoved value)  imageRemoved,required TResult Function( DisableSuccessRequested value)  disableSuccessRequested,required TResult Function( DisableErrorRequested value)  disableErrorRequested,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( UserProfileRequested value)  userProfileRequested,required TResult Function( CreateProfileRequested value)  createProfileRequested,required TResult Function( UpdateProfileRequested value)  updateProfileRequested,required TResult Function( ImagePicked value)  imagePicked,required TResult Function( ImageRemoved value)  imageRemoved,required TResult Function( DisableSuccessRequested value)  disableSuccessRequested,required TResult Function( DisableErrorRequested value)  disableErrorRequested,}){
 final _that = this;
 switch (_that) {
 case UserProfileRequested():
 return userProfileRequested(_that);case CreateProfileRequested():
-return createProfileRequested(_that);case ImagePicked():
+return createProfileRequested(_that);case UpdateProfileRequested():
+return updateProfileRequested(_that);case ImagePicked():
 return imagePicked(_that);case ImageRemoved():
 return imageRemoved(_that);case DisableSuccessRequested():
 return disableSuccessRequested(_that);case DisableErrorRequested():
@@ -108,12 +110,13 @@ return disableErrorRequested(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( UserProfileRequested value)?  userProfileRequested,TResult? Function( CreateProfileRequested value)?  createProfileRequested,TResult? Function( ImagePicked value)?  imagePicked,TResult? Function( ImageRemoved value)?  imageRemoved,TResult? Function( DisableSuccessRequested value)?  disableSuccessRequested,TResult? Function( DisableErrorRequested value)?  disableErrorRequested,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( UserProfileRequested value)?  userProfileRequested,TResult? Function( CreateProfileRequested value)?  createProfileRequested,TResult? Function( UpdateProfileRequested value)?  updateProfileRequested,TResult? Function( ImagePicked value)?  imagePicked,TResult? Function( ImageRemoved value)?  imageRemoved,TResult? Function( DisableSuccessRequested value)?  disableSuccessRequested,TResult? Function( DisableErrorRequested value)?  disableErrorRequested,}){
 final _that = this;
 switch (_that) {
 case UserProfileRequested() when userProfileRequested != null:
 return userProfileRequested(_that);case CreateProfileRequested() when createProfileRequested != null:
-return createProfileRequested(_that);case ImagePicked() when imagePicked != null:
+return createProfileRequested(_that);case UpdateProfileRequested() when updateProfileRequested != null:
+return updateProfileRequested(_that);case ImagePicked() when imagePicked != null:
 return imagePicked(_that);case ImageRemoved() when imageRemoved != null:
 return imageRemoved(_that);case DisableSuccessRequested() when disableSuccessRequested != null:
 return disableSuccessRequested(_that);case DisableErrorRequested() when disableErrorRequested != null:
@@ -134,12 +137,13 @@ return disableErrorRequested(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  userProfileRequested,TResult Function( String name,  String email,  String password,  String role,  String avatarUrl)?  createProfileRequested,TResult Function()?  imagePicked,TResult Function( AppImageEntity image)?  imageRemoved,TResult Function()?  disableSuccessRequested,TResult Function()?  disableErrorRequested,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  userProfileRequested,TResult Function( String name,  String email,  String password,  String role,  String avatarUrl)?  createProfileRequested,TResult Function( int userId,  String? name,  String? email,  String? password,  String? role)?  updateProfileRequested,TResult Function( Uint8List? bytes)?  imagePicked,TResult Function( AppImageEntity image)?  imageRemoved,TResult Function()?  disableSuccessRequested,TResult Function()?  disableErrorRequested,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case UserProfileRequested() when userProfileRequested != null:
 return userProfileRequested();case CreateProfileRequested() when createProfileRequested != null:
-return createProfileRequested(_that.name,_that.email,_that.password,_that.role,_that.avatarUrl);case ImagePicked() when imagePicked != null:
-return imagePicked();case ImageRemoved() when imageRemoved != null:
+return createProfileRequested(_that.name,_that.email,_that.password,_that.role,_that.avatarUrl);case UpdateProfileRequested() when updateProfileRequested != null:
+return updateProfileRequested(_that.userId,_that.name,_that.email,_that.password,_that.role);case ImagePicked() when imagePicked != null:
+return imagePicked(_that.bytes);case ImageRemoved() when imageRemoved != null:
 return imageRemoved(_that.image);case DisableSuccessRequested() when disableSuccessRequested != null:
 return disableSuccessRequested();case DisableErrorRequested() when disableErrorRequested != null:
 return disableErrorRequested();case _:
@@ -160,12 +164,13 @@ return disableErrorRequested();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  userProfileRequested,required TResult Function( String name,  String email,  String password,  String role,  String avatarUrl)  createProfileRequested,required TResult Function()  imagePicked,required TResult Function( AppImageEntity image)  imageRemoved,required TResult Function()  disableSuccessRequested,required TResult Function()  disableErrorRequested,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  userProfileRequested,required TResult Function( String name,  String email,  String password,  String role,  String avatarUrl)  createProfileRequested,required TResult Function( int userId,  String? name,  String? email,  String? password,  String? role)  updateProfileRequested,required TResult Function( Uint8List? bytes)  imagePicked,required TResult Function( AppImageEntity image)  imageRemoved,required TResult Function()  disableSuccessRequested,required TResult Function()  disableErrorRequested,}) {final _that = this;
 switch (_that) {
 case UserProfileRequested():
 return userProfileRequested();case CreateProfileRequested():
-return createProfileRequested(_that.name,_that.email,_that.password,_that.role,_that.avatarUrl);case ImagePicked():
-return imagePicked();case ImageRemoved():
+return createProfileRequested(_that.name,_that.email,_that.password,_that.role,_that.avatarUrl);case UpdateProfileRequested():
+return updateProfileRequested(_that.userId,_that.name,_that.email,_that.password,_that.role);case ImagePicked():
+return imagePicked(_that.bytes);case ImageRemoved():
 return imageRemoved(_that.image);case DisableSuccessRequested():
 return disableSuccessRequested();case DisableErrorRequested():
 return disableErrorRequested();case _:
@@ -185,12 +190,13 @@ return disableErrorRequested();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  userProfileRequested,TResult? Function( String name,  String email,  String password,  String role,  String avatarUrl)?  createProfileRequested,TResult? Function()?  imagePicked,TResult? Function( AppImageEntity image)?  imageRemoved,TResult? Function()?  disableSuccessRequested,TResult? Function()?  disableErrorRequested,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  userProfileRequested,TResult? Function( String name,  String email,  String password,  String role,  String avatarUrl)?  createProfileRequested,TResult? Function( int userId,  String? name,  String? email,  String? password,  String? role)?  updateProfileRequested,TResult? Function( Uint8List? bytes)?  imagePicked,TResult? Function( AppImageEntity image)?  imageRemoved,TResult? Function()?  disableSuccessRequested,TResult? Function()?  disableErrorRequested,}) {final _that = this;
 switch (_that) {
 case UserProfileRequested() when userProfileRequested != null:
 return userProfileRequested();case CreateProfileRequested() when createProfileRequested != null:
-return createProfileRequested(_that.name,_that.email,_that.password,_that.role,_that.avatarUrl);case ImagePicked() when imagePicked != null:
-return imagePicked();case ImageRemoved() when imageRemoved != null:
+return createProfileRequested(_that.name,_that.email,_that.password,_that.role,_that.avatarUrl);case UpdateProfileRequested() when updateProfileRequested != null:
+return updateProfileRequested(_that.userId,_that.name,_that.email,_that.password,_that.role);case ImagePicked() when imagePicked != null:
+return imagePicked(_that.bytes);case ImageRemoved() when imageRemoved != null:
 return imageRemoved(_that.image);case DisableSuccessRequested() when disableSuccessRequested != null:
 return disableSuccessRequested();case DisableErrorRequested() when disableErrorRequested != null:
 return disableErrorRequested();case _:
@@ -324,35 +330,122 @@ as String,
 /// @nodoc
 
 
-class ImagePicked implements ProfileEvent {
-  const ImagePicked();
+class UpdateProfileRequested implements ProfileEvent {
+  const UpdateProfileRequested({required this.userId, this.name, this.email, this.password, this.role});
   
 
+ final  int userId;
+ final  String? name;
+ final  String? email;
+ final  String? password;
+ final  String? role;
 
-
+/// Create a copy of ProfileEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UpdateProfileRequestedCopyWith<UpdateProfileRequested> get copyWith => _$UpdateProfileRequestedCopyWithImpl<UpdateProfileRequested>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImagePicked);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateProfileRequested&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.role, role) || other.role == role));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,userId,name,email,password,role);
 
 @override
 String toString() {
-  return 'ProfileEvent.imagePicked()';
+  return 'ProfileEvent.updateProfileRequested(userId: $userId, name: $name, email: $email, password: $password, role: $role)';
 }
 
 
 }
 
 /// @nodoc
-class $ImagePickedCopyWith<$Res> implements $ProfileEventCopyWith<$Res> {
-$ImagePickedCopyWith(ImagePicked _, $Res Function(ImagePicked) __);
+abstract mixin class $UpdateProfileRequestedCopyWith<$Res> implements $ProfileEventCopyWith<$Res> {
+  factory $UpdateProfileRequestedCopyWith(UpdateProfileRequested value, $Res Function(UpdateProfileRequested) _then) = _$UpdateProfileRequestedCopyWithImpl;
+@useResult
+$Res call({
+ int userId, String? name, String? email, String? password, String? role
+});
+
+
+
+
+}
+/// @nodoc
+class _$UpdateProfileRequestedCopyWithImpl<$Res>
+    implements $UpdateProfileRequestedCopyWith<$Res> {
+  _$UpdateProfileRequestedCopyWithImpl(this._self, this._then);
+
+  final UpdateProfileRequested _self;
+  final $Res Function(UpdateProfileRequested) _then;
+
+/// Create a copy of ProfileEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? userId = null,Object? name = freezed,Object? email = freezed,Object? password = freezed,Object? role = freezed,}) {
+  return _then(UpdateProfileRequested(
+userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
+as int,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String?,password: freezed == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
+as String?,role: freezed == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class ImagePicked implements ProfileEvent {
+  const ImagePicked({this.bytes});
+  
+
+ final  Uint8List? bytes;
+
+/// Create a copy of ProfileEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ImagePickedCopyWith<ImagePicked> get copyWith => _$ImagePickedCopyWithImpl<ImagePicked>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImagePicked&&const DeepCollectionEquality().equals(other.bytes, bytes));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(bytes));
+
+@override
+String toString() {
+  return 'ProfileEvent.imagePicked(bytes: $bytes)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ImagePickedCopyWith<$Res> implements $ProfileEventCopyWith<$Res> {
+  factory $ImagePickedCopyWith(ImagePicked value, $Res Function(ImagePicked) _then) = _$ImagePickedCopyWithImpl;
+@useResult
+$Res call({
+ Uint8List? bytes
+});
+
+
+
+
 }
 /// @nodoc
 class _$ImagePickedCopyWithImpl<$Res>
@@ -362,7 +455,14 @@ class _$ImagePickedCopyWithImpl<$Res>
   final ImagePicked _self;
   final $Res Function(ImagePicked) _then;
 
-
+/// Create a copy of ProfileEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? bytes = freezed,}) {
+  return _then(ImagePicked(
+bytes: freezed == bytes ? _self.bytes : bytes // ignore: cast_nullable_to_non_nullable
+as Uint8List?,
+  ));
+}
 
 
 }

@@ -40,7 +40,7 @@ class _UserPageState extends State<UserPage> {
           final firstName = AppUtils.getFirstName(name);
           final lastName = AppUtils.getLastName(name);
           return state.isUserLoading
-              ? const AppLoader()
+              ? const Center(child: AppLoader())
               : Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: SingleChildScrollView(

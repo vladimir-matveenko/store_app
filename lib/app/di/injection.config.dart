@@ -88,6 +88,8 @@ import 'package:store_app/features/profile/domain/usecases/create_profile_usecas
     as _i218;
 import 'package:store_app/features/profile/domain/usecases/get_user_profile_usecase.dart'
     as _i619;
+import 'package:store_app/features/profile/domain/usecases/update_profile_usecase.dart'
+    as _i243;
 import 'package:store_app/features/profile/presentation/bloc/profile_bloc.dart'
     as _i982;
 import 'package:store_app/features/theme/cubit/cubit.dart' as _i969;
@@ -275,6 +277,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i158.ClearCacheUseCase>(
       () => _i158.ClearCacheUseCase(gh<_i558.ProfileRepository>()),
     );
+    gh.lazySingleton<_i243.UpdateProfileUseCase>(
+      () => _i243.UpdateProfileUseCase(gh<_i558.ProfileRepository>()),
+    );
     gh.lazySingleton<_i660.CheckAuthUseCase>(
       () => _i660.CheckAuthUseCase(gh<_i415.AuthRepository>()),
     );
@@ -284,20 +289,21 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i654.LoginUseCase>(
       () => _i654.LoginUseCase(gh<_i415.AuthRepository>()),
     );
-    gh.lazySingleton<_i370.LoginBloc>(
+    gh.factory<_i370.LoginBloc>(
       () => _i370.LoginBloc(gh<_i654.LoginUseCase>()),
+    );
+    gh.lazySingleton<_i1011.UsersBloc>(
+      () => _i1011.UsersBloc(
+        fetchUsersUseCase: gh<_i623.FetchUsersUseCase>(),
+        fetchUserUseCase: gh<_i617.FetchUserUseCase>(),
+      ),
     );
     gh.lazySingleton<_i982.ProfileBloc>(
       () => _i982.ProfileBloc(
         gh<_i619.GetUserProfileUseCase>(),
         gh<_i218.CreateProfileUseCase>(),
         gh<_i577.UploadImageUseCase>(),
-      ),
-    );
-    gh.lazySingleton<_i1011.UsersBloc>(
-      () => _i1011.UsersBloc(
-        fetchUsersUseCase: gh<_i623.FetchUsersUseCase>(),
-        fetchUserUseCase: gh<_i617.FetchUserUseCase>(),
+        gh<_i243.UpdateProfileUseCase>(),
       ),
     );
     gh.lazySingleton<_i706.AuthBloc>(

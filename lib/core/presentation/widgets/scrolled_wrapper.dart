@@ -8,20 +8,25 @@ class ScrolledWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final defaultPadding = EdgeInsets.only(
+      top: 24.0,
+      left: 24.0,
+      right: 24.0,
+      bottom: MediaQuery.viewInsetsOf(context).bottom,
+    );
+    final contentPadding = padding ?? defaultPadding;
     return LayoutBuilder(
       builder: (context, constraints) {
         return SingleChildScrollView(
-          padding:
-              padding ??
-              EdgeInsets.only(
-                top: 24.0,
-                left: 24.0,
-                right: 24.0,
-                bottom: MediaQuery.viewInsetsOf(context).bottom,
-              ),
+          padding: contentPadding,
           physics: const ClampingScrollPhysics(),
           child: ConstrainedBox(
-            constraints: BoxConstraints(minHeight: constraints.maxHeight),
+            constraints: BoxConstraints(
+              minHeight:
+                  constraints.maxHeight -
+                  contentPadding.top +
+                  contentPadding.bottom,
+            ),
             child: child,
           ),
         );

@@ -34,7 +34,7 @@ class _UsersPageState extends State<UsersPage> {
     return BlocBuilder<UsersBloc, UsersState>(
       builder: (context, state) {
         return state.isLoading
-            ? const AppLoader()
+            ? const Center(child: AppLoader())
             : state.isInitialized
             ? UsersList(scrollController: _scrollController)
             : const SizedBox();

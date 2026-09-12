@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../products/domain/entity/app_image_entity.dart';
@@ -16,7 +18,15 @@ class ProfileEvent with _$ProfileEvent {
     required String avatarUrl,
   }) = CreateProfileRequested;
 
-  const factory ProfileEvent.imagePicked() = ImagePicked;
+  const factory ProfileEvent.updateProfileRequested({
+    required int userId,
+    String? name,
+    String? email,
+    String? password,
+    String? role,
+  }) = UpdateProfileRequested;
+
+  const factory ProfileEvent.imagePicked({Uint8List? bytes}) = ImagePicked;
 
   const factory ProfileEvent.imageRemoved({required AppImageEntity image}) =
       ImageRemoved;

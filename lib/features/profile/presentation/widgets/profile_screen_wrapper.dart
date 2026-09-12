@@ -22,6 +22,7 @@ class ProfileScreenWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<ProfileBloc>();
     return BlocConsumer<ProfileBloc, ProfileState>(
       builder: buildBody,
       listener: (context, state) {
@@ -30,7 +31,7 @@ class ProfileScreenWrapper extends StatelessWidget {
             context,
             message: state.error!,
             onClose: () {
-              context.read<ProfileBloc>().add(const DisableErrorRequested());
+              bloc.add(const DisableErrorRequested());
             },
           );
         }
@@ -41,14 +42,12 @@ class ProfileScreenWrapper extends StatelessWidget {
               context,
               message: successMessage,
               onClose: () {
-                context.read<ProfileBloc>().add(
-                  const DisableSuccessRequested(),
-                );
+                bloc.add(const DisableSuccessRequested());
                 onSuccess.call();
               },
             );
           } else {
-            context.read<ProfileBloc>().add(const DisableSuccessRequested());
+            bloc.add(const DisableSuccessRequested());
             onSuccess.call();
           }
         }

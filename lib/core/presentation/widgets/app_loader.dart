@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AppLoader extends StatelessWidget {
-  const AppLoader({super.key, this.size = 40.0, this.thickness});
+  const AppLoader({super.key, this.size = 40.0, this.thickness = 2.0});
 
-  static AppLoader small() => const AppLoader(size: 20.0, thickness: 2.0);
+  static AppLoader small() => const AppLoader(size: 20.0);
 
   final double? size;
   final double? thickness;

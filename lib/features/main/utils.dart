@@ -23,6 +23,10 @@ class MainScreenUtils {
         return 'productScreen.screenName'.tr();
       } else if (location.pathSegments.first == 'users') {
         return 'userScreen.screenName'.tr();
+      } else if (location.pathSegments.first == 'profile') {
+        if (location.pathSegments.last == Pages.editProfile) {
+          return 'editProfileScreen.screenName'.tr();
+        }
       }
     }
     return switch (location.toString()) {

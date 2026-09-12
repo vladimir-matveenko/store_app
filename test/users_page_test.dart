@@ -110,15 +110,17 @@ void main() {
     ) async {
       final users = [
         const UserEntity(
-          id: '1',
+          id: 1,
           email: 'user1@example.com',
+          password: 'changeme',
           name: 'User One',
           role: UserRole.admin,
           avatar: 'avatar1.jpg',
         ),
         const UserEntity(
-          id: '2',
+          id: 2,
           email: 'user2@example.com',
+          password: 'changeme',
           name: 'User Two',
           role: UserRole.customer,
           avatar: 'avatar2.jpg',

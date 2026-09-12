@@ -10,14 +10,16 @@ import 'package:store_app/features/products/presentation/pages/add_product_page.
 import '/../core/presentation/pages/splash_page.dart';
 import '/../features/auth/presentation/bloc/auth_bloc.dart';
 import '/../features/auth/presentation/bloc/auth_state.dart';
-import '/../features/login/presentation/pages/login_page.dart';
 import '/../features/main/presentation/main_screen.dart';
 import '/../features/products/presentation/pages/product_page.dart';
 import '/../features/products/presentation/pages/products_page.dart';
 import '/../features/profile/presentation/pages/profile_page.dart';
 import '/../features/users/presentation/pages/user_page.dart';
 import '/../features/users/presentation/pages/users_page.dart';
+import '../../features/camera/presentation/screens/camera_screen.dart';
+import '../../features/login/presentation/routes/login_route.dart';
 import '../../features/profile/presentation/pages/create_profile_page.dart';
+import '../../features/profile/presentation/pages/edit_profile_page.dart';
 import 'pages.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -40,20 +42,21 @@ class AppRouter {
       final isLogin = state.matchedLocation == Pages.login;
       final isSplash = state.matchedLocation == Pages.splash;
       final isCreateProfile = state.matchedLocation == Pages.createProfile;
+      final isCamera = state.matchedLocation == Pages.camera;
 
       if (status == AuthStatus.unknown) {
         return null;
       }
 
       if (status == AuthStatus.unauthenticated) {
-        if (isLogin || isCreateProfile) {
+        if (isLogin || isCreateProfile || isCamera) {
           return null;
         }
         return Pages.login;
       }
 
       if (status == AuthStatus.authenticated) {
-        if (isSplash || isLogin || isCreateProfile) {
+        if (isSplash || isLogin) {
           return Pages.products;
         }
         return null;
@@ -70,12 +73,17 @@ class AppRouter {
       GoRoute(
         path: Pages.login,
         pageBuilder: (context, state) =>
-            const NoTransitionPage(child: LoginPage()),
+            const NoTransitionPage(child: LoginRoute()),
       ),
       GoRoute(
         path: Pages.createProfile,
         pageBuilder: (context, state) =>
             const NoTransitionPage(child: CreateProfilePage()),
+      ),
+      GoRoute(
+        path: Pages.camera,
+        pageBuilder: (context, state) =>
+            const NoTransitionPage(child: CameraPage()),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
@@ -147,6 +155,13 @@ class AppRouter {
                 path: Pages.profile,
                 pageBuilder: (context, state) =>
                     const NoTransitionPage(child: ProfilePage()),
+                routes: [
+                  GoRoute(
+                    path: Pages.editProfile,
+                    pageBuilder: (context, state) =>
+                        const NoTransitionPage(child: EditProfilePage()),
+                  ),
+                ],
               ),
             ],
           ),

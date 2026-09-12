@@ -28,9 +28,10 @@ abstract class UserModel with _$UserModel {
 
 extension UserModelExt on UserModel {
   UserEntity toEntity() => UserEntity(
-    id: id.toString(),
+    id: id,
     name: name,
     email: email,
+    password: password,
     role: role,
     avatar: avatar ?? '',
   );

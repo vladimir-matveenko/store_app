@@ -54,7 +54,7 @@ class _ProductsPageState extends State<ProductsPage> {
       builder: (context, state) {
         final isLoading = state.isCategoriesLoading || state.isProductLoading;
         return isLoading
-            ? const AppLoader()
+            ? const Center(child: AppLoader())
             : ScrollUpWrapper(
                 controller: _scrollController,
                 child: Padding(
@@ -75,7 +75,7 @@ class _ProductsPageState extends State<ProductsPage> {
                                   child: SearchBar(
                                     leading: Icon(
                                       Icons.search,
-                                      color: theme.colorScheme.onPrimary,
+                                      color: theme.textTheme.bodyMedium?.color,
                                     ),
                                     onTapOutside: (PointerDownEvent event) {
                                       FocusManager.instance.primaryFocus

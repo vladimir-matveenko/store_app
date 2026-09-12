@@ -21,7 +21,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
   @override
   Future<Either<Failure, UserEntity?>> getUserProfile() async {
     try {
-      final user = await dataSource.getUserProfile();
+      final user = await dataSource.getProfile();
       if (user == null) {
         return Left(UnknownFailure());
       }
@@ -38,6 +38,30 @@ class ProfileRepositoryImpl implements ProfileRepository {
       _profile = null;
       return const Right(null);
     } on Exception catch (e) {
+      return Left(mapExceptionToFailure(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> updateProfile({
+    required int userId,
+    String? name,
+    String? email,
+    String? password,
+    String? role,
+    String? avatarUrl,
+  }) async {
+    try {
+      final user = await dataSource.updateProfile(
+        userId: userId,
+        name: name,
+        email: email,
+        password: password,
+        role: role,
+        avatarUrl: avatarUrl,
+      );
+      return Right(user != null);
+    } catch (e) {
       return Left(mapExceptionToFailure(e));
     }
   }

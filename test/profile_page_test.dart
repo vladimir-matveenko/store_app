@@ -71,9 +71,10 @@ void main() {
     ) async {
       final userState = const ProfileState(
         user: UserEntity(
-          id: '1',
+          id: 1,
           name: 'Jhon',
           email: 'john@mail.com',
+          password: 'changeme',
           avatar: 'https://api.lorem.space/image/face?w=640&h=480&r=867',
           role: UserRole.customer,
         ),

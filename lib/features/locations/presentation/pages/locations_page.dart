@@ -118,7 +118,7 @@ class _LocationsPageState extends State<LocationsPage>
             ),
             Expanded(
               child: state.isLoading
-                  ? const AppLoader()
+                  ? const Center(child: AppLoader())
                   : IndexedStack(
                       index: _tabController.index,
                       children: List.generate(tabCount, _buildTab),

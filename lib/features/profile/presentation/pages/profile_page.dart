@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:store_app/features/auth/presentation/bloc/auth_bloc.dart';
 
+import '../../../../app/routes/pages.dart';
 import '../../../../core/data/utils/utils.dart';
 import '../../../../core/presentation/widgets/app_loader.dart';
 import '../../../../core/presentation/widgets/user_avatar.dart';
@@ -44,7 +46,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return BlocBuilder<ProfileBloc, ProfileState>(
       builder: (context, state) {
         if (state.isLoading) {
-          return const AppLoader();
+          return const Center(child: AppLoader());
         }
         final avatar = state.user?.avatar ?? '';
         final name = state.user?.name ?? '';
@@ -59,7 +61,7 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               UserAvatar(
                 avatar: avatar,
-                size: 90.0,
+                size: 80.0,
                 firstName: firstName,
                 lastName: lastName,
               ),
@@ -77,6 +79,26 @@ class _ProfilePageState extends State<ProfilePage> {
                 const LanguageSelector(),
               ] else
                 const SizedBox(),
+              TextButton(
+                style: TextButton.styleFrom(
+                  foregroundColor: theme.colorScheme.primary,
+                ),
+                onPressed: () {
+                  context.go('${Pages.profile}/${Pages.editProfile}');
+                },
+                child: Row(
+                  spacing: 4.0,
+                  mainAxisSize: .min,
+                  children: [
+                    Text('editProfileScreen.screenName'.tr()),
+                    Icon(
+                      Icons.edit,
+                      color: theme.colorScheme.primary,
+                      size: 16.0,
+                    ),
+                  ],
+                ),
+              ),
               Row(
                 spacing: 8.0,
                 mainAxisSize: MainAxisSize.min,

@@ -8,12 +8,16 @@ class CreateProfileAvatar extends StatelessWidget {
     super.key,
     this.image,
     required this.onTap,
+    this.onDeleteTap,
     this.showLoader = false,
+    this.currentAvatar,
   });
 
   final AppImageEntity? image;
   final VoidCallback onTap;
+  final VoidCallback? onDeleteTap;
   final bool showLoader;
+  final Widget? currentAvatar;
 
   @override
   Widget build(BuildContext context) {
@@ -24,24 +28,42 @@ class CreateProfileAvatar extends StatelessWidget {
     );
     return GestureDetector(
       onTap: onTap,
-      child: Stack(
-        alignment: .center,
-        children: [
-          SizedBox(
-            width: 120.0,
-            height: 120.0,
-            child: ClipOval(
-              child: image != null
-                  ? Image.memory(
-                      image!.bytes,
-                      fit: .cover,
-                      errorBuilder: (context, o, s) => placeholder,
-                    )
-                  : placeholder,
+      child: SizedBox(
+        width: 160.0,
+        height: 120.0,
+        child: Stack(
+          alignment: .center,
+          children: [
+            SizedBox(
+              width: 120.0,
+              height: 120.0,
+              child: ClipOval(
+                child: image != null
+                    ? Image.memory(
+                        image!.bytes,
+                        fit: .cover,
+                        errorBuilder: (context, o, s) => placeholder,
+                      )
+                    : currentAvatar ?? placeholder,
+              ),
             ),
-          ),
-          if (showLoader) const AppLoader(),
-        ],
+            if (showLoader) const AppLoader(),
+            if (onDeleteTap != null && image != null)
+              Positioned(
+                right: 0,
+                top: 0,
+                child: GestureDetector(
+                  behavior: .translucent,
+                  onTap: onDeleteTap,
+                  child: Icon(
+                    Icons.close,
+                    color: theme.colorScheme.error,
+                    size: 24.0,
+                  ),
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }

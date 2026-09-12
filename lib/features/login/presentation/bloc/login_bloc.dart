@@ -9,7 +9,7 @@ import '../../domain/usecases/login_usecase.dart';
 import 'login_event.dart';
 import 'login_state.dart';
 
-@lazySingleton
+@injectable
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc(this._loginUseCase) : super(const LoginState()) {
     on<LoginEvent>((event, emit) async {

@@ -53,4 +53,19 @@ class AppUtils {
           : screenSize.width - 32.0,
     );
   }
+
+  static String getSupportedImageExtension(String? fileName) {
+    final extension = fileName?.split('.').last.toLowerCase();
+
+    return switch (extension) {
+      'png' || 'webp' => extension!,
+      _ => 'jpg',
+    };
+  }
+
+  static String normalizeFileName(String originalName, String ext) {
+    final base = originalName.split('.').first;
+
+    return '$base.$ext';
+  }
 }
