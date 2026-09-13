@@ -39,6 +39,7 @@ class _LocationsMapState extends State<LocationsMap> {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final screenWidth = MediaQuery.sizeOf(context).width;
 
     return BlocBuilder<LocationsBloc, LocationsState>(
       builder: (context, state) {
@@ -112,9 +113,18 @@ class _LocationsMapState extends State<LocationsMap> {
               Positioned(
                 left: 16.0,
                 top: 16.0,
-                child: SelectedLocationItem(
-                  location: state.selectedLocation!,
-                  onTap: _moveToLocation,
+                right: 16.0,
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(maxWidth: screenWidth - 64.0),
+                    child: IntrinsicWidth(
+                      child: SelectedLocationItem(
+                        location: state.selectedLocation!,
+                        onTap: _moveToLocation,
+                      ),
+                    ),
+                  ),
                 ),
               ),
           ],
