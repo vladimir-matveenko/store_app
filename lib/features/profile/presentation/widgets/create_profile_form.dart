@@ -61,6 +61,7 @@ class CreateProfileForm extends StatelessWidget {
             onTap: onAddImageTapped,
             currentAvatar: currentAvatar,
             onDeleteTap: onDeleteTap,
+            avatarSize: 160.0,
           ),
           Column(
             mainAxisAlignment: .center,

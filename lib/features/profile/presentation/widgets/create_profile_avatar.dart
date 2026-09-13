@@ -11,6 +11,7 @@ class CreateProfileAvatar extends StatelessWidget {
     this.onDeleteTap,
     this.showLoader = false,
     this.currentAvatar,
+    this.avatarSize = 120.0,
   });
 
   final AppImageEntity? image;
@@ -18,6 +19,7 @@ class CreateProfileAvatar extends StatelessWidget {
   final VoidCallback? onDeleteTap;
   final bool showLoader;
   final Widget? currentAvatar;
+  final double avatarSize;
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +31,14 @@ class CreateProfileAvatar extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        width: 160.0,
-        height: 120.0,
+        width: avatarSize + 20.0,
+        height: avatarSize,
         child: Stack(
           alignment: .center,
           children: [
             SizedBox(
-              width: 120.0,
-              height: 120.0,
+              width: avatarSize,
+              height: avatarSize,
               child: ClipOval(
                 child: image != null
                     ? Image.memory(

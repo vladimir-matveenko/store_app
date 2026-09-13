@@ -115,7 +115,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 children: [
                   UserAvatar(
                     avatar: profile.avatar,
-                    size: 80.0,
+                    size: 160.0,
                     firstName: profile.name,
                     lastName: '',
                   ),
@@ -147,7 +147,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 }
               },
               onDeleteTap: () {
-                if (state.avatar != null) {
+                if (state.avatar != null && !state.isLoading && !jobDone) {
                   bloc.add(ImageRemoved(image: state.avatar!));
                 }
               },
