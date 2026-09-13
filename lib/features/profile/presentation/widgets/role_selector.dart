@@ -6,8 +6,9 @@ import '../../../../core/presentation/widgets/custom_dropdown_menu.dart';
 import '../../utils.dart';
 
 class RoleSelector extends StatefulWidget {
-  const RoleSelector({super.key, required this.onChanged});
+  const RoleSelector({super.key, required this.onChanged, this.initialRole});
 
+  final UserRole? initialRole;
   final Function(UserRole) onChanged;
 
   @override
@@ -20,9 +21,14 @@ class _RoleSelectorState extends State<RoleSelector> {
   late TextTheme textTheme;
 
   @override
+  void initState() {
+    super.initState();
+    initialValue = widget.initialRole ?? UserRole.customer;
+  }
+
+  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    initialValue = UserRole.customer;
     dropdownValue = initialValue;
     textTheme = Theme.of(context).textTheme;
   }

@@ -132,6 +132,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               onSaveTapped: _onSave,
               mainButtonText: 'editProfileScreen.btnSave'.tr(),
               obscure: obscure,
+              initialRole: state.user?.role,
               onObscureChanged: (value) {
                 obscure.value = value;
               },

@@ -28,6 +28,7 @@ class CreateProfileForm extends StatelessWidget {
     required this.onAddImageTapped,
     this.currentAvatar,
     this.onDeleteTap,
+    this.initialRole,
   });
 
   final bool isFormActive;
@@ -46,6 +47,7 @@ class CreateProfileForm extends StatelessWidget {
   final VoidCallback onAddImageTapped;
   final VoidCallback? onDeleteTap;
   final Widget? currentAvatar;
+  final UserRole? initialRole;
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +84,7 @@ class CreateProfileForm extends StatelessWidget {
                 obscure: obscure,
                 onObscureChanged: onObscureChanged,
               ),
-              RoleSelector(onChanged: onRoleChanged),
+              RoleSelector(onChanged: onRoleChanged, initialRole: initialRole),
               ElevatedButton(
                 onPressed: !isFormActive ? null : onSaveTapped,
                 child: isLoading ? AppLoader.small() : Text(mainButtonText),

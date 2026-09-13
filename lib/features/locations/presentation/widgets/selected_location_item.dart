@@ -29,11 +29,12 @@ class SelectedLocationItem extends StatelessWidget {
         ),
         child: Column(
           spacing: 8.0,
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: .min,
+          mainAxisAlignment: .spaceBetween,
+          crossAxisAlignment: .start,
           children: [
             Row(
+              mainAxisAlignment: .start,
               spacing: 8.0,
               children: [
                 Icon(
@@ -41,10 +42,12 @@ class SelectedLocationItem extends StatelessWidget {
                   color: theme.colorScheme.primary,
                   size: 24.0,
                 ),
-                Text(
-                  location.name,
-                  style: textTheme.titleMedium,
-                  softWrap: true,
+                Flexible(
+                  child: Text(
+                    location.name,
+                    style: textTheme.titleMedium,
+                    softWrap: true,
+                  ),
                 ),
               ],
             ),

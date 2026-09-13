@@ -9,6 +9,7 @@ import 'package:store_app/features/auth/presentation/bloc/auth_bloc.dart';
 import '../../../../app/routes/pages.dart';
 import '../../../../app/utils/utils.dart';
 import '../../../../core/presentation/widgets/app_loader.dart';
+import '../../../../core/presentation/widgets/scrolled_wrapper.dart';
 import '../../../../core/presentation/widgets/user_avatar.dart';
 import '../../../auth/presentation/bloc/auth_event.dart';
 import '../bloc/profile_bloc.dart';
@@ -99,84 +100,86 @@ class _ProfilePageState extends State<ProfilePage> {
           return const Center(child: AppLoader());
         }
 
-        return Column(
-          spacing: 16.0,
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            UserAvatar(
-              avatar: avatar,
-              size: 160.0,
-              firstName: firstName,
-              lastName: lastName,
-            ),
-            Text(name, style: textTheme.headlineSmall),
-            Text(
-              '${'loginScreen.fieldNameEmail'.tr()}: ${state.user?.email}',
-              style: textTheme.bodyLarge,
-            ),
-            Text(
-              '${'profileScreen.role'.tr()}: ${state.user?.role.name}',
-              style: textTheme.bodyLarge,
-            ),
-            const ThemeSelector(),
-            const LanguageSelector(),
-            TextButton(
-              style: TextButton.styleFrom(
-                foregroundColor: theme.colorScheme.primary,
+        return ScrolledWrapper(
+          child: Column(
+            spacing: 16.0,
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              UserAvatar(
+                avatar: avatar,
+                size: 160.0,
+                firstName: firstName,
+                lastName: lastName,
               ),
-              onPressed: () {
-                final isTestUser =
-                    state.user!.email == AppStrings.testUserEmail &&
-                    state.user!.password == AppStrings.testUserPassword;
-                if (isTestUser) {
-                  AppDialog.show(
-                    context,
-                    text: 'editProfileScreen.notAvailable'.tr(),
-                    okText: 'okText'.tr(),
-                  );
-                } else {
-                  context.go('${Pages.profile}/${Pages.editProfile}');
-                }
-              },
-              child: Row(
-                spacing: 4.0,
-                mainAxisSize: .min,
+              Text(name, style: textTheme.headlineSmall),
+              Text(
+                '${'loginScreen.fieldNameEmail'.tr()}: ${state.user?.email}',
+                style: textTheme.bodyLarge,
+              ),
+              Text(
+                '${'profileScreen.role'.tr()}: ${state.user?.role.name}',
+                style: textTheme.bodyLarge,
+              ),
+              const ThemeSelector(),
+              const LanguageSelector(),
+              TextButton(
+                style: TextButton.styleFrom(
+                  foregroundColor: theme.colorScheme.primary,
+                ),
+                onPressed: () {
+                  final isTestUser =
+                      state.user!.email == AppStrings.testUserEmail &&
+                      state.user!.password == AppStrings.testUserPassword;
+                  if (isTestUser) {
+                    AppDialog.show(
+                      context,
+                      text: 'editProfileScreen.notAvailable'.tr(),
+                      okText: 'okText'.tr(),
+                    );
+                  } else {
+                    context.go('${Pages.profile}/${Pages.editProfile}');
+                  }
+                },
+                child: Row(
+                  spacing: 4.0,
+                  mainAxisSize: .min,
+                  children: [
+                    Text('editProfileScreen.screenName'.tr()),
+                    Icon(
+                      Icons.edit,
+                      color: theme.colorScheme.primary,
+                      size: 16.0,
+                    ),
+                  ],
+                ),
+              ),
+              Row(
+                spacing: 8.0,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('editProfileScreen.screenName'.tr()),
-                  Icon(
-                    Icons.edit,
-                    color: theme.colorScheme.primary,
-                    size: 16.0,
+                  Text(
+                    'profileScreen.btnLogout'.tr(),
+                    style: textTheme.bodyLarge,
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      context.read<AuthBloc>().add(const LogoutRequested());
+                    },
+                    style: IconButton.styleFrom(
+                      backgroundColor: theme.colorScheme.surfaceTint,
+                    ),
+                    icon: Icon(
+                      Icons.logout,
+                      size: 28.0,
+                      color: theme.colorScheme.primary,
+                    ),
                   ),
                 ],
               ),
-            ),
-            Row(
-              spacing: 8.0,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'profileScreen.btnLogout'.tr(),
-                  style: textTheme.bodyLarge,
-                ),
-                IconButton(
-                  onPressed: () {
-                    context.read<AuthBloc>().add(const LogoutRequested());
-                  },
-                  style: IconButton.styleFrom(
-                    backgroundColor: theme.colorScheme.surfaceTint,
-                  ),
-                  icon: Icon(
-                    Icons.logout,
-                    size: 28.0,
-                    color: theme.colorScheme.primary,
-                  ),
-                ),
-              ],
-            ),
-          ],
+            ],
+          ),
         );
       },
     );
