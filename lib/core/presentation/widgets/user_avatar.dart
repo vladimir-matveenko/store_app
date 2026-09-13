@@ -20,10 +20,12 @@ class UserAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return CircleAvatar(
-      radius: size,
+      key: ValueKey(avatar),
+      radius: size / 2,
       backgroundImage: CachedNetworkImageProvider(avatar),
-      backgroundColor: theme.unselectedWidgetColor,
+      backgroundColor: theme.colorScheme.surfaceTint,
       onBackgroundImageError: (o, s) => AvatarPlaceholder(
+        backgroundColor: theme.unselectedWidgetColor,
         firstName: firstName ?? '',
         lastName: lastName ?? '',
       ),

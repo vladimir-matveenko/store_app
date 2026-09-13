@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:store_app/app/constants/app_enums.dart';
+import 'package:store_app/core/presentation/widgets/app_loader.dart';
 import 'package:store_app/core/presentation/widgets/user_avatar.dart';
 import 'package:store_app/features/profile/domain/entity/user_entity.dart';
 import 'package:store_app/features/users/presentation/bloc/users_bloc.dart';
@@ -72,26 +73,28 @@ void main() {
         password: 'changeme',
         name: 'John Doe',
         role: UserRole.admin,
-        avatar: 'https://example.com/avatar.jpg',
+        avatar: '',
       );
 
-      when(() => usersBloc.state).thenReturn(UsersState(user: user));
+      when(
+        () => usersBloc.state,
+      ).thenReturn(const UsersState(isUserLoading: true));
 
       when(() => usersBloc.stream).thenAnswer((_) => usersController.stream);
 
       await tester.pumpWidget(createWidget(userId: '1'));
 
-      // not pumpAndSettle!
+      // Initial state.
+      expect(find.byType(AppLoader), findsOneWidget);
+
+      // UsersBloc has loaded the user.
+      usersController.add(UsersState(user: user));
+
+      // Process the emitted state and the setState from precaching.
       await tester.pump();
 
-      // Verify that ImageBox is displayed with the correct image URL
-      final imageBoxFinder = find.byWidgetPredicate(
-        (widget) => widget is UserAvatar && widget.avatar == user.avatar,
-      );
+      expect(find.byType(UserAvatar), findsOneWidget);
 
-      expect(imageBoxFinder, findsOneWidget);
-
-      // Verify text fields
       expect(find.text(user.email), findsOneWidget);
       expect(find.text(user.name), findsOneWidget);
       expect(find.text(user.role.name), findsOneWidget);

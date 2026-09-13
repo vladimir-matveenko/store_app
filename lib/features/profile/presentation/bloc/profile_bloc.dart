@@ -149,7 +149,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     UserProfileRequested event,
     Emitter<ProfileState> emit,
   ) async {
-    emit(state.copyWith(isLoading: true));
+    emit(state.copyWith(isLoading: state.user == null));
     final result = await _getUserProfileUseCase(NoParams());
     result.fold(
       (l) {

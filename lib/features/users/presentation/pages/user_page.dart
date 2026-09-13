@@ -20,10 +20,28 @@ class UserPage extends StatefulWidget {
 
 class _UserPageState extends State<UserPage> {
   final controller = CarouselSliderController();
+
   bool _imageReady = false;
   bool _imageInProgress = false;
 
-  Future<void> _precacheAvatar(BuildContext context, String avatarUrl) async {
+  @override
+  void initState() {
+    super.initState();
+    context.read<UsersBloc>().add(UserFetched(widget.id));
+  }
+
+  Future<void> _precacheAvatar(String avatarUrl) async {
+    if (avatarUrl.isEmpty) {
+      if (!mounted) return;
+
+      setState(() {
+        _imageReady = true;
+        _imageInProgress = false;
+      });
+
+      return;
+    }
+
     _imageInProgress = true;
 
     await AppUtils.precacheImages(context, images: [avatarUrl]);
@@ -31,72 +49,72 @@ class _UserPageState extends State<UserPage> {
     if (!mounted) return;
 
     setState(() {
-      _imageInProgress = false;
       _imageReady = true;
+      _imageInProgress = false;
     });
   }
 
-  @override
-  void initState() {
-    context.read<UsersBloc>().add(UserFetched(widget.id));
-    super.initState();
+  void _handleUserLoaded(UsersState state) {
+    final avatar = state.user?.avatar ?? '';
+
+    if (state.user == null || _imageReady || _imageInProgress) {
+      return;
+    }
+
+    _precacheAvatar(avatar);
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
+
     return Container(
       color: theme.scaffoldBackgroundColor,
-      child: BlocBuilder<UsersBloc, UsersState>(
+      child: BlocConsumer<UsersBloc, UsersState>(
+        listener: (context, state) {
+          _handleUserLoaded(state);
+        },
         builder: (context, state) {
-          final avatar = state.user?.avatar ?? '';
-          final name = state.user?.name ?? '';
+          final user = state.user;
+          final avatar = user?.avatar ?? '';
+          final name = user?.name ?? '';
+
           final firstName = AppUtils.getFirstName(name);
           final lastName = AppUtils.getLastName(name);
+
           final isLoading = state.isUserLoading || !_imageReady;
 
-          if (!_imageReady && !_imageInProgress) {
-            _precacheAvatar(context, avatar);
+          if (isLoading) {
+            return const Center(child: AppLoader());
           }
 
-          return isLoading
-              ? const Center(child: AppLoader())
-              : Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: SingleChildScrollView(
-                    physics: const ClampingScrollPhysics(),
-                    child: Column(
-                      spacing: 24.0,
-                      children: [
-                        UserAvatar(
-                          avatar: avatar,
-                          size: 120.0,
-                          firstName: firstName,
-                          lastName: lastName,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          spacing: 8.0,
-                          children: [
-                            Text(
-                              state.user?.email ?? '',
-                              style: textTheme.bodyMedium,
-                            ),
-                            Text(
-                              state.user?.name ?? '',
-                              style: textTheme.bodyLarge,
-                            ),
-                            Text(
-                              state.user?.role.name ?? '',
-                              style: textTheme.bodySmall,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: SingleChildScrollView(
+              physics: const ClampingScrollPhysics(),
+              child: Column(
+                spacing: 24.0,
+                children: [
+                  UserAvatar(
+                    avatar: avatar,
+                    size: 160.0,
+                    firstName: firstName,
+                    lastName: lastName,
                   ),
-                );
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    spacing: 8.0,
+                    children: [
+                      Text(user?.email ?? '', style: textTheme.bodyMedium),
+                      Text(user?.name ?? '', style: textTheme.bodyLarge),
+                      Text(user?.role.name ?? '', style: textTheme.bodySmall),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          );
         },
       ),
     );

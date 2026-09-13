@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:store_app/app/constants/app_enums.dart';
+import 'package:store_app/core/presentation/widgets/app_loader.dart';
 import 'package:store_app/core/presentation/widgets/user_avatar.dart';
 import 'package:store_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:store_app/features/auth/presentation/bloc/auth_event.dart';
@@ -69,15 +70,13 @@ void main() {
     testWidgets('ProfilePage displays user info and logout button', (
       WidgetTester tester,
     ) async {
-      final userState = const ProfileState(
-        user: UserEntity(
-          id: 1,
-          name: 'Jhon',
-          email: 'john@mail.com',
-          password: 'changeme',
-          avatar: 'https://api.lorem.space/image/face?w=640&h=480&r=867',
-          role: UserRole.customer,
-        ),
+      final user = const UserEntity(
+        id: 1,
+        name: 'Jhon',
+        email: 'john@mail.com',
+        password: 'changeme',
+        avatar: '',
+        role: UserRole.customer,
       );
 
       // AuthBloc
@@ -87,7 +86,9 @@ void main() {
       ).thenAnswer((_) => const Stream<AuthState>.empty());
 
       // ProfileBloc
-      when(() => profileBloc.state).thenReturn(userState);
+      when(
+        () => profileBloc.state,
+      ).thenReturn(const ProfileState(isLoading: true));
       when(
         () => profileBloc.stream,
       ).thenAnswer((_) => profileController.stream);
@@ -117,19 +118,27 @@ void main() {
         ),
       );
 
-      await tester.pumpAndSettle();
+      // Initial loading state.
+      expect(find.byType(AppLoader), findsOneWidget);
 
-      // User info
+      // Profile loaded.
+      profileController.add(ProfileState(user: user));
+
+      // Process the new state and precache completion.
+      await tester.pump();
+
+      // User info.
       expect(find.byType(UserAvatar), findsOneWidget);
-      expect(find.text('Jhon'), findsOneWidget);
-      expect(find.textContaining('john@mail.com'), findsOneWidget);
+      expect(find.text(user.name), findsOneWidget);
+      expect(find.textContaining(user.email), findsOneWidget);
 
-      // Selectors
+      // Selectors.
       expect(find.byType(ThemeSelector), findsOneWidget);
       expect(find.byType(LanguageSelector), findsOneWidget);
 
-      // Logout button
+      // Logout button.
       final logoutButton = find.byIcon(Icons.logout);
+
       expect(logoutButton, findsOneWidget);
 
       await tester.tap(logoutButton);

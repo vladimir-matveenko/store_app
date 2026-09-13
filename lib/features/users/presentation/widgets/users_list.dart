@@ -89,7 +89,7 @@ class ListItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             UserAvatar(
-              size: 40.0,
+              size: 80.0,
               avatar: user.avatar,
               firstName: firstName,
               lastName: lastName,

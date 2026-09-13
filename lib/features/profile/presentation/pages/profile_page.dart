@@ -29,7 +29,18 @@ class _ProfilePageState extends State<ProfilePage> {
   bool _imageReady = false;
   bool _imageInProgress = false;
 
-  Future<void> _precacheAvatar(BuildContext context, String avatarUrl) async {
+  Future<void> _precacheAvatar(String avatarUrl) async {
+    if (avatarUrl.isEmpty) {
+      if (!mounted) return;
+
+      setState(() {
+        _imageReady = true;
+        _imageInProgress = false;
+      });
+
+      return;
+    }
+
     _imageInProgress = true;
 
     await AppUtils.precacheImages(context, images: [avatarUrl]);
@@ -37,8 +48,27 @@ class _ProfilePageState extends State<ProfilePage> {
     if (!mounted) return;
 
     setState(() {
-      _imageInProgress = false;
       _imageReady = true;
+      _imageInProgress = false;
+    });
+  }
+
+  void _handleUserLoaded(ProfileState state) {
+    final avatar = state.user?.avatar ?? '';
+
+    if (state.user == null || _imageReady || _imageInProgress) {
+      return;
+    }
+
+    _precacheAvatar(avatar);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    final state = context.read<ProfileBloc>().state;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _handleUserLoaded(state);
     });
   }
 
@@ -51,102 +81,102 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProfileBloc, ProfileState>(
+    return BlocConsumer<ProfileBloc, ProfileState>(
+      listener: (context, state) {
+        _handleUserLoaded(state);
+      },
       builder: (context, state) {
-        final avatar = state.user?.avatar ?? '';
-        final name = state.user?.name ?? '';
+        final user = state.user;
+        final avatar = user?.avatar ?? '';
+        final name = user?.name ?? '';
+
         final firstName = AppUtils.getFirstName(name);
         final lastName = AppUtils.getLastName(name);
+
         final isLoading = state.isLoading || !_imageReady;
 
-        if (!_imageReady && !_imageInProgress) {
-          _precacheAvatar(context, avatar);
+        if (isLoading) {
+          return const Center(child: AppLoader());
         }
 
-        return Center(
-          child: isLoading
-              ? const AppLoader()
-              : Column(
-                  spacing: 16.0,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    UserAvatar(
-                      avatar: avatar,
-                      size: 80.0,
-                      firstName: firstName,
-                      lastName: lastName,
-                    ),
-                    Text(name, style: textTheme.headlineSmall),
-                    Text(
-                      '${'loginScreen.fieldNameEmail'.tr()}: ${state.user?.email}',
-                      style: textTheme.bodyLarge,
-                    ),
-                    Text(
-                      '${'profileScreen.role'.tr()}: ${state.user?.role.name}',
-                      style: textTheme.bodyLarge,
-                    ),
-                    const ThemeSelector(),
-                    const LanguageSelector(),
-                    TextButton(
-                      style: TextButton.styleFrom(
-                        foregroundColor: theme.colorScheme.primary,
-                      ),
-                      onPressed: () {
-                        final isTestUser =
-                            state.user!.email == AppStrings.testUserEmail &&
-                            state.user!.password == AppStrings.testUserPassword;
-                        if (isTestUser) {
-                          AppDialog.show(
-                            context,
-                            text: 'editProfileScreen.notAvailable'.tr(),
-                            okText: 'okText'.tr(),
-                          );
-                        } else {
-                          context.go('${Pages.profile}/${Pages.editProfile}');
-                        }
-                      },
-                      child: Row(
-                        spacing: 4.0,
-                        mainAxisSize: .min,
-                        children: [
-                          Text('editProfileScreen.screenName'.tr()),
-                          Icon(
-                            Icons.edit,
-                            color: theme.colorScheme.primary,
-                            size: 16.0,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Row(
-                      spacing: 8.0,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'profileScreen.btnLogout'.tr(),
-                          style: textTheme.bodyLarge,
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            context.read<AuthBloc>().add(
-                              const LogoutRequested(),
-                            );
-                          },
-                          style: IconButton.styleFrom(
-                            backgroundColor: theme.colorScheme.surfaceTint,
-                          ),
-                          icon: Icon(
-                            Icons.logout,
-                            size: 28.0,
-                            color: theme.colorScheme.primary,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+        return Column(
+          spacing: 16.0,
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            UserAvatar(
+              avatar: avatar,
+              size: 160.0,
+              firstName: firstName,
+              lastName: lastName,
+            ),
+            Text(name, style: textTheme.headlineSmall),
+            Text(
+              '${'loginScreen.fieldNameEmail'.tr()}: ${state.user?.email}',
+              style: textTheme.bodyLarge,
+            ),
+            Text(
+              '${'profileScreen.role'.tr()}: ${state.user?.role.name}',
+              style: textTheme.bodyLarge,
+            ),
+            const ThemeSelector(),
+            const LanguageSelector(),
+            TextButton(
+              style: TextButton.styleFrom(
+                foregroundColor: theme.colorScheme.primary,
+              ),
+              onPressed: () {
+                final isTestUser =
+                    state.user!.email == AppStrings.testUserEmail &&
+                    state.user!.password == AppStrings.testUserPassword;
+                if (isTestUser) {
+                  AppDialog.show(
+                    context,
+                    text: 'editProfileScreen.notAvailable'.tr(),
+                    okText: 'okText'.tr(),
+                  );
+                } else {
+                  context.go('${Pages.profile}/${Pages.editProfile}');
+                }
+              },
+              child: Row(
+                spacing: 4.0,
+                mainAxisSize: .min,
+                children: [
+                  Text('editProfileScreen.screenName'.tr()),
+                  Icon(
+                    Icons.edit,
+                    color: theme.colorScheme.primary,
+                    size: 16.0,
+                  ),
+                ],
+              ),
+            ),
+            Row(
+              spacing: 8.0,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'profileScreen.btnLogout'.tr(),
+                  style: textTheme.bodyLarge,
                 ),
+                IconButton(
+                  onPressed: () {
+                    context.read<AuthBloc>().add(const LogoutRequested());
+                  },
+                  style: IconButton.styleFrom(
+                    backgroundColor: theme.colorScheme.surfaceTint,
+                  ),
+                  icon: Icon(
+                    Icons.logout,
+                    size: 28.0,
+                    color: theme.colorScheme.primary,
+                  ),
+                ),
+              ],
+            ),
+          ],
         );
       },
     );
