@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:store_app/app/constants/app_enums.dart';
 import 'package:store_app/features/profile/presentation/bloc/profile_event.dart';
 
-import '../../../../core/data/utils/utils.dart';
+import '../../../../app/utils/utils.dart';
 import '../../../../core/presentation/widgets/app_back_button.dart';
 import '../../../../core/presentation/widgets/app_dialog.dart';
 import '../../../../core/presentation/widgets/scrolled_wrapper.dart';

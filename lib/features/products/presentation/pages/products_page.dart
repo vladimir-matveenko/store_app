@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_app/core/data/utils/utils.dart';
 import 'package:store_app/core/presentation/widgets/app_loader.dart';
 import 'package:store_app/core/presentation/widgets/no_items_widget.dart';
 import 'package:store_app/core/presentation/widgets/scroll_up_wrapper.dart';
@@ -13,6 +12,7 @@ import 'package:store_app/features/products/presentation/widgets/filter_modal.da
 import 'package:store_app/features/products/presentation/widgets/products_list.dart';
 import 'package:store_app/features/products/utils.dart';
 
+import '../../../../app/utils/utils.dart';
 import '../../../../core/presentation/widgets/app_dialog.dart';
 import '../../../../core/presentation/widgets/availability_filters_list.dart';
 import '../bloc/products_event.dart';

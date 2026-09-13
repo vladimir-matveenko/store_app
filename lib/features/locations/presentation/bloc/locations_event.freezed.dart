@@ -131,11 +131,11 @@ return geoStatusModalDisabled(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( List<double>? origin,  int? radius,  bool loadSilent)?  locationsFetched,TResult Function( String? locationId,  LocationEntity? location)?  locationSelected,TResult Function( Position position)?  locationUpdated,TResult Function()?  geoStatusChecked,TResult Function()?  geoStatusModalDisabled,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( List<double>? origin,  int? radius,  bool loadSilent)?  locationsFetched,TResult Function( LocationEntity? location)?  locationSelected,TResult Function( Position position)?  locationUpdated,TResult Function()?  geoStatusChecked,TResult Function()?  geoStatusModalDisabled,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case LocationsFetched() when locationsFetched != null:
 return locationsFetched(_that.origin,_that.radius,_that.loadSilent);case LocationSelected() when locationSelected != null:
-return locationSelected(_that.locationId,_that.location);case LocationUpdated() when locationUpdated != null:
+return locationSelected(_that.location);case LocationUpdated() when locationUpdated != null:
 return locationUpdated(_that.position);case GeoStatusChecked() when geoStatusChecked != null:
 return geoStatusChecked();case GeoStatusModalDisabled() when geoStatusModalDisabled != null:
 return geoStatusModalDisabled();case _:
@@ -156,11 +156,11 @@ return geoStatusModalDisabled();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( List<double>? origin,  int? radius,  bool loadSilent)  locationsFetched,required TResult Function( String? locationId,  LocationEntity? location)  locationSelected,required TResult Function( Position position)  locationUpdated,required TResult Function()  geoStatusChecked,required TResult Function()  geoStatusModalDisabled,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( List<double>? origin,  int? radius,  bool loadSilent)  locationsFetched,required TResult Function( LocationEntity? location)  locationSelected,required TResult Function( Position position)  locationUpdated,required TResult Function()  geoStatusChecked,required TResult Function()  geoStatusModalDisabled,}) {final _that = this;
 switch (_that) {
 case LocationsFetched():
 return locationsFetched(_that.origin,_that.radius,_that.loadSilent);case LocationSelected():
-return locationSelected(_that.locationId,_that.location);case LocationUpdated():
+return locationSelected(_that.location);case LocationUpdated():
 return locationUpdated(_that.position);case GeoStatusChecked():
 return geoStatusChecked();case GeoStatusModalDisabled():
 return geoStatusModalDisabled();case _:
@@ -180,11 +180,11 @@ return geoStatusModalDisabled();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( List<double>? origin,  int? radius,  bool loadSilent)?  locationsFetched,TResult? Function( String? locationId,  LocationEntity? location)?  locationSelected,TResult? Function( Position position)?  locationUpdated,TResult? Function()?  geoStatusChecked,TResult? Function()?  geoStatusModalDisabled,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( List<double>? origin,  int? radius,  bool loadSilent)?  locationsFetched,TResult? Function( LocationEntity? location)?  locationSelected,TResult? Function( Position position)?  locationUpdated,TResult? Function()?  geoStatusChecked,TResult? Function()?  geoStatusModalDisabled,}) {final _that = this;
 switch (_that) {
 case LocationsFetched() when locationsFetched != null:
 return locationsFetched(_that.origin,_that.radius,_that.loadSilent);case LocationSelected() when locationSelected != null:
-return locationSelected(_that.locationId,_that.location);case LocationUpdated() when locationUpdated != null:
+return locationSelected(_that.location);case LocationUpdated() when locationUpdated != null:
 return locationUpdated(_that.position);case GeoStatusChecked() when geoStatusChecked != null:
 return geoStatusChecked();case GeoStatusModalDisabled() when geoStatusModalDisabled != null:
 return geoStatusModalDisabled();case _:
@@ -277,10 +277,9 @@ as bool,
 
 
 class LocationSelected implements LocationsEvent {
-  const LocationSelected({this.locationId, this.location});
+  const LocationSelected(this.location);
   
 
- final  String? locationId;
  final  LocationEntity? location;
 
 /// Create a copy of LocationsEvent
@@ -293,16 +292,16 @@ $LocationSelectedCopyWith<LocationSelected> get copyWith => _$LocationSelectedCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LocationSelected&&(identical(other.locationId, locationId) || other.locationId == locationId)&&(identical(other.location, location) || other.location == location));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LocationSelected&&(identical(other.location, location) || other.location == location));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,locationId,location);
+int get hashCode => Object.hash(runtimeType,location);
 
 @override
 String toString() {
-  return 'LocationsEvent.locationSelected(locationId: $locationId, location: $location)';
+  return 'LocationsEvent.locationSelected(location: $location)';
 }
 
 
@@ -313,7 +312,7 @@ abstract mixin class $LocationSelectedCopyWith<$Res> implements $LocationsEventC
   factory $LocationSelectedCopyWith(LocationSelected value, $Res Function(LocationSelected) _then) = _$LocationSelectedCopyWithImpl;
 @useResult
 $Res call({
- String? locationId, LocationEntity? location
+ LocationEntity? location
 });
 
 
@@ -330,10 +329,9 @@ class _$LocationSelectedCopyWithImpl<$Res>
 
 /// Create a copy of LocationsEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? locationId = freezed,Object? location = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? location = freezed,}) {
   return _then(LocationSelected(
-locationId: freezed == locationId ? _self.locationId : locationId // ignore: cast_nullable_to_non_nullable
-as String?,location: freezed == location ? _self.location : location // ignore: cast_nullable_to_non_nullable
+freezed == location ? _self.location : location // ignore: cast_nullable_to_non_nullable
 as LocationEntity?,
   ));
 }

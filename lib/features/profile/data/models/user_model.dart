@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../app/constants/app_enums.dart';
-import '../../../../core/data/utils/utils.dart';
+import '../../../../app/utils/utils.dart';
 import '../../domain/entity/user_entity.dart';
 
 part 'user_model.freezed.dart';

@@ -93,7 +93,8 @@
     "list": "List",
     "map": "Map",
     "modalTitle": "Geolocation is not available",
-    "modalText": "Open the Settings to allow it?"
+    "modalText": "Open the Settings to allow it?",
+    "kmFromYou": "km from you"
   },
   "filtersModal": {
     "modalName": "Filters",

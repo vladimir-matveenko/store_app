@@ -12,10 +12,8 @@ class LocationsEvent with _$LocationsEvent {
     @Default(false) bool loadSilent,
   }) = LocationsFetched;
 
-  const factory LocationsEvent.locationSelected({
-    String? locationId,
-    LocationEntity? location,
-  }) = LocationSelected;
+  const factory LocationsEvent.locationSelected(LocationEntity? location) =
+      LocationSelected;
 
   const factory LocationsEvent.locationUpdated({required Position position}) =
       LocationUpdated;

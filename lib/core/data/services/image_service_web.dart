@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:web/web.dart';
 
+import '../../../app/utils/utils.dart';
 import '../../../features/products/domain/entity/app_image_entity.dart';
-import '../utils/utils.dart';
 
 @immutable
 class ImageService {

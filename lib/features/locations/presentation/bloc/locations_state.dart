@@ -13,7 +13,6 @@ abstract class LocationsState with _$LocationsState {
     @Default(false) bool showGeoModal,
     String? error,
     @Default([]) List<LocationEntity> locations,
-    String? selectedLocationId,
     LocationEntity? selectedLocation,
     @Default([]) List<Marker> markers,
     @Default(LatLng(50.4501, 30.5234)) LatLng center,

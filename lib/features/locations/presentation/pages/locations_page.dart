@@ -8,7 +8,6 @@ import 'package:store_app/features/locations/presentation/widgets/locations_list
 import 'package:store_app/features/locations/presentation/widgets/map.dart';
 
 import '../../../../core/presentation/widgets/app_dialog.dart';
-import '../../../../core/presentation/widgets/app_loader.dart';
 import '../../../../core/presentation/widgets/custom_tab_bar.dart';
 import '../bloc/locations_event.dart';
 
@@ -74,7 +73,7 @@ class _LocationsPageState extends State<LocationsPage>
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return BlocConsumer<LocationsBloc, LocationsState>(
+    return BlocListener<LocationsBloc, LocationsState>(
       listenWhen: (prev, curr) =>
           prev.showGeoModal != curr.showGeoModal && curr.showGeoModal,
       listener: (context, state) async {
@@ -90,43 +89,36 @@ class _LocationsPageState extends State<LocationsPage>
         }
         bloc.add(const GeoStatusModalDisabled());
       },
-      builder: (context, state) {
-        return Column(
-          children: [
-            Builder(
-              key: ValueKey(context.locale),
-              builder: (context) {
-                return CustomTabBar(
-                  tabs: [
-                    'locationsScreen.list'.tr(),
-                    'locationsScreen.map'.tr(),
-                  ],
-                  selectedIndex: _tabController.index,
-                  useDifferentBorderForOuter: true,
-                  onTap: (i) => _tabController.animateTo(i),
-                  barDecoration: const BoxDecoration(color: Colors.transparent),
-                  barPadding: const EdgeInsets.symmetric(vertical: 8.0),
-                  buttonBorderRadius: 12.0,
-                  buttonColor: theme.unselectedWidgetColor,
-                  labelColor: theme.disabledColor,
-                  selectedButtonColor: theme.colorScheme.primary,
-                  selectedLabelColor: Colors.white,
-                  separator: const SizedBox(),
-                  fontSize: 14.0,
-                );
-              },
+      child: Column(
+        children: [
+          Builder(
+            key: ValueKey(context.locale),
+            builder: (context) {
+              return CustomTabBar(
+                tabs: ['locationsScreen.list'.tr(), 'locationsScreen.map'.tr()],
+                selectedIndex: _tabController.index,
+                useDifferentBorderForOuter: true,
+                onTap: (i) => _tabController.animateTo(i),
+                barDecoration: const BoxDecoration(color: Colors.transparent),
+                barPadding: const EdgeInsets.symmetric(vertical: 8.0),
+                buttonBorderRadius: 12.0,
+                buttonColor: theme.unselectedWidgetColor,
+                labelColor: theme.disabledColor,
+                selectedButtonColor: theme.colorScheme.primary,
+                selectedLabelColor: Colors.white,
+                separator: const SizedBox(),
+                fontSize: 14.0,
+              );
+            },
+          ),
+          Expanded(
+            child: IndexedStack(
+              index: _tabController.index,
+              children: List.generate(tabCount, _buildTab),
             ),
-            Expanded(
-              child: state.isLoading
-                  ? const Center(child: AppLoader())
-                  : IndexedStack(
-                      index: _tabController.index,
-                      children: List.generate(tabCount, _buildTab),
-                    ),
-            ),
-          ],
-        );
-      },
+          ),
+        ],
+      ),
     );
   }
 }
