@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:store_app/core/data/utils/utils.dart';
 import 'package:store_app/core/presentation/widgets/app_loader.dart';
 import 'package:store_app/core/presentation/widgets/no_items_widget.dart';
 import 'package:store_app/core/presentation/widgets/scroll_up_wrapper.dart';
@@ -93,21 +94,13 @@ class _ProductsPageState extends State<ProductsPage> {
                                 context,
                                 isActive: state.filters.isNotEmpty,
                                 onTap: () {
-                                  showDialog(
-                                    context: context,
-                                    fullscreenDialog: true,
-                                    builder: (context) => const Scaffold(
-                                      backgroundColor: Colors.transparent,
-                                      resizeToAvoidBottomInset: true,
-                                      body: Center(
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(
-                                            horizontal: 16.0,
-                                          ),
-                                          child: FilterModal(),
+                                  AppDialog.empty(
+                                    context,
+                                    constraints:
+                                        AppUtils.getModalDialogConstraints(
+                                          context,
                                         ),
-                                      ),
-                                    ),
+                                    content: const FilterModal(),
                                   );
                                 },
                               ),
@@ -150,6 +143,7 @@ class _ProductsPageState extends State<ProductsPage> {
                                 text: 'productsScreen.areYouSureCategory'.tr(),
                                 cancelText: 'productsScreen.cancelText'.tr(),
                                 okText: 'productsScreen.okText'.tr(),
+                                okButtonColor: theme.colorScheme.error,
                               );
                               if (result) {
                                 bloc.add(

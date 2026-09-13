@@ -194,7 +194,7 @@ class AppTheme {
       }),
     ),
     dialogTheme: DialogThemeData(
-      backgroundColor: appColors.scaffoldBackground,
+      backgroundColor: appColors.bottomBarBackground,
       insetPadding: const .all(16.0),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadiusGeometry.circular(12.0),

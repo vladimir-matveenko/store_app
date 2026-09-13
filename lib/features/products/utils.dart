@@ -18,10 +18,7 @@ class ProductsUtils {
     return IconButton(
       style: IconButton.styleFrom(
         backgroundColor:
-            Theme.of(
-              context,
-            ).iconButtonTheme.style?.backgroundColor?.resolve({}) ??
-            Colors.grey,
+            theme.searchBarTheme.backgroundColor?.resolve({}) ?? Colors.grey,
         elevation: 0,
         shadowColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,

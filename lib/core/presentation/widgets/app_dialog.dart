@@ -8,6 +8,7 @@ class AppDialog {
     required String text,
     String? cancelText,
     required String okText,
+    Color? okButtonColor,
   }) async {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
@@ -30,8 +31,8 @@ class AppDialog {
                 children: [
                   if (cancelText != null)
                     Expanded(
-                      child: TextButton(
-                        style: TextButton.styleFrom(
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.grey,
                         ),
                         onPressed: () => context.pop(false),
@@ -44,9 +45,10 @@ class AppDialog {
                       ),
                     ),
                   Expanded(
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        backgroundColor: theme.colorScheme.error,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            okButtonColor ?? theme.colorScheme.primary,
                       ),
                       onPressed: () => context.pop(true),
                       child: Text(
@@ -72,10 +74,11 @@ class AppDialog {
     BuildContext context, {
     required Widget content,
     VoidCallback? onClose,
+    BoxConstraints? constraints,
   }) {
     return showDialog(
       context: context,
-      builder: (context) => Dialog(child: content),
+      builder: (context) => Dialog(constraints: constraints, child: content),
     ).then((_) {
       onClose?.call();
     });

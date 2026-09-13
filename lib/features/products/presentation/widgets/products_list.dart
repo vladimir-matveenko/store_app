@@ -35,6 +35,7 @@ class ProductsList extends StatelessWidget {
                     text: 'productsScreen.areYouSureProduct'.tr(),
                     cancelText: 'productsScreen.cancelText'.tr(),
                     okText: 'productsScreen.okText'.tr(),
+                    okButtonColor: colorScheme.error,
                   );
                   if (result) {
                     final id = int.tryParse(item.id) ?? 0;

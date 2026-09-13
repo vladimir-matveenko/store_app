@@ -164,22 +164,14 @@ class _FilterModalState extends State<FilterModal> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final screenHeight = MediaQuery.sizeOf(context).height;
     return BlocBuilder<ProductsBloc, ProductsState>(
       builder: (context, state) {
         final wasFiltersChanged = !listEquals(
           state.filters,
           availabilityFilters,
         );
-        return Container(
-          constraints: BoxConstraints(maxHeight: screenHeight - 32.0),
-          decoration: BoxDecoration(
-            color: theme.scaffoldBackgroundColor,
-            borderRadius: BorderRadius.circular(12.0),
-            border: Border.all(color: theme.colorScheme.onPrimary),
-          ),
-          padding: const EdgeInsets.all(24.0),
+        return Padding(
+          padding: const .all(24.0),
           child: Column(
             spacing: 8,
             mainAxisSize: MainAxisSize.min,
@@ -226,15 +218,21 @@ class _FilterModalState extends State<FilterModal> {
                         amountMaxController: amountMaxController,
                         amountError: amountError,
                       ),
-                      ElevatedButton(
-                        onPressed:
-                            wasFiltersChanged && amountError.value.isEmpty
-                            ? () {
-                                context.pop();
-                                saveFilters();
-                              }
-                            : null,
-                        child: Text('filtersModal.btnConfirm'.tr()),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed:
+                                  wasFiltersChanged && amountError.value.isEmpty
+                                  ? () {
+                                      context.pop();
+                                      saveFilters();
+                                    }
+                                  : null,
+                              child: Text('filtersModal.btnConfirm'.tr()),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
