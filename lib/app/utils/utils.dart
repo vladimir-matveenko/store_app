@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -67,5 +70,35 @@ class AppUtils {
     final base = originalName.split('.').first;
 
     return '$base.$ext';
+  }
+
+  static Future<void> precacheImages(
+    BuildContext context, {
+    required List<String> images,
+    VoidCallback? onDone,
+  }) async {
+    try {
+      await Future.wait(
+        images.map((image) async {
+          try {
+            if (image.contains('http')) {
+              await precacheImage(CachedNetworkImageProvider(image), context);
+            } else {
+              await precacheImage(AssetImage(image), context);
+            }
+          } catch (e, stackTrace) {
+            log(
+              'Failed to precache image: $image',
+              error: e,
+              stackTrace: stackTrace,
+            );
+          }
+        }),
+      );
+    } finally {
+      if (context.mounted) {
+        onDone?.call();
+      }
+    }
   }
 }

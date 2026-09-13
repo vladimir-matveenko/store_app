@@ -12,6 +12,7 @@ import 'package:store_app/features/products/presentation/widgets/filter_modal.da
 import 'package:store_app/features/products/presentation/widgets/products_list.dart';
 import 'package:store_app/features/products/utils.dart';
 
+import '../../../../app/utils/utils.dart';
 import '../../../../core/presentation/widgets/app_dialog.dart';
 import '../../../../core/presentation/widgets/availability_filters_list.dart';
 import '../bloc/products_event.dart';
@@ -93,21 +94,13 @@ class _ProductsPageState extends State<ProductsPage> {
                                 context,
                                 isActive: state.filters.isNotEmpty,
                                 onTap: () {
-                                  showDialog(
-                                    context: context,
-                                    fullscreenDialog: true,
-                                    builder: (context) => const Scaffold(
-                                      backgroundColor: Colors.transparent,
-                                      resizeToAvoidBottomInset: true,
-                                      body: Center(
-                                        child: Padding(
-                                          padding: EdgeInsets.symmetric(
-                                            horizontal: 16.0,
-                                          ),
-                                          child: FilterModal(),
+                                  AppDialog.empty(
+                                    context,
+                                    constraints:
+                                        AppUtils.getModalDialogConstraints(
+                                          context,
                                         ),
-                                      ),
-                                    ),
+                                    content: const FilterModal(),
                                   );
                                 },
                               ),
@@ -150,6 +143,7 @@ class _ProductsPageState extends State<ProductsPage> {
                                 text: 'productsScreen.areYouSureCategory'.tr(),
                                 cancelText: 'productsScreen.cancelText'.tr(),
                                 okText: 'productsScreen.okText'.tr(),
+                                okButtonColor: theme.colorScheme.error,
                               );
                               if (result) {
                                 bloc.add(

@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:store_app/features/locations/domain/entity/location_entity.dart';
 import 'package:store_app/features/locations/presentation/bloc/locations_bloc.dart';
+import 'package:store_app/features/locations/presentation/widgets/selected_location_item.dart';
 import 'package:store_app/features/locations/utils.dart';
 
 import '../../../../app/di/injection.dart';
 import '../../../../core/data/services/tile_cache/tile_cache_service.dart';
+import '../bloc/locations_state.dart';
 
 class LocationsMap extends StatefulWidget {
   const LocationsMap({super.key});
@@ -23,6 +26,10 @@ class _LocationsMapState extends State<LocationsMap> {
   Marker? _selectedMarker;
   LocationEntity? _tappedLocation;
 
+  void _moveToLocation(LocationEntity location) {
+    _mapController.move(LatLng(location.latitude, location.longitude), 12.0);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -31,75 +38,88 @@ class _LocationsMapState extends State<LocationsMap> {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<LocationsBloc>().state;
     final textTheme = Theme.of(context).textTheme;
 
-    return Stack(
-      children: [
-        FlutterMap(
-          mapController: _mapController,
-          options: MapOptions(
-            initialCenter: state.center,
-            initialZoom: 5.0,
-            onTap: (tapPosition, latLng) {
-              setState(() {
-                _selectedMarker = null;
-              });
-            },
-            onPositionChanged: (camera, _) {
-              setState(() {});
-            },
-          ),
+    return BlocBuilder<LocationsBloc, LocationsState>(
+      builder: (context, state) {
+        return Stack(
           children: [
-            TileLayer(
-              urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-              userAgentPackageName: 'com.vladimir.dev.cleanarchitecturetest',
-              tileProvider: kIsWeb ? null : _tileProvider,
-            ),
-            const RichAttributionWidget(
-              alignment: AttributionAlignment.bottomLeft,
-              attributions: [
-                TextSourceAttribution('OpenStreetMap contributors'),
-              ],
-            ),
-            MarkerClusterLayerWidget(
-              options: MarkerClusterLayerOptions(
-                maxClusterRadius: 45,
-                size: const Size(40, 40),
-                markers: state.markers,
-                builder: (context, cluster) {
-                  return Container(
-                    alignment: Alignment.center,
-                    decoration: const BoxDecoration(
-                      color: Colors.blue,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Text(
-                      cluster.length.toString(),
-                      style: textTheme.bodyMedium,
-                    ),
-                  );
-                },
-                onMarkerTap: (marker) {
+            FlutterMap(
+              mapController: _mapController,
+              options: MapOptions(
+                initialCenter: state.center,
+                initialZoom: 5.0,
+                onTap: (tapPosition, latLng) {
                   setState(() {
-                    _selectedMarker = marker;
-                    _tappedLocation = LocationsUtils.getLocationByLatLong(
-                      latLng: marker.point,
-                      locations: state.locations,
-                    );
+                    _selectedMarker = null;
                   });
                 },
+                onPositionChanged: (camera, _) {
+                  setState(() {});
+                },
               ),
+              children: [
+                TileLayer(
+                  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                  userAgentPackageName:
+                      'com.vladimir.dev.cleanarchitecturetest',
+                  tileProvider: kIsWeb ? null : _tileProvider,
+                ),
+                const RichAttributionWidget(
+                  alignment: AttributionAlignment.bottomLeft,
+                  attributions: [
+                    TextSourceAttribution('OpenStreetMap contributors'),
+                  ],
+                ),
+                MarkerClusterLayerWidget(
+                  options: MarkerClusterLayerOptions(
+                    maxClusterRadius: 45,
+                    size: const Size(40, 40),
+                    markers: state.markers,
+                    builder: (context, cluster) {
+                      return Container(
+                        alignment: Alignment.center,
+                        decoration: const BoxDecoration(
+                          color: Colors.blue,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Text(
+                          cluster.length.toString(),
+                          style: textTheme.bodyMedium,
+                        ),
+                      );
+                    },
+                    onMarkerTap: (marker) {
+                      setState(() {
+                        _selectedMarker = marker;
+                        _tappedLocation = LocationsUtils.getLocationByLatLong(
+                          latLng: marker.point,
+                          locations: state.locations,
+                        );
+                      });
+                    },
+                  ),
+                ),
+              ],
             ),
+            if (_selectedMarker != null)
+              _MapPopup(
+                marker: _selectedMarker!,
+                mapController: _mapController,
+                location: _tappedLocation,
+              ),
+            if (state.selectedLocation != null)
+              Positioned(
+                left: 16.0,
+                top: 16.0,
+                child: SelectedLocationItem(
+                  location: state.selectedLocation!,
+                  onTap: _moveToLocation,
+                ),
+              ),
           ],
-        ),
-        if (_selectedMarker != null)
-          _MapPopup(
-            marker: _selectedMarker!,
-            mapController: _mapController,
-            location: _tappedLocation,
-          ),
-      ],
+        );
+      },
     );
   }
 }

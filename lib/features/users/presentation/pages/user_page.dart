@@ -5,7 +5,7 @@ import 'package:store_app/features/users/presentation/bloc/users_bloc.dart';
 import 'package:store_app/features/users/presentation/bloc/users_event.dart';
 import 'package:store_app/features/users/presentation/bloc/users_state.dart';
 
-import '../../../../core/data/utils/utils.dart';
+import '../../../../app/utils/utils.dart';
 import '../../../../core/presentation/widgets/app_loader.dart';
 import '../../../../core/presentation/widgets/user_avatar.dart';
 
@@ -20,6 +20,21 @@ class UserPage extends StatefulWidget {
 
 class _UserPageState extends State<UserPage> {
   final controller = CarouselSliderController();
+  bool _imageReady = false;
+  bool _imageInProgress = false;
+
+  Future<void> _precacheAvatar(BuildContext context, String avatarUrl) async {
+    _imageInProgress = true;
+
+    await AppUtils.precacheImages(context, images: [avatarUrl]);
+
+    if (!mounted) return;
+
+    setState(() {
+      _imageInProgress = false;
+      _imageReady = true;
+    });
+  }
 
   @override
   void initState() {
@@ -39,7 +54,13 @@ class _UserPageState extends State<UserPage> {
           final name = state.user?.name ?? '';
           final firstName = AppUtils.getFirstName(name);
           final lastName = AppUtils.getLastName(name);
-          return state.isUserLoading
+          final isLoading = state.isUserLoading || !_imageReady;
+
+          if (!_imageReady && !_imageInProgress) {
+            _precacheAvatar(context, avatar);
+          }
+
+          return isLoading
               ? const Center(child: AppLoader())
               : Padding(
                   padding: const EdgeInsets.all(16.0),

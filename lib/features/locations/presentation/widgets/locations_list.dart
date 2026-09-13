@@ -7,6 +7,9 @@ import 'package:store_app/features/locations/domain/entity/location_entity.dart'
 import 'package:store_app/features/locations/presentation/bloc/locations_bloc.dart';
 import 'package:store_app/features/locations/presentation/bloc/locations_event.dart';
 
+import '../../../../core/presentation/widgets/app_loader.dart';
+import '../bloc/locations_state.dart';
+
 class LocationsList extends StatefulWidget {
   const LocationsList({super.key});
 
@@ -32,40 +35,41 @@ class _LocationsListState extends State<LocationsList> {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<LocationsBloc>().state;
-    return state.locations.isNotEmpty
-        ? ScrollUpWrapper(
-            controller: _scrollController,
-            child: ListView.separated(
-              controller: _scrollController,
-              itemCount: state.locations.length,
-              physics: const ClampingScrollPhysics(),
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              itemBuilder: (context, index) {
-                final location = state.locations[index];
-                final isSelected = location.id == state.selectedLocationId;
-                return ListItem(
-                  key: ValueKey(location.id),
-                  isSelected: isSelected,
-                  onTap: () {
-                    if (isSelected) {
-                      bloc.add(const LocationSelected(locationId: ''));
-                    } else {
-                      bloc.add(
-                        LocationSelected(
-                          locationId: location.id,
-                          location: location,
-                        ),
-                      );
-                    }
+    return BlocBuilder<LocationsBloc, LocationsState>(
+      builder: (context, state) {
+        return state.isLoading
+            ? const Center(child: AppLoader())
+            : state.locations.isNotEmpty
+            ? ScrollUpWrapper(
+                controller: _scrollController,
+                child: ListView.separated(
+                  controller: _scrollController,
+                  itemCount: state.locations.length,
+                  physics: const ClampingScrollPhysics(),
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  itemBuilder: (context, index) {
+                    final location = state.locations[index];
+                    final isSelected = location == state.selectedLocation;
+                    return ListItem(
+                      key: ValueKey(location.id),
+                      isSelected: isSelected,
+                      onTap: () {
+                        if (isSelected) {
+                          bloc.add(const LocationSelected(null));
+                        } else {
+                          bloc.add(LocationSelected(location));
+                        }
+                      },
+                      location: location,
+                    );
                   },
-                  location: location,
-                );
-              },
-              separatorBuilder: (context, index) => const SizedBox(height: 8.0),
-            ),
-          )
-        : const NoItemsWidget();
+                  separatorBuilder: (context, index) =>
+                      const SizedBox(height: 8.0),
+                ),
+              )
+            : const NoItemsWidget();
+      },
+    );
   }
 }
 
@@ -119,7 +123,7 @@ class ListItem extends StatelessWidget {
             ),
             if (location.distance != null)
               Text(
-                '${location.distance} km from you',
+                '${location.distance}${'locationsScreen.kmFromYou'.tr()}',
                 style: textTheme.bodyMedium,
               ),
           ],

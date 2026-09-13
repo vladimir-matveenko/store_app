@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../data/utils/utils.dart';
+import '../../../../app/utils/utils.dart';
 import 'app_text_form_field.dart';
 
 class UsernameTextField extends StatelessWidget {

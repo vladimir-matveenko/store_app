@@ -79,7 +79,7 @@ class LocationsBloc extends Bloc<LocationsEvent, LocationsState>
           final center = LatLng(r.first.latitude, r.first.longitude);
           final markers = LocationsUtils.makeMarkers(
             locations: r,
-            selectedLocation: (state.selectedLocationId?.isNotEmpty == true)
+            selectedLocation: (state.selectedLocation != null)
                 ? state.selectedLocation
                 : null,
           );
@@ -111,17 +111,9 @@ class LocationsBloc extends Bloc<LocationsEvent, LocationsState>
   ) async {
     final markers = LocationsUtils.makeMarkers(
       locations: state.locations,
-      selectedLocation: event.locationId?.isNotEmpty == true
-          ? event.location
-          : null,
+      selectedLocation: event.location,
     );
-    emit(
-      state.copyWith(
-        selectedLocationId: event.locationId,
-        selectedLocation: event.location,
-        markers: markers,
-      ),
-    );
+    emit(state.copyWith(selectedLocation: event.location, markers: markers));
   }
 
   Future<void> _onLocationUpdated(
