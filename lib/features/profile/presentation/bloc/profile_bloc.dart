@@ -10,6 +10,7 @@ import 'package:store_app/features/profile/domain/usecases/update_profile_usecas
 import 'package:store_app/features/profile/presentation/bloc/profile_event.dart';
 import 'package:store_app/features/profile/presentation/bloc/profile_state.dart';
 
+import '../../../../core/data/services/auth_session_manager.dart';
 import '../../../products/domain/entity/app_image_entity.dart';
 import '../../../products/domain/entity/image_entity.dart';
 import '../../../products/domain/usecases/upload_image_usecase.dart';
@@ -23,6 +24,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     this._createProfileUseCase,
     this._uploadImageUseCase,
     this._updateProfileUseCase,
+    this._sessionManager,
   ) : super(const ProfileState()) {
     on<ProfileEvent>((event, emit) async {
       await event.map(
@@ -41,6 +43,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final UpdateProfileUseCase _updateProfileUseCase;
   final GetUserProfileUseCase _getUserProfileUseCase;
   final UploadImageUseCase _uploadImageUseCase;
+  final AuthSessionManager _sessionManager;
 
   Future<void> _onCreateProfileRequested(
     CreateProfileRequested event,
@@ -158,6 +161,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           message = 'errors.accessTokenInvalid'.tr();
         }
         emit(state.copyWith(error: message, isLoading: false));
+
+        /// we use _sessionManager to logout if the user was deleted from the DB
+        /// because API doesn't process the wrong token case
+        _sessionManager.notifySessionExpired();
       },
       (r) {
         emit(state.copyWith(user: r, isLoading: false));
