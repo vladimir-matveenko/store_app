@@ -50,9 +50,7 @@ class ProductsUtils {
           shadowColor: Colors.transparent,
           surfaceTintColor: Colors.transparent,
           padding: EdgeInsets.zero,
-          shape: RoundedRectangleBorder(
-            borderRadius: .circular(4.0),
-          ),
+          shape: RoundedRectangleBorder(borderRadius: .circular(4.0)),
         ),
         onPressed: onTap,
         icon: Icon(
