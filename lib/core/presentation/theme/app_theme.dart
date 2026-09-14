@@ -50,10 +50,7 @@ class AppTheme {
     ),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyle(color: appColors.secondaryText),
-      contentPadding: const .symmetric(
-        vertical: 4.0,
-        horizontal: 8.0,
-      ),
+      contentPadding: const .symmetric(vertical: 4.0, horizontal: 8.0),
       border: OutlineInputBorder(
         borderRadius: const BorderRadius.all(Radius.circular(12.0)),
         borderSide: BorderSide(color: appColors.fieldBorder, width: 1.0),
@@ -123,10 +120,7 @@ class AppTheme {
           borderRadius: .circular(10.0),
           borderSide: BorderSide(color: appColors.primary),
         ),
-        contentPadding: const .symmetric(
-          horizontal: 8.0,
-          vertical: 4.0,
-        ),
+        contentPadding: const .symmetric(horizontal: 8.0, vertical: 4.0),
         prefixIconConstraints: const BoxConstraints(maxHeight: 24.0),
       ),
       menuStyle: MenuStyle(
@@ -146,9 +140,7 @@ class AppTheme {
         disabledBackgroundColor: appColors.unselectedWidget,
         foregroundColor: appColors.onPrimary,
         disabledForegroundColor: appColors.secondaryText,
-        shape: RoundedRectangleBorder(
-          borderRadius: .circular(12.0),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: .circular(12.0)),
       ),
     ),
     textButtonTheme: TextButtonThemeData(
@@ -188,9 +180,7 @@ class AppTheme {
             side: BorderSide(color: appColors.fieldBorderFocussed),
           );
         }
-        return RoundedRectangleBorder(
-          borderRadius: .circular(10.0),
-        );
+        return RoundedRectangleBorder(borderRadius: .circular(10.0));
       }),
     ),
     dialogTheme: DialogThemeData(
@@ -247,10 +237,7 @@ class AppTheme {
     ),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyle(color: appColors.secondaryText),
-      contentPadding: const .symmetric(
-        vertical: 4.0,
-        horizontal: 8.0,
-      ),
+      contentPadding: const .symmetric(vertical: 4.0, horizontal: 8.0),
       border: OutlineInputBorder(
         borderRadius: const BorderRadius.all(Radius.circular(12.0)),
         borderSide: BorderSide(color: appColors.fieldBorder, width: 1.0),
@@ -320,10 +307,7 @@ class AppTheme {
           borderRadius: .circular(10),
           borderSide: BorderSide(color: appColors.fieldBorderFocussed),
         ),
-        contentPadding: const .symmetric(
-          horizontal: 8.0,
-          vertical: 4.0,
-        ),
+        contentPadding: const .symmetric(horizontal: 8.0, vertical: 4.0),
         prefixIconConstraints: const BoxConstraints(maxHeight: 24.0),
       ),
       menuStyle: MenuStyle(
@@ -343,9 +327,7 @@ class AppTheme {
         disabledBackgroundColor: appColors.unselectedWidget,
         foregroundColor: appColors.onPrimary,
         disabledForegroundColor: appColors.secondaryText,
-        shape: RoundedRectangleBorder(
-          borderRadius: .circular(12.0),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: .circular(12.0)),
       ),
     ),
     textButtonTheme: TextButtonThemeData(
@@ -385,9 +367,7 @@ class AppTheme {
             side: BorderSide(color: appColors.primary),
           );
         }
-        return RoundedRectangleBorder(
-          borderRadius: .circular(10.0),
-        );
+        return RoundedRectangleBorder(borderRadius: .circular(10.0));
       }),
     ),
     dialogTheme: DialogThemeData(
