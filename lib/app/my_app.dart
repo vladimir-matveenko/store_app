@@ -54,10 +54,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (_) => authBloc..add(const AuthCheckRequested()),
-          lazy: false,
-        ),
+        BlocProvider(create: (_) => authBloc),
         BlocProvider(create: (_) => profileBloc),
         BlocProvider(create: (_) => themeCubit..loadTheme(), lazy: false),
         BlocProvider(create: (_) => productsBloc, lazy: true),
