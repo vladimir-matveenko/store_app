@@ -14,20 +14,17 @@ class CarouselSliderItem extends StatelessWidget {
     final textTheme = theme.textTheme;
     return image != null
         ? Stack(
-            alignment: AlignmentDirectional.bottomCenter,
+            alignment: .bottomCenter,
             children: [
               AspectRatio(aspectRatio: 1.0, child: ImageBox(imageUrl: image!)),
               if (current != null && total != null)
                 Align(
-                  alignment: Alignment.bottomCenter,
+                  alignment: .bottomCenter,
                   child: Container(
-                    margin: const EdgeInsets.only(bottom: 4.0),
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 4.0,
-                      horizontal: 8.0,
-                    ),
+                    margin: const .only(bottom: 4.0),
+                    padding: const .symmetric(vertical: 4.0, horizontal: 8.0),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8.0),
+                      borderRadius: .circular(8.0),
                       color: Colors.cyan.withValues(alpha: 0.2),
                     ),
                     child: Text(

@@ -1,20 +1,19 @@
-import 'dart:typed_data';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../app/routes/pages.dart';
-import '../bloc/profile_bloc.dart';
-import '../bloc/profile_event.dart';
-
 class GetImageDialog extends StatelessWidget {
-  const GetImageDialog({super.key});
+  const GetImageDialog({
+    super.key,
+    required this.onCameraTapped,
+    required this.onGalleryTapped,
+  });
+
+  final VoidCallback onCameraTapped;
+  final VoidCallback onGalleryTapped;
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.read<ProfileBloc>();
     return Padding(
       padding: const .all(24.0),
       child: Column(
@@ -23,13 +22,9 @@ class GetImageDialog extends StatelessWidget {
         crossAxisAlignment: .stretch,
         children: [
           ElevatedButton(
-            onPressed: () async {
+            onPressed: () {
               context.pop();
-              final bytes = await context.push<Uint8List>(Pages.camera);
-
-              if (bytes != null) {
-                bloc.add(ImagePicked(bytes: bytes));
-              }
+              onCameraTapped();
             },
             child: Row(
               spacing: 8.0,
@@ -43,7 +38,7 @@ class GetImageDialog extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               context.pop();
-              bloc.add(const ImagePicked());
+              onGalleryTapped();
             },
             child: Row(
               spacing: 8.0,

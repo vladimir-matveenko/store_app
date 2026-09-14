@@ -67,7 +67,7 @@ class _LocationsMapState extends State<LocationsMap> {
                   tileProvider: kIsWeb ? null : _tileProvider,
                 ),
                 const RichAttributionWidget(
-                  alignment: AttributionAlignment.bottomLeft,
+                  alignment: .bottomLeft,
                   attributions: [
                     TextSourceAttribution('OpenStreetMap contributors'),
                   ],
@@ -79,7 +79,7 @@ class _LocationsMapState extends State<LocationsMap> {
                     markers: state.markers,
                     builder: (context, cluster) {
                       return Container(
-                        alignment: Alignment.center,
+                        alignment: .center,
                         decoration: const BoxDecoration(
                           color: Colors.blue,
                           shape: BoxShape.circle,
@@ -115,7 +115,7 @@ class _LocationsMapState extends State<LocationsMap> {
                 top: 16.0,
                 right: 16.0,
                 child: Align(
-                  alignment: Alignment.topLeft,
+                  alignment: .topLeft,
                   child: ConstrainedBox(
                     constraints: BoxConstraints(maxWidth: screenWidth - 64.0),
                     child: IntrinsicWidth(
@@ -155,13 +155,13 @@ class _MapPopup extends StatelessWidget {
       top: offset.dy - 120,
       child: Material(
         elevation: 0,
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: .circular(12.0),
         child: Container(
           width: 200,
-          padding: const EdgeInsets.all(8.0),
+          padding: const .all(8.0),
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(12.0),
+            borderRadius: .circular(12.0),
           ),
           child: Row(
             spacing: 4.0,
@@ -169,7 +169,7 @@ class _MapPopup extends StatelessWidget {
               const Icon(Icons.shopping_cart, size: 16.0, color: Colors.blue),
               Expanded(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: .start,
                   children: [
                     Text(
                       location?.name ?? '',

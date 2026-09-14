@@ -21,6 +21,7 @@ import 'package:store_app/features/products/utils.dart';
 
 import '../../../../core/error/failure.dart';
 import '../../data/models/product_model.dart';
+import '../../domain/entity/app_image_entity.dart';
 import '../../domain/usecases/delete_category_usecase.dart';
 import '../../domain/usecases/fetch_product_usecase.dart';
 
@@ -315,7 +316,12 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     ImagePicked event,
     Emitter<ProductsState> emit,
   ) async {
-    final image = await ImageService.getImageFromGallery();
+    AppImageEntity? image;
+    if (event.bytes != null) {
+      image = await ImageService.processCameraImage(event.bytes!);
+    } else {
+      image = await ImageService.getImageFromGallery();
+    }
     if (image != null) {
       var images = [...?state.pickedImages];
       images.add(image);

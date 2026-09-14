@@ -103,7 +103,7 @@ class _UserPageState extends State<UserPage> {
                     lastName: lastName,
                   ),
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    crossAxisAlignment: .stretch,
                     spacing: 8.0,
                     children: [
                       Text(user?.email ?? '', style: textTheme.bodyMedium),

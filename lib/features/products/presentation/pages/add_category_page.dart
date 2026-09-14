@@ -1,12 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:store_app/core/presentation/widgets/app_message.dart';
 import 'package:store_app/features/products/data/models/product_model.dart';
 import 'package:store_app/features/products/presentation/bloc/products_bloc.dart';
 import 'package:store_app/features/products/presentation/bloc/products_event.dart';
 import 'package:store_app/features/products/presentation/bloc/products_state.dart';
 
+import '../../../../app/routes/pages.dart';
+import '../../../../core/presentation/widgets/app_dialog.dart';
+import '../../../../core/presentation/widgets/get_image_dialog.dart';
 import '../../../../core/presentation/widgets/text_fields/app_text_form_field.dart';
 import '../widgets/images_list.dart';
 
@@ -90,12 +95,12 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
         final isLoading = state.isCreating;
         return Container(
           color: theme.scaffoldBackgroundColor,
-          padding: const EdgeInsets.only(top: 16.0, left: 16.0),
+          padding: const .only(top: 16.0, left: 16.0),
           child: SingleChildScrollView(
             physics: const ClampingScrollPhysics(),
             child: Column(
               spacing: 16.0,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: .start,
               children: [
                 Text(
                   '${'addCategoryScreen.addImage'.tr()}:',
@@ -104,12 +109,32 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
                 ImagesList(
                   maxLength: 1,
                   images: state.pickedImages ?? [],
-                  onTap: () {
+                  onAddTapped: () {
                     if (!isLoading) {
-                      bloc.add(const ImagePicked());
+                      if (kIsWeb) {
+                        bloc.add(const ImagePicked());
+                      } else {
+                        AppDialog.empty(
+                          context,
+                          content: GetImageDialog(
+                            onCameraTapped: () async {
+                              final bytes = await context.push<Uint8List>(
+                                Pages.camera,
+                              );
+
+                              if (bytes != null) {
+                                bloc.add(ImagePicked(bytes: bytes));
+                              }
+                            },
+                            onGalleryTapped: () {
+                              bloc.add(const ImagePicked());
+                            },
+                          ),
+                        );
+                      }
                     }
                   },
-                  onRemove: (image) {
+                  onRemoveTapped: (image) {
                     if (!isLoading) {
                       bloc.add(ImageRemoved(image: image));
                     }
@@ -118,10 +143,10 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
                 Form(
                   key: _formKey,
                   child: Padding(
-                    padding: const EdgeInsets.only(right: 16.0),
+                    padding: const .only(right: 16.0),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisAlignment: .start,
+                      crossAxisAlignment: .stretch,
                       spacing: 16.0,
                       children: [
                         AppTextFormField(

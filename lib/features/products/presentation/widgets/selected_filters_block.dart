@@ -22,7 +22,7 @@ class SelectedFiltersBlock extends StatelessWidget {
           ? Column(
               children: [
                 Align(
-                  alignment: Alignment.centerLeft,
+                  alignment: .centerLeft,
                   child: AvailabilityFiltersList(
                     key: ValueKey(selectedFilters.length),
                     availabilityFilters: selectedFilters,

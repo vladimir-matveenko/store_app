@@ -20,16 +20,16 @@ class ErrorView extends StatelessWidget {
       color: theme.scaffoldBackgroundColor,
       child: Center(
         child: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: const .all(24),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: .min,
             children: [
               const Icon(Icons.no_photography, size: 48.0),
               const SizedBox(height: 16),
-              Text(message, textAlign: TextAlign.center),
+              Text(message, textAlign: .center),
               const SizedBox(height: 24),
               Row(
-                mainAxisSize: MainAxisSize.min,
+                mainAxisSize: .min,
                 children: [
                   Expanded(
                     child: OutlinedButton(

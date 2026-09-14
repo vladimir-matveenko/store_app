@@ -39,11 +39,11 @@ class _ProductPageState extends State<ProductPage> {
         return state.isProductLoading
             ? const AppLoader()
             : Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const .all(16.0),
                 child: SingleChildScrollView(
                   physics: const ClampingScrollPhysics(),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: .start,
                     spacing: 8.0,
                     children: [
                       CarouselSliderWidget(

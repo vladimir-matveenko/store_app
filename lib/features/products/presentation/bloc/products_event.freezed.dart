@@ -179,7 +179,7 @@ return filtersSaved(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  dataInitialized,TResult Function( bool loadSilent)?  productsFetched,TResult Function()?  nextProductsFetched,TResult Function( String? search)?  productsSearchStarted,TResult Function( String? categoryId)?  productsCategorySelected,TResult Function( bool loadSilent)?  categoriesFetched,TResult Function( String id)?  productFetched,TResult Function( String id)?  relatedByIdFetched,TResult Function( String categoryId)?  createdProductCategorySelected,TResult Function( String title,  String description,  int price)?  productCreated,TResult Function( int id)?  productDeleted,TResult Function( String name)?  categoryCreated,TResult Function( int id)?  categoryDeleted,TResult Function( String? search,  bool? useForInnerSearch)?  categorySearchStarted,TResult Function()?  innerSearchDisabled,TResult Function()?  imagePicked,TResult Function( AppImageEntity image)?  imageRemoved,TResult Function()?  dataRemoved,TResult Function( AvailabilityFilterEntity filter)?  filterAdded,TResult Function( AvailabilityFilterEntity filter)?  filterRemoved,TResult Function( List<AvailabilityFilterEntity> filters)?  filtersSaved,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  dataInitialized,TResult Function( bool loadSilent)?  productsFetched,TResult Function()?  nextProductsFetched,TResult Function( String? search)?  productsSearchStarted,TResult Function( String? categoryId)?  productsCategorySelected,TResult Function( bool loadSilent)?  categoriesFetched,TResult Function( String id)?  productFetched,TResult Function( String id)?  relatedByIdFetched,TResult Function( String categoryId)?  createdProductCategorySelected,TResult Function( String title,  String description,  int price)?  productCreated,TResult Function( int id)?  productDeleted,TResult Function( String name)?  categoryCreated,TResult Function( int id)?  categoryDeleted,TResult Function( String? search,  bool? useForInnerSearch)?  categorySearchStarted,TResult Function()?  innerSearchDisabled,TResult Function( Uint8List? bytes)?  imagePicked,TResult Function( AppImageEntity image)?  imageRemoved,TResult Function()?  dataRemoved,TResult Function( AvailabilityFilterEntity filter)?  filterAdded,TResult Function( AvailabilityFilterEntity filter)?  filterRemoved,TResult Function( List<AvailabilityFilterEntity> filters)?  filtersSaved,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case DataInitialized() when dataInitialized != null:
 return dataInitialized();case ProductsFetched() when productsFetched != null:
@@ -197,7 +197,7 @@ return categoryCreated(_that.name);case CategoryDeleted() when categoryDeleted !
 return categoryDeleted(_that.id);case CategorySearchStarted() when categorySearchStarted != null:
 return categorySearchStarted(_that.search,_that.useForInnerSearch);case InnerSearchDisabled() when innerSearchDisabled != null:
 return innerSearchDisabled();case ImagePicked() when imagePicked != null:
-return imagePicked();case ImageRemoved() when imageRemoved != null:
+return imagePicked(_that.bytes);case ImageRemoved() when imageRemoved != null:
 return imageRemoved(_that.image);case DataRemoved() when dataRemoved != null:
 return dataRemoved();case FilterAdded() when filterAdded != null:
 return filterAdded(_that.filter);case FilterRemoved() when filterRemoved != null:
@@ -220,7 +220,7 @@ return filtersSaved(_that.filters);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  dataInitialized,required TResult Function( bool loadSilent)  productsFetched,required TResult Function()  nextProductsFetched,required TResult Function( String? search)  productsSearchStarted,required TResult Function( String? categoryId)  productsCategorySelected,required TResult Function( bool loadSilent)  categoriesFetched,required TResult Function( String id)  productFetched,required TResult Function( String id)  relatedByIdFetched,required TResult Function( String categoryId)  createdProductCategorySelected,required TResult Function( String title,  String description,  int price)  productCreated,required TResult Function( int id)  productDeleted,required TResult Function( String name)  categoryCreated,required TResult Function( int id)  categoryDeleted,required TResult Function( String? search,  bool? useForInnerSearch)  categorySearchStarted,required TResult Function()  innerSearchDisabled,required TResult Function()  imagePicked,required TResult Function( AppImageEntity image)  imageRemoved,required TResult Function()  dataRemoved,required TResult Function( AvailabilityFilterEntity filter)  filterAdded,required TResult Function( AvailabilityFilterEntity filter)  filterRemoved,required TResult Function( List<AvailabilityFilterEntity> filters)  filtersSaved,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  dataInitialized,required TResult Function( bool loadSilent)  productsFetched,required TResult Function()  nextProductsFetched,required TResult Function( String? search)  productsSearchStarted,required TResult Function( String? categoryId)  productsCategorySelected,required TResult Function( bool loadSilent)  categoriesFetched,required TResult Function( String id)  productFetched,required TResult Function( String id)  relatedByIdFetched,required TResult Function( String categoryId)  createdProductCategorySelected,required TResult Function( String title,  String description,  int price)  productCreated,required TResult Function( int id)  productDeleted,required TResult Function( String name)  categoryCreated,required TResult Function( int id)  categoryDeleted,required TResult Function( String? search,  bool? useForInnerSearch)  categorySearchStarted,required TResult Function()  innerSearchDisabled,required TResult Function( Uint8List? bytes)  imagePicked,required TResult Function( AppImageEntity image)  imageRemoved,required TResult Function()  dataRemoved,required TResult Function( AvailabilityFilterEntity filter)  filterAdded,required TResult Function( AvailabilityFilterEntity filter)  filterRemoved,required TResult Function( List<AvailabilityFilterEntity> filters)  filtersSaved,}) {final _that = this;
 switch (_that) {
 case DataInitialized():
 return dataInitialized();case ProductsFetched():
@@ -238,7 +238,7 @@ return categoryCreated(_that.name);case CategoryDeleted():
 return categoryDeleted(_that.id);case CategorySearchStarted():
 return categorySearchStarted(_that.search,_that.useForInnerSearch);case InnerSearchDisabled():
 return innerSearchDisabled();case ImagePicked():
-return imagePicked();case ImageRemoved():
+return imagePicked(_that.bytes);case ImageRemoved():
 return imageRemoved(_that.image);case DataRemoved():
 return dataRemoved();case FilterAdded():
 return filterAdded(_that.filter);case FilterRemoved():
@@ -260,7 +260,7 @@ return filtersSaved(_that.filters);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  dataInitialized,TResult? Function( bool loadSilent)?  productsFetched,TResult? Function()?  nextProductsFetched,TResult? Function( String? search)?  productsSearchStarted,TResult? Function( String? categoryId)?  productsCategorySelected,TResult? Function( bool loadSilent)?  categoriesFetched,TResult? Function( String id)?  productFetched,TResult? Function( String id)?  relatedByIdFetched,TResult? Function( String categoryId)?  createdProductCategorySelected,TResult? Function( String title,  String description,  int price)?  productCreated,TResult? Function( int id)?  productDeleted,TResult? Function( String name)?  categoryCreated,TResult? Function( int id)?  categoryDeleted,TResult? Function( String? search,  bool? useForInnerSearch)?  categorySearchStarted,TResult? Function()?  innerSearchDisabled,TResult? Function()?  imagePicked,TResult? Function( AppImageEntity image)?  imageRemoved,TResult? Function()?  dataRemoved,TResult? Function( AvailabilityFilterEntity filter)?  filterAdded,TResult? Function( AvailabilityFilterEntity filter)?  filterRemoved,TResult? Function( List<AvailabilityFilterEntity> filters)?  filtersSaved,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  dataInitialized,TResult? Function( bool loadSilent)?  productsFetched,TResult? Function()?  nextProductsFetched,TResult? Function( String? search)?  productsSearchStarted,TResult? Function( String? categoryId)?  productsCategorySelected,TResult? Function( bool loadSilent)?  categoriesFetched,TResult? Function( String id)?  productFetched,TResult? Function( String id)?  relatedByIdFetched,TResult? Function( String categoryId)?  createdProductCategorySelected,TResult? Function( String title,  String description,  int price)?  productCreated,TResult? Function( int id)?  productDeleted,TResult? Function( String name)?  categoryCreated,TResult? Function( int id)?  categoryDeleted,TResult? Function( String? search,  bool? useForInnerSearch)?  categorySearchStarted,TResult? Function()?  innerSearchDisabled,TResult? Function( Uint8List? bytes)?  imagePicked,TResult? Function( AppImageEntity image)?  imageRemoved,TResult? Function()?  dataRemoved,TResult? Function( AvailabilityFilterEntity filter)?  filterAdded,TResult? Function( AvailabilityFilterEntity filter)?  filterRemoved,TResult? Function( List<AvailabilityFilterEntity> filters)?  filtersSaved,}) {final _that = this;
 switch (_that) {
 case DataInitialized() when dataInitialized != null:
 return dataInitialized();case ProductsFetched() when productsFetched != null:
@@ -278,7 +278,7 @@ return categoryCreated(_that.name);case CategoryDeleted() when categoryDeleted !
 return categoryDeleted(_that.id);case CategorySearchStarted() when categorySearchStarted != null:
 return categorySearchStarted(_that.search,_that.useForInnerSearch);case InnerSearchDisabled() when innerSearchDisabled != null:
 return innerSearchDisabled();case ImagePicked() when imagePicked != null:
-return imagePicked();case ImageRemoved() when imageRemoved != null:
+return imagePicked(_that.bytes);case ImageRemoved() when imageRemoved != null:
 return imageRemoved(_that.image);case DataRemoved() when dataRemoved != null:
 return dataRemoved();case FilterAdded() when filterAdded != null:
 return filterAdded(_that.filter);case FilterRemoved() when filterRemoved != null:
@@ -1231,34 +1231,47 @@ class _$InnerSearchDisabledCopyWithImpl<$Res>
 
 
 class ImagePicked implements ProductsEvent {
-  const ImagePicked();
+  const ImagePicked({this.bytes});
   
 
+ final  Uint8List? bytes;
 
-
+/// Create a copy of ProductsEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ImagePickedCopyWith<ImagePicked> get copyWith => _$ImagePickedCopyWithImpl<ImagePicked>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImagePicked);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImagePicked&&const DeepCollectionEquality().equals(other.bytes, bytes));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(bytes));
 
 @override
 String toString() {
-  return 'ProductsEvent.imagePicked()';
+  return 'ProductsEvent.imagePicked(bytes: $bytes)';
 }
 
 
 }
 
 /// @nodoc
-class $ImagePickedCopyWith<$Res> implements $ProductsEventCopyWith<$Res> {
-$ImagePickedCopyWith(ImagePicked _, $Res Function(ImagePicked) __);
+abstract mixin class $ImagePickedCopyWith<$Res> implements $ProductsEventCopyWith<$Res> {
+  factory $ImagePickedCopyWith(ImagePicked value, $Res Function(ImagePicked) _then) = _$ImagePickedCopyWithImpl;
+@useResult
+$Res call({
+ Uint8List? bytes
+});
+
+
+
+
 }
 /// @nodoc
 class _$ImagePickedCopyWithImpl<$Res>
@@ -1268,7 +1281,14 @@ class _$ImagePickedCopyWithImpl<$Res>
   final ImagePicked _self;
   final $Res Function(ImagePicked) _then;
 
-
+/// Create a copy of ProductsEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? bytes = freezed,}) {
+  return _then(ImagePicked(
+bytes: freezed == bytes ? _self.bytes : bytes // ignore: cast_nullable_to_non_nullable
+as Uint8List?,
+  ));
+}
 
 
 }

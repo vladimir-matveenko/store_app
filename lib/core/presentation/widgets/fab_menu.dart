@@ -42,7 +42,7 @@ class _FabMenuState extends State<FabMenu> with SingleTickerProviderStateMixin {
       width: 200,
       height: 200,
       child: Stack(
-        alignment: Alignment.bottomRight,
+        alignment: .bottomRight,
         children: [
           _buildOption(
             angle: 70,

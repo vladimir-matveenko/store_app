@@ -17,11 +17,11 @@ class FilterModalHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: .spaceBetween,
+      crossAxisAlignment: .start,
       children: [
         Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: .center,
           spacing: 8.0,
           children: [
             Text('filtersModal.modalName'.tr(), style: textTheme.bodyMedium),

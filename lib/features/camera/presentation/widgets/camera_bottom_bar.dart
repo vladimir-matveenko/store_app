@@ -13,11 +13,11 @@ class CameraBottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Align(
-        alignment: Alignment.bottomCenter,
+        alignment: .bottomCenter,
         child: Padding(
           padding: const .fromLTRB(24, 24, 24, 32),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: .spaceBetween,
             children: [
               const SizedBox(width: 56, height: 56),
 

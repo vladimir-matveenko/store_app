@@ -14,6 +14,7 @@ import 'package:store_app/features/products/utils.dart';
 
 import '../../../../app/utils/utils.dart';
 import '../../../../core/presentation/widgets/app_dialog.dart';
+import '../../../../core/presentation/widgets/app_search_bar.dart';
 import '../../../../core/presentation/widgets/availability_filters_list.dart';
 import '../bloc/products_event.dart';
 
@@ -59,35 +60,24 @@ class _ProductsPageState extends State<ProductsPage> {
             : ScrollUpWrapper(
                 controller: _scrollController,
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 16.0),
+                  padding: const .only(left: 16.0),
                   child: CustomScrollView(
                     controller: _scrollController,
                     physics: const ClampingScrollPhysics(),
                     slivers: [
                       SliverPadding(
-                        padding: const EdgeInsets.only(top: 12.0, right: 16.0),
+                        padding: const .only(top: 12.0, right: 16.0),
                         sliver: SliverToBoxAdapter(
                           child: Row(
                             spacing: 8.0,
                             children: [
                               Expanded(
-                                child: SizedBox(
-                                  height: 40.0,
-                                  child: SearchBar(
-                                    leading: Icon(
-                                      Icons.search,
-                                      color: theme.textTheme.bodyMedium?.color,
-                                    ),
-                                    onTapOutside: (PointerDownEvent event) {
-                                      FocusManager.instance.primaryFocus
-                                          ?.unfocus();
-                                    },
-                                    onChanged: (search) {
-                                      bloc.add(
-                                        ProductsSearchStarted(search: search),
-                                      );
-                                    },
-                                  ),
+                                child: AppSearchBar(
+                                  onChanged: (search) {
+                                    bloc.add(
+                                      ProductsSearchStarted(search: search),
+                                    );
+                                  },
                                 ),
                               ),
                               ProductsUtils.getFilterButton(
@@ -109,7 +99,7 @@ class _ProductsPageState extends State<ProductsPage> {
                         ),
                       ),
                       SliverPadding(
-                        padding: const EdgeInsets.only(top: 12.0),
+                        padding: const .only(top: 12.0),
                         sliver: SliverToBoxAdapter(
                           child: CategorySearch(
                             title: 'productsScreen.categories'.tr(),
@@ -120,7 +110,7 @@ class _ProductsPageState extends State<ProductsPage> {
                         ),
                       ),
                       SliverPadding(
-                        padding: const EdgeInsets.only(top: 12.0),
+                        padding: const .only(top: 12.0),
                         sliver: SliverToBoxAdapter(
                           child: CategoriesList(
                             categories: state.searchCategory?.isNotEmpty == true
@@ -156,14 +146,12 @@ class _ProductsPageState extends State<ProductsPage> {
                       ),
                       if (state.filters.isNotEmpty == true)
                         SliverPadding(
-                          padding: const EdgeInsets.only(top: 24.0),
+                          padding: const .only(top: 24.0),
                           sliver: SliverToBoxAdapter(
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 16,
-                              ),
+                              padding: const .symmetric(horizontal: 16),
                               child: Align(
-                                alignment: Alignment.centerLeft,
+                                alignment: .centerLeft,
                                 child: AvailabilityFiltersList(
                                   availabilityFilters: state.filters,
                                   onTap: (filter) {
@@ -175,7 +163,7 @@ class _ProductsPageState extends State<ProductsPage> {
                           ),
                         ),
                       SliverPadding(
-                        padding: const EdgeInsets.only(top: 24.0, right: 16.0),
+                        padding: const .only(top: 24.0, right: 16.0),
                         sliver: ProductsList(products: state.products),
                       ),
                       // Show empty state when there are no products and not loading
@@ -186,7 +174,7 @@ class _ProductsPageState extends State<ProductsPage> {
                         ),
                       if (state.isShowProductLoader)
                         const SliverPadding(
-                          padding: EdgeInsets.symmetric(vertical: 24.0),
+                          padding: .symmetric(vertical: 24.0),
                           sliver: SliverToBoxAdapter(
                             child: Center(
                               child: SizedBox(

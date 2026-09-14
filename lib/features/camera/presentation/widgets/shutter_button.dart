@@ -37,7 +37,7 @@ class ShutterButton extends StatelessWidget {
                 shape: BoxShape.circle,
                 border: Border.all(color: Colors.white, width: 4),
               ),
-              padding: const EdgeInsets.all(5),
+              padding: const .all(5),
               child: const DecoratedBox(
                 decoration: BoxDecoration(
                   color: Colors.white,

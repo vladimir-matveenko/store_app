@@ -174,7 +174,7 @@ class _FilterModalState extends State<FilterModal> {
           padding: const .all(24.0),
           child: Column(
             spacing: 8,
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: .min,
             children: [
               FilterModalHeader(
                 canFiltersBeSaved:
@@ -190,7 +190,7 @@ class _FilterModalState extends State<FilterModal> {
                 },
               ),
               Align(
-                alignment: Alignment.topCenter,
+                alignment: .topCenter,
                 child: SelectedFiltersBlock(
                   selectedFilters: availabilityFilters,
                   onFilterRemove: (filter) {
@@ -204,7 +204,7 @@ class _FilterModalState extends State<FilterModal> {
                   physics: const ClampingScrollPhysics(),
                   child: Column(
                     spacing: 16.0,
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisSize: .min,
                     children: [
                       AmountFilterBlock(
                         availabilityFilters: availabilityFilters,
