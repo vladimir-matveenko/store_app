@@ -94,20 +94,26 @@ class _LocationsPageState extends State<LocationsPage>
           Builder(
             key: ValueKey(context.locale),
             builder: (context) {
-              return CustomTabBar(
-                tabs: ['locationsScreen.list'.tr(), 'locationsScreen.map'.tr()],
-                selectedIndex: _tabController.index,
-                useDifferentBorderForOuter: true,
-                onTap: (i) => _tabController.animateTo(i),
-                barDecoration: const BoxDecoration(color: Colors.transparent),
-                barPadding: const EdgeInsets.symmetric(vertical: 8.0),
-                buttonBorderRadius: 12.0,
-                buttonColor: theme.unselectedWidgetColor,
-                labelColor: theme.disabledColor,
-                selectedButtonColor: theme.colorScheme.primary,
-                selectedLabelColor: Colors.white,
-                separator: const SizedBox(),
-                fontSize: 14.0,
+              return Padding(
+                padding: const .symmetric(horizontal: 8.0),
+                child: CustomTabBar(
+                  tabs: [
+                    'locationsScreen.list'.tr(),
+                    'locationsScreen.map'.tr(),
+                  ],
+                  selectedIndex: _tabController.index,
+                  useDifferentBorderForOuter: true,
+                  onTap: (i) => _tabController.animateTo(i),
+                  barDecoration: const BoxDecoration(color: Colors.transparent),
+                  barPadding: const .symmetric(vertical: 8.0),
+                  buttonBorderRadius: 12.0,
+                  buttonColor: theme.unselectedWidgetColor,
+                  labelColor: theme.disabledColor,
+                  selectedButtonColor: theme.colorScheme.primary,
+                  selectedLabelColor: Colors.white,
+                  separator: const SizedBox(),
+                  fontSize: 14.0,
+                ),
               );
             },
           ),

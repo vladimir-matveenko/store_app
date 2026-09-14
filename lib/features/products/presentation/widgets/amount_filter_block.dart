@@ -33,7 +33,7 @@ class AmountFilterBlock extends StatelessWidget {
       spacing: 12,
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: .spaceBetween,
           children: [
             Text(
               'filtersModal.amount'.tr(),
@@ -67,7 +67,7 @@ class AmountFilterBlock extends StatelessWidget {
               children: [
                 Expanded(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: .start,
                     spacing: 6,
                     children: [
                       Text(
@@ -87,7 +87,7 @@ class AmountFilterBlock extends StatelessWidget {
                 ),
                 Expanded(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: .start,
                     spacing: 6,
                     children: [
                       Text(
@@ -112,7 +112,7 @@ class AmountFilterBlock extends StatelessWidget {
               builder: (context, value, child) {
                 return value.isNotEmpty
                     ? Padding(
-                        padding: const EdgeInsets.only(top: 12),
+                        padding: const .only(top: 12),
                         child: Text(
                           value,
                           style: textTheme.bodyMedium?.copyWith(

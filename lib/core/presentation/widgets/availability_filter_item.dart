@@ -21,13 +21,13 @@ class AvailabilityFilterItem extends StatelessWidget {
     return Container(
       constraints: const BoxConstraints(maxWidth: 120.0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: .circular(8.0),
         color: backgroundColor ?? defaultBackgroundColor,
       ),
-      padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12.0),
+      padding: const .symmetric(vertical: 6.0, horizontal: 12.0),
       child: Row(
         spacing: 4,
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: .min,
         children: [
           Flexible(
             child: Text(

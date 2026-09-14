@@ -95,12 +95,12 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
         final isLoading = state.isCreating;
         return Container(
           color: theme.scaffoldBackgroundColor,
-          padding: const EdgeInsets.only(top: 16.0, left: 16.0),
+          padding: const .only(top: 16.0, left: 16.0),
           child: SingleChildScrollView(
             physics: const ClampingScrollPhysics(),
             child: Column(
               spacing: 16.0,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: .start,
               children: [
                 Text(
                   '${'addCategoryScreen.addImage'.tr()}:',
@@ -143,10 +143,10 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
                 Form(
                   key: _formKey,
                   child: Padding(
-                    padding: const EdgeInsets.only(right: 16.0),
+                    padding: const .only(right: 16.0),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisAlignment: .start,
+                      crossAxisAlignment: .stretch,
                       spacing: 16.0,
                       children: [
                         AppTextFormField(

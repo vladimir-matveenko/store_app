@@ -63,12 +63,7 @@ class _MainScreenState extends State<MainScreen> {
               )
             : null,
       ),
-      body: SafeArea(
-        left: true,
-        right: true,
-        minimum: const EdgeInsets.only(left: 10, right: 10),
-        child: widget.navigationShell,
-      ),
+      body: SafeArea(child: widget.navigationShell),
       floatingActionButton: AnimatedSwitcher(
         duration: const Duration(milliseconds: 300),
         transitionBuilder: (child, animation) {

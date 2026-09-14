@@ -50,7 +50,7 @@ class AppTheme {
     ),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyle(color: appColors.secondaryText),
-      contentPadding: const EdgeInsets.symmetric(
+      contentPadding: const .symmetric(
         vertical: 4.0,
         horizontal: 8.0,
       ),
@@ -112,18 +112,18 @@ class AppTheme {
       textStyle: const TextStyle(fontSize: 14.0),
       inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: .circular(10.0),
           borderSide: BorderSide(color: appColors.onPrimary),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: .circular(10.0),
           borderSide: BorderSide(color: appColors.onPrimary),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: .circular(10.0),
           borderSide: BorderSide(color: appColors.primary),
         ),
-        contentPadding: const EdgeInsets.symmetric(
+        contentPadding: const .symmetric(
           horizontal: 8.0,
           vertical: 4.0,
         ),
@@ -147,19 +147,19 @@ class AppTheme {
         foregroundColor: appColors.onPrimary,
         disabledForegroundColor: appColors.secondaryText,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12.0),
+          borderRadius: .circular(12.0),
         ),
       ),
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+        shape: RoundedRectangleBorder(borderRadius: .circular(8.0)),
       ),
     ),
     iconButtonTheme: IconButtonThemeData(
       style: IconButton.styleFrom(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-        padding: const EdgeInsets.all(8.0),
+        shape: RoundedRectangleBorder(borderRadius: .circular(8.0)),
+        padding: const .all(8.0),
         backgroundColor: appColors.surfaceTint,
         elevation: 0,
         shadowColor: appColors.surfaceTint,
@@ -179,17 +179,17 @@ class AppTheme {
       elevation: WidgetStateProperty.all(0),
       surfaceTintColor: WidgetStateProperty.all(appColors.surfaceTint),
       padding: WidgetStateProperty.all(
-        const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
+        const .symmetric(horizontal: 12.0, vertical: 4.0),
       ),
       shape: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.focused)) {
           return RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: .circular(10.0),
             side: BorderSide(color: appColors.fieldBorderFocussed),
           );
         }
         return RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: .circular(10.0),
         );
       }),
     ),
@@ -247,7 +247,7 @@ class AppTheme {
     ),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: TextStyle(color: appColors.secondaryText),
-      contentPadding: const EdgeInsets.symmetric(
+      contentPadding: const .symmetric(
         vertical: 4.0,
         horizontal: 8.0,
       ),
@@ -309,18 +309,18 @@ class AppTheme {
       textStyle: const TextStyle(fontSize: 14.0),
       inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: .circular(10),
           borderSide: BorderSide(color: appColors.fieldBorder),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: .circular(10),
           borderSide: BorderSide(color: appColors.fieldBorder),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: .circular(10),
           borderSide: BorderSide(color: appColors.fieldBorderFocussed),
         ),
-        contentPadding: const EdgeInsets.symmetric(
+        contentPadding: const .symmetric(
           horizontal: 8.0,
           vertical: 4.0,
         ),
@@ -344,19 +344,19 @@ class AppTheme {
         foregroundColor: appColors.onPrimary,
         disabledForegroundColor: appColors.secondaryText,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12.0),
+          borderRadius: .circular(12.0),
         ),
       ),
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+        shape: RoundedRectangleBorder(borderRadius: .circular(8.0)),
       ),
     ),
     iconButtonTheme: IconButtonThemeData(
       style: IconButton.styleFrom(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-        padding: const EdgeInsets.all(8.0),
+        shape: RoundedRectangleBorder(borderRadius: .circular(8.0)),
+        padding: const .all(8.0),
         backgroundColor: appColors.surfaceTint,
         elevation: 0,
         shadowColor: appColors.surfaceTint,
@@ -376,17 +376,17 @@ class AppTheme {
       elevation: WidgetStateProperty.all(0),
       surfaceTintColor: WidgetStateProperty.all(appColors.surfaceTint),
       padding: WidgetStateProperty.all(
-        const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
+        const .symmetric(horizontal: 12.0, vertical: 4.0),
       ),
       shape: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.focused)) {
           return RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: .circular(10.0),
             side: BorderSide(color: appColors.primary),
           );
         }
         return RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: .circular(10.0),
         );
       }),
     ),

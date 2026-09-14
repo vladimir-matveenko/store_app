@@ -61,10 +61,10 @@ class _ScrollUpButtonState extends State<ScrollUpButton> {
       child: _visible
           ? Padding(
               key: const ValueKey('scrollUpButton'),
-              padding: const EdgeInsets.only(top: 8.0),
+              padding: const .only(top: 8.0),
               child: Center(
                 child: IconButton.outlined(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const .all(8.0),
                   style: ButtonStyle(
                     shape: WidgetStateProperty.all(const CircleBorder()),
                     backgroundColor: WidgetStateProperty.all(

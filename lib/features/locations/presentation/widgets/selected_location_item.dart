@@ -22,9 +22,9 @@ class SelectedLocationItem extends StatelessWidget {
         onTap(location);
       },
       child: Container(
-        padding: const EdgeInsets.all(12.0),
+        padding: const .all(12.0),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: .circular(8.0),
           color: theme.bottomNavigationBarTheme.backgroundColor,
         ),
         child: Column(

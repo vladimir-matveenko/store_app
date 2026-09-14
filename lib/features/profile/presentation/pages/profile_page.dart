@@ -103,9 +103,9 @@ class _ProfilePageState extends State<ProfilePage> {
         return ScrolledWrapper(
           child: Column(
             spacing: 16.0,
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: .center,
+            mainAxisSize: .max,
+            crossAxisAlignment: .center,
             children: [
               UserAvatar(
                 avatar: avatar,
@@ -157,7 +157,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               Row(
                 spacing: 8.0,
-                mainAxisSize: MainAxisSize.min,
+                mainAxisSize: .min,
                 children: [
                   Text(
                     'profileScreen.btnLogout'.tr(),

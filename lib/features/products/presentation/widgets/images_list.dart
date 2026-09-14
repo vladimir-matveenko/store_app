@@ -27,7 +27,7 @@ class ImagesList extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         spacing: 8.0,
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: .start,
         children: [
           ...widgets,
           if (images.length < maxLength) AddImageItem(onTap: onAddTapped),
@@ -50,17 +50,17 @@ class ListItem extends StatelessWidget {
       alignment: AlignmentDirectional.topEnd,
       children: [
         Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.0)),
+          decoration: BoxDecoration(borderRadius: .circular(8.0)),
           width: 120.0,
           height: 120.0,
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(8.0),
+            borderRadius: .circular(8.0),
             child: Image.memory(
               image.bytes,
               fit: .cover,
               errorBuilder: (context, o, s) => Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.0),
+                  borderRadius: .circular(8.0),
                   color: theme.unselectedWidgetColor,
                 ),
               ),
@@ -98,7 +98,7 @@ class AddImageItem extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: .circular(8.0),
           color: theme.unselectedWidgetColor,
         ),
         width: 120.0,

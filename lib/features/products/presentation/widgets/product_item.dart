@@ -23,7 +23,7 @@ class ProductItem extends StatelessWidget {
           children: [
             Positioned.fill(
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(12.0),
+                borderRadius: .circular(12.0),
                 child: ImageBox(
                   imageUrl: product.images.first,
                   fit: BoxFit.cover,
@@ -45,8 +45,8 @@ class ProductItem extends StatelessWidget {
                 ),
                 child: Column(
                   spacing: 8.0,
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: .min,
+                  crossAxisAlignment: .start,
                   children: [
                     Text(
                       product.title,

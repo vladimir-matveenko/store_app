@@ -63,16 +63,16 @@ class CustomTabBar extends StatelessWidget {
           bottomRight: Radius.circular(borderRadius),
         );
       }
-      return BorderRadius.circular(0);
+      return .circular(0);
     }
-    return BorderRadius.circular(borderRadius);
+    return .circular(borderRadius);
   }
 
   @override
   Widget build(BuildContext context) {
     Widget row = Row(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: .max,
+      mainAxisAlignment: .spaceBetween,
       children: [
         for (int i = 0; i < tabs.length; i++) ...[
           useEqualsTabs
@@ -117,8 +117,8 @@ class CustomTabBar extends StatelessWidget {
                   height: 24,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
+                      begin: .topCenter,
+                      end: .bottomCenter,
                       colors: [
                         const Color(0xFF434343).withValues(alpha: 0),
                         const Color(0xFF434343),
@@ -126,9 +126,7 @@ class CustomTabBar extends StatelessWidget {
                       ],
                     ),
                   ),
-                  margin: EdgeInsets.symmetric(
-                    horizontal: separatorPadding ?? 4,
-                  ),
+                  margin: .symmetric(horizontal: separatorPadding ?? 4),
                 ),
         ],
       ],
@@ -149,7 +147,7 @@ class CustomTabBar extends StatelessWidget {
           barDecoration ??
           BoxDecoration(
             color: const Color(0xFF191919),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: .circular(10),
             border: Border.all(
               color: barBorderColor ?? const Color(0xFF222222),
             ),
@@ -191,18 +189,18 @@ class CustomTab extends StatelessWidget {
     if (counter != null) {
       if (icon != null) {
         return Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: .center,
           children: [
             icon!,
             Row(
               spacing: 4,
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: .center,
+              mainAxisSize: .max,
               children: [
                 labelWidget,
                 Text(
                   counter!,
-                  textAlign: TextAlign.center,
+                  textAlign: .center,
                   style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.w400,
@@ -217,12 +215,12 @@ class CustomTab extends StatelessWidget {
       } else {
         return Row(
           spacing: 4,
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: .center,
           children: [
             labelWidget,
             Text(
               counter!,
-              textAlign: TextAlign.center,
+              textAlign: .center,
               style: TextStyle(
                 fontSize: 10,
                 fontWeight: FontWeight.w400,
@@ -236,13 +234,13 @@ class CustomTab extends StatelessWidget {
     } else {
       if (icon != null) {
         return Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: .center,
           children: [icon!, labelWidget],
         );
       } else {
         if (suffixIcon != null) {
           return Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: .center,
             spacing: 4.0,
             children: [
               Flexible(child: labelWidget),
@@ -259,7 +257,7 @@ class CustomTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final labelWidget = Text(
       label,
-      textAlign: TextAlign.center,
+      textAlign: .center,
       softWrap: false,
       style: TextStyle(
         fontSize: fontSize ?? 12,
@@ -274,12 +272,10 @@ class CustomTab extends StatelessWidget {
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 100),
-        padding:
-            padding ??
-            const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
+        padding: padding ?? const .symmetric(horizontal: 8.0, vertical: 12.0),
         decoration: BoxDecoration(
           color: buttonColor,
-          borderRadius: borderRadius ?? BorderRadius.circular(8),
+          borderRadius: borderRadius ?? .circular(8),
         ),
         child: getContent(labelWidget),
       ),

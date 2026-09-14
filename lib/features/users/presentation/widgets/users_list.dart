@@ -32,7 +32,7 @@ class UsersList extends StatelessWidget {
               controller: scrollController,
               itemCount: state.users.length,
               physics: const ClampingScrollPhysics(),
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              padding: const .symmetric(vertical: 16.0),
               itemBuilder: (context, index) {
                 final user = state.users[index];
                 if (index >= state.users.length - 5) {
@@ -83,10 +83,10 @@ class ListItem extends StatelessWidget {
       onTap: onTap,
       behavior: HitTestBehavior.translucent,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: const .symmetric(horizontal: 8.0),
         child: Row(
           spacing: 8.0,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: .spaceBetween,
           children: [
             UserAvatar(
               size: 80.0,
@@ -96,7 +96,7 @@ class ListItem extends StatelessWidget {
             ),
             Expanded(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: .start,
                 children: [
                   Text(
                     '${user.name}${areYou ? ' (${'you'.tr()})' : ''}',

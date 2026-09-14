@@ -46,7 +46,7 @@ class _LocationsListState extends State<LocationsList> {
                   controller: _scrollController,
                   itemCount: state.locations.length,
                   physics: const ClampingScrollPhysics(),
-                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  padding: const .symmetric(horizontal: 16.0),
                   itemBuilder: (context, index) {
                     final location = state.locations[index];
                     final isSelected = location == state.selectedLocation;
@@ -91,19 +91,19 @@ class ListItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.all(12.0),
+        padding: const .all(12.0),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: .circular(8.0),
           border: isSelected
-              ? Border.all(color: Theme.of(context).primaryColor)
-              : Border.all(color: Theme.of(context).unselectedWidgetColor),
+              ? .all(color: Theme.of(context).primaryColor)
+              : .all(color: Theme.of(context).unselectedWidgetColor),
           color: isSelected ? Theme.of(context).unselectedWidgetColor : null,
         ),
         child: Column(
           spacing: 8.0,
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: .min,
+          mainAxisAlignment: .spaceBetween,
+          crossAxisAlignment: .start,
           children: [
             Text(location.name, style: textTheme.titleMedium, softWrap: true),
             Text(

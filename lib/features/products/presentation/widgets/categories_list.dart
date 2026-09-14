@@ -81,17 +81,17 @@ class ListItem extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
-          borderRadius: isSelected ? BorderRadius.circular(8.0) : null,
+          borderRadius: isSelected ? .circular(8.0) : null,
           color: isSelected ? theme.unselectedWidgetColor : null,
         ),
         width: 120.0,
         child: Column(
           spacing: 8.0,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: .start,
+          crossAxisAlignment: .start,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
+              borderRadius: .circular(8.0),
               child: SizedBox(
                 height: 104.0,
                 width: 104.0,

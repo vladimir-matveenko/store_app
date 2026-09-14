@@ -112,13 +112,13 @@ class _AddProductPageState extends State<AddProductPage> {
       builder: (context, state) {
         final isLoading = state.isCreating;
         return Container(
-          padding: const EdgeInsets.only(top: 16.0, left: 16.0),
+          padding: const .only(top: 16.0, left: 16.0),
           color: theme.scaffoldBackgroundColor,
           child: SingleChildScrollView(
             physics: const ClampingScrollPhysics(),
             child: Column(
               spacing: 16.0,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: .start,
               children: [
                 CategorySearch(
                   title: '${'addProductScreen.selectCategory'.tr()}:',
@@ -184,10 +184,10 @@ class _AddProductPageState extends State<AddProductPage> {
                 Form(
                   key: _formKey,
                   child: Padding(
-                    padding: const EdgeInsets.only(right: 16.0),
+                    padding: const .only(right: 16.0),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisAlignment: .start,
+                      crossAxisAlignment: .stretch,
                       spacing: 16.0,
                       children: [
                         AppTextFormField(

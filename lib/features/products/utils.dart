@@ -45,22 +45,19 @@ class ProductsUtils {
         padding: EdgeInsets.zero,
         style: IconButton.styleFrom(
           backgroundColor:
-              Theme.of(
-                context,
-              ).iconButtonTheme.style?.backgroundColor?.resolve({}) ??
-              Colors.grey,
+              theme.searchBarTheme.backgroundColor?.resolve({}) ?? Colors.grey,
           elevation: 0,
           shadowColor: Colors.transparent,
           surfaceTintColor: Colors.transparent,
           padding: EdgeInsets.zero,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4.0),
+            borderRadius: .circular(4.0),
           ),
         ),
         onPressed: onTap,
         icon: Icon(
           isActive ? Icons.search_off_outlined : Icons.search_outlined,
-          color: theme.colorScheme.onPrimary,
+          color: isActive ? Colors.blue : theme.textTheme.bodyMedium?.color,
           size: 16.0,
         ),
       ),

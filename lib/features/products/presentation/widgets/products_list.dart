@@ -46,7 +46,7 @@ class ProductsList extends StatelessWidget {
                 foregroundColor: colorScheme.onError,
                 icon: Icons.delete_forever,
                 label: 'productsScreen.delete'.tr(),
-                borderRadius: BorderRadius.circular(12.0),
+                borderRadius: .circular(12.0),
               ),
             ],
           ),

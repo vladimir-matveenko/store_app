@@ -66,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
           final isLoading = state.status == LoginStatus.inProgress;
           return Center(
             child: SingleChildScrollView(
-              padding: EdgeInsetsGeometry.only(
+              padding: .only(
                 top: 24.0,
                 left: 24.0,
                 right: 24.0,
@@ -75,8 +75,8 @@ class _LoginPageState extends State<LoginPage> {
               child: Form(
                 key: _formKey,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: .start,
+                  crossAxisAlignment: .stretch,
                   spacing: 16.0,
                   children: [
                     Icon(

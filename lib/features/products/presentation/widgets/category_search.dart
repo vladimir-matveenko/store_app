@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/presentation/widgets/app_search_bar.dart';
 import '../../utils.dart';
 
 class CategorySearch extends StatefulWidget {
@@ -73,19 +74,7 @@ class _CategorySearchState extends State<CategorySearch> {
                   key: const ValueKey('search'),
                   children: [
                     Expanded(
-                      child: SizedBox(
-                        height: 40.0,
-                        child: SearchBar(
-                          leading: const Icon(
-                            Icons.search,
-                            color: Colors.white,
-                          ),
-                          onTapOutside: (PointerDownEvent event) {
-                            FocusManager.instance.primaryFocus?.unfocus();
-                          },
-                          onChanged: widget.onSearchStarted,
-                        ),
-                      ),
+                      child: AppSearchBar(onChanged: widget.onSearchStarted),
                     ),
                   ],
                 )

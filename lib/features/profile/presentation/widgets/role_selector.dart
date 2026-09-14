@@ -39,7 +39,7 @@ class _RoleSelectorState extends State<RoleSelector> {
       key: ValueKey(context.locale),
       initialValue: initialValue,
       leadingIcon: Padding(
-        padding: const EdgeInsets.only(left: 4.0),
+        padding: const .only(left: 4.0),
         child: ProfileUtils.getRoleIcon(dropdownValue),
       ),
       onChanged: (value) {
