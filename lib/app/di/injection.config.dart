@@ -292,18 +292,19 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i370.LoginBloc>(
       () => _i370.LoginBloc(gh<_i654.LoginUseCase>()),
     );
-    gh.lazySingleton<_i1011.UsersBloc>(
-      () => _i1011.UsersBloc(
-        fetchUsersUseCase: gh<_i623.FetchUsersUseCase>(),
-        fetchUserUseCase: gh<_i617.FetchUserUseCase>(),
-      ),
-    );
     gh.lazySingleton<_i982.ProfileBloc>(
       () => _i982.ProfileBloc(
         gh<_i619.GetUserProfileUseCase>(),
         gh<_i218.CreateProfileUseCase>(),
         gh<_i577.UploadImageUseCase>(),
         gh<_i243.UpdateProfileUseCase>(),
+        gh<_i955.AuthSessionManager>(),
+      ),
+    );
+    gh.lazySingleton<_i1011.UsersBloc>(
+      () => _i1011.UsersBloc(
+        fetchUsersUseCase: gh<_i623.FetchUsersUseCase>(),
+        fetchUserUseCase: gh<_i617.FetchUserUseCase>(),
       ),
     );
     gh.lazySingleton<_i706.AuthBloc>(

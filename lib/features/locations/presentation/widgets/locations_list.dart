@@ -38,7 +38,7 @@ class _LocationsListState extends State<LocationsList> {
     return BlocBuilder<LocationsBloc, LocationsState>(
       builder: (context, state) {
         return state.isLoading
-            ? const Center(child: AppLoader())
+            ? const AppLoader()
             : state.locations.isNotEmpty
             ? ScrollUpWrapper(
                 controller: _scrollController,

@@ -86,7 +86,7 @@ class _UserPageState extends State<UserPage> {
           final isLoading = state.isUserLoading || !_imageReady;
 
           if (isLoading) {
-            return const Center(child: AppLoader());
+            return const AppLoader();
           }
 
           return Padding(
