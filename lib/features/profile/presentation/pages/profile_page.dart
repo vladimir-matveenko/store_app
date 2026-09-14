@@ -97,7 +97,7 @@ class _ProfilePageState extends State<ProfilePage> {
         final isLoading = state.isLoading || !_imageReady;
 
         if (isLoading) {
-          return const Center(child: AppLoader());
+          return const AppLoader();
         }
 
         return ScrolledWrapper(

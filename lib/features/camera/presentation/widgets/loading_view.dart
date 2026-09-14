@@ -10,7 +10,7 @@ class LoadingView extends StatelessWidget {
     final theme = Theme.of(context);
     return ColoredBox(
       color: theme.scaffoldBackgroundColor,
-      child: const Center(child: AppLoader()),
+      child: const AppLoader(),
     );
   }
 }

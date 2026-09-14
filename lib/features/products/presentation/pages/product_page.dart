@@ -37,7 +37,7 @@ class _ProductPageState extends State<ProductPage> {
     return BlocBuilder<ProductsBloc, ProductsState>(
       builder: (context, state) {
         return state.isProductLoading
-            ? const Center(child: AppLoader())
+            ? const AppLoader()
             : Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: SingleChildScrollView(

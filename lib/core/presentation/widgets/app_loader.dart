@@ -10,10 +10,12 @@ class AppLoader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: size,
-      height: size,
-      child: CircularProgressIndicator.adaptive(strokeWidth: thickness),
+    return Center(
+      child: SizedBox(
+        width: size,
+        height: size,
+        child: CircularProgressIndicator.adaptive(strokeWidth: thickness),
+      ),
     );
   }
 }
