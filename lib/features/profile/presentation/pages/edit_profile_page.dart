@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:store_app/app/constants/app_enums.dart';
 import 'package:store_app/features/products/domain/entity/app_image_entity.dart';
 
+import '../../../../app/routes/pages.dart';
 import '../../../../core/presentation/widgets/app_dialog.dart';
 import '../../../../core/presentation/widgets/scrolled_wrapper.dart';
 import '../../../../core/presentation/widgets/user_avatar.dart';
@@ -13,7 +14,7 @@ import '../../domain/entity/user_entity.dart';
 import '../bloc/profile_bloc.dart';
 import '../bloc/profile_event.dart';
 import '../widgets/create_profile_form.dart';
-import '../widgets/get_image_dialog.dart';
+import '../../../../core/presentation/widgets/get_image_dialog.dart';
 import '../widgets/profile_screen_wrapper.dart';
 
 class EditProfilePage extends StatefulWidget {
@@ -144,7 +145,23 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 if (kIsWeb) {
                   bloc.add(const ImagePicked());
                 } else {
-                  AppDialog.empty(context, content: const GetImageDialog());
+                  AppDialog.empty(
+                    context,
+                    content: GetImageDialog(
+                      onCameraTapped: () async {
+                        final bytes = await context.push<Uint8List>(
+                          Pages.camera,
+                        );
+
+                        if (bytes != null) {
+                          bloc.add(ImagePicked(bytes: bytes));
+                        }
+                      },
+                      onGalleryTapped: () {
+                        bloc.add(const ImagePicked());
+                      },
+                    ),
+                  );
                 }
               },
               onDeleteTap: () {

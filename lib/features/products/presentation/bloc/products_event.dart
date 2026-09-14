@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:store_app/core/domain/entity/availability_filter_entity.dart';
 
@@ -56,7 +58,7 @@ class ProductsEvent with _$ProductsEvent {
 
   const factory ProductsEvent.innerSearchDisabled() = InnerSearchDisabled;
 
-  const factory ProductsEvent.imagePicked() = ImagePicked;
+  const factory ProductsEvent.imagePicked({Uint8List? bytes}) = ImagePicked;
 
   const factory ProductsEvent.imageRemoved({required AppImageEntity image}) =
       ImageRemoved;

@@ -6,20 +6,21 @@ class ImagesList extends StatelessWidget {
   const ImagesList({
     super.key,
     required this.images,
-    required this.onTap,
+    required this.onAddTapped,
     this.maxLength = 3,
-    required this.onRemove,
+    required this.onRemoveTapped,
   });
 
   final List<AppImageEntity> images;
-  final VoidCallback onTap;
-  final Function(AppImageEntity) onRemove;
+  final VoidCallback onAddTapped;
+  final Function(AppImageEntity) onRemoveTapped;
   final int maxLength;
 
   @override
   Widget build(BuildContext context) {
     final widgets = images.map(
-      (e) => ListItem(key: ValueKey(e.name), image: e, onRemove: onRemove),
+      (e) =>
+          ListItem(key: ValueKey(e.name), image: e, onRemove: onRemoveTapped),
     );
     return SingleChildScrollView(
       physics: const ClampingScrollPhysics(),
@@ -29,7 +30,7 @@ class ImagesList extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           ...widgets,
-          if (images.length < maxLength) AddImageItem(onTap: onTap),
+          if (images.length < maxLength) AddImageItem(onTap: onAddTapped),
         ],
       ),
     );
