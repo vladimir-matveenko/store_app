@@ -57,9 +57,9 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(create: (_) => authBloc),
         BlocProvider(create: (_) => profileBloc),
         BlocProvider(create: (_) => themeCubit..loadTheme(), lazy: false),
-        BlocProvider(create: (_) => productsBloc, lazy: true),
-        BlocProvider(create: (_) => usersBloc, lazy: true),
-        BlocProvider(create: (_) => locationsBloc, lazy: true),
+        BlocProvider(create: (_) => productsBloc),
+        BlocProvider(create: (_) => usersBloc),
+        BlocProvider(create: (_) => locationsBloc),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, state) {

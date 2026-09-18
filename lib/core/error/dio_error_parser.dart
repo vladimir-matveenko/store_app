@@ -1,8 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 import 'exception.dart';
 
+@immutable
 class ApiErrorHandler {
+  const ApiErrorHandler._();
+
   static Exception onDioError(DioException e) {
     final response = e.response;
     final data = response?.data;
