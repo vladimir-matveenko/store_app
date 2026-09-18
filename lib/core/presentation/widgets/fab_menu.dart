@@ -39,10 +39,11 @@ class _FabMenuState extends State<FabMenu> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 200,
-      height: 200,
+      width: 56,
+      height: 56,
       child: Stack(
         alignment: .bottomRight,
+        clipBehavior: .none,
         children: [
           _buildOption(
             angle: 70,

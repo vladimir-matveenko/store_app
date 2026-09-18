@@ -59,6 +59,12 @@ class MainScreenUtils {
           context.go('${Pages.products}/${Pages.addCategory}');
         },
       ),
+      Pages.users => FloatingActionButton(
+        onPressed: () {
+          context.push(Pages.createProfile);
+        },
+        child: const Icon(Icons.person_add),
+      ),
       Pages.locations =>
         kIsWeb
             ? FloatingActionButton(
