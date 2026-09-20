@@ -39,6 +39,7 @@ dependencies:
   shimmer: ^3.0.0
   web: ^1.1.1
   camera: ^0.12.1
+  flutter_native_splash: ^2.4.8
 
 dev_dependencies:
   flutter_test:
@@ -66,3 +67,4 @@ flutter:
     - assets/images/
     - assets/svg_icons/
     - assets/translations/
+    - assets/splash/
