@@ -67,7 +67,13 @@ class _MainScreenState extends State<MainScreen> {
       floatingActionButton: AnimatedSwitcher(
         duration: const Duration(milliseconds: 300),
         transitionBuilder: (child, animation) {
-          return FadeTransition(opacity: animation, child: child);
+          return ScaleTransition(
+            scale: CurvedAnimation(
+              parent: animation,
+              curve: Curves.easeOutBack,
+            ),
+            child: FadeTransition(opacity: animation, child: child),
+          );
         },
         child: MainScreenUtils.getFAB(
           context,
