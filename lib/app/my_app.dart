@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import '../app/routes/router.dart';
 import '../core/data/services/auth_session_manager.dart';
@@ -42,6 +43,7 @@ class _MyAppState extends State<MyApp> {
     _sessionSub = sessionManager.onSessionExpired.listen((_) {
       authBloc.add(const ClearCacheRequested());
     });
+    FlutterNativeSplash.remove();
   }
 
   @override

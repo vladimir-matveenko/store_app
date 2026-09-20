@@ -38,36 +38,33 @@ class _FabMenuState extends State<FabMenu> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 56,
-      height: 56,
-      child: Stack(
-        alignment: .bottomRight,
-        clipBehavior: .none,
-        children: [
-          _buildOption(
-            angle: 70,
-            icon: Icons.add_shopping_cart,
-            label: 'product',
-            onTap: widget.onAddProductTap,
-          ),
-          _buildOption(
-            angle: 20,
-            icon: Icons.create_new_folder,
-            label: 'category',
-            onTap: widget.onAddCategoryTap,
-          ),
+    return Stack(
+      alignment: .bottomRight,
+      clipBehavior: .none,
+      children: [
+        if (_open) const SizedBox(width: 200, height: 200),
+        _buildOption(
+          angle: 70,
+          icon: Icons.add_shopping_cart,
+          label: 'product',
+          onTap: widget.onAddProductTap,
+        ),
+        _buildOption(
+          angle: 20,
+          icon: Icons.create_new_folder,
+          label: 'category',
+          onTap: widget.onAddCategoryTap,
+        ),
 
-          FloatingActionButton(
-            onPressed: toggle,
-            child: AnimatedRotation(
-              turns: _open ? 0.125 : 0,
-              duration: const Duration(milliseconds: 200),
-              child: const Icon(Icons.add),
-            ),
+        FloatingActionButton(
+          onPressed: toggle,
+          child: AnimatedRotation(
+            turns: _open ? 0.125 : 0,
+            duration: const Duration(milliseconds: 200),
+            child: const Icon(Icons.add),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
