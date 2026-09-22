@@ -4,7 +4,7 @@ part 'users_event.freezed.dart';
 
 @freezed
 class UsersEvent with _$UsersEvent {
-  const factory UsersEvent.usersFetched() = UsersFetched;
+  const factory UsersEvent.usersFetched({bool? loadSilent}) = UsersFetched;
 
   const factory UsersEvent.moreUsersLoaded() = MoreUsersLoaded;
 

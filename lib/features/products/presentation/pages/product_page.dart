@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:store_app/app/utils/extensions.dart';
 import 'package:store_app/core/presentation/widgets/carousel_slider.dart';
 import 'package:store_app/core/presentation/widgets/full_screen_image.dart';
 import 'package:store_app/features/products/presentation/bloc/products_bloc.dart';
@@ -79,7 +80,7 @@ class _ProductPageState extends State<ProductPage> {
                         style: textTheme.bodyMedium,
                       ),
                       Text(
-                        '${'updatedAt'.tr()} ${DateFormat('dd MMM, yyyy', context.locale.languageCode).format(state.product?.updatedAt ?? DateTime.now())}',
+                        '${'updatedAt'.tr()} ${context.dateFormatter.format(state.product?.updatedAt ?? DateTime.now())}',
                         style: textTheme.bodySmall,
                       ),
                       if (state.relatedById.isNotEmpty) ...[
