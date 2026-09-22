@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:store_app/app/constants/app_enums.dart';
 import 'package:store_app/features/profile/presentation/bloc/profile_event.dart';
+import 'package:store_app/features/users/presentation/bloc/users_bloc.dart';
 
 import '../../../../app/routes/pages.dart';
 import '../../../../app/utils/utils.dart';
@@ -12,12 +13,24 @@ import '../../../../core/presentation/widgets/app_back_button.dart';
 import '../../../../core/presentation/widgets/app_dialog.dart';
 import '../../../../core/presentation/widgets/get_image_dialog.dart';
 import '../../../../core/presentation/widgets/scrolled_wrapper.dart';
+import '../../../users/presentation/bloc/users_event.dart';
 import '../bloc/profile_bloc.dart';
 import '../widgets/create_profile_form.dart';
 import '../widgets/profile_screen_wrapper.dart';
 
 class CreateProfilePage extends StatefulWidget {
-  const CreateProfilePage({super.key});
+  const CreateProfilePage({
+    super.key,
+    required this.screenName,
+    this.successMessage,
+    this.successText,
+    required this.btnCreateText,
+  });
+
+  final String screenName;
+  final String? successMessage;
+  final String? successText;
+  final String btnCreateText;
 
   @override
   State<CreateProfilePage> createState() => _CreateProfilePageState();
@@ -25,6 +38,7 @@ class CreateProfilePage extends StatefulWidget {
 
 class _CreateProfilePageState extends State<CreateProfilePage> {
   late ProfileBloc bloc;
+  late UsersBloc usersBloc;
   final _formKey = GlobalKey<FormState>();
   final _userNameController = TextEditingController();
   final _emailController = TextEditingController();
@@ -51,6 +65,7 @@ class _CreateProfilePageState extends State<CreateProfilePage> {
   void initState() {
     super.initState();
     bloc = context.read<ProfileBloc>();
+    usersBloc = context.read<UsersBloc>();
     _roleController.text = UserRole.customer.name;
   }
 
@@ -73,13 +88,13 @@ class _CreateProfilePageState extends State<CreateProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('createProfileScreen.screenName'.tr()),
+        title: Text(widget.screenName),
         centerTitle: true,
         leading: const AppBackButton(),
       ),
       resizeToAvoidBottomInset: true,
       body: ProfileScreenWrapper(
-        successMessage: '',
+        successMessage: widget.successText ?? '',
         buildBody: (context, state) {
           final isLoading = state.isLoading;
           final isBlocked = jobDone;
@@ -93,7 +108,7 @@ class _CreateProfilePageState extends State<CreateProfilePage> {
               emailController: _emailController,
               passwordController: _passwordController,
               onSaveTapped: _handleCreateProfile,
-              mainButtonText: 'createProfileScreen.btnCreate'.tr(),
+              mainButtonText: widget.btnCreateText,
               obscure: obscure,
               onObscureChanged: (value) {
                 obscure.value = value;
@@ -132,31 +147,35 @@ class _CreateProfilePageState extends State<CreateProfilePage> {
           jobDone = true;
         },
         onSuccess: () {
-          AppDialog.empty(
-            context,
-            onClose: () {
-              context.pop();
-            },
-            content: Container(
-              padding: const .all(32.0),
-              constraints: AppUtils.getModalDialogConstraints(context),
-              child: Column(
-                crossAxisAlignment: .center,
-                mainAxisSize: .min,
-                spacing: 16.0,
-                children: [
-                  const Icon(Icons.check, color: Colors.green, size: 60.0),
-                  Text('createProfileScreen.createSuccessMessage'.tr()),
-                  ElevatedButton(
-                    onPressed: () {
-                      context.pop();
-                    },
-                    child: Text('okText'.tr()),
-                  ),
-                ],
+          if (widget.successMessage != null) {
+            AppDialog.empty(
+              context,
+              onClose: () {
+                context.pop();
+              },
+              content: Container(
+                padding: const .all(32.0),
+                constraints: AppUtils.getModalDialogConstraints(context),
+                child: Column(
+                  crossAxisAlignment: .center,
+                  mainAxisSize: .min,
+                  spacing: 16.0,
+                  children: [
+                    const Icon(Icons.check, color: Colors.green, size: 60.0),
+                    Text(widget.successMessage!),
+                    ElevatedButton(
+                      onPressed: () {
+                        context.pop();
+                      },
+                      child: Text('okText'.tr()),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          );
+            );
+          } else {
+            usersBloc.add(const UsersFetched(loadSilent: true));
+          }
         },
       ),
     );

@@ -61,7 +61,7 @@ class MainScreenUtils {
       ),
       Pages.users => FloatingActionButton(
         onPressed: () {
-          context.push(Pages.createProfile);
+          context.push(Pages.createUser);
         },
         child: const Icon(Icons.person_add),
       ),

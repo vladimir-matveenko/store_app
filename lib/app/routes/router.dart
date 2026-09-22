@@ -6,6 +6,8 @@ import 'package:injectable/injectable.dart';
 import 'package:store_app/features/locations/presentation/pages/locations_page.dart';
 import 'package:store_app/features/products/presentation/pages/add_category_page.dart';
 import 'package:store_app/features/products/presentation/pages/add_product_page.dart';
+import 'package:store_app/features/profile/presentation/routes/create_profile_route.dart';
+import 'package:store_app/features/users/presentation/routes/create_user_route.dart';
 
 import '/../core/presentation/pages/splash_page.dart';
 import '/../features/auth/presentation/bloc/auth_bloc.dart';
@@ -18,7 +20,6 @@ import '/../features/users/presentation/pages/user_page.dart';
 import '/../features/users/presentation/pages/users_page.dart';
 import '../../features/camera/presentation/screens/camera_screen.dart';
 import '../../features/login/presentation/routes/login_route.dart';
-import '../../features/profile/presentation/pages/create_profile_page.dart';
 import '../../features/profile/presentation/pages/edit_profile_page.dart';
 import 'pages.dart';
 
@@ -78,7 +79,12 @@ class AppRouter {
       GoRoute(
         path: Pages.createProfile,
         pageBuilder: (context, state) =>
-            const NoTransitionPage(child: CreateProfilePage()),
+            const NoTransitionPage(child: CreateProfileRoute()),
+      ),
+      GoRoute(
+        path: Pages.createUser,
+        pageBuilder: (context, state) =>
+            const NoTransitionPage(child: CreateUserRoute()),
       ),
       GoRoute(
         path: Pages.camera,

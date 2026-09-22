@@ -32,6 +32,11 @@
       "gallery": "Галлерея"
     }
   },
+  "createUserScreen": {
+    "screenName": "Создать пользователя",
+    "btnCreate": "Создать пользователя",
+    "created": "Пользователь успеешно создан"
+  },
   "editProfileScreen": {
     "screenName": "Редактировать профиль",
     "btnSave": "Сохранить изменения",

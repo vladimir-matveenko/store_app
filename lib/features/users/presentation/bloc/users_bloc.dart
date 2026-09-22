@@ -35,7 +35,7 @@ class UsersBloc extends Bloc<UsersEvent, UsersState> {
     UsersFetched event,
     Emitter<UsersState> emit,
   ) async {
-    emit(state.copyWith(isLoading: true));
+    emit(state.copyWith(isLoading: !(event.loadSilent ?? false)));
 
     final result = await fetchUsersUseCase(NoParams());
 

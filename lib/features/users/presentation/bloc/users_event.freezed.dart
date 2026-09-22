@@ -125,10 +125,10 @@ return userFetched(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  usersFetched,TResult Function()?  moreUsersLoaded,TResult Function( String id)?  userFetched,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( bool? loadSilent)?  usersFetched,TResult Function()?  moreUsersLoaded,TResult Function( String id)?  userFetched,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case UsersFetched() when usersFetched != null:
-return usersFetched();case MoreUsersLoaded() when moreUsersLoaded != null:
+return usersFetched(_that.loadSilent);case MoreUsersLoaded() when moreUsersLoaded != null:
 return moreUsersLoaded();case UserFetched() when userFetched != null:
 return userFetched(_that.id);case _:
   return orElse();
@@ -148,10 +148,10 @@ return userFetched(_that.id);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  usersFetched,required TResult Function()  moreUsersLoaded,required TResult Function( String id)  userFetched,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( bool? loadSilent)  usersFetched,required TResult Function()  moreUsersLoaded,required TResult Function( String id)  userFetched,}) {final _that = this;
 switch (_that) {
 case UsersFetched():
-return usersFetched();case MoreUsersLoaded():
+return usersFetched(_that.loadSilent);case MoreUsersLoaded():
 return moreUsersLoaded();case UserFetched():
 return userFetched(_that.id);case _:
   throw StateError('Unexpected subclass');
@@ -170,10 +170,10 @@ return userFetched(_that.id);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  usersFetched,TResult? Function()?  moreUsersLoaded,TResult? Function( String id)?  userFetched,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( bool? loadSilent)?  usersFetched,TResult? Function()?  moreUsersLoaded,TResult? Function( String id)?  userFetched,}) {final _that = this;
 switch (_that) {
 case UsersFetched() when usersFetched != null:
-return usersFetched();case MoreUsersLoaded() when moreUsersLoaded != null:
+return usersFetched(_that.loadSilent);case MoreUsersLoaded() when moreUsersLoaded != null:
 return moreUsersLoaded();case UserFetched() when userFetched != null:
 return userFetched(_that.id);case _:
   return null;
@@ -187,34 +187,47 @@ return userFetched(_that.id);case _:
 
 
 class UsersFetched implements UsersEvent {
-  const UsersFetched();
+  const UsersFetched({this.loadSilent});
   
 
+ final  bool? loadSilent;
 
-
+/// Create a copy of UsersEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UsersFetchedCopyWith<UsersFetched> get copyWith => _$UsersFetchedCopyWithImpl<UsersFetched>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UsersFetched);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UsersFetched&&(identical(other.loadSilent, loadSilent) || other.loadSilent == loadSilent));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,loadSilent);
 
 @override
 String toString() {
-  return 'UsersEvent.usersFetched()';
+  return 'UsersEvent.usersFetched(loadSilent: $loadSilent)';
 }
 
 
 }
 
 /// @nodoc
-class $UsersFetchedCopyWith<$Res> implements $UsersEventCopyWith<$Res> {
-$UsersFetchedCopyWith(UsersFetched _, $Res Function(UsersFetched) __);
+abstract mixin class $UsersFetchedCopyWith<$Res> implements $UsersEventCopyWith<$Res> {
+  factory $UsersFetchedCopyWith(UsersFetched value, $Res Function(UsersFetched) _then) = _$UsersFetchedCopyWithImpl;
+@useResult
+$Res call({
+ bool? loadSilent
+});
+
+
+
+
 }
 /// @nodoc
 class _$UsersFetchedCopyWithImpl<$Res>
@@ -224,7 +237,14 @@ class _$UsersFetchedCopyWithImpl<$Res>
   final UsersFetched _self;
   final $Res Function(UsersFetched) _then;
 
-
+/// Create a copy of UsersEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? loadSilent = freezed,}) {
+  return _then(UsersFetched(
+loadSilent: freezed == loadSilent ? _self.loadSilent : loadSilent // ignore: cast_nullable_to_non_nullable
+as bool?,
+  ));
+}
 
 
 }

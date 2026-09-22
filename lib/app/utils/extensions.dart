@@ -33,7 +33,8 @@ extension BuildContextX on BuildContext {
     return screenSize.width > screenSize.height;
   }
 
-  DateFormat get dateFormatter => DateFormat('yyyy.MM.dd', locale.languageCode);
+  DateFormat get dateFormatter =>
+      DateFormat('dd MMM, yyyy', locale.languageCode);
 
   DateFormat get timeFormatter => DateFormat('H:mm', locale.languageCode);
 }
