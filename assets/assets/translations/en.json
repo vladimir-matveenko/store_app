@@ -32,6 +32,11 @@
       "gallery": "Gallery"
     }
   },
+  "createUserScreen": {
+    "screenName": "Create user",
+    "btnCreate": "Create user",
+    "created": "User created successful"
+  },
   "editProfileScreen": {
     "screenName": "Edit profile",
     "btnSave": "Save changes",
