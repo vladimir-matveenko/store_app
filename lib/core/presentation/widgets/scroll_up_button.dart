@@ -16,6 +16,7 @@ class ScrollUpButton extends StatefulWidget {
 
 class _ScrollUpButtonState extends State<ScrollUpButton> {
   bool _visible = false;
+  double _position = 0;
 
   @override
   void initState() {
@@ -24,12 +25,17 @@ class _ScrollUpButtonState extends State<ScrollUpButton> {
   }
 
   void _onScroll() {
-    final shouldShow =
-        widget.scrollController.position.pixels > widget.threshold;
+    final position = widget.scrollController.position.pixels;
+    final scrollingDown = position > _position;
+    final shouldShow = !scrollingDown && position > widget.threshold;
 
-    if (shouldShow != _visible) {
-      setState(() => _visible = shouldShow);
+    if (_visible != shouldShow) {
+      setState(() {
+        _visible = shouldShow;
+      });
     }
+
+    _position = position;
   }
 
   @override
