@@ -60,9 +60,9 @@ class CreateProfileForm extends StatelessWidget {
           CreateProfileAvatar(
             showLoader: isAvatarLoading,
             image: image,
-            onTap: onAddImageTapped,
+            onTap: isFormActive ? onAddImageTapped : () {},
             currentAvatar: currentAvatar,
-            onDeleteTap: onDeleteTap,
+            onDeleteTap: isFormActive ? onDeleteTap : () {},
             avatarSize: 160.0,
           ),
           Column(
@@ -86,7 +86,7 @@ class CreateProfileForm extends StatelessWidget {
               ),
               RoleSelector(onChanged: onRoleChanged, initialRole: initialRole),
               ElevatedButton(
-                onPressed: !isFormActive ? null : onSaveTapped,
+                onPressed: isFormActive ? onSaveTapped : null,
                 child: isLoading ? AppLoader.small() : Text(mainButtonText),
               ),
             ],

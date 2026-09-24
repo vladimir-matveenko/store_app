@@ -175,6 +175,7 @@ class _CreateProfilePageState extends State<CreateProfilePage> {
             );
           } else {
             usersBloc.add(const UsersFetched(loadSilent: true));
+            context.pop();
           }
         },
       ),
