@@ -62,7 +62,7 @@ class CreateProfileForm extends StatelessWidget {
             image: image,
             onTap: isFormActive ? onAddImageTapped : () {},
             currentAvatar: currentAvatar,
-            onDeleteTap: isFormActive ? onDeleteTap : () {},
+            onDeleteTap: isFormActive ? onDeleteTap : null,
             avatarSize: 160.0,
           ),
           Column(
