@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'extensions.dart';
 
@@ -81,8 +82,14 @@ class AppUtils {
       await Future.wait(
         images.map((image) async {
           try {
-            if (image.contains('http')) {
+            if (image.startsWith('http')) {
               await precacheImage(CachedNetworkImageProvider(image), context);
+            } else if (image.toLowerCase().endsWith('.svg')) {
+              final loader = SvgAssetLoader(image);
+              await svg.cache.putIfAbsent(
+                loader.cacheKey(null),
+                () => loader.loadBytes(null),
+              );
             } else {
               await precacheImage(AssetImage(image), context);
             }
