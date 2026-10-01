@@ -47,4 +47,17 @@ class AppMessage {
       onClose: onClose,
     );
   }
+
+  static void info(
+    BuildContext context, {
+    required String message,
+    VoidCallback? onClose,
+  }) {
+    AppMessage.show(
+      context,
+      message: message,
+      backgroundColor: Theme.of(context).colorScheme.primary,
+      onClose: onClose,
+    );
+  }
 }
