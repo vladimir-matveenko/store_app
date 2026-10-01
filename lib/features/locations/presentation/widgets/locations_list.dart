@@ -123,7 +123,7 @@ class ListItem extends StatelessWidget {
             ),
             if (location.distance != null)
               Text(
-                '${location.distance}${'locationsScreen.kmFromYou'.tr()}',
+                '${location.distance} ${'locationsScreen.kmFromYou'.tr()}',
                 style: textTheme.bodyMedium,
               ),
           ],
