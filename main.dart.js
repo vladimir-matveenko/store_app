@@ -122817,7 +122817,7 @@ s=this.c
 r=o.z
 q=A.b([A.b6(s.b,p,p,p,!0,o.w,p,p),A.b6(s.c,p,p,p,!0,r,p,p),A.b6(A.ad("locationsScreen.latitude")+" "+A.i(s.d)+",",p,p,p,!0,r,p,p),A.b6(A.ad("locationsScreen.longitude")+" "+A.i(s.e),p,p,p,!0,r,p,p)],t.p)
 s=s.f
-if(s!=null)q.push(A.b6(A.i(s)+A.ad("locationsScreen.kmFromYou"),p,p,p,p,r,p,p))
+if(s!=null)q.push(A.b6(A.i(s)+" "+A.ad("locationsScreen.kmFromYou"),p,p,p,p,r,p,p))
 return A.em(p,A.ea(p,A.d3(q,B.aL,B.c1,B.ax,8),B.x,p,p,new A.dB(m,p,l,n,p,p,B.aR),p,p,p,B.u8,p,p,p),B.S,!1,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,p,this.e,p,p,p,p,p,p,!1,B.ao)}}
 A.Lb.prototype={
 a3(){return new A.Sq(A.bCe(null,null))}}
