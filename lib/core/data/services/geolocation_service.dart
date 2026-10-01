@@ -96,6 +96,8 @@ class GeolocationService implements IGeolocationService {
   Future<bool> requestPermission() async {
     try {
       final locationPermission = await Geolocator.requestPermission();
+      log('locationPermission ${locationPermission.name}');
+
       return locationPermission == LocationPermission.whileInUse ||
           locationPermission == LocationPermission.always;
     } catch (e) {
