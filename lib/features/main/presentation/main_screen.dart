@@ -86,10 +86,12 @@ class _MainScreenState extends State<MainScreen> {
               await geolocationService.startTracking();
               locationsBloc.add(const LocationsFetched(loadSilent: true));
             }
-            AppMessage.info(
-              context,
-              message: 'Permission status granted: $granted',
-            );
+            if (context.mounted) {
+              AppMessage.info(
+                context,
+                message: 'Permission status granted: $granted',
+              );
+            }
           },
         ),
       ),
