@@ -58,7 +58,7 @@ class LocationsBloc extends Bloc<LocationsEvent, LocationsState>
     if (!event.loadSilent) {
       emit(state.copyWith(isLoading: true));
     }
-    if (!kIsWeb && position == null && !locationAsked) {
+    if (position == null && !locationAsked) {
       position = await _geolocationService.getCurrentPosition();
       locationAsked = true;
     }
