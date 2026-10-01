@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:store_app/core/presentation/widgets/app_message.dart';
 import 'package:store_app/features/locations/presentation/bloc/locations_bloc.dart';
 import 'package:store_app/features/locations/presentation/bloc/locations_event.dart';
 import 'package:store_app/features/main/presentation/widgets/bottom_nav_bar.dart';
@@ -85,6 +86,10 @@ class _MainScreenState extends State<MainScreen> {
               await geolocationService.startTracking();
               locationsBloc.add(const LocationsFetched(loadSilent: true));
             }
+            AppMessage.info(
+              context,
+              message: 'Permission status granted: $granted',
+            );
           },
         ),
       ),
