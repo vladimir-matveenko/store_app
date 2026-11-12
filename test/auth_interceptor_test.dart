@@ -151,5 +151,5 @@ class _NoopHandler extends ErrorInterceptorHandler {
   void resolve(Response response) {}
 
   @override
-  void reject(DioException err, {bool callFollowingErrorInterceptor = false}) {}
+  void reject(DioException err, [bool callFollowingErrorInterceptor = false]) {}
 }
