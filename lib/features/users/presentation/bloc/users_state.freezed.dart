@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'users_state.dart';
@@ -9,6 +9,7 @@ part of 'users_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -26,16 +27,21 @@ $UsersStateCopyWith<UsersState> get copyWith => _$UsersStateCopyWithImpl<UsersSt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UsersState&&(identical(other.isInitialized, isInitialized) || other.isInitialized == isInitialized)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isUserLoading, isUserLoading) || other.isUserLoading == isUserLoading)&&(identical(other.isShowUsersLoader, isShowUsersLoader) || other.isShowUsersLoader == isShowUsersLoader)&&(identical(other.hasReachedMaxUsers, hasReachedMaxUsers) || other.hasReachedMaxUsers == hasReachedMaxUsers)&&(identical(other.error, error) || other.error == error)&&const DeepCollectionEquality().equals(other.users, users)&&(identical(other.user, user) || other.user == user));
+  final _this = this as UsersState;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UsersState&&(identical(other.isInitialized, _this.isInitialized) || other.isInitialized == _this.isInitialized)&&(identical(other.isLoading, _this.isLoading) || other.isLoading == _this.isLoading)&&(identical(other.isUserLoading, _this.isUserLoading) || other.isUserLoading == _this.isUserLoading)&&(identical(other.isShowUsersLoader, _this.isShowUsersLoader) || other.isShowUsersLoader == _this.isShowUsersLoader)&&(identical(other.hasReachedMaxUsers, _this.hasReachedMaxUsers) || other.hasReachedMaxUsers == _this.hasReachedMaxUsers)&&(identical(other.error, _this.error) || other.error == _this.error)&&const DeepCollectionEquality().equals(other.users, _this.users)&&(identical(other.user, _this.user) || other.user == _this.user));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isInitialized,isLoading,isUserLoading,isShowUsersLoader,hasReachedMaxUsers,error,const DeepCollectionEquality().hash(users),user);
+int get hashCode {
+  final _this = this as UsersState;
+  return Object.hash(runtimeType,_this.isInitialized,_this.isLoading,_this.isUserLoading,_this.isShowUsersLoader,_this.hasReachedMaxUsers,_this.error,const DeepCollectionEquality().hash(_this.users),_this.user);
+}
 
 @override
 String toString() {
-  return 'UsersState(isInitialized: $isInitialized, isLoading: $isLoading, isUserLoading: $isUserLoading, isShowUsersLoader: $isShowUsersLoader, hasReachedMaxUsers: $hasReachedMaxUsers, error: $error, users: $users, user: $user)';
+  final _this = this as UsersState;
+  return 'UsersState(isInitialized: ${_this.isInitialized}, isLoading: ${_this.isLoading}, isUserLoading: ${_this.isUserLoading}, isShowUsersLoader: ${_this.isShowUsersLoader}, hasReachedMaxUsers: ${_this.hasReachedMaxUsers}, error: ${_this.error}, users: ${_this.users}, user: ${_this.user})';
 }
 
 
@@ -64,7 +70,7 @@ class _$UsersStateCopyWithImpl<$Res>
 /// Create a copy of UsersState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? isInitialized = null,Object? isLoading = null,Object? isUserLoading = null,Object? isShowUsersLoader = null,Object? hasReachedMaxUsers = null,Object? error = freezed,Object? users = null,Object? user = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(UsersState(
 isInitialized: null == isInitialized ? _self.isInitialized : isInitialized // ignore: cast_nullable_to_non_nullable
 as bool,isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
 as bool,isUserLoading: null == isUserLoading ? _self.isUserLoading : isUserLoading // ignore: cast_nullable_to_non_nullable
@@ -226,7 +232,7 @@ return $default(_that.isInitialized,_that.isLoading,_that.isUserLoading,_that.is
 
 
 class _UsersState implements UsersState {
-  const _UsersState({this.isInitialized = false, this.isLoading = false, this.isUserLoading = false, this.isShowUsersLoader = false, this.hasReachedMaxUsers = false, this.error, final  List<UserEntity> users = const [], this.user}): _users = users;
+  const _UsersState({this.isInitialized = false, this.isLoading = false, this.isUserLoading = false, this.isShowUsersLoader = false, this.hasReachedMaxUsers = false, this.error,  List<UserEntity> users = const [], this.user}): _users = users;
   
 
 @override@JsonKey() final  bool isInitialized;
@@ -255,16 +261,18 @@ _$UsersStateCopyWith<_UsersState> get copyWith => __$UsersStateCopyWithImpl<_Use
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UsersState&&(identical(other.isInitialized, isInitialized) || other.isInitialized == isInitialized)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isUserLoading, isUserLoading) || other.isUserLoading == isUserLoading)&&(identical(other.isShowUsersLoader, isShowUsersLoader) || other.isShowUsersLoader == isShowUsersLoader)&&(identical(other.hasReachedMaxUsers, hasReachedMaxUsers) || other.hasReachedMaxUsers == hasReachedMaxUsers)&&(identical(other.error, error) || other.error == error)&&const DeepCollectionEquality().equals(other._users, _users)&&(identical(other.user, user) || other.user == user));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UsersState&&(identical(other.isInitialized, isInitialized) || other.isInitialized == isInitialized)&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isUserLoading, isUserLoading) || other.isUserLoading == isUserLoading)&&(identical(other.isShowUsersLoader, isShowUsersLoader) || other.isShowUsersLoader == isShowUsersLoader)&&(identical(other.hasReachedMaxUsers, hasReachedMaxUsers) || other.hasReachedMaxUsers == hasReachedMaxUsers)&&(identical(other.error, error) || other.error == error)&&const DeepCollectionEquality().equals(other.users, _users)&&(identical(other.user, user) || other.user == user));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isInitialized,isLoading,isUserLoading,isShowUsersLoader,hasReachedMaxUsers,error,const DeepCollectionEquality().hash(_users),user);
+int get hashCode {
+    return Object.hash(runtimeType,isInitialized,isLoading,isUserLoading,isShowUsersLoader,hasReachedMaxUsers,error,const DeepCollectionEquality().hash(_users),user);
+}
 
 @override
 String toString() {
-  return 'UsersState(isInitialized: $isInitialized, isLoading: $isLoading, isUserLoading: $isUserLoading, isShowUsersLoader: $isShowUsersLoader, hasReachedMaxUsers: $hasReachedMaxUsers, error: $error, users: $users, user: $user)';
+    return 'UsersState(isInitialized: $isInitialized, isLoading: $isLoading, isUserLoading: $isUserLoading, isShowUsersLoader: $isShowUsersLoader, hasReachedMaxUsers: $hasReachedMaxUsers, error: $error, users: $users, user: $user)';
 }
 
 

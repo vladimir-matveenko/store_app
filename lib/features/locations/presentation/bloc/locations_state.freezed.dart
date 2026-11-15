@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'locations_state.dart';
@@ -9,6 +9,7 @@ part of 'locations_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $LocationsStateCopyWith<LocationsState> get copyWith => _$LocationsStateCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LocationsState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.showGeoModal, showGeoModal) || other.showGeoModal == showGeoModal)&&(identical(other.error, error) || other.error == error)&&const DeepCollectionEquality().equals(other.locations, locations)&&(identical(other.selectedLocation, selectedLocation) || other.selectedLocation == selectedLocation)&&const DeepCollectionEquality().equals(other.markers, markers)&&(identical(other.center, center) || other.center == center));
+  final _this = this as LocationsState;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LocationsState&&(identical(other.isLoading, _this.isLoading) || other.isLoading == _this.isLoading)&&(identical(other.showGeoModal, _this.showGeoModal) || other.showGeoModal == _this.showGeoModal)&&(identical(other.error, _this.error) || other.error == _this.error)&&const DeepCollectionEquality().equals(other.locations, _this.locations)&&(identical(other.selectedLocation, _this.selectedLocation) || other.selectedLocation == _this.selectedLocation)&&const DeepCollectionEquality().equals(other.markers, _this.markers)&&(identical(other.center, _this.center) || other.center == _this.center));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLoading,showGeoModal,error,const DeepCollectionEquality().hash(locations),selectedLocation,const DeepCollectionEquality().hash(markers),center);
+int get hashCode {
+  final _this = this as LocationsState;
+  return Object.hash(runtimeType,_this.isLoading,_this.showGeoModal,_this.error,const DeepCollectionEquality().hash(_this.locations),_this.selectedLocation,const DeepCollectionEquality().hash(_this.markers),_this.center);
+}
 
 @override
 String toString() {
-  return 'LocationsState(isLoading: $isLoading, showGeoModal: $showGeoModal, error: $error, locations: $locations, selectedLocation: $selectedLocation, markers: $markers, center: $center)';
+  final _this = this as LocationsState;
+  return 'LocationsState(isLoading: ${_this.isLoading}, showGeoModal: ${_this.showGeoModal}, error: ${_this.error}, locations: ${_this.locations}, selectedLocation: ${_this.selectedLocation}, markers: ${_this.markers}, center: ${_this.center})';
 }
 
 
@@ -63,7 +69,7 @@ class _$LocationsStateCopyWithImpl<$Res>
 /// Create a copy of LocationsState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? isLoading = null,Object? showGeoModal = null,Object? error = freezed,Object? locations = null,Object? selectedLocation = freezed,Object? markers = null,Object? center = null,}) {
-  return _then(_self.copyWith(
+  return _then(LocationsState(
 isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
 as bool,showGeoModal: null == showGeoModal ? _self.showGeoModal : showGeoModal // ignore: cast_nullable_to_non_nullable
 as bool,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
@@ -224,7 +230,7 @@ return $default(_that.isLoading,_that.showGeoModal,_that.error,_that.locations,_
 
 
 class _LocationsState implements LocationsState {
-  const _LocationsState({this.isLoading = false, this.showGeoModal = false, this.error, final  List<LocationEntity> locations = const [], this.selectedLocation, final  List<Marker> markers = const [], this.center = const LatLng(50.4501, 30.5234)}): _locations = locations,_markers = markers;
+  const _LocationsState({this.isLoading = false, this.showGeoModal = false, this.error,  List<LocationEntity> locations = const [], this.selectedLocation,  List<Marker> markers = const [], this.center = const LatLng(50.4501, 30.5234)}): _locations = locations,_markers = markers;
   
 
 @override@JsonKey() final  bool isLoading;
@@ -257,16 +263,18 @@ _$LocationsStateCopyWith<_LocationsState> get copyWith => __$LocationsStateCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LocationsState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.showGeoModal, showGeoModal) || other.showGeoModal == showGeoModal)&&(identical(other.error, error) || other.error == error)&&const DeepCollectionEquality().equals(other._locations, _locations)&&(identical(other.selectedLocation, selectedLocation) || other.selectedLocation == selectedLocation)&&const DeepCollectionEquality().equals(other._markers, _markers)&&(identical(other.center, center) || other.center == center));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _LocationsState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.showGeoModal, showGeoModal) || other.showGeoModal == showGeoModal)&&(identical(other.error, error) || other.error == error)&&const DeepCollectionEquality().equals(other.locations, _locations)&&(identical(other.selectedLocation, selectedLocation) || other.selectedLocation == selectedLocation)&&const DeepCollectionEquality().equals(other.markers, _markers)&&(identical(other.center, center) || other.center == center));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLoading,showGeoModal,error,const DeepCollectionEquality().hash(_locations),selectedLocation,const DeepCollectionEquality().hash(_markers),center);
+int get hashCode {
+    return Object.hash(runtimeType,isLoading,showGeoModal,error,const DeepCollectionEquality().hash(_locations),selectedLocation,const DeepCollectionEquality().hash(_markers),center);
+}
 
 @override
 String toString() {
-  return 'LocationsState(isLoading: $isLoading, showGeoModal: $showGeoModal, error: $error, locations: $locations, selectedLocation: $selectedLocation, markers: $markers, center: $center)';
+    return 'LocationsState(isLoading: $isLoading, showGeoModal: $showGeoModal, error: $error, locations: $locations, selectedLocation: $selectedLocation, markers: $markers, center: $center)';
 }
 
 

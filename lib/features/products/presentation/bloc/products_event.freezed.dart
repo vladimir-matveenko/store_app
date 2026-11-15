@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'products_event.dart';
@@ -9,6 +9,7 @@ part of 'products_event.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -20,7 +21,7 @@ mixin _$ProductsEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsEvent);
 }
 
 
@@ -29,7 +30,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductsEvent()';
+    return 'ProductsEvent()';
 }
 
 
@@ -305,7 +306,7 @@ class DataInitialized implements ProductsEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DataInitialized);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is DataInitialized);
 }
 
 
@@ -314,7 +315,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductsEvent.dataInitialized()';
+    return 'ProductsEvent.dataInitialized()';
 }
 
 
@@ -356,16 +357,18 @@ $ProductsFetchedCopyWith<ProductsFetched> get copyWith => _$ProductsFetchedCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsFetched&&(identical(other.loadSilent, loadSilent) || other.loadSilent == loadSilent));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsFetched&&(identical(other.loadSilent, loadSilent) || other.loadSilent == loadSilent));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,loadSilent);
+int get hashCode {
+    return Object.hash(runtimeType,loadSilent);
+}
 
 @override
 String toString() {
-  return 'ProductsEvent.productsFetched(loadSilent: $loadSilent)';
+    return 'ProductsEvent.productsFetched(loadSilent: $loadSilent)';
 }
 
 
@@ -417,7 +420,7 @@ class NextProductsFetched implements ProductsEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NextProductsFetched);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is NextProductsFetched);
 }
 
 
@@ -426,7 +429,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductsEvent.nextProductsFetched()';
+    return 'ProductsEvent.nextProductsFetched()';
 }
 
 
@@ -468,16 +471,18 @@ $ProductsSearchStartedCopyWith<ProductsSearchStarted> get copyWith => _$Products
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsSearchStarted&&(identical(other.search, search) || other.search == search));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsSearchStarted&&(identical(other.search, search) || other.search == search));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,search);
+int get hashCode {
+    return Object.hash(runtimeType,search);
+}
 
 @override
 String toString() {
-  return 'ProductsEvent.productsSearchStarted(search: $search)';
+    return 'ProductsEvent.productsSearchStarted(search: $search)';
 }
 
 
@@ -534,16 +539,18 @@ $ProductsCategorySelectedCopyWith<ProductsCategorySelected> get copyWith => _$Pr
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsCategorySelected&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsCategorySelected&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,categoryId);
+int get hashCode {
+    return Object.hash(runtimeType,categoryId);
+}
 
 @override
 String toString() {
-  return 'ProductsEvent.productsCategorySelected(categoryId: $categoryId)';
+    return 'ProductsEvent.productsCategorySelected(categoryId: $categoryId)';
 }
 
 
@@ -600,16 +607,18 @@ $CategoriesFetchedCopyWith<CategoriesFetched> get copyWith => _$CategoriesFetche
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoriesFetched&&(identical(other.loadSilent, loadSilent) || other.loadSilent == loadSilent));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoriesFetched&&(identical(other.loadSilent, loadSilent) || other.loadSilent == loadSilent));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,loadSilent);
+int get hashCode {
+    return Object.hash(runtimeType,loadSilent);
+}
 
 @override
 String toString() {
-  return 'ProductsEvent.categoriesFetched(loadSilent: $loadSilent)';
+    return 'ProductsEvent.categoriesFetched(loadSilent: $loadSilent)';
 }
 
 
@@ -666,16 +675,18 @@ $ProductFetchedCopyWith<ProductFetched> get copyWith => _$ProductFetchedCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductFetched&&(identical(other.id, id) || other.id == id));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductFetched&&(identical(other.id, id) || other.id == id));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id);
+int get hashCode {
+    return Object.hash(runtimeType,id);
+}
 
 @override
 String toString() {
-  return 'ProductsEvent.productFetched(id: $id)';
+    return 'ProductsEvent.productFetched(id: $id)';
 }
 
 
@@ -732,16 +743,18 @@ $RelatedByIdFetchedCopyWith<RelatedByIdFetched> get copyWith => _$RelatedByIdFet
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RelatedByIdFetched&&(identical(other.id, id) || other.id == id));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is RelatedByIdFetched&&(identical(other.id, id) || other.id == id));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id);
+int get hashCode {
+    return Object.hash(runtimeType,id);
+}
 
 @override
 String toString() {
-  return 'ProductsEvent.relatedByIdFetched(id: $id)';
+    return 'ProductsEvent.relatedByIdFetched(id: $id)';
 }
 
 
@@ -798,16 +811,18 @@ $CreatedProductCategorySelectedCopyWith<CreatedProductCategorySelected> get copy
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreatedProductCategorySelected&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is CreatedProductCategorySelected&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,categoryId);
+int get hashCode {
+    return Object.hash(runtimeType,categoryId);
+}
 
 @override
 String toString() {
-  return 'ProductsEvent.createdProductCategorySelected(categoryId: $categoryId)';
+    return 'ProductsEvent.createdProductCategorySelected(categoryId: $categoryId)';
 }
 
 
@@ -866,16 +881,18 @@ $ProductCreatedCopyWith<ProductCreated> get copyWith => _$ProductCreatedCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductCreated&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductCreated&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,title,description,price);
+int get hashCode {
+    return Object.hash(runtimeType,title,description,price);
+}
 
 @override
 String toString() {
-  return 'ProductsEvent.productCreated(title: $title, description: $description, price: $price)';
+    return 'ProductsEvent.productCreated(title: $title, description: $description, price: $price)';
 }
 
 
@@ -934,16 +951,18 @@ $ProductDeletedCopyWith<ProductDeleted> get copyWith => _$ProductDeletedCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductDeleted&&(identical(other.id, id) || other.id == id));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductDeleted&&(identical(other.id, id) || other.id == id));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id);
+int get hashCode {
+    return Object.hash(runtimeType,id);
+}
 
 @override
 String toString() {
-  return 'ProductsEvent.productDeleted(id: $id)';
+    return 'ProductsEvent.productDeleted(id: $id)';
 }
 
 
@@ -1000,16 +1019,18 @@ $CategoryCreatedCopyWith<CategoryCreated> get copyWith => _$CategoryCreatedCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoryCreated&&(identical(other.name, name) || other.name == name));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoryCreated&&(identical(other.name, name) || other.name == name));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,name);
+int get hashCode {
+    return Object.hash(runtimeType,name);
+}
 
 @override
 String toString() {
-  return 'ProductsEvent.categoryCreated(name: $name)';
+    return 'ProductsEvent.categoryCreated(name: $name)';
 }
 
 
@@ -1066,16 +1087,18 @@ $CategoryDeletedCopyWith<CategoryDeleted> get copyWith => _$CategoryDeletedCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoryDeleted&&(identical(other.id, id) || other.id == id));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is CategoryDeleted&&(identical(other.id, id) || other.id == id));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id);
+int get hashCode {
+    return Object.hash(runtimeType,id);
+}
 
 @override
 String toString() {
-  return 'ProductsEvent.categoryDeleted(id: $id)';
+    return 'ProductsEvent.categoryDeleted(id: $id)';
 }
 
 
@@ -1133,16 +1156,18 @@ $CategorySearchStartedCopyWith<CategorySearchStarted> get copyWith => _$Category
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CategorySearchStarted&&(identical(other.search, search) || other.search == search)&&(identical(other.useForInnerSearch, useForInnerSearch) || other.useForInnerSearch == useForInnerSearch));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is CategorySearchStarted&&(identical(other.search, search) || other.search == search)&&(identical(other.useForInnerSearch, useForInnerSearch) || other.useForInnerSearch == useForInnerSearch));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,search,useForInnerSearch);
+int get hashCode {
+    return Object.hash(runtimeType,search,useForInnerSearch);
+}
 
 @override
 String toString() {
-  return 'ProductsEvent.categorySearchStarted(search: $search, useForInnerSearch: $useForInnerSearch)';
+    return 'ProductsEvent.categorySearchStarted(search: $search, useForInnerSearch: $useForInnerSearch)';
 }
 
 
@@ -1195,7 +1220,7 @@ class InnerSearchDisabled implements ProductsEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is InnerSearchDisabled);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is InnerSearchDisabled);
 }
 
 
@@ -1204,7 +1229,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductsEvent.innerSearchDisabled()';
+    return 'ProductsEvent.innerSearchDisabled()';
 }
 
 
@@ -1246,16 +1271,18 @@ $ImagePickedCopyWith<ImagePicked> get copyWith => _$ImagePickedCopyWithImpl<Imag
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImagePicked&&const DeepCollectionEquality().equals(other.bytes, bytes));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ImagePicked&&const DeepCollectionEquality().equals(other.bytes, bytes));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(bytes));
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(bytes));
+}
 
 @override
 String toString() {
-  return 'ProductsEvent.imagePicked(bytes: $bytes)';
+    return 'ProductsEvent.imagePicked(bytes: $bytes)';
 }
 
 
@@ -1312,16 +1339,18 @@ $ImageRemovedCopyWith<ImageRemoved> get copyWith => _$ImageRemovedCopyWithImpl<I
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageRemoved&&(identical(other.image, image) || other.image == image));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageRemoved&&(identical(other.image, image) || other.image == image));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,image);
+int get hashCode {
+    return Object.hash(runtimeType,image);
+}
 
 @override
 String toString() {
-  return 'ProductsEvent.imageRemoved(image: $image)';
+    return 'ProductsEvent.imageRemoved(image: $image)';
 }
 
 
@@ -1373,7 +1402,7 @@ class DataRemoved implements ProductsEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DataRemoved);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is DataRemoved);
 }
 
 
@@ -1382,7 +1411,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductsEvent.dataRemoved()';
+    return 'ProductsEvent.dataRemoved()';
 }
 
 
@@ -1424,16 +1453,18 @@ $FilterAddedCopyWith<FilterAdded> get copyWith => _$FilterAddedCopyWithImpl<Filt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FilterAdded&&(identical(other.filter, filter) || other.filter == filter));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is FilterAdded&&(identical(other.filter, filter) || other.filter == filter));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,filter);
+int get hashCode {
+    return Object.hash(runtimeType,filter);
+}
 
 @override
 String toString() {
-  return 'ProductsEvent.filterAdded(filter: $filter)';
+    return 'ProductsEvent.filterAdded(filter: $filter)';
 }
 
 
@@ -1490,16 +1521,18 @@ $FilterRemovedCopyWith<FilterRemoved> get copyWith => _$FilterRemovedCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FilterRemoved&&(identical(other.filter, filter) || other.filter == filter));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is FilterRemoved&&(identical(other.filter, filter) || other.filter == filter));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,filter);
+int get hashCode {
+    return Object.hash(runtimeType,filter);
+}
 
 @override
 String toString() {
-  return 'ProductsEvent.filterRemoved(filter: $filter)';
+    return 'ProductsEvent.filterRemoved(filter: $filter)';
 }
 
 
@@ -1541,7 +1574,7 @@ as AvailabilityFilterEntity,
 
 
 class FiltersSaved implements ProductsEvent {
-  const FiltersSaved({required final  List<AvailabilityFilterEntity> filters}): _filters = filters;
+  const FiltersSaved({required  List<AvailabilityFilterEntity> filters}): _filters = filters;
   
 
  final  List<AvailabilityFilterEntity> _filters;
@@ -1562,16 +1595,18 @@ $FiltersSavedCopyWith<FiltersSaved> get copyWith => _$FiltersSavedCopyWithImpl<F
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FiltersSaved&&const DeepCollectionEquality().equals(other._filters, _filters));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is FiltersSaved&&const DeepCollectionEquality().equals(other.filters, _filters));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_filters));
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_filters));
+}
 
 @override
 String toString() {
-  return 'ProductsEvent.filtersSaved(filters: $filters)';
+    return 'ProductsEvent.filtersSaved(filters: $filters)';
 }
 
 

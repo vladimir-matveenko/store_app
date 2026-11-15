@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'location_entity.dart';
@@ -9,6 +9,7 @@ part of 'location_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $LocationEntityCopyWith<LocationEntity> get copyWith => _$LocationEntityCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LocationEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&(identical(other.latitude, latitude) || other.latitude == latitude)&&(identical(other.longitude, longitude) || other.longitude == longitude)&&(identical(other.distance, distance) || other.distance == distance));
+  final _this = this as LocationEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LocationEntity&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.latitude, _this.latitude) || other.latitude == _this.latitude)&&(identical(other.longitude, _this.longitude) || other.longitude == _this.longitude)&&(identical(other.distance, _this.distance) || other.distance == _this.distance));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,name,description,latitude,longitude,distance);
+int get hashCode {
+  final _this = this as LocationEntity;
+  return Object.hash(runtimeType,_this.id,_this.name,_this.description,_this.latitude,_this.longitude,_this.distance);
+}
 
 @override
 String toString() {
-  return 'LocationEntity(id: $id, name: $name, description: $description, latitude: $latitude, longitude: $longitude, distance: $distance)';
+  final _this = this as LocationEntity;
+  return 'LocationEntity(id: ${_this.id}, name: ${_this.name}, description: ${_this.description}, latitude: ${_this.latitude}, longitude: ${_this.longitude}, distance: ${_this.distance})';
 }
 
 
@@ -63,7 +69,7 @@ class _$LocationEntityCopyWithImpl<$Res>
 /// Create a copy of LocationEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? description = null,Object? latitude = null,Object? longitude = null,Object? distance = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(LocationEntity(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
@@ -231,16 +237,18 @@ _$LocationEntityCopyWith<_LocationEntity> get copyWith => __$LocationEntityCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LocationEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&(identical(other.latitude, latitude) || other.latitude == latitude)&&(identical(other.longitude, longitude) || other.longitude == longitude)&&(identical(other.distance, distance) || other.distance == distance));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _LocationEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&(identical(other.latitude, latitude) || other.latitude == latitude)&&(identical(other.longitude, longitude) || other.longitude == longitude)&&(identical(other.distance, distance) || other.distance == distance));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,name,description,latitude,longitude,distance);
+int get hashCode {
+    return Object.hash(runtimeType,id,name,description,latitude,longitude,distance);
+}
 
 @override
 String toString() {
-  return 'LocationEntity(id: $id, name: $name, description: $description, latitude: $latitude, longitude: $longitude, distance: $distance)';
+    return 'LocationEntity(id: $id, name: $name, description: $description, latitude: $latitude, longitude: $longitude, distance: $distance)';
 }
 
 

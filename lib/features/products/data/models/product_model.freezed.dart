@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'product_model.dart';
@@ -9,6 +9,7 @@ part of 'product_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -28,16 +29,21 @@ $ProductModelCopyWith<ProductModel> get copyWith => _$ProductModelCopyWithImpl<P
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.slug, slug) || other.slug == slug)&&(identical(other.price, price) || other.price == price)&&(identical(other.description, description) || other.description == description)&&(identical(other.category, category) || other.category == category)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&const DeepCollectionEquality().equals(other.images, images)&&(identical(other.creationAt, creationAt) || other.creationAt == creationAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
+  final _this = this as ProductModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.slug, _this.slug) || other.slug == _this.slug)&&(identical(other.price, _this.price) || other.price == _this.price)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.category, _this.category) || other.category == _this.category)&&(identical(other.categoryId, _this.categoryId) || other.categoryId == _this.categoryId)&&const DeepCollectionEquality().equals(other.images, _this.images)&&(identical(other.creationAt, _this.creationAt) || other.creationAt == _this.creationAt)&&(identical(other.updatedAt, _this.updatedAt) || other.updatedAt == _this.updatedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,title,slug,price,description,category,categoryId,const DeepCollectionEquality().hash(images),creationAt,updatedAt);
+int get hashCode {
+  final _this = this as ProductModel;
+  return Object.hash(runtimeType,_this.id,_this.title,_this.slug,_this.price,_this.description,_this.category,_this.categoryId,const DeepCollectionEquality().hash(_this.images),_this.creationAt,_this.updatedAt);
+}
 
 @override
 String toString() {
-  return 'ProductModel(id: $id, title: $title, slug: $slug, price: $price, description: $description, category: $category, categoryId: $categoryId, images: $images, creationAt: $creationAt, updatedAt: $updatedAt)';
+  final _this = this as ProductModel;
+  return 'ProductModel(id: ${_this.id}, title: ${_this.title}, slug: ${_this.slug}, price: ${_this.price}, description: ${_this.description}, category: ${_this.category}, categoryId: ${_this.categoryId}, images: ${_this.images}, creationAt: ${_this.creationAt}, updatedAt: ${_this.updatedAt})';
 }
 
 
@@ -66,7 +72,7 @@ class _$ProductModelCopyWithImpl<$Res>
 /// Create a copy of ProductModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? title = null,Object? slug = freezed,Object? price = null,Object? description = null,Object? category = freezed,Object? categoryId = freezed,Object? images = null,Object? creationAt = freezed,Object? updatedAt = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ProductModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,slug: freezed == slug ? _self.slug : slug // ignore: cast_nullable_to_non_nullable
@@ -230,7 +236,7 @@ return $default(_that.id,_that.title,_that.slug,_that.price,_that.description,_t
 @JsonSerializable()
 
 class _ProductModel extends ProductModel {
-  const _ProductModel({@JsonKey(includeToJson: false, includeFromJson: true) this.id, required this.title, @JsonKey(includeToJson: false, includeFromJson: true) this.slug, required this.price, required this.description, @JsonKey(includeToJson: false, includeFromJson: true) this.category, @JsonKey(includeToJson: true, includeFromJson: false) this.categoryId, @JsonKey(defaultValue: []) required final  List<String> images, this.creationAt, this.updatedAt}): _images = images,super._();
+  const _ProductModel({@JsonKey(includeToJson: false, includeFromJson: true) this.id, required this.title, @JsonKey(includeToJson: false, includeFromJson: true) this.slug, required this.price, required this.description, @JsonKey(includeToJson: false, includeFromJson: true) this.category, @JsonKey(includeToJson: true, includeFromJson: false) this.categoryId, @JsonKey(defaultValue: []) required  List<String> images, this.creationAt, this.updatedAt}): _images = images,super._();
   factory _ProductModel.fromJson(Map<String, dynamic> json) => _$ProductModelFromJson(json);
 
 @override@JsonKey(includeToJson: false, includeFromJson: true) final  int? id;
@@ -263,16 +269,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.slug, slug) || other.slug == slug)&&(identical(other.price, price) || other.price == price)&&(identical(other.description, description) || other.description == description)&&(identical(other.category, category) || other.category == category)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&const DeepCollectionEquality().equals(other._images, _images)&&(identical(other.creationAt, creationAt) || other.creationAt == creationAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.slug, slug) || other.slug == slug)&&(identical(other.price, price) || other.price == price)&&(identical(other.description, description) || other.description == description)&&(identical(other.category, category) || other.category == category)&&(identical(other.categoryId, categoryId) || other.categoryId == categoryId)&&const DeepCollectionEquality().equals(other.images, _images)&&(identical(other.creationAt, creationAt) || other.creationAt == creationAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,title,slug,price,description,category,categoryId,const DeepCollectionEquality().hash(_images),creationAt,updatedAt);
+int get hashCode {
+    return Object.hash(runtimeType,id,title,slug,price,description,category,categoryId,const DeepCollectionEquality().hash(_images),creationAt,updatedAt);
+}
 
 @override
 String toString() {
-  return 'ProductModel(id: $id, title: $title, slug: $slug, price: $price, description: $description, category: $category, categoryId: $categoryId, images: $images, creationAt: $creationAt, updatedAt: $updatedAt)';
+    return 'ProductModel(id: $id, title: $title, slug: $slug, price: $price, description: $description, category: $category, categoryId: $categoryId, images: $images, creationAt: $creationAt, updatedAt: $updatedAt)';
 }
 
 

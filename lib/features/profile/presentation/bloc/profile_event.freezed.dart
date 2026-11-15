@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'profile_event.dart';
@@ -9,6 +9,7 @@ part of 'profile_event.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -20,7 +21,7 @@ mixin _$ProfileEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileEvent);
 }
 
 
@@ -29,7 +30,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProfileEvent()';
+    return 'ProfileEvent()';
 }
 
 
@@ -221,7 +222,7 @@ class UserProfileRequested implements ProfileEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserProfileRequested);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is UserProfileRequested);
 }
 
 
@@ -230,7 +231,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProfileEvent.userProfileRequested()';
+    return 'ProfileEvent.userProfileRequested()';
 }
 
 
@@ -276,16 +277,18 @@ $CreateProfileRequestedCopyWith<CreateProfileRequested> get copyWith => _$Create
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateProfileRequested&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.role, role) || other.role == role)&&(identical(other.avatarUrl, avatarUrl) || other.avatarUrl == avatarUrl));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateProfileRequested&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.role, role) || other.role == role)&&(identical(other.avatarUrl, avatarUrl) || other.avatarUrl == avatarUrl));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,name,email,password,role,avatarUrl);
+int get hashCode {
+    return Object.hash(runtimeType,name,email,password,role,avatarUrl);
+}
 
 @override
 String toString() {
-  return 'ProfileEvent.createProfileRequested(name: $name, email: $email, password: $password, role: $role, avatarUrl: $avatarUrl)';
+    return 'ProfileEvent.createProfileRequested(name: $name, email: $email, password: $password, role: $role, avatarUrl: $avatarUrl)';
 }
 
 
@@ -350,16 +353,18 @@ $UpdateProfileRequestedCopyWith<UpdateProfileRequested> get copyWith => _$Update
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateProfileRequested&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.role, role) || other.role == role));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateProfileRequested&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.role, role) || other.role == role));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,userId,name,email,password,role);
+int get hashCode {
+    return Object.hash(runtimeType,userId,name,email,password,role);
+}
 
 @override
 String toString() {
-  return 'ProfileEvent.updateProfileRequested(userId: $userId, name: $name, email: $email, password: $password, role: $role)';
+    return 'ProfileEvent.updateProfileRequested(userId: $userId, name: $name, email: $email, password: $password, role: $role)';
 }
 
 
@@ -420,16 +425,18 @@ $ImagePickedCopyWith<ImagePicked> get copyWith => _$ImagePickedCopyWithImpl<Imag
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImagePicked&&const DeepCollectionEquality().equals(other.bytes, bytes));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ImagePicked&&const DeepCollectionEquality().equals(other.bytes, bytes));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(bytes));
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(bytes));
+}
 
 @override
 String toString() {
-  return 'ProfileEvent.imagePicked(bytes: $bytes)';
+    return 'ProfileEvent.imagePicked(bytes: $bytes)';
 }
 
 
@@ -486,16 +493,18 @@ $ImageRemovedCopyWith<ImageRemoved> get copyWith => _$ImageRemovedCopyWithImpl<I
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageRemoved&&(identical(other.image, image) || other.image == image));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageRemoved&&(identical(other.image, image) || other.image == image));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,image);
+int get hashCode {
+    return Object.hash(runtimeType,image);
+}
 
 @override
 String toString() {
-  return 'ProfileEvent.imageRemoved(image: $image)';
+    return 'ProfileEvent.imageRemoved(image: $image)';
 }
 
 
@@ -547,7 +556,7 @@ class DisableSuccessRequested implements ProfileEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DisableSuccessRequested);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is DisableSuccessRequested);
 }
 
 
@@ -556,7 +565,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProfileEvent.disableSuccessRequested()';
+    return 'ProfileEvent.disableSuccessRequested()';
 }
 
 
@@ -593,7 +602,7 @@ class DisableErrorRequested implements ProfileEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DisableErrorRequested);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is DisableErrorRequested);
 }
 
 
@@ -602,7 +611,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProfileEvent.disableErrorRequested()';
+    return 'ProfileEvent.disableErrorRequested()';
 }
 
 

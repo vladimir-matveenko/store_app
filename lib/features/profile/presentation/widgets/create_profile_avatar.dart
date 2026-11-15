@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:store_app/features/products/domain/entity/app_image_entity.dart';
 
 import '../../../../core/presentation/widgets/app_loader.dart';

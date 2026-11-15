@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'state.dart';
@@ -9,6 +9,7 @@ part of 'state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $CameraStateCopyWith<CameraState> get copyWith => _$CameraStateCopyWithImpl<Came
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CameraState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.cameras, cameras)&&(identical(other.selectedCameraIndex, selectedCameraIndex) || other.selectedCameraIndex == selectedCameraIndex)&&(identical(other.flashMode, flashMode) || other.flashMode == flashMode)&&(identical(other.minZoom, minZoom) || other.minZoom == minZoom)&&(identical(other.maxZoom, maxZoom) || other.maxZoom == maxZoom)&&(identical(other.zoom, zoom) || other.zoom == zoom)&&(identical(other.error, error) || other.error == error));
+  final _this = this as CameraState;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CameraState&&(identical(other.status, _this.status) || other.status == _this.status)&&const DeepCollectionEquality().equals(other.cameras, _this.cameras)&&(identical(other.selectedCameraIndex, _this.selectedCameraIndex) || other.selectedCameraIndex == _this.selectedCameraIndex)&&(identical(other.flashMode, _this.flashMode) || other.flashMode == _this.flashMode)&&(identical(other.minZoom, _this.minZoom) || other.minZoom == _this.minZoom)&&(identical(other.maxZoom, _this.maxZoom) || other.maxZoom == _this.maxZoom)&&(identical(other.zoom, _this.zoom) || other.zoom == _this.zoom)&&(identical(other.error, _this.error) || other.error == _this.error));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(cameras),selectedCameraIndex,flashMode,minZoom,maxZoom,zoom,error);
+int get hashCode {
+  final _this = this as CameraState;
+  return Object.hash(runtimeType,_this.status,const DeepCollectionEquality().hash(_this.cameras),_this.selectedCameraIndex,_this.flashMode,_this.minZoom,_this.maxZoom,_this.zoom,_this.error);
+}
 
 @override
 String toString() {
-  return 'CameraState(status: $status, cameras: $cameras, selectedCameraIndex: $selectedCameraIndex, flashMode: $flashMode, minZoom: $minZoom, maxZoom: $maxZoom, zoom: $zoom, error: $error)';
+  final _this = this as CameraState;
+  return 'CameraState(status: ${_this.status}, cameras: ${_this.cameras}, selectedCameraIndex: ${_this.selectedCameraIndex}, flashMode: ${_this.flashMode}, minZoom: ${_this.minZoom}, maxZoom: ${_this.maxZoom}, zoom: ${_this.zoom}, error: ${_this.error})';
 }
 
 
@@ -63,7 +69,7 @@ class _$CameraStateCopyWithImpl<$Res>
 /// Create a copy of CameraState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? cameras = null,Object? selectedCameraIndex = null,Object? flashMode = null,Object? minZoom = null,Object? maxZoom = null,Object? zoom = null,Object? error = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CameraState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as CameraStatus,cameras: null == cameras ? _self.cameras : cameras // ignore: cast_nullable_to_non_nullable
 as List<CameraDescription>,selectedCameraIndex: null == selectedCameraIndex ? _self.selectedCameraIndex : selectedCameraIndex // ignore: cast_nullable_to_non_nullable
@@ -213,7 +219,7 @@ return $default(_that.status,_that.cameras,_that.selectedCameraIndex,_that.flash
 
 
 class _CameraState extends CameraState {
-  const _CameraState({this.status = CameraStatus.initial, final  List<CameraDescription> cameras = const [], this.selectedCameraIndex = 0, this.flashMode = FlashMode.off, this.minZoom = 1.0, this.maxZoom = 1.0, this.zoom = 1.0, this.error}): _cameras = cameras,super._();
+  const _CameraState({this.status = CameraStatus.initial,  List<CameraDescription> cameras = const [], this.selectedCameraIndex = 0, this.flashMode = FlashMode.off, this.minZoom = 1.0, this.maxZoom = 1.0, this.zoom = 1.0, this.error}): _cameras = cameras,super._();
   
 
 @override@JsonKey() final  CameraStatus status;
@@ -241,16 +247,18 @@ _$CameraStateCopyWith<_CameraState> get copyWith => __$CameraStateCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CameraState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other._cameras, _cameras)&&(identical(other.selectedCameraIndex, selectedCameraIndex) || other.selectedCameraIndex == selectedCameraIndex)&&(identical(other.flashMode, flashMode) || other.flashMode == flashMode)&&(identical(other.minZoom, minZoom) || other.minZoom == minZoom)&&(identical(other.maxZoom, maxZoom) || other.maxZoom == maxZoom)&&(identical(other.zoom, zoom) || other.zoom == zoom)&&(identical(other.error, error) || other.error == error));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CameraState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.cameras, _cameras)&&(identical(other.selectedCameraIndex, selectedCameraIndex) || other.selectedCameraIndex == selectedCameraIndex)&&(identical(other.flashMode, flashMode) || other.flashMode == flashMode)&&(identical(other.minZoom, minZoom) || other.minZoom == minZoom)&&(identical(other.maxZoom, maxZoom) || other.maxZoom == maxZoom)&&(identical(other.zoom, zoom) || other.zoom == zoom)&&(identical(other.error, error) || other.error == error));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_cameras),selectedCameraIndex,flashMode,minZoom,maxZoom,zoom,error);
+int get hashCode {
+    return Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_cameras),selectedCameraIndex,flashMode,minZoom,maxZoom,zoom,error);
+}
 
 @override
 String toString() {
-  return 'CameraState(status: $status, cameras: $cameras, selectedCameraIndex: $selectedCameraIndex, flashMode: $flashMode, minZoom: $minZoom, maxZoom: $maxZoom, zoom: $zoom, error: $error)';
+    return 'CameraState(status: $status, cameras: $cameras, selectedCameraIndex: $selectedCameraIndex, flashMode: $flashMode, minZoom: $minZoom, maxZoom: $maxZoom, zoom: $zoom, error: $error)';
 }
 
 

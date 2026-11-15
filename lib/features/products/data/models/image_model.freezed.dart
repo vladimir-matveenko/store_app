@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'image_model.dart';
@@ -9,6 +9,7 @@ part of 'image_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -28,16 +29,21 @@ $ImageModelCopyWith<ImageModel> get copyWith => _$ImageModelCopyWithImpl<ImageMo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageModel&&(identical(other.originalname, originalname) || other.originalname == originalname)&&(identical(other.filename, filename) || other.filename == filename)&&(identical(other.location, location) || other.location == location));
+  final _this = this as ImageModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageModel&&(identical(other.originalname, _this.originalname) || other.originalname == _this.originalname)&&(identical(other.filename, _this.filename) || other.filename == _this.filename)&&(identical(other.location, _this.location) || other.location == _this.location));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,originalname,filename,location);
+int get hashCode {
+  final _this = this as ImageModel;
+  return Object.hash(runtimeType,_this.originalname,_this.filename,_this.location);
+}
 
 @override
 String toString() {
-  return 'ImageModel(originalname: $originalname, filename: $filename, location: $location)';
+  final _this = this as ImageModel;
+  return 'ImageModel(originalname: ${_this.originalname}, filename: ${_this.filename}, location: ${_this.location})';
 }
 
 
@@ -66,7 +72,7 @@ class _$ImageModelCopyWithImpl<$Res>
 /// Create a copy of ImageModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? originalname = null,Object? filename = null,Object? location = null,}) {
-  return _then(_self.copyWith(
+  return _then(ImageModel(
 originalname: null == originalname ? _self.originalname : originalname // ignore: cast_nullable_to_non_nullable
 as String,filename: null == filename ? _self.filename : filename // ignore: cast_nullable_to_non_nullable
 as String,location: null == location ? _self.location : location // ignore: cast_nullable_to_non_nullable
@@ -231,16 +237,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ImageModel&&(identical(other.originalname, originalname) || other.originalname == originalname)&&(identical(other.filename, filename) || other.filename == filename)&&(identical(other.location, location) || other.location == location));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ImageModel&&(identical(other.originalname, originalname) || other.originalname == originalname)&&(identical(other.filename, filename) || other.filename == filename)&&(identical(other.location, location) || other.location == location));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,originalname,filename,location);
+int get hashCode {
+    return Object.hash(runtimeType,originalname,filename,location);
+}
 
 @override
 String toString() {
-  return 'ImageModel(originalname: $originalname, filename: $filename, location: $location)';
+    return 'ImageModel(originalname: $originalname, filename: $filename, location: $location)';
 }
 
 

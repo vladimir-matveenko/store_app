@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:store_app/app/utils/extensions.dart';
 import 'package:store_app/core/presentation/widgets/carousel_slider.dart';
 import 'package:store_app/core/presentation/widgets/full_screen_image.dart';

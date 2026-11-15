@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:store_app/core/presentation/widgets/scroll_up_button.dart';
 
 class ScrollUpWrapper extends StatelessWidget {
