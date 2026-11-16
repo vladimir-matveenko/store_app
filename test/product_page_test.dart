@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:store_app/features/products/domain/entity/category_entity.dart';
 import 'package:store_app/features/products/domain/entity/product_entity.dart';
@@ -97,9 +97,8 @@ void main() {
   testWidgets('ProductPage shows loading indicator when product is loading', (
     WidgetTester tester,
   ) async {
-    when(
-      () => mockProductsBloc.state,
-    ).thenReturn(const ProductsState(isProductLoading: true));
+    when(() => mockProductsBloc.state)
+        .thenReturn(const ProductsState(isProductLoading: true));
     when(() => mockProductsBloc.stream).thenAnswer(
       (_) => Stream.value(const ProductsState(isProductLoading: true)),
     );

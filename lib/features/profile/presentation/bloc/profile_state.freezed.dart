@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'profile_state.dart';
@@ -9,6 +9,7 @@ part of 'profile_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $ProfileStateCopyWith<ProfileState> get copyWith => _$ProfileStateCopyWithImpl<P
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isAvatarLoading, isAvatarLoading) || other.isAvatarLoading == isAvatarLoading)&&(identical(other.createdSuccessful, createdSuccessful) || other.createdSuccessful == createdSuccessful)&&(identical(other.updatedSuccessful, updatedSuccessful) || other.updatedSuccessful == updatedSuccessful)&&(identical(other.user, user) || other.user == user)&&(identical(other.error, error) || other.error == error)&&(identical(other.avatar, avatar) || other.avatar == avatar));
+  final _this = this as ProfileState;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileState&&(identical(other.isLoading, _this.isLoading) || other.isLoading == _this.isLoading)&&(identical(other.isAvatarLoading, _this.isAvatarLoading) || other.isAvatarLoading == _this.isAvatarLoading)&&(identical(other.createdSuccessful, _this.createdSuccessful) || other.createdSuccessful == _this.createdSuccessful)&&(identical(other.updatedSuccessful, _this.updatedSuccessful) || other.updatedSuccessful == _this.updatedSuccessful)&&(identical(other.user, _this.user) || other.user == _this.user)&&(identical(other.error, _this.error) || other.error == _this.error)&&(identical(other.avatar, _this.avatar) || other.avatar == _this.avatar));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLoading,isAvatarLoading,createdSuccessful,updatedSuccessful,user,error,avatar);
+int get hashCode {
+  final _this = this as ProfileState;
+  return Object.hash(runtimeType,_this.isLoading,_this.isAvatarLoading,_this.createdSuccessful,_this.updatedSuccessful,_this.user,_this.error,_this.avatar);
+}
 
 @override
 String toString() {
-  return 'ProfileState(isLoading: $isLoading, isAvatarLoading: $isAvatarLoading, createdSuccessful: $createdSuccessful, updatedSuccessful: $updatedSuccessful, user: $user, error: $error, avatar: $avatar)';
+  final _this = this as ProfileState;
+  return 'ProfileState(isLoading: ${_this.isLoading}, isAvatarLoading: ${_this.isAvatarLoading}, createdSuccessful: ${_this.createdSuccessful}, updatedSuccessful: ${_this.updatedSuccessful}, user: ${_this.user}, error: ${_this.error}, avatar: ${_this.avatar})';
 }
 
 
@@ -63,7 +69,7 @@ class _$ProfileStateCopyWithImpl<$Res>
 /// Create a copy of ProfileState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? isLoading = null,Object? isAvatarLoading = null,Object? createdSuccessful = null,Object? updatedSuccessful = null,Object? user = freezed,Object? error = freezed,Object? avatar = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ProfileState(
 isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
 as bool,isAvatarLoading: null == isAvatarLoading ? _self.isAvatarLoading : isAvatarLoading // ignore: cast_nullable_to_non_nullable
 as bool,createdSuccessful: null == createdSuccessful ? _self.createdSuccessful : createdSuccessful // ignore: cast_nullable_to_non_nullable
@@ -245,16 +251,18 @@ _$ProfileStateCopyWith<_ProfileState> get copyWith => __$ProfileStateCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isAvatarLoading, isAvatarLoading) || other.isAvatarLoading == isAvatarLoading)&&(identical(other.createdSuccessful, createdSuccessful) || other.createdSuccessful == createdSuccessful)&&(identical(other.updatedSuccessful, updatedSuccessful) || other.updatedSuccessful == updatedSuccessful)&&(identical(other.user, user) || other.user == user)&&(identical(other.error, error) || other.error == error)&&(identical(other.avatar, avatar) || other.avatar == avatar));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.isAvatarLoading, isAvatarLoading) || other.isAvatarLoading == isAvatarLoading)&&(identical(other.createdSuccessful, createdSuccessful) || other.createdSuccessful == createdSuccessful)&&(identical(other.updatedSuccessful, updatedSuccessful) || other.updatedSuccessful == updatedSuccessful)&&(identical(other.user, user) || other.user == user)&&(identical(other.error, error) || other.error == error)&&(identical(other.avatar, avatar) || other.avatar == avatar));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLoading,isAvatarLoading,createdSuccessful,updatedSuccessful,user,error,avatar);
+int get hashCode {
+    return Object.hash(runtimeType,isLoading,isAvatarLoading,createdSuccessful,updatedSuccessful,user,error,avatar);
+}
 
 @override
 String toString() {
-  return 'ProfileState(isLoading: $isLoading, isAvatarLoading: $isAvatarLoading, createdSuccessful: $createdSuccessful, updatedSuccessful: $updatedSuccessful, user: $user, error: $error, avatar: $avatar)';
+    return 'ProfileState(isLoading: $isLoading, isAvatarLoading: $isAvatarLoading, createdSuccessful: $createdSuccessful, updatedSuccessful: $updatedSuccessful, user: $user, error: $error, avatar: $avatar)';
 }
 
 

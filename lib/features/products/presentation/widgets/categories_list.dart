@@ -1,5 +1,5 @@
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:store_app/core/presentation/widgets/no_items_widget.dart';
 import 'package:store_app/features/products/domain/entity/category_entity.dart';
 

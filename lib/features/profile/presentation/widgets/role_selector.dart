@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:store_app/app/constants/app_enums.dart';
 
 import '../../../../core/presentation/widgets/custom_dropdown_menu.dart';

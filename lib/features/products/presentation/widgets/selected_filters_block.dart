@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:store_app/core/domain/entity/availability_filter_entity.dart';
 
 import '../../../../core/presentation/widgets/availability_filters_list.dart';

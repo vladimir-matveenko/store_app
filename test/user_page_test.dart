@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:store_app/app/constants/app_enums.dart';
 import 'package:store_app/core/presentation/widgets/app_loader.dart';
@@ -53,9 +53,8 @@ void main() {
     testWidgets('UserPage shows loading indicator when loading', (
       tester,
     ) async {
-      when(
-        () => usersBloc.state,
-      ).thenReturn(const UsersState(isUserLoading: true));
+      when(() => usersBloc.state)
+          .thenReturn(const UsersState(isUserLoading: true));
       when(() => usersBloc.stream).thenAnswer((_) => usersController.stream);
 
       await tester.pumpWidget(createWidget(userId: '1'));
@@ -76,9 +75,8 @@ void main() {
         avatar: '',
       );
 
-      when(
-        () => usersBloc.state,
-      ).thenReturn(const UsersState(isUserLoading: true));
+      when(() => usersBloc.state)
+          .thenReturn(const UsersState(isUserLoading: true));
 
       when(() => usersBloc.stream).thenAnswer((_) => usersController.stream);
 

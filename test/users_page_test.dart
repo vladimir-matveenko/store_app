@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:store_app/app/constants/app_enums.dart';
 import 'package:store_app/features/auth/presentation/bloc/auth_bloc.dart';
@@ -127,16 +127,14 @@ void main() {
         ),
       ];
 
-      when(
-        () => usersBloc.state,
-      ).thenReturn(UsersState(users: users, isInitialized: true));
+      when(() => usersBloc.state)
+          .thenReturn(UsersState(users: users, isInitialized: true));
       when(() => usersBloc.stream).thenAnswer((_) => usersController.stream);
       when(() => authBloc.state).thenReturn(const AuthState());
       when(() => authBloc.stream).thenAnswer((_) => authController.stream);
       when(() => profileBloc.state).thenReturn(const ProfileState());
-      when(
-        () => profileBloc.stream,
-      ).thenAnswer((_) => profileController.stream);
+      when(() => profileBloc.stream)
+          .thenAnswer((_) => profileController.stream);
 
       await tester.pumpWidget(createWidget());
       await tester.pumpAndSettle();

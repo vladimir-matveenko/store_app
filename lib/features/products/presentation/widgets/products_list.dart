@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:store_app/core/presentation/widgets/app_dialog.dart';
 import 'package:store_app/features/products/domain/entity/product_entity.dart';
 import 'package:store_app/features/products/presentation/bloc/products_bloc.dart';

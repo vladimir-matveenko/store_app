@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:store_app/features/locations/presentation/pages/locations_page.dart';
 import 'package:store_app/features/products/presentation/pages/add_category_page.dart';
 import 'package:store_app/features/products/presentation/pages/add_product_page.dart';

@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:store_app/app/constants/app_enums.dart';
 import 'package:store_app/core/presentation/widgets/app_loader.dart';
@@ -81,23 +81,19 @@ void main() {
 
       // AuthBloc
       when(() => authBloc.state).thenReturn(const AuthState());
-      when(
-        () => authBloc.stream,
-      ).thenAnswer((_) => const Stream<AuthState>.empty());
+      when(() => authBloc.stream)
+          .thenAnswer((_) => const Stream<AuthState>.empty());
 
       // ProfileBloc
-      when(
-        () => profileBloc.state,
-      ).thenReturn(const ProfileState(isLoading: true));
-      when(
-        () => profileBloc.stream,
-      ).thenAnswer((_) => profileController.stream);
+      when(() => profileBloc.state)
+          .thenReturn(const ProfileState(isLoading: true));
+      when(() => profileBloc.stream)
+          .thenAnswer((_) => profileController.stream);
 
       // ThemeCubit
       when(() => themeCubit.state).thenReturn(const ThemeState());
-      when(
-        () => themeCubit.stream,
-      ).thenAnswer((_) => const Stream<ThemeState>.empty());
+      when(() => themeCubit.stream)
+          .thenAnswer((_) => const Stream<ThemeState>.empty());
 
       await tester.binding.setSurfaceSize(const Size(800, 600));
 

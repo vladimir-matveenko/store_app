@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:store_app/core/presentation/widgets/no_items_widget.dart';
 import 'package:store_app/core/presentation/widgets/scroll_up_wrapper.dart';
 import 'package:store_app/features/profile/presentation/bloc/profile_bloc.dart';
