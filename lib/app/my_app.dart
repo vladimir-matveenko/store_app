@@ -73,7 +73,10 @@ class _MyAppState extends State<MyApp> {
             routerConfig: appRouter.router,
             debugShowCheckedModeBanner: false,
             theme: state.theme,
-            localizationsDelegates: context.localizationDelegates,
+            localizationsDelegates: [
+              ...context.localizationDelegates,
+              ...GlobalMaterialLocalizations.delegates,
+            ],
             supportedLocales: context.supportedLocales,
             locale: context.locale,
           );
