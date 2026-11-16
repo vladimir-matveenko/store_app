@@ -53,9 +53,8 @@ void main() {
     testWidgets('UserPage shows loading indicator when loading', (
       tester,
     ) async {
-      when(
-        () => usersBloc.state,
-      ).thenReturn(const UsersState(isUserLoading: true));
+      when(() => usersBloc.state)
+          .thenReturn(const UsersState(isUserLoading: true));
       when(() => usersBloc.stream).thenAnswer((_) => usersController.stream);
 
       await tester.pumpWidget(createWidget(userId: '1'));
@@ -76,9 +75,8 @@ void main() {
         avatar: '',
       );
 
-      when(
-        () => usersBloc.state,
-      ).thenReturn(const UsersState(isUserLoading: true));
+      when(() => usersBloc.state)
+          .thenReturn(const UsersState(isUserLoading: true));
 
       when(() => usersBloc.stream).thenAnswer((_) => usersController.stream);
 

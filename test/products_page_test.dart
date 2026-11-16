@@ -99,9 +99,8 @@ void main() {
     WidgetTester tester,
   ) async {
     // Use isLoading to trigger full page loader
-    when(
-      () => mockProductsBloc.state,
-    ).thenReturn(const ProductsState(isProductLoading: true));
+    when(() => mockProductsBloc.state)
+        .thenReturn(const ProductsState(isProductLoading: true));
     when(() => mockProductsBloc.stream).thenAnswer(
       (_) => Stream.value(const ProductsState(isProductLoading: true)),
     );
@@ -165,9 +164,8 @@ void main() {
     WidgetTester tester,
   ) async {
     final testSearchQuery = 'test search';
-    when(
-      () => mockProductsBloc.state,
-    ).thenReturn(const ProductsState(products: [], isProductLoading: false));
+    when(() => mockProductsBloc.state)
+        .thenReturn(const ProductsState(products: [], isProductLoading: false));
     when(() => mockProductsBloc.stream).thenAnswer(
       (_) => Stream.value(
         const ProductsState(products: [], isProductLoading: false),
@@ -203,9 +201,8 @@ void main() {
   testWidgets('ProductsPage opens filter modal when filter button is tapped', (
     WidgetTester tester,
   ) async {
-    when(
-      () => mockProductsBloc.state,
-    ).thenReturn(const ProductsState(filters: [], isProductLoading: false));
+    when(() => mockProductsBloc.state)
+        .thenReturn(const ProductsState(filters: [], isProductLoading: false));
     when(() => mockProductsBloc.stream).thenAnswer(
       (_) => Stream.value(
         const ProductsState(filters: [], isProductLoading: false),
@@ -295,8 +292,7 @@ void main() {
 
     await tester.pump(const Duration(milliseconds: 300));
 
-    verify(
-      () => mockProductsBloc.add(const NextProductsFetched()),
-    ).called(greaterThanOrEqualTo(1));
+    verify(() => mockProductsBloc.add(const NextProductsFetched()))
+        .called(greaterThanOrEqualTo(1));
   });
 }

@@ -123,9 +123,8 @@ void main() {
     });
 
     test('missing refresh token → logout', () async {
-      when(
-        () => localDataSource.getCachedToken(),
-      ).thenAnswer((_) async => null);
+      when(() => localDataSource.getCachedToken())
+          .thenAnswer((_) async => null);
 
       await interceptor.onError(
         DioException(

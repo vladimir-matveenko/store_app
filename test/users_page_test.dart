@@ -127,16 +127,14 @@ void main() {
         ),
       ];
 
-      when(
-        () => usersBloc.state,
-      ).thenReturn(UsersState(users: users, isInitialized: true));
+      when(() => usersBloc.state)
+          .thenReturn(UsersState(users: users, isInitialized: true));
       when(() => usersBloc.stream).thenAnswer((_) => usersController.stream);
       when(() => authBloc.state).thenReturn(const AuthState());
       when(() => authBloc.stream).thenAnswer((_) => authController.stream);
       when(() => profileBloc.state).thenReturn(const ProfileState());
-      when(
-        () => profileBloc.stream,
-      ).thenAnswer((_) => profileController.stream);
+      when(() => profileBloc.stream)
+          .thenAnswer((_) => profileController.stream);
 
       await tester.pumpWidget(createWidget());
       await tester.pumpAndSettle();

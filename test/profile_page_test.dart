@@ -81,23 +81,19 @@ void main() {
 
       // AuthBloc
       when(() => authBloc.state).thenReturn(const AuthState());
-      when(
-        () => authBloc.stream,
-      ).thenAnswer((_) => const Stream<AuthState>.empty());
+      when(() => authBloc.stream)
+          .thenAnswer((_) => const Stream<AuthState>.empty());
 
       // ProfileBloc
-      when(
-        () => profileBloc.state,
-      ).thenReturn(const ProfileState(isLoading: true));
-      when(
-        () => profileBloc.stream,
-      ).thenAnswer((_) => profileController.stream);
+      when(() => profileBloc.state)
+          .thenReturn(const ProfileState(isLoading: true));
+      when(() => profileBloc.stream)
+          .thenAnswer((_) => profileController.stream);
 
       // ThemeCubit
       when(() => themeCubit.state).thenReturn(const ThemeState());
-      when(
-        () => themeCubit.stream,
-      ).thenAnswer((_) => const Stream<ThemeState>.empty());
+      when(() => themeCubit.stream)
+          .thenAnswer((_) => const Stream<ThemeState>.empty());
 
       await tester.binding.setSurfaceSize(const Size(800, 600));
 

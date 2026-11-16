@@ -64,14 +64,12 @@ void main() {
     // AuthBloc
     when(() => authBloc.state).thenReturn(const AuthState());
 
-    when(
-      () => authBloc.stream,
-    ).thenAnswer((_) => const Stream<AuthState>.empty());
+    when(() => authBloc.stream)
+        .thenAnswer((_) => const Stream<AuthState>.empty());
 
     // LoginBloc
-    when(
-      () => mockBloc.state,
-    ).thenReturn(const LoginState(status: LoginStatus.success));
+    when(() => mockBloc.state)
+        .thenReturn(const LoginState(status: LoginStatus.success));
 
     whenListen(
       mockBloc,

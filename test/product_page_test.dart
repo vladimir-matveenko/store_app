@@ -97,9 +97,8 @@ void main() {
   testWidgets('ProductPage shows loading indicator when product is loading', (
     WidgetTester tester,
   ) async {
-    when(
-      () => mockProductsBloc.state,
-    ).thenReturn(const ProductsState(isProductLoading: true));
+    when(() => mockProductsBloc.state)
+        .thenReturn(const ProductsState(isProductLoading: true));
     when(() => mockProductsBloc.stream).thenAnswer(
       (_) => Stream.value(const ProductsState(isProductLoading: true)),
     );
